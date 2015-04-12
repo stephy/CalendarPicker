@@ -18,7 +18,6 @@ var Calendar = React.createClass({
   getInitialState: function() {
     return {
       date: new Date(),
-      dismissScene: this.props.dismissScene
     };
   },
 
