@@ -112,3 +112,5 @@ var styles = StyleSheet.create({
     flexDirection: 'row'
   }
 });
+
+module.exports = styles;
