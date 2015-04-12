@@ -26,12 +26,8 @@ var {
 var styles = require('./Styles');
 
 var Day = React.createClass({
-  renderDay() {
-  },
-
   render() {
-    // Why use 1 here when you can use true/false? ;)
-    if (this.props.selected === 1) {
+    if (this.props.selected) {
       return (
         <View style={styles.dayWrapper}>
           <View style={styles.dayButtonSelected}>
@@ -76,9 +72,9 @@ var Days = React.createClass({
 
     for (i = 1; i <= daysInMonth; i++) {
       if (day && i === day) {
-        selectedStates.push(1);
+        selectedStates.push(true);
       } else {
-        selectedStates.push(0);
+        selectedStates.push(false);
       }
     }
 
@@ -87,12 +83,7 @@ var Days = React.createClass({
     });
   },
 
-  // I personally prefer names that indicate the user action, eg: onPressDay,
-  // and that can then fire onDayChange. It makes it hard to read the code
-  // when when there are names like `updateSelectedStates` and `handleDayChange`
-  // mixed together because it's not totally clear what is a response to use
-  // input and when
-  handleDayChange(day) {
+  onPressDay(day) {
     this.updateSelectedStates(day);
     this.props.onDayChange({day: day});
   },
@@ -124,13 +115,13 @@ var Days = React.createClass({
                       day={currentDay+1}
                       selected={this.state.selectedStates[currentDay]}
                       date={this.props.date}
-                      onDayChange={this.props.onDayChange} />);
+                      onDayChange={this.onPressDay} />);
             } else {
               columns.push(<Day
                       day={currentDay+1}
                       selected={this.state.selectedStates[currentDay]}
                       date={this.props.date}
-                      onDayChange={this.handleDayChange} />);
+                      onDayChange={this.onPressDay} />);
             }
             currentDay++;
           }
@@ -191,7 +182,6 @@ var HeaderControls = React.createClass({
     var prev = this.state.selectedMonth - 1;
     if (prev < 0) {
       this.setState({ selectedMonth: 11 });
-      // go to previous year
       this.props.getPrevYear();
     } else {
       this.setState({ selectedMonth: prev });
@@ -242,10 +232,7 @@ var CalendarPicker = React.createClass({
   },
 
   onDayChange(day) {
-    this.setState({
-      day: day.day
-    });
-
+    this.setState({day: day.day,});
     this.onDateChange();
   },
 
