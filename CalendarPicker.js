@@ -195,10 +195,9 @@ var HeaderControls = React.createClass({
       <View style={styles.monthLabelWrapper}>
         <View style={styles.iconPrev}>
           <TouchableOpacity onPress={this.getPrevious}>
-            { /* Should change images to local bundle assets */ }
             <Image
               style={styles.icon}
-              source={{ uri: 'http://stephanimoroni.com/kalendar/images/arrow-left@3x.png'}}/>
+              source={require('image!arrow-left')} />
           </TouchableOpacity>
         </View>
         <View>
@@ -208,10 +207,9 @@ var HeaderControls = React.createClass({
         </View>
         <View style={styles.iconNext}>
           <TouchableOpacity onPress={this.getNext}>
-            { /* Should change images to local bundle assets */ }
             <Image
               style={styles.icon}
-              source={{uri: 'http://stephanimoroni.com/kalendar/images/arrow-right@3x.png'}}/>
+              source={require('image!arrow-right')} />
           </TouchableOpacity>
         </View>
 
@@ -256,9 +254,8 @@ var CalendarPicker = React.createClass({
       day,
       month,
       year
-    } = this.state;
-
-    var date = new Date(year, month, day);
+    } = this.state,
+      date = new Date(year, month, day);
 
     this.setState({date: date,});
     this.props.onDateChange(date);
