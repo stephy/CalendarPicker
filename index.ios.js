@@ -1,9 +1,10 @@
 /**
- * Calendar 
- * 
+ * Calendar
+ *
  */
 'use strict';
 
+var CalendarPicker = require('./CalendarPicker');
 var React = require('react-native');
 var {
   AppRegistry,
@@ -11,8 +12,6 @@ var {
   Text,
   View,
 } = React;
-
-var CalendarPicker = require('./CalendarPicker');
 
 var Calendar = React.createClass({
   getInitialState: function() {
@@ -22,34 +21,36 @@ var Calendar = React.createClass({
   },
 
   onDateChange: function(date) {
-    this.setState({ date: date });
+    this.setState({
+      date: date,
+    });
   },
 
   render: function() {
     return (
       <View style={styles.container}>
-      
-        <CalendarPicker 
-          selectedDate={this.state.date}
+        <CalendarPicker selectedDate={this.state.date}
           onDateChange={this.onDateChange} />
 
-        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
+        <Text style={styles.selectedDate}>
+          Date: { this.state.date.toString() }
+        </Text>
       </View>
-      
     );
   }
 });
 
+// react-native style with object literals is to always leaving a comma after
+// the last item
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 30
+    marginTop: 30,
   },
-
   selectedDate: {
     backgroundColor: 'rgba(0,0,0,0)',
     color: '#000',
-    marginLeft: 20
+    marginLeft: 20,
   }
 });
 
