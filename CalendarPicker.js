@@ -15,59 +15,63 @@ var {
   ScrollView
 } = React;
 
-var WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-  MAX_ROWS = 7,
-  MAX_COLUMNS = 7,
-  _getDaysInMonth = function(month, year) {
-    var lastDayOfMonth = new Date(year, month+1, 0);
-    return lastDayOfMonth.getDate();
-  };
+var {
+  WEEKDAYS,
+  MONTHS,
+  MAX_ROWS,
+  MAX_COLUMNS,
+  getDaysInMonth,
+} = require('./Util');
+
+var styles = require('./Styles');
 
 var Day = React.createClass({
-  renderDay: function() {
+  renderDay() {
+  },
+
+  render() {
+    // Why use 1 here when you can use true/false? ;)
     if (this.props.selected === 1) {
       return (
-        <View style={styles.dayButtonSelected}>
+        <View style={styles.dayWrapper}>
+          <View style={styles.dayButtonSelected}>
+            <TouchableOpacity
+              style={styles.dayButton}
+              onPress={() => this.props.onDayChange(this.props.day) }>
+              <Text style={styles.dayLabel}>
+                {this.props.day}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.dayWrapper}>
           <TouchableOpacity
             style={styles.dayButton}
             onPress={() => this.props.onDayChange(this.props.day) }>
-            <Text style={styles.dayLabel}>{this.props.day}</Text>
+            <Text style={styles.dayLabel}>
+              {this.props.day}
+            </Text>
           </TouchableOpacity>
         </View>
-        );
-    } else {
-      return (
-        <TouchableOpacity
-          style={styles.dayButton}
-          onPress={() => this.props.onDayChange(this.props.day) }>
-          <Text style={styles.dayLabel}>{this.props.day}</Text>
-        </TouchableOpacity>
-
-        );
+      );
     }
-  },
-
-  render: function() {
-    return (
-      <View style={styles.dayWrapper}>
-        {this.renderDay()}
-      </View>
-    );
   }
 });
 
 var Days = React.createClass({
-  getInitialState: function() {
+  getInitialState() {
     return {
       selectedStates: [],
       calendarDays: null
     };
   },
 
-  updateSelectedStates: function(day) {
+  updateSelectedStates(day) {
     var selectedStates = [],
-      daysInMonth = _getDaysInMonth(this.props.month, this.props.year),
+      daysInMonth = getDaysInMonth(this.props.month, this.props.year),
       i;
 
     for (i = 1; i <= daysInMonth; i++) {
@@ -83,12 +87,21 @@ var Days = React.createClass({
     });
   },
 
-  handleDayChange: function(day) {
+  // I personally prefer names that indicate the user action, eg: onPressDay,
+  // and that can then fire onDayChange. It makes it hard to read the code
+  // when when there are names like `updateSelectedStates` and `handleDayChange`
+  // mixed together because it's not totally clear what is a response to use
+  // input and when
+  handleDayChange(day) {
     this.updateSelectedStates(day);
-    this.props.onDayChange({ day: day });
+    this.props.onDayChange({day: day});
   },
 
-  getCalendarDays: function() {
+  // Not going to touch this one - I'd look at whether there is a more functional
+  // way you can do this using something like `range`, `map`, `partition` and such
+  // (see underscore.js), or just break it up into steps: first generate the array for
+  // data, then map that into the components
+  getCalendarDays() {
     var columns,
       matrix = [],
       i,
@@ -101,9 +114,10 @@ var Days = React.createClass({
 
     for(i = 0; i < MAX_ROWS; i++ ) { // Week rows
       columns = [];
+
       for(j = 0; j < MAX_COLUMNS; j++) { // Day columns
         if (slotsAccumulator >= thisMonthFirstDay.getDay()) {
-          if (currentDay < _getDaysInMonth(month, year)) {
+          if (currentDay < getDaysInMonth(month, year)) {
             // check to see if the day is selected
             if (this.state.selectedStates[currentDay] > 0) {
               columns.push(<Day
@@ -134,50 +148,46 @@ var Days = React.createClass({
   },
 
 
-  render: function() {
-    return (
-      <View>
-        { this.getCalendarDays() }
-      </View>
-    );
+  render() {
+    return <View>{ this.getCalendarDays() }</View>;
   }
 
 });
 
 var WeekDaysLabels = React.createClass({
-  render: function() {
-    return(
+  render() {
+    return (
       <View style={styles.dayLabelsWrapper}>
-        { WEEKDAYS.map(function(obj, i) {
-          return (<Text style={styles.dayLabels}> { obj }</Text>);
-        }) }
+        { WEEKDAYS.map((day) => { return <Text style={styles.dayLabels}>{day}</Text> }) }
       </View>
     );
   }
 });
 
 var HeaderControls = React.createClass({
-  getInitialState: function() {
+  getInitialState() {
     return {
       selectedMonth: this.props.month
     };
   },
 
-  getNext: function() {
+  // Logic seems a bit awkawardly split up between here and the CalendarPicker
+  // component, eg: getNextYear is actually modifying the state of the parent,
+  // could just let header controls hold all of the logic and have CalendarPicker
+  // `onChange` callback fire and update itself on each change
+  getNext() {
     var next = this.state.selectedMonth + 1;
     if (next > 11) {
       this.setState({ selectedMonth: 0 });
-      // go to next year
       this.props.getNextYear();
     } else {
       this.setState({ selectedMonth: next });
     }
 
     this.props.onMonthChange(this.state.selectedMonth);
-
   },
 
-  getPrevious: function() {
+  getPrevious() {
     var prev = this.state.selectedMonth - 1;
     if (prev < 0) {
       this.setState({ selectedMonth: 11 });
@@ -190,24 +200,28 @@ var HeaderControls = React.createClass({
     this.props.onMonthChange(this.state.selectedMonth);
   },
 
-  render: function() {
-    return(
+  render() {
+    return (
       <View style={styles.monthLabelWrapper}>
         <View style={styles.iconPrev}>
-          <TouchableOpacity onPress={() => this.getPrevious() }>
+          <TouchableOpacity onPress={this.getPrevious}>
+            { /* Should change images to local bundle assets */ }
             <Image
               style={styles.icon}
               source={{ uri: 'http://stephanimoroni.com/kalendar/images/arrow-left@3x.png'}}/>
           </TouchableOpacity>
         </View>
         <View>
-          <Text style={styles.monthLabel}> { MONTHS[this.state.selectedMonth] } { this.props.year }</Text>
+          <Text style={styles.monthLabel}>
+            { MONTHS[this.state.selectedMonth] } { this.props.year }
+          </Text>
         </View>
         <View style={styles.iconNext}>
-          <TouchableOpacity onPress={() => this.getNext() }>
+          <TouchableOpacity onPress={this.getNext}>
+            { /* Should change images to local bundle assets */ }
             <Image
               style={styles.icon}
-              source={{ uri: 'http://stephanimoroni.com/kalendar/images/arrow-right@3x.png'}}/>
+              source={{uri: 'http://stephanimoroni.com/kalendar/images/arrow-right@3x.png'}}/>
           </TouchableOpacity>
         </View>
 
@@ -217,17 +231,17 @@ var HeaderControls = React.createClass({
 });
 
 var CalendarPicker = React.createClass({
-  getInitialState: function() {
+  getInitialState() {
     return {
       date: this.props.selectedDate,
       day: this.props.selectedDate.getDate(),
       month: this.props.selectedDate.getMonth(),
       year: this.props.selectedDate.getFullYear(),
-      selectedDay: []
+      selectedDay: [],
     };
   },
 
-  onDayChange: function(day) {
+  onDayChange(day) {
     this.setState({
       day: day.day
     });
@@ -235,42 +249,35 @@ var CalendarPicker = React.createClass({
     this.onDateChange();
   },
 
-  onMonthChange: function(month) {
-    this.setState({
-      month: month
-    });
+  onMonthChange(month) {
+    this.setState({month: month,});
     this.onDateChange();
   },
 
-  getNextYear: function(){
-    this.setState({
-      year: this.state.year+1
-    });
+  getNextYear(){
+    this.setState({year: this.state.year + 1,});
     this.onDateChange();
   },
 
-  getPrevYear: function() {
-    this.setState({
-      year: this.state.year-1
-    });
+  getPrevYear() {
+    this.setState({year: this.state.year - 1,});
     this.onDateChange();
   },
 
-  onDateChange: function() {
-    var day =  this.state.day,
-      month = this.state.month,
-      year = this.state.year;
+  onDateChange() {
+    var {
+      day,
+      month,
+      year
+    } = this.state;
 
     var date = new Date(year, month, day);
 
-    this.setState({
-      date: date
-    });
-
+    this.setState({date: date,});
     this.props.onDateChange(date);
   },
 
-  render: function() {
+  render() {
     return (
       <View style={styles.calendar}>
         <HeaderControls
@@ -289,113 +296,6 @@ var CalendarPicker = React.createClass({
           onDayChange={this.onDayChange} />
       </View>
     );
-  }
-});
-
-var styles = StyleSheet.create({
-  calendar: {
-    alignSelf: 'center',
-    height: 300,
-    marginTop: 10
-  },
-
-  iconPrev: {
-    flex: 1,
-    paddingTop: 5
-  },
-
-  iconNext: {
-    flex: 1,
-    paddingTop: 5
-  },
-
-  icon: {
-    width: 15,
-    height: 15,
-  },
-
-  dayWrapper: {
-    width: 50,
-    height: 40,
-    backgroundColor: 'rgba(0,0,0,0.0)'
-  },
-
-  dayButton: {
-    width: 50,
-    height: 40,
-    alignSelf: 'center'
-  },
-
-  dayButtonSelected: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: '#5ce600',
-    alignSelf: 'center'
-  },
-
-  dayLabel: {
-    fontSize: 14,
-    color: '#000',
-    marginTop: 6,
-    alignSelf: 'center'
-  },
-
-  dayLabelsWrapper: {
-    flexDirection: 'row',
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderTopWidth: 1,
-    paddingTop: 10,
-    paddingBottom: 10,
-    backgroundColor: 'rgba(0,0,0,0.0)',
-    borderColor: 'rgba(0,0,0,0.2)'
-  },
-
-  dayLabels: {
-    width: 50,
-    fontSize: 10,
-    color: '#000',
-    textAlign: 'center',
-  },
-
-  selectedDay: {
-    width: 60,
-    height:60,
-    backgroundColor: '#5ce600',
-    borderRadius: 30,
-    alignSelf: 'center'
-  },
-
-  monthLabel: {
-    fontSize: 16,
-    color: '#000',
-    flex: 1,
-    width: 320,
-    textAlign: 'center'
-  },
-
-  monthLabelWrapper: {
-    flexDirection: 'row',
-    marginBottom: 10,
-    padding: 5,
-    paddingBottom: 3,
-    backgroundColor: 'rgba(0,0,0,0.0)'
-  },
-
-  yearLabel: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#000',
-    textAlign: 'center'
-  },
-
-  weeks: {
-    flexDirection: 'column'
-  },
-
-  weekRow: {
-    flexDirection: 'row'
   }
 });
 
