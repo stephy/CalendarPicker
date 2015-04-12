@@ -228,47 +228,47 @@ var CalendarPicker = React.createClass({
   },
 
   onDayChange: function(day) {
-      this.setState({
-        day: day.day
-      });
+    this.setState({
+      day: day.day
+    });
 
-      this.onDateChange();
-    },
+    this.onDateChange();
+  },
 
-    onMonthChange: function(month) {
-      this.setState({
-        month: month
-      });
-      this.onDateChange();
-    },
+  onMonthChange: function(month) {
+    this.setState({
+      month: month
+    });
+    this.onDateChange();
+  },
 
-    getNextYear: function(){
-      this.setState({
-        year: this.state.year+1
-      });
-      this.onDateChange();
-    },
+  getNextYear: function(){
+    this.setState({
+      year: this.state.year+1
+    });
+    this.onDateChange();
+  },
 
-    getPrevYear: function() {
-      this.setState({
-        year: this.state.year-1
-      });
-      this.onDateChange();
-    },
+  getPrevYear: function() {
+    this.setState({
+      year: this.state.year-1
+    });
+    this.onDateChange();
+  },
 
-    onDateChange: function() {
-      var day =  this.state.day,
-        month = this.state.month,
-        year = this.state.year;
+  onDateChange: function() {
+    var day =  this.state.day,
+      month = this.state.month,
+      year = this.state.year;
 
-      var date = new Date(year, month, day);
+    var date = new Date(year, month, day);
 
-      this.setState({
-        date: date
-      });
+    this.setState({
+      date: date
+    });
 
-      this.props.onDateChange(date);
-    },
+    this.props.onDateChange(date);
+  },
 
   render: function() {
     return (
