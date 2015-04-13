@@ -61,8 +61,11 @@ var Days = React.createClass({
   getInitialState() {
     return {
       selectedStates: [],
-      calendarDays: null
     };
+  },
+
+  componentDidMount() {
+    this.updateSelectedStates(this.props.date.getDate());
   },
 
   updateSelectedStates(day) {
@@ -71,7 +74,7 @@ var Days = React.createClass({
       i;
 
     for (i = 1; i <= daysInMonth; i++) {
-      if (day && i === day) {
+      if (i === day) {
         selectedStates.push(true);
       } else {
         selectedStates.push(false);
@@ -79,8 +82,9 @@ var Days = React.createClass({
     }
 
     this.setState({
-      selectedStates: selectedStates
+      selectedStates: selectedStates,
     });
+
   },
 
   onPressDay(day) {
@@ -109,20 +113,11 @@ var Days = React.createClass({
       for(j = 0; j < MAX_COLUMNS; j++) { // Day columns
         if (slotsAccumulator >= thisMonthFirstDay.getDay()) {
           if (currentDay < getDaysInMonth(month, year)) {
-            // check to see if the day is selected
-            if (this.state.selectedStates[currentDay] > 0) {
-              columns.push(<Day
+            columns.push(<Day
                       day={currentDay+1}
                       selected={this.state.selectedStates[currentDay]}
                       date={this.props.date}
                       onDayChange={this.onPressDay} />);
-            } else {
-              columns.push(<Day
-                      day={currentDay+1}
-                      selected={this.state.selectedStates[currentDay]}
-                      date={this.props.date}
-                      onDayChange={this.onPressDay} />);
-            }
             currentDay++;
           }
         } else {
@@ -137,7 +132,6 @@ var Days = React.createClass({
 
     return matrix;
   },
-
 
   render() {
     return <View>{ this.getCalendarDays() }</View>;
