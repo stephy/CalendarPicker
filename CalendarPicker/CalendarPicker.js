@@ -34,6 +34,11 @@ var Day = React.createClass({
         React.PropTypes.string
     ]).isRequired
   },
+  getDefaultProps () {
+    return {
+      onDayChange () {}
+    }
+  },
   render() {
     if (this.props.selected) {
       return (
@@ -235,7 +240,7 @@ var HeaderControls = React.createClass({
 
 var CalendarPicker = React.createClass({
   propTypes: {
-    selectedDate: React.PropTypes.instanceOf(Date),
+    selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func
   },
   getDefaultProps() {
