@@ -5,13 +5,13 @@ CalendarPicker Component for React Native
 This is a Calendar Picker Component for React Native
 ![alt tag](https://raw.github.com/stephy/CalendarPicker/master/calendarPicker.gif)
 
-To use the calendar you just need to download CalendarPicker.js
+To use the calendar you just need to download the CalendarPicker folder and its contents
 
-https://github.com/stephy/CalendarPicker/blob/master/CalendarPicker.js
+https://github.com/stephy/CalendarPicker/blob/master/CalendarPicker/
 
 How to use it:
 
-		var CalendarPicker = require('./CalendarPicker');
+		var CalendarPicker = require('./CalendarPicker/CalendarPicker');
 
 		var Calendar = React.createClass({
 		  getInitialState: function() {
@@ -42,10 +42,11 @@ How to use it:
 
 # To Do:
 
-- Add swipe gesture
-- Add selection for inital day
+- Add swipe gestures
 
 
 # Suggestions?
 
 Drop an email to alves@stephanimoroni.com
+Open issues
+Submit PRs.

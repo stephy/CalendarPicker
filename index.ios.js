@@ -4,7 +4,7 @@
  */
 'use strict';
 
-var CalendarPicker = require('./CalendarPicker');
+var CalendarPicker = require('./CalendarPicker/CalendarPicker');
 var React = require('react-native');
 var {
   AppRegistry,
