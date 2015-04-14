@@ -44,13 +44,11 @@ var Calendar = React.createClass({
 // the last item
 var styles = StyleSheet.create({
   container: {
-    flex: 1,
     marginTop: 30,
   },
   selectedDate: {
     backgroundColor: 'rgba(0,0,0,0)',
     color: '#000',
-    marginLeft: 20,
   }
 });
 

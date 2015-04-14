@@ -8,26 +8,9 @@ var StyleSheet = require('react-native').StyleSheet;
 
 var styles = StyleSheet.create({
   calendar: {
-    alignSelf: 'center',
-    height: 300,
+    height: 320,
     marginTop: 10
   },
-
-  iconPrev: {
-    flex: 1,
-    paddingTop: 5
-  },
-
-  iconNext: {
-    flex: 1,
-    paddingTop: 5
-  },
-
-  icon: {
-    width: 15,
-    height: 15,
-  },
-
   dayWrapper: {
     width: 50,
     height: 40,
@@ -62,8 +45,13 @@ var styles = StyleSheet.create({
     borderTopWidth: 1,
     paddingTop: 10,
     paddingBottom: 10,
+    alignSelf: 'center',
     backgroundColor: 'rgba(0,0,0,0.0)',
     borderColor: 'rgba(0,0,0,0.2)'
+  },
+
+  daysWrapper: {
+    alignSelf: 'center',
   },
 
   dayLabels: {
@@ -84,17 +72,30 @@ var styles = StyleSheet.create({
   monthLabel: {
     fontSize: 16,
     color: '#000',
-    flex: 1,
-    width: 320,
+    width: 180,
     textAlign: 'center'
   },
 
-  monthLabelWrapper: {
+  headerWrapper: {
+    alignItems: 'center',  
     flexDirection: 'row',
+    alignSelf: 'center',
     marginBottom: 10,
     padding: 5,
     paddingBottom: 3,
     backgroundColor: 'rgba(0,0,0,0.0)'
+  },
+
+  monthSelector: {
+    width: 80,
+  },
+
+  prev: {
+    textAlign: 'left'
+  },
+
+  next: {
+    textAlign: 'right'
   },
 
   yearLabel: {

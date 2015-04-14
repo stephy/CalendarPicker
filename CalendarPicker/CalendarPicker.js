@@ -6,13 +6,10 @@
 
 var React = require('react-native');
 var {
-  Image,
   StyleSheet,
   View,
   Text,
-  Navigator,
   TouchableOpacity,
-  ScrollView
 } = React;
 
 var {
@@ -154,7 +151,7 @@ var Days = React.createClass({
   },
 
   render() {
-    return <View>{ this.getCalendarDays() }</View>;
+    return <View style={styles.daysWrapper}>{ this.getCalendarDays() }</View>;
   }
 
 });
@@ -212,12 +209,10 @@ var HeaderControls = React.createClass({
 
   render() {
     return (
-      <View style={styles.monthLabelWrapper}>
-        <View style={styles.iconPrev}>
+      <View style={styles.headerWrapper}>
+        <View style={styles.monthSelector}>
           <TouchableOpacity onPress={this.getPrevious}>
-            <Image
-              style={styles.icon}
-              source={require('image!arrow-left')} />
+            <Text style={styles.prev}>Previous</Text>
           </TouchableOpacity>
         </View>
         <View>
@@ -225,11 +220,9 @@ var HeaderControls = React.createClass({
             { MONTHS[this.state.selectedMonth] } { this.props.year }
           </Text>
         </View>
-        <View style={styles.iconNext}>
+        <View style={styles.monthSelector}>
           <TouchableOpacity onPress={this.getNext}>
-            <Image
-              style={styles.icon}
-              source={require('image!arrow-right')} />
+            <Text style={styles.next}>Next</Text>
           </TouchableOpacity>
         </View>
 
