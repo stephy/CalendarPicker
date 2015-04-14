@@ -26,6 +26,19 @@ var {
 var styles = require('./Styles');
 
 var Day = React.createClass({
+  propTypes: {
+    onDayChange: React.PropTypes.func,
+    selected: React.PropTypes.bool,
+    day: React.PropTypes.oneOfType([
+        React.PropTypes.number,
+        React.PropTypes.string
+    ]).isRequired
+  },
+  getDefaultProps () {
+    return {
+      onDayChange () {}
+    }
+  },
   render() {
     if (this.props.selected) {
       return (
@@ -58,6 +71,12 @@ var Day = React.createClass({
 });
 
 var Days = React.createClass({
+  propTypes: {
+    date: React.PropTypes.instanceOf(Date).isRequired,
+    month: React.PropTypes.number.isRequired,
+    year: React.PropTypes.number.isRequired,
+    onDayChange: React.PropTypes.func.isRequired
+  },
   getInitialState() {
     return {
       selectedStates: [],
@@ -114,6 +133,7 @@ var Days = React.createClass({
         if (slotsAccumulator >= thisMonthFirstDay.getDay()) {
           if (currentDay < getDaysInMonth(month, year)) {
             columns.push(<Day
+                      key={j}
                       day={currentDay+1}
                       selected={this.state.selectedStates[currentDay]}
                       date={this.props.date}
@@ -121,7 +141,7 @@ var Days = React.createClass({
             currentDay++;
           }
         } else {
-          columns.push(<Day day={''}/>);
+          columns.push(<Day key={j} day={''}/>);
         }
 
         slotsAccumulator++;
@@ -143,13 +163,19 @@ var WeekDaysLabels = React.createClass({
   render() {
     return (
       <View style={styles.dayLabelsWrapper}>
-        { WEEKDAYS.map((day) => { return <Text style={styles.dayLabels}>{day}</Text> }) }
+        { WEEKDAYS.map((day, key) => { return <Text key={key} style={styles.dayLabels}>{day}</Text> }) }
       </View>
     );
   }
 });
 
 var HeaderControls = React.createClass({
+  propTypes: {
+    month: React.PropTypes.number.isRequired,
+    getNextYear: React.PropTypes.func.isRequired,
+    getPrevYear: React.PropTypes.func.isRequired,
+    onMonthChange: React.PropTypes.func.isRequired
+  },
   getInitialState() {
     return {
       selectedMonth: this.props.month
@@ -213,6 +239,15 @@ var HeaderControls = React.createClass({
 });
 
 var CalendarPicker = React.createClass({
+  propTypes: {
+    selectedDate: React.PropTypes.instanceOf(Date).isRequired,
+    onDateChange: React.PropTypes.func
+  },
+  getDefaultProps() {
+    return {
+      onDateChange () {}
+    }
+  },
   getInitialState() {
     return {
       date: this.props.selectedDate,
