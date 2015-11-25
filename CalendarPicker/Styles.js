@@ -6,35 +6,40 @@
 
 var StyleSheet = require('react-native').StyleSheet;
 
+var {width, height,} = require('Dimensions').get('window'); 
 var styles = StyleSheet.create({
   calendar: {
     height: 320,
+    width: width,
     marginTop: 10
   },
   dayWrapper: {
-    width: 50,
-    height: 40,
+    width: width/7,
+    height: width/7,
+    borderRadius: width/7/2,
     backgroundColor: 'rgba(0,0,0,0.0)'
   },
 
   dayButton: {
-    width: 50,
-    height: 40,
-    alignSelf: 'center'
+    width: width/7,
+    height: width/7,
+    borderRadius: width/7/2,
+    alignSelf: 'center',
+    justifyContent: 'center',
   },
 
   dayButtonSelected: {
-    width: 30,
-    height: 30,
-    borderRadius: 15,
-    backgroundColor: '#5ce600',
+    width: width/7,
+    height: width/7,
+    borderRadius: width/7/2,
+    backgroundColor: '#D6BA79',
     alignSelf: 'center'
   },
 
   dayLabel: {
     fontSize: 14,
     color: '#000',
-    marginTop: 6,
+    marginTop: 0,
     alignSelf: 'center'
   },
 
@@ -55,24 +60,24 @@ var styles = StyleSheet.create({
   },
 
   dayLabels: {
-    width: 50,
+    width: width/7,
     fontSize: 10,
     color: '#000',
     textAlign: 'center',
   },
 
   selectedDay: {
-    width: 60,
-    height:60,
+    width: width/7,
+    height: width/7,
     backgroundColor: '#5ce600',
-    borderRadius: 30,
+    borderRadius: width/7/2,
     alignSelf: 'center'
   },
 
   monthLabel: {
     fontSize: 16,
     color: '#000',
-    width: 180,
+    width: width/3,
     textAlign: 'center'
   },
 
@@ -80,14 +85,15 @@ var styles = StyleSheet.create({
     alignItems: 'center',  
     flexDirection: 'row',
     alignSelf: 'center',
+    width: width,
     marginBottom: 10,
-    padding: 5,
+    paddingHorizontal: 16,
     paddingBottom: 3,
     backgroundColor: 'rgba(0,0,0,0.0)'
   },
 
   monthSelector: {
-    width: 80,
+    width: width/3 - 16,
   },
 
   prev: {
