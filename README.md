@@ -12,6 +12,7 @@ To use the calendar you just need to:
 How to use it:
 
 	var CalendarPicker = require('react-native-calendar-picker');
+	var Dimensions = require('Dimensions').get('window');
 
 	var Calendar = React.createClass({
 	  getInitialState: function() {
@@ -30,7 +31,9 @@ How to use it:
 	      
 	        <CalendarPicker 
 	          selectedDate={this.state.date}
-	          onDateChange={this.onDateChange} />
+	          onDateChange={this.onDateChange}
+	          screenWidth={Dimensions.width}
+	          selectedColor={'#5ce600'} />
 
 	        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
 	      </View>
