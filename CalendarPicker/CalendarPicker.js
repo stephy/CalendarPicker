@@ -43,7 +43,7 @@ var Day = React.createClass({
 
   getInitialState () {
     this.DAY_WIDTH = (this.props.screenWidth - 16)/7;
-    this.SELECTED_DAY_WIDTH = (this.props.screenWidth - 16)/7 - 10; 
+    this.SELECTED_DAY_WIDTH = (this.props.screenWidth - 16)/7 - 10;
     this.BORDER_RADIUS = this.SELECTED_DAY_WIDTH/2;
     return null;
   },
@@ -86,7 +86,8 @@ var Days = React.createClass({
     year: React.PropTypes.number.isRequired,
     onDayChange: React.PropTypes.func.isRequired,
     screenWidth: React.PropTypes.number,
-    selectedColor: React.PropTypes.string
+    selectedColor: React.PropTypes.string,
+    startFromMonday: React.PropTypes.bool,
   },
   getInitialState() {
     return {
@@ -135,13 +136,14 @@ var Days = React.createClass({
       year = this.props.year,
       currentDay = 0,
       thisMonthFirstDay = new Date(year, month, 1),
-      slotsAccumulator = 0;
+      slotsAccumulator = 0,
+      slotsAccumulatorOffset = this.props.startFromMonday ? 1 : 0;
 
     for(i = 0; i < MAX_ROWS; i++ ) { // Week rows
       columns = [];
 
       for(j = 0; j < MAX_COLUMNS; j++) { // Day columns
-        if (slotsAccumulator >= thisMonthFirstDay.getDay()) {
+        if (slotsAccumulator + slotsAccumulatorOffset >= thisMonthFirstDay.getDay()) {
           if (currentDay < getDaysInMonth(month, year)) {
             columns.push(<Day
                       key={j}
@@ -154,8 +156,8 @@ var Days = React.createClass({
             currentDay++;
           }
         } else {
-          columns.push(<Day 
-                          key={j} 
+          columns.push(<Day
+                          key={j}
                           day={''}
                           screenWidth={this.props.screenWidth}/>);
         }
@@ -186,7 +188,7 @@ var WeekDaysLabels = React.createClass({
   render() {
     return (
       <View style={styles.dayLabelsWrapper}>
-        { WEEKDAYS.map((day, key) => { return <Text key={key} style={[styles.dayLabels, {width: this.DAY_WIDTH}]}>{day}</Text> }) }
+        { (this.props.weekdays || WEEKDAYS).map((day, key) => { return <Text key={key} style={[styles.dayLabels, {width: this.DAY_WIDTH}]}>{day}</Text> }) }
       </View>
     );
   }
@@ -197,7 +199,7 @@ var HeaderControls = React.createClass({
     month: React.PropTypes.number.isRequired,
     getNextYear: React.PropTypes.func.isRequired,
     getPrevYear: React.PropTypes.func.isRequired,
-    onMonthChange: React.PropTypes.func.isRequired
+    onMonthChange: React.PropTypes.func.isRequired,
   },
   getInitialState() {
     return {
@@ -238,17 +240,17 @@ var HeaderControls = React.createClass({
       <View style={styles.headerWrapper}>
         <View style={styles.prevMonthSelector}>
           <TouchableOpacity onPress={this.getPrevious}>
-            <Text style={styles.prev}>Previous</Text>
+            <Text style={styles.prev}>{this.props.previousTitle || 'Previous'}</Text>
           </TouchableOpacity>
         </View>
         <View>
           <Text style={styles.monthLabel}>
-            { MONTHS[this.state.selectedMonth] } { this.props.year }
+            { (this.props.months || MONTHS)[this.state.selectedMonth] } { this.props.year }
           </Text>
         </View>
         <View style={styles.nextMonthSelector}>
           <TouchableOpacity onPress={this.getNext}>
-            <Text style={styles.next}>Next</Text>
+            <Text style={styles.next}>{this.props.nextTitle || 'Next'}</Text>
           </TouchableOpacity>
         </View>
 
@@ -262,7 +264,12 @@ var CalendarPicker = React.createClass({
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
     screenWidth: React.PropTypes.number.isRequired,
-    selectedColor: React.PropTypes.string
+    selectedColor: React.PropTypes.string,
+    startFromMonday: React.PropTypes.bool,
+    weekdays: React.PropTypes.array,
+    months: React.PropTypes.array,
+    previousTitle: React.PropTypes.string,
+    nextTitle: React.PropTypes.string,
   },
   getDefaultProps() {
     return {
@@ -319,18 +326,25 @@ var CalendarPicker = React.createClass({
           month={this.state.month}
           onMonthChange={this.onMonthChange}
           getNextYear={this.getNextYear}
-          getPrevYear={this.getPrevYear} />
+          getPrevYear={this.getPrevYear}
+          months={this.props.months}
+          previousTitle={this.props.previousTitle}
+          nextTitle={this.props.nextTitle}
+        />
 
-        <WeekDaysLabels 
-          screenWidth={this.props.screenWidth}/>
+        <WeekDaysLabels
+          screenWidth={this.props.screenWidth}
+          weekdays={this.props.weekdays}/>
 
         <Days
           month={this.state.month}
           year={this.state.year}
           date={this.state.date}
-          onDayChange={this.onDayChange} 
+          onDayChange={this.onDayChange}
           screenWidth={this.props.screenWidth}
-          selectedColor={this.props.selectedColor} />
+          selectedColor={this.props.selectedColor}
+          startFromMonday={this.props.startFromMonday}
+        />
       </View>
     );
   }
