@@ -42,6 +42,15 @@ How to use it:
 	  }
 	});
 
+## CalendarPicker props
+| Prop | Type | Description |
+:------------ |:---------------:| :-----|
+| weekdays | array | List of week days. Eg. ['Mo', 'Tue', ...] Must be 7 days |
+| months | array | List of months names. |
+| startFromMonday | boolean | Default first day of week will be Sunday. You can set start of week from Monday. |
+| previousTitle | string | Title of button for previous month. |
+| nextTitle | string | Title of button for next month. |
+
 
 # To Do:
 
