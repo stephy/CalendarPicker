@@ -50,33 +50,19 @@ var Day = React.createClass({
   },
 
   render() {
-    if (this.props.selected) {
-      return (
-        <View style={[styles.dayWrapper, {width: this.DAY_WIDTH, height: this.DAY_WIDTH}]}>
-          <View style={[{backgroundColor: this.props.selectedBackgroundColor, width: this.SELECTED_DAY_WIDTH, height: this.SELECTED_DAY_WIDTH, borderRadius: this.BORDER_RADIUS}]}>
-            <TouchableOpacity
-              style={[styles.dayButton, {width: this.SELECTED_DAY_WIDTH, height: this.SELECTED_DAY_WIDTH, borderRadius: this.BORDER_RADIUS}]}
-              onPress={() => this.props.onDayChange(this.props.day) }>
-              <Text style={[styles.dayLabel, this.props.styleSelectedDayText]}>
-                {this.props.day}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      );
-    } else {
-      return (
-        <View style={[styles.dayWrapper, {width: this.DAY_WIDTH, height: this.DAY_WIDTH}]}>
+    return (
+      <View style={[styles.dayWrapper, {width: this.DAY_WIDTH, height: this.DAY_WIDTH}]}>
+        <View style={{backgroundColor: this.props.selected ? this.props.selectedBackgroundColor : 'transparent', width: this.SELECTED_DAY_WIDTH, height: this.SELECTED_DAY_WIDTH, borderRadius: this.BORDER_RADIUS}}>
           <TouchableOpacity
-            style={styles.dayButton}
+            style={[styles.dayButton, {width: this.SELECTED_DAY_WIDTH, height: this.SELECTED_DAY_WIDTH, borderRadius: this.BORDER_RADIUS}]}
             onPress={() => this.props.onDayChange(this.props.day) }>
-            <Text style={styles.dayLabel}>
+            <Text style={[styles.dayLabel, this.props.selected ? this.props.styleSelectedDayText : {color: '#000'}]}>
               {this.props.day}
             </Text>
           </TouchableOpacity>
         </View>
-      );
-    }
+      </View>
+    );
   }
 });
 
