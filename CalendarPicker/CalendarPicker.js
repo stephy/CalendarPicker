@@ -32,12 +32,13 @@ var Day = React.createClass({
         React.PropTypes.string
     ]).isRequired,
     screenWidth: React.PropTypes.number,
-    selectedColor: React.PropTypes.string
+    selectedBackgroundColor: React.PropTypes.string,
+    styleSelectedDayText: Text.propTypes.style,
   },
   getDefaultProps () {
     return {
       onDayChange () {},
-      selectedColor: '#5ce600'
+      selectedBackgroundColor: '#5ce600'
     }
   },
 
@@ -52,11 +53,11 @@ var Day = React.createClass({
     if (this.props.selected) {
       return (
         <View style={[styles.dayWrapper, {width: this.DAY_WIDTH, height: this.DAY_WIDTH}]}>
-          <View style={[{backgroundColor: this.props.selectedColor, width: this.SELECTED_DAY_WIDTH, height: this.SELECTED_DAY_WIDTH, borderRadius: this.BORDER_RADIUS}]}>
+          <View style={[{backgroundColor: this.props.selectedBackgroundColor, width: this.SELECTED_DAY_WIDTH, height: this.SELECTED_DAY_WIDTH, borderRadius: this.BORDER_RADIUS}]}>
             <TouchableOpacity
               style={[styles.dayButton, {width: this.SELECTED_DAY_WIDTH, height: this.SELECTED_DAY_WIDTH, borderRadius: this.BORDER_RADIUS}]}
               onPress={() => this.props.onDayChange(this.props.day) }>
-              <Text style={styles.dayLabel}>
+              <Text style={[styles.dayLabel, this.props.styleSelectedDayText]}>
                 {this.props.day}
               </Text>
             </TouchableOpacity>
@@ -86,7 +87,8 @@ var Days = React.createClass({
     year: React.PropTypes.number.isRequired,
     onDayChange: React.PropTypes.func.isRequired,
     screenWidth: React.PropTypes.number,
-    selectedColor: React.PropTypes.string,
+    selectedBackgroundColor: React.PropTypes.string,
+    styleSelectedDayText: Text.propTypes.style,
     startFromMonday: React.PropTypes.bool,
   },
   getInitialState() {
@@ -152,7 +154,8 @@ var Days = React.createClass({
                       date={this.props.date}
                       onDayChange={this.onPressDay}
                       screenWidth={this.props.screenWidth}
-                      selectedColor={this.props.selectedColor} />);
+                      selectedBackgroundColor={this.props.selectedBackgroundColor}
+                      styleSelectedDayText={this.props.styleSelectedDayText} />);
             currentDay++;
           }
         } else {
@@ -264,7 +267,8 @@ var CalendarPicker = React.createClass({
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
     screenWidth: React.PropTypes.number.isRequired,
-    selectedColor: React.PropTypes.string,
+    selectedBackgroundColor: React.PropTypes.string,
+    styleSelectedDayText: Text.propTypes.style,
     startFromMonday: React.PropTypes.bool,
     weekdays: React.PropTypes.array,
     months: React.PropTypes.array,
@@ -342,7 +346,8 @@ var CalendarPicker = React.createClass({
           date={this.state.date}
           onDayChange={this.onDayChange}
           screenWidth={this.props.screenWidth}
-          selectedColor={this.props.selectedColor}
+          selectedBackgroundColor={this.props.selectedBackgroundColor}
+          styleSelectedDayText={this.props.styleSelectedDayText}
           startFromMonday={this.props.startFromMonday}
         />
       </View>
