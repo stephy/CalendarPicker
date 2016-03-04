@@ -50,6 +50,8 @@ How to use it:
 | startFromMonday | boolean | Default first day of week will be Sunday. You can set start of week from Monday. |
 | previousTitle | string | Title of button for previous month. |
 | nextTitle | string | Title of button for next month. |
+| selectedBackgroundColor | string | Background color of selected day. |
+| styleSelectedDayText | style | Style text of selected day. |
 
 
 # To Do:
