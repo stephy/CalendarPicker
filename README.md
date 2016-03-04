@@ -33,7 +33,7 @@ How to use it:
 	          selectedDate={this.state.date}
 	          onDateChange={this.onDateChange}
 	          screenWidth={Dimensions.width}
-	          selectedColor={'#5ce600'} />
+	          selectedBackgroundColor={'#5ce600'} />
 
 	        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
 	      </View>
