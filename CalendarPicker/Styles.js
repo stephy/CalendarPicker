@@ -51,15 +51,14 @@ var styles = StyleSheet.create({
   monthLabel: {
     fontSize: 16,
     color: '#000',
-    width: 180,
     textAlign: 'center'
   },
 
   headerWrapper: {
-    alignItems: 'center',  
+    alignItems: 'center',
     flexDirection: 'row',
     marginBottom: 10,
-    padding: 5,
+    paddingTop: 5,
     paddingBottom: 3,
     backgroundColor: 'rgba(0,0,0,0.0)'
   },
