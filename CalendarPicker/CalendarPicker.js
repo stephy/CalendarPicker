@@ -29,7 +29,8 @@ var Day = React.createClass({
     day: React.PropTypes.oneOfType([
         React.PropTypes.number,
         React.PropTypes.string
-    ]).isRequired
+    ]).isRequired,
+    selectedDayColor: React.PropTypes.string
   },
   getDefaultProps () {
     return {
@@ -38,9 +39,10 @@ var Day = React.createClass({
   },
   render() {
     if (this.props.selected) {
+      var selectedDayColorStyle = this.props.selectedDayColor ? {backgroundColor: this.props.selectedDayColor} : {}
       return (
         <View style={styles.dayWrapper}>
-          <View style={styles.dayButtonSelected}>
+          <View style={[styles.dayButtonSelected, selectedDayColorStyle]}>
             <TouchableOpacity
               style={styles.dayButton}
               onPress={() => this.props.onDayChange(this.props.day) }>
@@ -72,7 +74,8 @@ var Days = React.createClass({
     date: React.PropTypes.instanceOf(Date).isRequired,
     month: React.PropTypes.number.isRequired,
     year: React.PropTypes.number.isRequired,
-    onDayChange: React.PropTypes.func.isRequired
+    onDayChange: React.PropTypes.func.isRequired,
+    selectedDayColor: React.PropTypes.string,
   },
   getInitialState() {
     return {
@@ -134,7 +137,8 @@ var Days = React.createClass({
                       day={currentDay+1}
                       selected={this.state.selectedStates[currentDay]}
                       date={this.props.date}
-                      onDayChange={this.onPressDay} />);
+                      onDayChange={this.onPressDay}
+                      selectedDayColor={this.props.selectedDayColor}  />);
             currentDay++;
           }
         } else {
@@ -239,7 +243,8 @@ var HeaderControls = React.createClass({
 var CalendarPicker = React.createClass({
   propTypes: {
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
-    onDateChange: React.PropTypes.func
+    onDateChange: React.PropTypes.func,
+    selectedDayColor: React.PropTypes.string
   },
   getDefaultProps() {
     return {
@@ -290,7 +295,7 @@ var CalendarPicker = React.createClass({
 
     this.setState({date: date,}, () => {
       this.props.onDateChange(date);
-    });    
+    });
   },
 
   render() {
@@ -309,7 +314,8 @@ var CalendarPicker = React.createClass({
           month={this.state.month}
           year={this.state.year}
           date={this.state.date}
-          onDayChange={this.onDayChange} />
+          onDayChange={this.onDayChange}
+          selectedDayColor={this.props.selectedDayColor}  />
       </View>
     );
   }
