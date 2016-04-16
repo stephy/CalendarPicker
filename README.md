@@ -30,7 +30,9 @@ How to use it:
 	      
 	        <CalendarPicker 
 	          selectedDate={this.state.date}
-	          onDateChange={this.onDateChange} />
+	          onDateChange={this.onDateChange}
+	          selectedDayColor={"#ff6767"} //Optional
+	          /> 
 
 	        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
 	      </View>
