@@ -6,6 +6,7 @@
 
 var React = require('react-native');
 var {
+  Dimensions,
   StyleSheet,
   View,
   Text,
@@ -20,7 +21,12 @@ var {
   getDaysInMonth,
 } = require('./Util');
 
-var styles = require('./Styles');
+var makeStyles = require('./makeStyles');
+
+//The styles in makeStyles are intially scaled to this width
+const IPHONE6_WIDTH = 375
+var initialScale = Dimensions.get('window').width / IPHONE6_WIDTH ;
+var styles = StyleSheet.create(makeStyles(initialScale))
 
 var Day = React.createClass({
   propTypes: {
@@ -244,7 +250,8 @@ var CalendarPicker = React.createClass({
   propTypes: {
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
-    selectedDayColor: React.PropTypes.string
+    selectedDayColor: React.PropTypes.string,
+    scaleFactor: React.PropTypes.number,
   },
   getDefaultProps() {
     return {
@@ -252,6 +259,9 @@ var CalendarPicker = React.createClass({
     }
   },
   getInitialState() {
+    if(this.props.scaleFactor !== undefined) {
+      styles = StyleSheet.create(makeStyles(this.props.scaleFactor))
+    }
     return {
       date: this.props.selectedDate,
       day: this.props.selectedDate.getDate(),

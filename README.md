@@ -27,16 +27,17 @@ How to use it:
 	  render: function() {
 	    return (
 	      <View style={styles.container}>
-	      
-	        <CalendarPicker 
+
+	        <CalendarPicker
 	          selectedDate={this.state.date}
 	          onDateChange={this.onDateChange}
-	          selectedDayColor={"#ff6767"} //Optional
-	          /> 
+	          selectedDayColor={"#ff6767"} // Optional
+						scaleFactor={1.8} // Optional. Default scales to window width.
+	        />
 
 	        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
 	      </View>
-	      
+
 	    );
 	  }
 	});
