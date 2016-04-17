@@ -32,7 +32,7 @@ How to use it:
 	          selectedDate={this.state.date}
 	          onDateChange={this.onDateChange}
 	          selectedDayColor={"#ff6767"} // Optional
-						scaleFactor={1.8} // Optional. Default scales to window width.
+	          scaleFactor={1.8} // Optional. Default scales to window width.
 	        />
 
 	        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
