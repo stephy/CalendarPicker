@@ -6,6 +6,7 @@
 
 var React = require('react-native');
 var {
+  Dimensions,
   StyleSheet,
   View,
   Text,
@@ -20,7 +21,12 @@ var {
   getDaysInMonth,
 } = require('./Util');
 
-var styles = require('./Styles');
+var makeStyles = require('./makeStyles');
+
+//The styles in makeStyles are intially scaled to this width
+const IPHONE6_WIDTH = 375
+var initialScale = Dimensions.get('window').width / IPHONE6_WIDTH ;
+var styles = StyleSheet.create(makeStyles(initialScale))
 
 var Day = React.createClass({
   propTypes: {
@@ -29,7 +35,9 @@ var Day = React.createClass({
     day: React.PropTypes.oneOfType([
         React.PropTypes.number,
         React.PropTypes.string
-    ]).isRequired
+    ]).isRequired,
+    selectedDayColor: React.PropTypes.string,
+    selectedDayTextColor: React.PropTypes.string,
   },
   getDefaultProps () {
     return {
@@ -38,13 +46,15 @@ var Day = React.createClass({
   },
   render() {
     if (this.props.selected) {
+      var selectedDayColorStyle = this.props.selectedDayColor ? {backgroundColor: this.props.selectedDayColor} : {}
+      var selectedDayTextColorStyle = this.props.selectedDayTextColor ? {color: this.props.selectedDayTextColor} : {}
       return (
         <View style={styles.dayWrapper}>
-          <View style={styles.dayButtonSelected}>
+          <View style={[styles.dayButtonSelected, selectedDayColorStyle]}>
             <TouchableOpacity
               style={styles.dayButton}
               onPress={() => this.props.onDayChange(this.props.day) }>
-              <Text style={styles.dayLabel}>
+              <Text style={[styles.dayLabel, selectedDayTextColorStyle]}>
                 {this.props.day}
               </Text>
             </TouchableOpacity>
@@ -72,7 +82,9 @@ var Days = React.createClass({
     date: React.PropTypes.instanceOf(Date).isRequired,
     month: React.PropTypes.number.isRequired,
     year: React.PropTypes.number.isRequired,
-    onDayChange: React.PropTypes.func.isRequired
+    onDayChange: React.PropTypes.func.isRequired,
+    selectedDayColor: React.PropTypes.string,
+    selectedDayTextColor: React.PropTypes.string,
   },
   getInitialState() {
     return {
@@ -134,7 +146,9 @@ var Days = React.createClass({
                       day={currentDay+1}
                       selected={this.state.selectedStates[currentDay]}
                       date={this.props.date}
-                      onDayChange={this.onPressDay} />);
+                      onDayChange={this.onPressDay}
+                      selectedDayColor={this.props.selectedDayColor}
+                      selectedDayTextColor={this.props.selectedDayTextColor}  />);
             currentDay++;
           }
         } else {
@@ -239,7 +253,10 @@ var HeaderControls = React.createClass({
 var CalendarPicker = React.createClass({
   propTypes: {
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
-    onDateChange: React.PropTypes.func
+    onDateChange: React.PropTypes.func,
+    selectedDayColor: React.PropTypes.string,
+    selectedDayTextColor: React.PropTypes.string,
+    scaleFactor: React.PropTypes.number,
   },
   getDefaultProps() {
     return {
@@ -247,6 +264,9 @@ var CalendarPicker = React.createClass({
     }
   },
   getInitialState() {
+    if(this.props.scaleFactor !== undefined) {
+      styles = StyleSheet.create(makeStyles(this.props.scaleFactor))
+    }
     return {
       date: this.props.selectedDate,
       day: this.props.selectedDate.getDate(),
@@ -290,7 +310,7 @@ var CalendarPicker = React.createClass({
 
     this.setState({date: date,}, () => {
       this.props.onDateChange(date);
-    });    
+    });
   },
 
   render() {
@@ -309,7 +329,9 @@ var CalendarPicker = React.createClass({
           month={this.state.month}
           year={this.state.year}
           date={this.state.date}
-          onDayChange={this.onDayChange} />
+          onDayChange={this.onDayChange}
+          selectedDayColor={this.props.selectedDayColor}
+          selectedDayTextColor={this.props.selectedDayTextColor}  />
       </View>
     );
   }
