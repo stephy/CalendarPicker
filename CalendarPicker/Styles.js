@@ -6,40 +6,25 @@
 
 var StyleSheet = require('react-native').StyleSheet;
 
-var {width, height,} = require('Dimensions').get('window'); 
 var styles = StyleSheet.create({
   calendar: {
-    height: 320,
-    width: width,
     marginTop: 10
   },
   dayWrapper: {
-    width: width/7,
-    height: width/7,
-    borderRadius: width/7/2,
-    backgroundColor: 'rgba(0,0,0,0.0)'
+    backgroundColor: 'rgba(0,0,0,0.0)',
+    justifyContent: 'center',
+    alignItems: 'center'
   },
 
   dayButton: {
-    width: width/7,
-    height: width/7,
-    borderRadius: width/7/2,
-    alignSelf: 'center',
+    flex: 1,
     justifyContent: 'center',
-  },
-
-  dayButtonSelected: {
-    width: width/7,
-    height: width/7,
-    borderRadius: width/7/2,
-    backgroundColor: '#D6BA79',
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
 
   dayLabel: {
     fontSize: 14,
     color: '#000',
-    marginTop: 0,
     alignSelf: 'center'
   },
 
@@ -60,40 +45,34 @@ var styles = StyleSheet.create({
   },
 
   dayLabels: {
-    width: width/7,
-    fontSize: 10,
-    color: '#000',
     textAlign: 'center',
-  },
-
-  selectedDay: {
-    width: width/7,
-    height: width/7,
-    backgroundColor: '#5ce600',
-    borderRadius: width/7/2,
-    alignSelf: 'center'
   },
 
   monthLabel: {
     fontSize: 16,
     color: '#000',
-    width: width/3,
     textAlign: 'center'
   },
 
   headerWrapper: {
-    alignItems: 'center',  
+    alignItems: 'center',
     flexDirection: 'row',
-    alignSelf: 'center',
-    width: width,
     marginBottom: 10,
-    paddingHorizontal: 16,
+    paddingTop: 5,
     paddingBottom: 3,
     backgroundColor: 'rgba(0,0,0,0.0)'
   },
 
-  monthSelector: {
-    width: width/3 - 16,
+  prevMonthSelector: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
+
+  nextMonthSelector: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
 
   prev: {
@@ -102,13 +81,6 @@ var styles = StyleSheet.create({
 
   next: {
     textAlign: 'right'
-  },
-
-  yearLabel: {
-    fontSize: 14,
-    fontWeight: 'bold',
-    color: '#000',
-    textAlign: 'center'
   },
 
   weeks: {
