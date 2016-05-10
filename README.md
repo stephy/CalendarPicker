@@ -77,6 +77,7 @@ How to use it:
 # To Do:
 
 - Add swipe gestures
+- Add ability to select date range
 
 
 # Suggestions?
@@ -90,10 +91,12 @@ Submit PRs.
 
 # Special thanks
 
-I would like to call out 2 contributors who have been helping me with this project
+I would like to call out some contributors who have been helping with this project
 
 @edvinerikson
-
+@thomaswright
 @brentvatne
-
-Thanks you two :)
+@kesha-antonov
+@jthestupidkid
+@adamkrell
+@joshuapinter
