@@ -1,5 +1,5 @@
 # react-native-calendar-picker
-Calendar Picker Component for React Native
+Calendar Picker Component for React Native [![Build Status](https://travis-ci.org/stephy/CalendarPicker.svg?branch=master)](https://travis-ci.org/stephy/CalendarPicker)
 
 
 This is a Calendar Picker Component for React Native
