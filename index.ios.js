@@ -4,7 +4,7 @@
  */
 'use strict';
 
-import React, { Component } from 'react';
+import React from 'react';
 import {
   AppRegistry,
   Dimensions,
@@ -14,13 +14,13 @@ import {
 } from 'react-native';
 
 var CalendarPicker = require('./CalendarPicker/CalendarPicker'),
-    CalendarPicker2;
+  CalendarPicker2;
 
 
 CalendarPicker2 = React.createClass({
   getInitialState: function() {
     return {
-      date: new Date(),
+      date: new Date()
     };
   },
 
@@ -36,8 +36,8 @@ CalendarPicker2 = React.createClass({
           selectedDate={this.state.date}
           onDateChange={this.onDateChange}
           screenWidth={Dimensions.width}
-          weekdays = {["Mon", "Tue", "Wed", "Th", "Fri", "Sat", "Sun"]}
-          months = {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]}
+          weekdays = {['Mon', 'Tue', 'Wed', 'Th', 'Fri', 'Sat', 'Sun']}
+          months = {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
           nextTitle={'Next'}
           previousTitle={'Previous'}
           startFromMonday={true}
@@ -54,11 +54,11 @@ CalendarPicker2 = React.createClass({
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
+    marginTop: 30
   },
   selectedDate: {
     backgroundColor: 'rgba(0,0,0,0)',
-    color: '#000',
+    color: '#000'
   }
 });
 

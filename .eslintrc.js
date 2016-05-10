@@ -15,7 +15,8 @@ module.exports = {
         semi: [
             2,
             'always'
-        ]
+        ],
+        'react/prop-types': [0]
     },
     env: {
         es6: true,

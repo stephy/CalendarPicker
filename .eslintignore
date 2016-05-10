@@ -1,8 +1,3 @@
-browser_bundle.js
-browser_entry_point.js
-esfmt_bundle.js
 tmp/
-__tests__/files/
-__tests__/code_snippets/
 coverage/
 package/

@@ -19,7 +19,7 @@ var styles = StyleSheet.create({
   dayButton: {
     flex: 1,
     justifyContent: 'center',
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
 
   dayLabel: {
@@ -41,11 +41,11 @@ var styles = StyleSheet.create({
   },
 
   daysWrapper: {
-    alignSelf: 'center',
+    alignSelf: 'center'
   },
 
   dayLabels: {
-    textAlign: 'center',
+    textAlign: 'center'
   },
 
   monthLabel: {
