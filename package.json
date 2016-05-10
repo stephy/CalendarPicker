@@ -1,6 +1,6 @@
 {
   "name": "react-native-calendar-picker",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Calendar Picker Component for React Native",
   "main": "./CalendarPicker/CalendarPicker.js",
   "scripts": {
