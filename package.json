@@ -4,7 +4,7 @@
   "description": "Calendar Picker Component for React Native",
   "main": "./CalendarPicker/CalendarPicker.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ."
   },
   "dependencies": {
     "react": "^0.14.8",
@@ -53,5 +53,10 @@
     }
   ],
   "directories": {},
-  "_resolved": "https://registry.npmjs.org/react-native-calendar-picker/-/react-native-calendar-picker-1.0.1.tgz"
+  "_resolved": "https://registry.npmjs.org/react-native-calendar-picker/-/react-native-calendar-picker-1.0.1.tgz",
+  "devDependencies": {
+    "babel-eslint": "^6.0.4",
+    "eslint": "^2.9.0",
+    "eslint-plugin-react": "^5.1.1"
+  }
 }
