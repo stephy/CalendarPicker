@@ -4,7 +4,7 @@
   "description": "Calendar Picker Component for React Native",
   "main": "./CalendarPicker/CalendarPicker.js",
   "scripts": {
-    "test": "eslint ."
+    "test": "eslint . && jest"
   },
   "dependencies": {
     "react": "^0.14.8",
@@ -57,6 +57,22 @@
   "devDependencies": {
     "babel-eslint": "^6.0.4",
     "eslint": "^2.9.0",
-    "eslint-plugin-react": "^5.1.1"
+    "eslint-plugin-react": "^5.1.1",
+    "jest-cli": "^11.0.0"
+  },
+  "jest": {
+    "scriptPreprocessor": "node_modules/react-native/jestSupport/preprocessor.js",
+    "setupEnvScriptFile": "node_modules/react-native/jestSupport/env.js",
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "packager/react-packager/src/Activity/"
+    ],
+    "testFileExtensions": [
+      "js"
+    ],
+    "unmockedModulePathPatterns": [
+      "promise",
+      "source-map"
+    ]
   }
 }
