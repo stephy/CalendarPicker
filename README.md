@@ -20,7 +20,7 @@ How to use it:
 	  View
 	} from 'react-native';
 
-	var CalendarPicker = require('./CalendarPicker/CalendarPicker'),
+	var CalendarPicker = require('react-native-calendar-picker'),
 	    CalendarPicker2;
 
 
