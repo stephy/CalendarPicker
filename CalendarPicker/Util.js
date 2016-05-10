@@ -17,5 +17,5 @@ module.exports = {
   getDaysInMonth: function(month, year) {
     var lastDayOfMonth = new Date(year, month + 1, 0);
     return lastDayOfMonth.getDate();
-  },
+  }
 };

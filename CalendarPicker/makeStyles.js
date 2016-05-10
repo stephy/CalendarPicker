@@ -50,14 +50,14 @@ function makeStyles(scaler) {
     },
 
     daysWrapper: {
-      alignSelf: 'center',
+      alignSelf: 'center'
     },
 
     dayLabels: {
       width: 50*scaler,
       fontSize: 10*scaler,
       color: '#000',
-      textAlign: 'center',
+      textAlign: 'center'
     },
 
     selectedDay: {
@@ -86,17 +86,17 @@ function makeStyles(scaler) {
     },
 
     monthSelector: {
-      width: 80*scaler,
+      width: 80*scaler
     },
 
     prev: {
       textAlign: 'left',
-      fontSize: 14*scaler,
+      fontSize: 14*scaler
     },
 
     next: {
       textAlign: 'right',
-      fontSize: 14*scaler,
+      fontSize: 14*scaler
     },
 
     yearLabel: {
@@ -113,8 +113,8 @@ function makeStyles(scaler) {
     weekRow: {
       flexDirection: 'row'
     }
-  }
+  };
 }
 
 
-module.exports = makeStyles
+module.exports = makeStyles;
