@@ -142,9 +142,9 @@ var Days = React.createClass({
       month = this.props.month,
       year = this.props.year,
       currentDay = 0,
-      thisMonthFirstDay = new Date(year, month, 1),
-      slotsAccumulatorOffset = this.props.startFromMonday ? 1 : 0,
-      slotsAccumulator = 0;
+      thisMonthFirstDay = this.props.startFromMonday ? new Date(year, month, 0) : new Date(year, month, 1),
+      slotsAccumulator = 0,
+      slotsAccumulatorOffset = this.props.startFromMonday ? 1 : 0;
 
     for (i = 0; i < MAX_ROWS; i++ ) { // Week rows
       columns = [];

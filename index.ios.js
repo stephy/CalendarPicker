@@ -36,14 +36,14 @@ CalendarPicker2 = React.createClass({
           selectedDate={this.state.date}
           onDateChange={this.onDateChange}
           screenWidth={Dimensions.width}
-          weekdays = {["DOM", "SEG", "TER", "QUA", "QUI", "SEX", "SAB"]}
-          months = {["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]}
-          nextTitle={'Siguiente'}
-          previousTitle={'Anterior'}
+          weekdays = {["Mon", "Tue", "Wed", "Th", "Fri", "Sat", "Sun"]}
+          months = {["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]}
+          nextTitle={'Next'}
+          previousTitle={'Previous'}
           startFromMonday={true}
           selectedDayColor={'#E12518'}
-                style={{}}
-            />
+          selectedDayTextColor={'#FFFFFF'}
+                style={{}} />
 
         <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
       </View>
