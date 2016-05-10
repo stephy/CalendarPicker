@@ -11,7 +11,9 @@ To use the calendar you just need to:
 
 How to use it:
 
+
 	var CalendarPicker = require('react-native-calendar-picker');
+	var Dimensions = require('Dimensions').get('window');
 
 	var Calendar = React.createClass({
 	  getInitialState: function() {
@@ -27,20 +29,29 @@ How to use it:
 	  render: function() {
 	    return (
 	      <View style={styles.container}>
-
-	        <CalendarPicker
+	      
+	        <CalendarPicker 
 	          selectedDate={this.state.date}
 	          onDateChange={this.onDateChange}
+	          screenWidth={Dimensions.width}
 	          selectedDayColor={"#ff6767"} // Optional
-	          scaleFactor={1.8} // Optional. Default scales to window width.
-	        />
+	          scaleFactor={1.8} // Optional. Default scales to window width. />
 
 	        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
 	      </View>
-
+	      
 	    );
 	  }
 	});
+
+## CalendarPicker props
+| Prop | Type | Description |
+:------------ |:---------------:| :-----|
+| weekdays | array | List of week days. Eg. ['Mo', 'Tue', ...] Must be 7 days |
+| months | array | List of months names. |
+| startFromMonday | boolean | Default first day of week will be Sunday. You can set start of week from Monday. |
+| previousTitle | string | Title of button for previous month. |
+| nextTitle | string | Title of button for next month. |
 
 
 # To Do:
