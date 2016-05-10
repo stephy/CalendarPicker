@@ -34,8 +34,7 @@ How to use it:
 	          selectedDate={this.state.date}
 	          onDateChange={this.onDateChange}
 	          screenWidth={Dimensions.width}
-	          selectedDayColor={"#ff6767"} // Optional
-	          scaleFactor={1.8} // Optional. Default scales to window width. />
+	          selectedDayColor={"#ff6767"} />
 
 	        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
 	      </View>
