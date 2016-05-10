@@ -4,14 +4,14 @@
  */
 'use strict';
 
-var React = require('react-native');
-var {
+import React, { Component } from 'react';
+import {
   Dimensions,
   StyleSheet,
   View,
   Text,
   TouchableOpacity,
-} = React;
+} from 'react-native';
 
 var {
   WEEKDAYS,
