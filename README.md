@@ -52,15 +52,15 @@ How to use it:
 	  }
 	});
 
-const styles = StyleSheet.create({
-  container: {
-    marginTop: 30,
-  },
-  selectedDate: {
-    backgroundColor: 'rgba(0,0,0,0)',
-    color: '#000',
-  }
-});
+	const styles = StyleSheet.create({
+	  container: {
+	    marginTop: 30,
+	  },
+	  selectedDate: {
+	    backgroundColor: 'rgba(0,0,0,0)',
+	    color: '#000',
+	  }
+	});
 
 ## CalendarPicker props
 | Prop | Type | Description |
