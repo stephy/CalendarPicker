@@ -10,58 +10,56 @@ To use the calendar you just need to:
 	npm install react-native-calendar-picker
 
 How to use it:
+```js
+import React, { Component } from 'react';
+import {
+  AppRegistry,
+  Dimensions,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
 
-	import React, { Component } from 'react';
-	import {
-	  AppRegistry,
-	  Dimensions,
-	  StyleSheet,
-	  Text,
-	  View
-	} from 'react-native';
+var CalendarPicker = require('react-native-calendar-picker'),
+    CalendarPicker2;
 
-	var CalendarPicker = require('react-native-calendar-picker'),
-	    CalendarPicker2;
+CalendarPicker2 = React.createClass({
+  getInitialState: function() {
+    return {
+      date: new Date(),
+    };
+  },
 
+  onDateChange: function(date) {
+    this.setState({ date: date });
+  },
 
-	CalendarPicker2 = React.createClass({
-	  getInitialState: function() {
-	    return {
-	      date: new Date(),
-	    };
-	  },
+  render: function() {
+    return (
+      <View style={styles.container}>
 
-	  onDateChange: function(date) {
-	    this.setState({ date: date });
-	  },
+        <CalendarPicker 
+          selectedDate={this.state.date}
+          onDateChange={this.onDateChange}
+          screenWidth={Dimensions.get('window')}
+          selectedBackgroundColor={'#5ce600'} />
 
-	  render: function() {
-	    return (
-	      <View style={styles.container}>
+        <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
+      </View>
+    );
+  }
+});
 
-	        <CalendarPicker 
-	          selectedDate={this.state.date}
-	          onDateChange={this.onDateChange}
-	          screenWidth={Dimensions.get('window')}
-	          selectedBackgroundColor={'#5ce600'} />
-
-	        <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
-	      </View>
-
-	    );
-	  }
-	});
-
-	const styles = StyleSheet.create({
-	  container: {
-	    marginTop: 30,
-	  },
-	  selectedDate: {
-	    backgroundColor: 'rgba(0,0,0,0)',
-	    color: '#000',
-	  }
-	});
-
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 30,
+  },
+  selectedDate: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    color: '#000',
+  }
+});
+```
 ## CalendarPicker props
 | Prop | Type | Description |
 :------------ |:---------------:| :-----|
