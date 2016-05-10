@@ -11,11 +11,20 @@ To use the calendar you just need to:
 
 How to use it:
 
+	import React, { Component } from 'react';
+	import {
+	  AppRegistry,
+	  Dimensions,
+	  StyleSheet,
+	  Text,
+	  View
+	} from 'react-native';
 
-	var CalendarPicker = require('react-native-calendar-picker');
-	var Dimensions = require('Dimensions').get('window');
+	var CalendarPicker = require('./CalendarPicker/CalendarPicker'),
+	    CalendarPicker2;
 
-	var Calendar = React.createClass({
+
+	CalendarPicker2 = React.createClass({
 	  getInitialState: function() {
 	    return {
 	      date: new Date(),
@@ -29,19 +38,29 @@ How to use it:
 	  render: function() {
 	    return (
 	      <View style={styles.container}>
-	      
+
 	        <CalendarPicker 
 	          selectedDate={this.state.date}
 	          onDateChange={this.onDateChange}
-	          screenWidth={Dimensions.width}
-	          selectedDayColor={"#ff6767"} />
+	          screenWidth={Dimensions.get('window')}
+	          selectedBackgroundColor={'#5ce600'} />
 
-	        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
+	        <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
 	      </View>
-	      
+
 	    );
 	  }
 	});
+
+const styles = StyleSheet.create({
+  container: {
+    marginTop: 30,
+  },
+  selectedDate: {
+    backgroundColor: 'rgba(0,0,0,0)',
+    color: '#000',
+  }
+});
 
 ## CalendarPicker props
 | Prop | Type | Description |

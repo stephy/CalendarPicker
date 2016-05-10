@@ -7,13 +7,13 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  Dimensions,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
 var CalendarPicker = require('./CalendarPicker/CalendarPicker'),
-    Dimensions = require('Dimensions').get('window'),
     CalendarPicker2;
 
 
@@ -35,10 +35,10 @@ CalendarPicker2 = React.createClass({
         <CalendarPicker 
           selectedDate={this.state.date}
           onDateChange={this.onDateChange}
-          screenWidth={Dimensions.width}
+          screenWidth={Dimensions.get('window')}
           selectedBackgroundColor={'#5ce600'} />
 
-        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
+        <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
       </View>
 
     );
