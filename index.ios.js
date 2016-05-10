@@ -1,19 +1,23 @@
 /**
- * Calendar
+ * CalendarPicker Version 2.0
  *
  */
 'use strict';
 
-var CalendarPicker = require('./CalendarPicker/CalendarPicker');
-var React = require('react-native');
-var {
+import React, { Component } from 'react';
+import {
   AppRegistry,
   StyleSheet,
   Text,
-  View,
-} = React;
+  View
+} from 'react-native';
 
-var Calendar = React.createClass({
+var CalendarPicker = require('./CalendarPicker/CalendarPicker'),
+    Dimensions = require('Dimensions').get('window'),
+    CalendarPicker2;
+
+
+CalendarPicker2 = React.createClass({
   getInitialState: function() {
     return {
       date: new Date(),
@@ -21,28 +25,27 @@ var Calendar = React.createClass({
   },
 
   onDateChange: function(date) {
-    this.setState({
-      date: date,
-    });
+    this.setState({ date: date });
   },
 
   render: function() {
     return (
       <View style={styles.container}>
-        <CalendarPicker selectedDate={this.state.date}
-          onDateChange={this.onDateChange} />
 
-        <Text style={styles.selectedDate}>
-          Date: { this.state.date.toString() }
-        </Text>
+        <CalendarPicker 
+          selectedDate={this.state.date}
+          onDateChange={this.onDateChange}
+          screenWidth={Dimensions.width}
+          selectedBackgroundColor={'#5ce600'} />
+
+        <Text style={styles.selectedDate}>Date:  { this.state.date.toString() } </Text>
       </View>
+
     );
   }
 });
 
-// react-native style with object literals is to always leaving a comma after
-// the last item
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     marginTop: 30,
   },
@@ -52,4 +55,4 @@ var styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent('Calendar', () => Calendar);
+AppRegistry.registerComponent('CalendarPicker2', () => CalendarPicker2);

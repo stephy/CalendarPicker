@@ -1,0 +1,93 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'version',
+1 verbose cli   'major' ]
+2 info using npm@3.8.8
+3 info using node@v4.4.3
+4 info git [ 'status', '--porcelain' ]
+5 verbose stack Error: Git working directory not clean.
+5 verbose stack M  .gitignore
+5 verbose stack D Calendar.xcodeproj/project.pbxproj
+5 verbose stack D Calendar.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+5 verbose stack D Calendar.xcodeproj/project.xcworkspace/xcuserdata/steph.xcuserdatad/UserInterfaceState.xcuserstate
+5 verbose stack D Calendar.xcodeproj/xcshareddata/xcschemes/Calendar.xcscheme
+5 verbose stack D Calendar.xcodeproj/xcuserdata/steph.xcuserdatad/xcschemes/xcschememanagement.plist
+5 verbose stack M  CalendarPicker/CalendarPicker.js
+5 verbose stack M  CalendarPicker/Styles.js
+5 verbose stack M  CalendarPicker/Util.js
+5 verbose stack A  CalendarPicker/makeStyles.js
+5 verbose stack M  README.md
+5 verbose stack D  iOS/Images.xcassets/arrow-left.imageset/Contents.json
+5 verbose stack D  iOS/Images.xcassets/arrow-left.imageset/arrow-left@3x.png
+5 verbose stack D  iOS/Images.xcassets/arrow-right.imageset/Contents.json
+5 verbose stack D  iOS/Images.xcassets/arrow-right.imageset/arrow-right@3x.png
+5 verbose stack D  iOS/Images.xcassets/white-arrow-left.imageset/Contents.json
+5 verbose stack D  iOS/Images.xcassets/white-arrow-left.imageset/white-arrow-left@3x.png
+5 verbose stack D  iOS/Images.xcassets/white-arrow-right.imageset/Contents.json
+5 verbose stack D  iOS/Images.xcassets/white-arrow-right.imageset/white-arrow-right@3x.png
+5 verbose stack D  iOS/main.jsbundle
+5 verbose stack M  index.ios.js
+5 verbose stack A  ios/CalendarPicker2.xcodeproj/project.pbxproj
+5 verbose stack A  ios/CalendarPicker2.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+5 verbose stack A  ios/CalendarPicker2.xcodeproj/xcshareddata/xcschemes/CalendarPicker2.xcscheme
+5 verbose stack R  iOS/AppDelegate.h -> ios/CalendarPicker2/AppDelegate.h
+5 verbose stack R  iOS/AppDelegate.m -> ios/CalendarPicker2/AppDelegate.m
+5 verbose stack R  iOS/Base.lproj/LaunchScreen.xib -> ios/CalendarPicker2/Base.lproj/LaunchScreen.xib
+5 verbose stack R  iOS/Images.xcassets/AppIcon.appiconset/Contents.json -> ios/CalendarPicker2/Images.xcassets/AppIcon.appiconset/Contents.json
+5 verbose stack R  iOS/Info.plist -> ios/CalendarPicker2/Info.plist
+5 verbose stack R  iOS/main.m -> ios/CalendarPicker2/main.m
+5 verbose stack A  ios/CalendarPicker2Tests/CalendarPicker2Tests.m
+5 verbose stack A  ios/CalendarPicker2Tests/Info.plist
+5 verbose stack M  package.json
+5 verbose stack     at /usr/local/lib/node_modules/npm/lib/version.js:246:19
+5 verbose stack     at ChildProcess.exithandler (child_process.js:204:7)
+5 verbose stack     at emitTwo (events.js:87:13)
+5 verbose stack     at ChildProcess.emit (events.js:172:7)
+5 verbose stack     at maybeClose (internal/child_process.js:827:16)
+5 verbose stack     at Socket.<anonymous> (internal/child_process.js:319:11)
+5 verbose stack     at emitOne (events.js:77:13)
+5 verbose stack     at Socket.emit (events.js:169:7)
+5 verbose stack     at Pipe._onclose (net.js:477:12)
+6 verbose cwd /Users/bishop/dev/CalendarPicker
+7 error Darwin 15.0.0
+8 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "version" "major"
+9 error node v4.4.3
+10 error npm  v3.8.8
+11 error Git working directory not clean.
+11 error M  .gitignore
+11 error D Calendar.xcodeproj/project.pbxproj
+11 error D Calendar.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+11 error D Calendar.xcodeproj/project.xcworkspace/xcuserdata/steph.xcuserdatad/UserInterfaceState.xcuserstate
+11 error D Calendar.xcodeproj/xcshareddata/xcschemes/Calendar.xcscheme
+11 error D Calendar.xcodeproj/xcuserdata/steph.xcuserdatad/xcschemes/xcschememanagement.plist
+11 error M  CalendarPicker/CalendarPicker.js
+11 error M  CalendarPicker/Styles.js
+11 error M  CalendarPicker/Util.js
+11 error A  CalendarPicker/makeStyles.js
+11 error M  README.md
+11 error D  iOS/Images.xcassets/arrow-left.imageset/Contents.json
+11 error D  iOS/Images.xcassets/arrow-left.imageset/arrow-left@3x.png
+11 error D  iOS/Images.xcassets/arrow-right.imageset/Contents.json
+11 error D  iOS/Images.xcassets/arrow-right.imageset/arrow-right@3x.png
+11 error D  iOS/Images.xcassets/white-arrow-left.imageset/Contents.json
+11 error D  iOS/Images.xcassets/white-arrow-left.imageset/white-arrow-left@3x.png
+11 error D  iOS/Images.xcassets/white-arrow-right.imageset/Contents.json
+11 error D  iOS/Images.xcassets/white-arrow-right.imageset/white-arrow-right@3x.png
+11 error D  iOS/main.jsbundle
+11 error M  index.ios.js
+11 error A  ios/CalendarPicker2.xcodeproj/project.pbxproj
+11 error A  ios/CalendarPicker2.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+11 error A  ios/CalendarPicker2.xcodeproj/xcshareddata/xcschemes/CalendarPicker2.xcscheme
+11 error R  iOS/AppDelegate.h -> ios/CalendarPicker2/AppDelegate.h
+11 error R  iOS/AppDelegate.m -> ios/CalendarPicker2/AppDelegate.m
+11 error R  iOS/Base.lproj/LaunchScreen.xib -> ios/CalendarPicker2/Base.lproj/LaunchScreen.xib
+11 error R  iOS/Images.xcassets/AppIcon.appiconset/Contents.json -> ios/CalendarPicker2/Images.xcassets/AppIcon.appiconset/Contents.json
+11 error R  iOS/Info.plist -> ios/CalendarPicker2/Info.plist
+11 error R  iOS/main.m -> ios/CalendarPicker2/main.m
+11 error A  ios/CalendarPicker2Tests/CalendarPicker2Tests.m
+11 error A  ios/CalendarPicker2Tests/Info.plist
+11 error M  package.json
+12 error If you need help, you may report this error at:
+12 error     <https://github.com/npm/npm/issues>
+13 verbose exit [ 1, true ]

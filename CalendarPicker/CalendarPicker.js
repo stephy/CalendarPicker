@@ -5,8 +5,8 @@
 'use strict';
 
 var React = require('react-native');
-
 var {
+  Dimensions,
   StyleSheet,
   View,
   Text,
@@ -21,7 +21,12 @@ var {
   getDaysInMonth,
 } = require('./Util');
 
-var styles = require('./Styles');
+var makeStyles = require('./makeStyles');
+
+//The styles in makeStyles are intially scaled to this width
+const IPHONE6_WIDTH = 375
+var initialScale = Dimensions.get('window').width / IPHONE6_WIDTH ;
+var styles = StyleSheet.create(makeStyles(initialScale))
 
 var Day = React.createClass({
   propTypes: {
@@ -31,38 +36,44 @@ var Day = React.createClass({
         React.PropTypes.number,
         React.PropTypes.string
     ]).isRequired,
-    screenWidth: React.PropTypes.number,
-    selectedBackgroundColor: React.PropTypes.string,
-    styleSelectedDayText: Text.propTypes.style,
+    selectedDayColor: React.PropTypes.string,
+    selectedDayTextColor: React.PropTypes.string,
   },
   getDefaultProps () {
     return {
-      onDayChange () {},
-      selectedBackgroundColor: '#5ce600'
+      onDayChange () {}
     }
   },
-
-  getInitialState () {
-    this.DAY_WIDTH = (this.props.screenWidth - 16)/7;
-    this.SELECTED_DAY_WIDTH = (this.props.screenWidth - 16)/7 - 10;
-    this.BORDER_RADIUS = this.SELECTED_DAY_WIDTH/2;
-    return null;
-  },
-
   render() {
-    return (
-      <View style={[styles.dayWrapper, {width: this.DAY_WIDTH, height: this.DAY_WIDTH}]}>
-        <View style={{backgroundColor: this.props.selected ? this.props.selectedBackgroundColor : 'transparent', width: this.SELECTED_DAY_WIDTH, height: this.SELECTED_DAY_WIDTH, borderRadius: this.BORDER_RADIUS}}>
+    if (this.props.selected) {
+      var selectedDayColorStyle = this.props.selectedDayColor ? {backgroundColor: this.props.selectedDayColor} : {}
+      var selectedDayTextColorStyle = this.props.selectedDayTextColor ? {color: this.props.selectedDayTextColor} : {}
+      return (
+        <View style={styles.dayWrapper}>
+          <View style={[styles.dayButtonSelected, selectedDayColorStyle]}>
+            <TouchableOpacity
+              style={styles.dayButton}
+              onPress={() => this.props.onDayChange(this.props.day) }>
+              <Text style={[styles.dayLabel, selectedDayTextColorStyle]}>
+                {this.props.day}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
+    } else {
+      return (
+        <View style={styles.dayWrapper}>
           <TouchableOpacity
-            style={[styles.dayButton, {width: this.SELECTED_DAY_WIDTH, height: this.SELECTED_DAY_WIDTH, borderRadius: this.BORDER_RADIUS}]}
+            style={styles.dayButton}
             onPress={() => this.props.onDayChange(this.props.day) }>
-            <Text style={[styles.dayLabel, this.props.selected ? this.props.styleSelectedDayText : {color: '#000'}]}>
+            <Text style={styles.dayLabel}>
               {this.props.day}
             </Text>
           </TouchableOpacity>
         </View>
-      </View>
-    );
+      );
+    }
   }
 });
 
@@ -72,10 +83,8 @@ var Days = React.createClass({
     month: React.PropTypes.number.isRequired,
     year: React.PropTypes.number.isRequired,
     onDayChange: React.PropTypes.func.isRequired,
-    screenWidth: React.PropTypes.number,
-    selectedBackgroundColor: React.PropTypes.string,
-    styleSelectedDayText: Text.propTypes.style,
-    startFromMonday: React.PropTypes.bool,
+    selectedDayColor: React.PropTypes.string,
+    selectedDayTextColor: React.PropTypes.string,
   },
   getInitialState() {
     return {
@@ -124,14 +133,13 @@ var Days = React.createClass({
       year = this.props.year,
       currentDay = 0,
       thisMonthFirstDay = new Date(year, month, 1),
-      slotsAccumulator = 0,
-      slotsAccumulatorOffset = this.props.startFromMonday ? 1 : 0;
+      slotsAccumulator = 0;
 
     for(i = 0; i < MAX_ROWS; i++ ) { // Week rows
       columns = [];
 
       for(j = 0; j < MAX_COLUMNS; j++) { // Day columns
-        if (slotsAccumulator + slotsAccumulatorOffset >= thisMonthFirstDay.getDay()) {
+        if (slotsAccumulator >= thisMonthFirstDay.getDay()) {
           if (currentDay < getDaysInMonth(month, year)) {
             columns.push(<Day
                       key={j}
@@ -139,16 +147,12 @@ var Days = React.createClass({
                       selected={this.state.selectedStates[currentDay]}
                       date={this.props.date}
                       onDayChange={this.onPressDay}
-                      screenWidth={this.props.screenWidth}
-                      selectedBackgroundColor={this.props.selectedBackgroundColor}
-                      styleSelectedDayText={this.props.styleSelectedDayText} />);
+                      selectedDayColor={this.props.selectedDayColor}
+                      selectedDayTextColor={this.props.selectedDayTextColor}  />);
             currentDay++;
           }
         } else {
-          columns.push(<Day
-                          key={j}
-                          day={''}
-                          screenWidth={this.props.screenWidth}/>);
+          columns.push(<Day key={j} day={''}/>);
         }
 
         slotsAccumulator++;
@@ -167,17 +171,10 @@ var Days = React.createClass({
 });
 
 var WeekDaysLabels = React.createClass({
-  propTypes: {
-    screenWidth: React.PropTypes.number
-  },
-  getInitialState() {
-    this.DAY_WIDTH = (this.props.screenWidth - 16)/7;
-    return null;
-  },
   render() {
     return (
       <View style={styles.dayLabelsWrapper}>
-        { (this.props.weekdays || WEEKDAYS).map((day, key) => { return <Text key={key} style={[styles.dayLabels, {width: this.DAY_WIDTH}]}>{day}</Text> }) }
+        { WEEKDAYS.map((day, key) => { return <Text key={key} style={styles.dayLabels}>{day}</Text> }) }
       </View>
     );
   }
@@ -188,7 +185,7 @@ var HeaderControls = React.createClass({
     month: React.PropTypes.number.isRequired,
     getNextYear: React.PropTypes.func.isRequired,
     getPrevYear: React.PropTypes.func.isRequired,
-    onMonthChange: React.PropTypes.func.isRequired,
+    onMonthChange: React.PropTypes.func.isRequired
   },
   getInitialState() {
     return {
@@ -203,43 +200,48 @@ var HeaderControls = React.createClass({
   getNext() {
     var next = this.state.selectedMonth + 1;
     if (next > 11) {
-      this.setState({ selectedMonth: 0 });
+      this.setState({ selectedMonth: 0 },() => {
+        this.props.onMonthChange(this.state.selectedMonth);
+      });
       this.props.getNextYear();
     } else {
-      this.setState({ selectedMonth: next });
+      this.setState({ selectedMonth: next },() => {
+        this.props.onMonthChange(this.state.selectedMonth);
+      });
     }
-
-    this.props.onMonthChange(this.state.selectedMonth);
   },
 
   getPrevious() {
     var prev = this.state.selectedMonth - 1;
     if (prev < 0) {
-      this.setState({ selectedMonth: 11 });
+      this.setState({ selectedMonth: 11 },() => {
+        this.props.onMonthChange(this.state.selectedMonth);
+      });
       this.props.getPrevYear();
     } else {
-      this.setState({ selectedMonth: prev });
+      this.setState({ selectedMonth: prev }, () => {
+        this.props.onMonthChange(this.state.selectedMonth);
+      });
     }
 
-    this.props.onMonthChange(this.state.selectedMonth);
   },
 
   render() {
     return (
       <View style={styles.headerWrapper}>
-        <View style={styles.prevMonthSelector}>
+        <View style={styles.monthSelector}>
           <TouchableOpacity onPress={this.getPrevious}>
-            <Text style={styles.prev}>{this.props.previousTitle || 'Previous'}</Text>
+            <Text style={styles.prev}>Previous</Text>
           </TouchableOpacity>
         </View>
         <View>
           <Text style={styles.monthLabel}>
-            { (this.props.months || MONTHS)[this.state.selectedMonth] } { this.props.year }
+            { MONTHS[this.state.selectedMonth] } { this.props.year }
           </Text>
         </View>
-        <View style={styles.nextMonthSelector}>
+        <View style={styles.monthSelector}>
           <TouchableOpacity onPress={this.getNext}>
-            <Text style={styles.next}>{this.props.nextTitle || 'Next'}</Text>
+            <Text style={styles.next}>Next</Text>
           </TouchableOpacity>
         </View>
 
@@ -252,14 +254,9 @@ var CalendarPicker = React.createClass({
   propTypes: {
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
-    screenWidth: React.PropTypes.number.isRequired,
-    selectedBackgroundColor: React.PropTypes.string,
-    styleSelectedDayText: Text.propTypes.style,
-    startFromMonday: React.PropTypes.bool,
-    weekdays: React.PropTypes.array,
-    months: React.PropTypes.array,
-    previousTitle: React.PropTypes.string,
-    nextTitle: React.PropTypes.string,
+    selectedDayColor: React.PropTypes.string,
+    selectedDayTextColor: React.PropTypes.string,
+    scaleFactor: React.PropTypes.number,
   },
   getDefaultProps() {
     return {
@@ -267,6 +264,9 @@ var CalendarPicker = React.createClass({
     }
   },
   getInitialState() {
+    if(this.props.scaleFactor !== undefined) {
+      styles = StyleSheet.create(makeStyles(this.props.scaleFactor))
+    }
     return {
       date: this.props.selectedDate,
       day: this.props.selectedDate.getDate(),
@@ -277,23 +277,27 @@ var CalendarPicker = React.createClass({
   },
 
   onDayChange(day) {
-    this.setState({day: day.day,});
-    this.onDateChange();
+    this.setState({day: day.day,}, () => {
+      this.onDateChange();
+    });
   },
 
   onMonthChange(month) {
-    this.setState({month: month,});
-    this.onDateChange();
+    this.setState({month: month,}, () => {
+      this.onDateChange();
+    });
   },
 
   getNextYear(){
-    this.setState({year: this.state.year + 1,});
-    this.onDateChange();
+    this.setState({year: this.state.year + 1,}, () => {
+      this.onDateChange();
+    });
   },
 
   getPrevYear() {
-    this.setState({year: this.state.year - 1,});
-    this.onDateChange();
+    this.setState({year: this.state.year - 1,}, () => {
+      this.onDateChange();
+    });
   },
 
   onDateChange() {
@@ -304,38 +308,30 @@ var CalendarPicker = React.createClass({
     } = this.state,
       date = new Date(year, month, day);
 
-    this.setState({date: date,});
-    this.props.onDateChange(date);
+    this.setState({date: date,}, () => {
+      this.props.onDateChange(date);
+    });
   },
 
   render() {
     return (
       <View style={styles.calendar}>
         <HeaderControls
-          year={this.state.year}
+          year= {this.state.year}
           month={this.state.month}
           onMonthChange={this.onMonthChange}
           getNextYear={this.getNextYear}
-          getPrevYear={this.getPrevYear}
-          months={this.props.months}
-          previousTitle={this.props.previousTitle}
-          nextTitle={this.props.nextTitle}
-        />
+          getPrevYear={this.getPrevYear} />
 
-        <WeekDaysLabels
-          screenWidth={this.props.screenWidth}
-          weekdays={this.props.weekdays}/>
+        <WeekDaysLabels />
 
         <Days
           month={this.state.month}
           year={this.state.year}
           date={this.state.date}
           onDayChange={this.onDayChange}
-          screenWidth={this.props.screenWidth}
-          selectedBackgroundColor={this.props.selectedBackgroundColor}
-          styleSelectedDayText={this.props.styleSelectedDayText}
-          startFromMonday={this.props.startFromMonday}
-        />
+          selectedDayColor={this.props.selectedDayColor}
+          selectedDayTextColor={this.props.selectedDayTextColor}  />
       </View>
     );
   }
