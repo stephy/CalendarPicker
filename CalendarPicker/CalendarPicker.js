@@ -264,7 +264,7 @@ var CalendarPicker = React.createClass({
     }
   },
   getInitialState() {
-    if(this.props.scaleFactor !== undefined) {
+    if (this.props.scaleFactor !== undefined) {
       styles = StyleSheet.create(makeStyles(this.props.scaleFactor))
     }
     return {
