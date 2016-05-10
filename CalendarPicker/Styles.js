@@ -63,18 +63,6 @@ var styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.0)'
   },
 
-  prevMonthSelector: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-  },
-
-  nextMonthSelector: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-  },
-
   prev: {
     textAlign: 'left'
   },
