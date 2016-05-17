@@ -1,6 +1,8 @@
 /**
  * Calendar Picker Component
- * By Stephani Alves - April 11, 2015
+ *
+ * Copyright 2016 Yahoo Inc.
+ * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
 'use strict';
 

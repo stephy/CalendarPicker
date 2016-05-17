@@ -1,6 +1,7 @@
 /**
- * CalendarPicker Version 2.0
  *
+ * Copyright 2016 Yahoo Inc.
+ * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
 'use strict';
 
