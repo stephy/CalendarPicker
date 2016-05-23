@@ -38,7 +38,7 @@ CalendarPicker2 = React.createClass({
     return (
       <View style={styles.container}>
 
-        <CalendarPicker 
+        <CalendarPicker
           selectedDate={this.state.date}
           onDateChange={this.onDateChange}
           screenWidth={Dimensions.get('window')}
@@ -69,6 +69,10 @@ const styles = StyleSheet.create({
 | previousTitle | string | Title of button for previous month. |
 | nextTitle | string | Title of button for next month. |
 | selectedDayColor | string | Color for selected day |
+| selectedDayTextColor | string | Color for text selected day |
+| markedDays | array | List of Dates |
+| selectedMarkedDaysColorStyle | string | Color for marked days |
+| selectedMarkedDaysTextColorStyle | string | Color for text marked days |
 | scaleFactor | float | Optional. Default scales to window width |
 
 
