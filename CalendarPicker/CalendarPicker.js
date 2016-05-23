@@ -41,7 +41,11 @@ var Day = React.createClass({
     screenWidth: React.PropTypes.number,
     startFromMonday: React.PropTypes.bool,
     selectedDayColor: React.PropTypes.string,
-    selectedDayTextColor: React.PropTypes.string
+    selectedDayTextColor: React.PropTypes.string,
+    markedDays: React.PropTypes.array,
+    currentMonth: React.PropTypes.number,
+    selectedMarkedDaysColorStyle: React.PropTypes.string,
+    selectedMarkedDaysTextColorStyle: React.PropTypes.string,
   },
   getDefaultProps () {
     return {
@@ -56,6 +60,23 @@ var Day = React.createClass({
     return null;
   },
 
+  checkDayIsMarked () {
+    var day = this.props.day
+    var month = this.props.currentMonth
+    var match = false
+
+    this.props.markedDays.forEach(function (value) {
+      if(month+1 == new Date(value).getMonth()){
+        if(day == new Date(value).getDate()){
+          match = true
+        }
+      }
+    });
+    if(match){
+      return true
+    }
+  },
+
   render() {
     if (this.props.selected) {
       var selectedDayColorStyle = this.props.selectedDayColor ? {backgroundColor: this.props.selectedDayColor} : {};
@@ -67,6 +88,22 @@ var Day = React.createClass({
               style={styles.dayButton}
               onPress={() => this.props.onDayChange(this.props.day) }>
               <Text style={[styles.dayLabel, selectedDayTextColorStyle]}>
+                {this.props.day}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      );
+    } else if (this.checkDayIsMarked()) {
+      var selectedMarkedDaysColorStyle = this.props.selectedMarkedDaysColorStyle ? {backgroundColor: this.props.selectedMarkedDaysColorStyle} : {};
+      var selectedMarkedDaysTextColorStyle = this.props.selectedMarkedDaysTextColorStyle ? {color: this.props.selectedMarkedDaysTextColorStyle} : {};
+      return (
+        <View style={styles.dayWrapper}>
+          <View style={[styles.dayButtonSelected, selectedMarkedDaysColorStyle]}>
+            <TouchableOpacity
+              style={styles.dayButton}
+              onPress={() => this.props.onDayChange(this.props.day) }>
+              <Text style={[styles.dayLabel, selectedMarkedDaysTextColorStyle]}>
                 {this.props.day}
               </Text>
             </TouchableOpacity>
@@ -96,7 +133,9 @@ var Days = React.createClass({
     year: React.PropTypes.number.isRequired,
     onDayChange: React.PropTypes.func.isRequired,
     selectedDayColor: React.PropTypes.string,
-    selectedDayTextColor: React.PropTypes.string
+    selectedDayTextColor: React.PropTypes.string,
+    selectedMarkedDaysColorStyle: React.PropTypes.string,
+    selectedMarkedDaysTextColorStyle: React.PropTypes.string,
   },
   getInitialState() {
     return {
@@ -161,14 +200,24 @@ var Days = React.createClass({
                       onDayChange={this.onPressDay}
                       screenWidth={this.props.screenWidth}
                       selectedDayColor={this.props.selectedDayColor}
-                      selectedDayTextColor={this.props.selectedDayTextColor}  />);
+                      selectedDayTextColor={this.props.selectedDayTextColor}
+                      markedDays={this.props.markedDays}
+                      currentMonth={this.props.month}
+                      selectedMarkedDaysColorStyle={this.props.selectedMarkedDaysColorStyle}
+                      selectedMarkedDaysTextColorStyle={this.props.selectedMarkedDaysTextColorStyle}
+                      />);
             currentDay++;
           }
         } else {
           columns.push(<Day
                             key={j}
                             day={''}
-                            screenWidth={this.props.screenWidth}/>);
+                            screenWidth={this.props.screenWidth}
+                            markedDays={this.props.markedDays}
+                            currentMonth={this.props.month}
+                            selectedMarkedDaysColorStyle={this.props.selectedMarkedDaysColorStyle}
+                            selectedMarkedDaysTextColorStyle={this.props.selectedMarkedDaysTextColorStyle}
+                            />);
         }
 
         slotsAccumulator++;
@@ -280,7 +329,10 @@ var CalendarPicker = React.createClass({
     nextTitle: React.PropTypes.string,
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
-    scaleFactor: React.PropTypes.number
+    scaleFactor: React.PropTypes.number,
+    markedDays: React.PropTypes.array,
+    selectedMarkedDaysColorStyle: React.PropTypes.string,
+    selectedMarkedDaysTextColorStyle: React.PropTypes.string,
   },
   getDefaultProps() {
     return {
@@ -291,12 +343,13 @@ var CalendarPicker = React.createClass({
     if (this.props.scaleFactor !== undefined) {
       styles = StyleSheet.create(makeStyles(this.props.scaleFactor));
     }
+
     return {
       date: this.props.selectedDate,
       day: this.props.selectedDate.getDate(),
       month: this.props.selectedDate.getMonth(),
       year: this.props.selectedDate.getFullYear(),
-      selectedDay: []
+      selectedDay: [],
     };
   },
 
@@ -359,7 +412,11 @@ var CalendarPicker = React.createClass({
           styleSelectedDayText={this.props.styleSelectedDayText}
           startFromMonday={this.props.startFromMonday}
           selectedDayColor={this.props.selectedDayColor}
-          selectedDayTextColor={this.props.selectedDayTextColor}  />
+          selectedDayTextColor={this.props.selectedDayTextColor}
+          markedDays={this.props.markedDays}
+          selectedMarkedDaysColorStyle={this.props.selectedMarkedDaysColorStyle}
+          selectedMarkedDaysTextColorStyle={this.props.selectedMarkedDaysTextColorStyle}
+        />
       </View>
     );
   }
