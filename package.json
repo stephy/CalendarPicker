@@ -6,10 +6,6 @@
   "scripts": {
     "test": "eslint . && jest"
   },
-  "dependencies": {
-    "react": "^0.14.8",
-    "react-native": "^0.25.1"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/stephy/CalendarPicker"
@@ -58,7 +54,9 @@
     "babel-eslint": "^6.0.4",
     "eslint": "^2.9.0",
     "eslint-plugin-react": "^5.1.1",
-    "jest-cli": "^11.0.0"
+    "jest-cli": "^11.0.0",
+    "react": "^0.14.8",
+    "react-native": "^0.25.1"
   },
   "jest": {
     "scriptPreprocessor": "node_modules/react-native/jestSupport/preprocessor.js",
