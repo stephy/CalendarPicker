@@ -280,7 +280,8 @@ var CalendarPicker = React.createClass({
     nextTitle: React.PropTypes.string,
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
-    scaleFactor: React.PropTypes.number
+    scaleFactor: React.PropTypes.number,
+    overrideStyles: React.PropTypes.object
   },
   getDefaultProps() {
     return {
@@ -288,8 +289,8 @@ var CalendarPicker = React.createClass({
     };
   },
   getInitialState() {
-    if (this.props.scaleFactor !== undefined) {
-      styles = StyleSheet.create(makeStyles(this.props.scaleFactor));
+    if (this.props.scaleFactor !== undefined || this.props.overrideStyles !== undefined) {
+      styles = StyleSheet.create(makeStyles(this.props.scaleFactor, this.props.overrideStyles));
     }
     return {
       date: this.props.selectedDate,
