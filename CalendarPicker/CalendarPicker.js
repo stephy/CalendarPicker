@@ -333,6 +333,10 @@ var CalendarPicker = React.createClass({
     this.props.onDateChange(date);
   },
 
+  simulateDateClick(day){
+    this.refs.days.onPressDay(day);
+  },
+
   render() {
     return (
       <View style={styles.calendar}>
@@ -360,7 +364,8 @@ var CalendarPicker = React.createClass({
           styleSelectedDayText={this.props.styleSelectedDayText}
           startFromMonday={this.props.startFromMonday}
           selectedDayColor={this.props.selectedDayColor}
-          selectedDayTextColor={this.props.selectedDayTextColor}  />
+          selectedDayTextColor={this.props.selectedDayTextColor}
+          ref='days'/>
       </View>
     );
   }
