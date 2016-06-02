@@ -281,11 +281,13 @@ var CalendarPicker = React.createClass({
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
     scaleFactor: React.PropTypes.number,
-    overrideStyles: React.PropTypes.object
+    overrideStyles: React.PropTypes.object,
+    dontChangeDateOnCalendarMovement: React.PropTypes.bool
   },
   getDefaultProps() {
     return {
-      onDateChange () {}
+      onDateChange () {},
+      dontChangeDateOnCalendarMovement: false
     };
   },
   getInitialState() {
@@ -302,26 +304,25 @@ var CalendarPicker = React.createClass({
   },
 
   onDayChange(day) {
-    this.setState({day: day.day});
-    this.onDateChange();
+    this.setState({day: day.day}, () => {this.onDateChange();});
   },
 
   onMonthChange(month) {
     this.setState({month: month});
-    this.onDateChange();
+    this.onDateChange(this.props.dontChangeDateOnCalendarMovement);
   },
 
   getNextYear(){
     this.setState({year: this.state.year + 1});
-    this.onDateChange();
+    this.onDateChange(this.props.dontChangeDateOnCalendarMovement);
   },
 
   getPrevYear() {
     this.setState({year: this.state.year - 1});
-    this.onDateChange();
+    this.onDateChange(this.props.dontChangeDateOnCalendarMovement);
   },
 
-  onDateChange() {
+  onDateChange(changeDate=false) {
     var {
       day,
       month,
@@ -329,8 +330,10 @@ var CalendarPicker = React.createClass({
     } = this.state,
       date = new Date(year, month, day);
 
-    this.setState({date: date});
-    this.props.onDateChange(date);
+    if(changeDate) {
+      this.setState({date: date});
+      this.props.onDateChange(date);
+    }
   },
 
   simulateDateClick(day){
