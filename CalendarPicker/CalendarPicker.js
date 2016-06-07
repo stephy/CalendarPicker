@@ -329,8 +329,12 @@ var CalendarPicker = React.createClass({
     }
   },
 
-  simulateDateClick(day){
-    this.refs.days.onPressDay(day);
+  simulateDateClick(date){
+    this.setState({year: date.getFullYear(), month: date.getMonth(), date: date}, () => {
+      this.refs.headerControls.setState({selectedMonth: date.getMonth()}, () => {
+        this.refs.days.onPressDay(date.getDate());
+      })
+    });
   },
 
   render() {
@@ -344,7 +348,9 @@ var CalendarPicker = React.createClass({
           getPrevYear={this.getPrevYear}
           months={this.props.months}
           previousTitle={this.props.previousTitle}
-          nextTitle={this.props.nextTitle} />
+          nextTitle={this.props.nextTitle}
+          refs="headerControls"
+        />
 
         <WeekDaysLabels
           screenWidth={this.props.screenWidth}
