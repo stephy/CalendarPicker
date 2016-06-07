@@ -42,7 +42,7 @@ var Day = React.createClass({
     startFromMonday: React.PropTypes.bool,
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
-    textStyle: Text.propTypes.style,
+    textStyle: Text.propTypes.style
   },
   getDefaultProps () {
     return {
@@ -99,7 +99,7 @@ var Days = React.createClass({
     onDayChange: React.PropTypes.func.isRequired,
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
-    textStyle: Text.propTypes.style,
+    textStyle: Text.propTypes.style
   },
   getInitialState() {
     return {
@@ -193,7 +193,7 @@ var Days = React.createClass({
 var WeekDaysLabels = React.createClass({
   propTypes: {
     screenWidth: React.PropTypes.number,
-    textStyle: Text.propTypes.style,
+    textStyle: Text.propTypes.style
   },
   getInitialState() {
     this.DAY_WIDTH = (this.props.screenWidth - 16)/7;
@@ -214,7 +214,7 @@ var HeaderControls = React.createClass({
     getNextYear: React.PropTypes.func.isRequired,
     getPrevYear: React.PropTypes.func.isRequired,
     onMonthChange: React.PropTypes.func.isRequired,
-    textStyle: Text.propTypes.style,
+    textStyle: Text.propTypes.style
   },
   getInitialState() {
     return {
@@ -286,7 +286,7 @@ var CalendarPicker = React.createClass({
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
     scaleFactor: React.PropTypes.number,
-    textStyle: Text.propTypes.style,
+    textStyle: Text.propTypes.style
   },
   getDefaultProps() {
     return {
