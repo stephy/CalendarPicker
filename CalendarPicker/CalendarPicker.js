@@ -278,8 +278,6 @@ var CalendarPicker = React.createClass({
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
     screenWidth: React.PropTypes.number.isRequired,
-    selectedBackgroundColor: React.PropTypes.string,
-    styleSelectedDayText: Text.propTypes.style,
     startFromMonday: React.PropTypes.bool,
     weekdays: React.PropTypes.array,
     months: React.PropTypes.array,
@@ -365,8 +363,6 @@ var CalendarPicker = React.createClass({
           date={this.state.date}
           onDayChange={this.onDayChange}
           screenWidth={this.props.screenWidth}
-          selectedBackgroundColor={this.props.selectedBackgroundColor}
-          styleSelectedDayText={this.props.styleSelectedDayText}
           startFromMonday={this.props.startFromMonday}
           selectedDayColor={this.props.selectedDayColor}
           selectedDayTextColor={this.props.selectedDayTextColor}
