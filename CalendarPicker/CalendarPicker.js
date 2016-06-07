@@ -221,25 +221,21 @@ var HeaderControls = React.createClass({
   // could just let header controls hold all of the logic and have CalendarPicker
   // `onChange` callback fire and update itself on each change
   getNext() {
-    var next = this.state.selectedMonth + 1;
-    if (next > 11) {
-      this.setState({ selectedMonth: 0 });
-      this.props.getNextYear();
-    } else {
-      this.setState({ selectedMonth: next });
-    }
-    this.props.onMonthChange(this.state.selectedMonth);
+    let next = (this.state.selectedMonth + 1) % 12;
+
+    this.setState({selectedMonth: next}, () => {
+      if(next == 0){this.props.getNextYear()};
+      this.props.onMonthChange(this.state.selectedMonth);
+    });
   },
 
   getPrevious() {
-    var prev = this.state.selectedMonth - 1;
-    if (prev < 0) {
-      this.setState({ selectedMonth: 11 });
-      this.props.getPrevYear();
-    } else {
-      this.setState({ selectedMonth: prev });
-    }
-    this.props.onMonthChange(this.state.selectedMonth);
+    var prev = (this.state.selectedMonth + 11) % 12;
+
+    this.setState({ selectedMonth: prev}, () => {
+      if(prev == 11){this.props.getPrevYear()};
+      this.props.onMonthChange(this.state.selectedMonth);
+    });
   },
 
   render() {
@@ -282,12 +278,12 @@ var CalendarPicker = React.createClass({
     selectedDayTextColor: React.PropTypes.string,
     scaleFactor: React.PropTypes.number,
     overrideStyles: React.PropTypes.object,
-    dontChangeDateOnCalendarMovement: React.PropTypes.bool
+    changeDateOnCalendarMovement: React.PropTypes.bool
   },
   getDefaultProps() {
     return {
       onDateChange () {},
-      dontChangeDateOnCalendarMovement: false
+      changeDateOnCalendarMovement: true
     };
   },
   getInitialState() {
@@ -304,25 +300,23 @@ var CalendarPicker = React.createClass({
   },
 
   onDayChange(day) {
-    this.setState({day: day.day}, () => {this.onDateChange();});
+    // onDayChange is called when the user selects a date, so we want to always call onDateChange with true
+    this.setState({day: day.day}, () => {this.onDateChange(true)});
   },
 
   onMonthChange(month) {
-    this.setState({month: month});
-    this.onDateChange(this.props.dontChangeDateOnCalendarMovement);
+    this.setState({month: month}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement)});
   },
 
   getNextYear(){
-    this.setState({year: this.state.year + 1});
-    this.onDateChange(this.props.dontChangeDateOnCalendarMovement);
+    this.setState({year: this.state.year + 1}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement)});
   },
 
   getPrevYear() {
-    this.setState({year: this.state.year - 1});
-    this.onDateChange(this.props.dontChangeDateOnCalendarMovement);
+    this.setState({year: this.state.year - 1}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement)});
   },
 
-  onDateChange(changeDate=false) {
+  onDateChange(changeDate=true) {
     var {
       day,
       month,
@@ -331,8 +325,7 @@ var CalendarPicker = React.createClass({
       date = new Date(year, month, day);
 
     if(changeDate) {
-      this.setState({date: date});
-      this.props.onDateChange(date);
+      this.setState({date: date}, () => {this.props.onDateChange(date)});
     }
   },
 

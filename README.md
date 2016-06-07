@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
 | nextTitle | string | Title of button for next month. |
 | selectedDayColor | string | Color for selected day |
 | scaleFactor | float | Optional. Default scales to window width |
-
+| changeDateOnCalendarMovement | bool | Optional. Defaults to true, thus changing the year or month will also change the selcted date. Set to false if you don't want that. |
+| overrideStyles | object | Optional. With this you can override all default styles present in makeStyles.js. This uses lodash to merge the override styles onto the default styles. |
 
 # To Do:
 
