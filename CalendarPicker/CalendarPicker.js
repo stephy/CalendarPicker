@@ -349,7 +349,7 @@ var CalendarPicker = React.createClass({
           months={this.props.months}
           previousTitle={this.props.previousTitle}
           nextTitle={this.props.nextTitle}
-          refs="headerControls"
+          ref="headerControls"
         />
 
         <WeekDaysLabels
