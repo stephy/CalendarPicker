@@ -6,7 +6,9 @@
  */
 'use strict';
 
-function makeStyles(scaler) {
+var _ = require('lodash');
+
+function defaultStyles(scaler) {
   return {
     calendar: {
       height: 320*scaler,
@@ -118,5 +120,8 @@ function makeStyles(scaler) {
   };
 }
 
+function makeStyles(scaler, overrideStyles){
+  return _.merge({}, defaultStyles(scaler), overrideStyles);
+}
 
 module.exports = makeStyles;

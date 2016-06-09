@@ -221,25 +221,21 @@ var HeaderControls = React.createClass({
   // could just let header controls hold all of the logic and have CalendarPicker
   // `onChange` callback fire and update itself on each change
   getNext() {
-    var next = this.state.selectedMonth + 1;
-    if (next > 11) {
-      this.setState({ selectedMonth: 0 });
-      this.props.getNextYear();
-    } else {
-      this.setState({ selectedMonth: next });
-    }
-    this.props.onMonthChange(this.state.selectedMonth);
+    let next = (this.state.selectedMonth + 1) % 12;
+
+    this.setState({selectedMonth: next}, () => {
+      if(next == 0){this.props.getNextYear();}
+      this.props.onMonthChange(this.state.selectedMonth);
+    });
   },
 
   getPrevious() {
-    var prev = this.state.selectedMonth - 1;
-    if (prev < 0) {
-      this.setState({ selectedMonth: 11 });
-      this.props.getPrevYear();
-    } else {
-      this.setState({ selectedMonth: prev });
-    }
-    this.props.onMonthChange(this.state.selectedMonth);
+    var prev = (this.state.selectedMonth + 11) % 12;
+
+    this.setState({ selectedMonth: prev}, () => {
+      if(prev == 11){this.props.getPrevYear();}
+      this.props.onMonthChange(this.state.selectedMonth);
+    });
   },
 
   render() {
@@ -280,16 +276,19 @@ var CalendarPicker = React.createClass({
     nextTitle: React.PropTypes.string,
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
-    scaleFactor: React.PropTypes.number
+    scaleFactor: React.PropTypes.number,
+    overrideStyles: React.PropTypes.object,
+    changeDateOnCalendarMovement: React.PropTypes.bool
   },
   getDefaultProps() {
     return {
-      onDateChange () {}
+      onDateChange () {},
+      changeDateOnCalendarMovement: true
     };
   },
   getInitialState() {
-    if (this.props.scaleFactor !== undefined) {
-      styles = StyleSheet.create(makeStyles(this.props.scaleFactor));
+    if (this.props.scaleFactor !== undefined || this.props.overrideStyles !== undefined) {
+      styles = StyleSheet.create(makeStyles(this.props.scaleFactor, this.props.overrideStyles));
     }
     return {
       date: this.props.selectedDate,
@@ -301,26 +300,23 @@ var CalendarPicker = React.createClass({
   },
 
   onDayChange(day) {
-    this.setState({day: day.day});
-    this.onDateChange();
+    // onDayChange is called when the user selects a date, so we want to always call onDateChange with true
+    this.setState({day: day.day}, () => {this.onDateChange(true);});
   },
 
   onMonthChange(month) {
-    this.setState({month: month});
-    this.onDateChange();
+    this.setState({month: month}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement);});
   },
 
   getNextYear(){
-    this.setState({year: this.state.year + 1});
-    this.onDateChange();
+    this.setState({year: this.state.year + 1}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement);});
   },
 
   getPrevYear() {
-    this.setState({year: this.state.year - 1});
-    this.onDateChange();
+    this.setState({year: this.state.year - 1}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement);});
   },
 
-  onDateChange() {
+  onDateChange(changeDate=true) {
     var {
       day,
       month,
@@ -328,8 +324,17 @@ var CalendarPicker = React.createClass({
     } = this.state,
       date = new Date(year, month, day);
 
-    this.setState({date: date});
-    this.props.onDateChange(date);
+    if(changeDate) {
+      this.setState({date: date}, () => {this.props.onDateChange(date);});
+    }
+  },
+
+  simulateDateClick(date){
+    this.setState({year: date.getFullYear(), month: date.getMonth(), date: date}, () => {
+      this.refs.headerControls.setState({selectedMonth: date.getMonth()}, () => {
+        this.refs.days.onPressDay(date.getDate());
+      });
+    });
   },
 
   render() {
@@ -343,7 +348,9 @@ var CalendarPicker = React.createClass({
           getPrevYear={this.getPrevYear}
           months={this.props.months}
           previousTitle={this.props.previousTitle}
-          nextTitle={this.props.nextTitle} />
+          nextTitle={this.props.nextTitle}
+          ref="headerControls"
+        />
 
         <WeekDaysLabels
           screenWidth={this.props.screenWidth}
@@ -359,7 +366,8 @@ var CalendarPicker = React.createClass({
           styleSelectedDayText={this.props.styleSelectedDayText}
           startFromMonday={this.props.startFromMonday}
           selectedDayColor={this.props.selectedDayColor}
-          selectedDayTextColor={this.props.selectedDayTextColor}  />
+          selectedDayTextColor={this.props.selectedDayTextColor}
+          ref='days'/>
       </View>
     );
   }
