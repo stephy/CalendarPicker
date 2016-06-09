@@ -224,7 +224,7 @@ var HeaderControls = React.createClass({
     let next = (this.state.selectedMonth + 1) % 12;
 
     this.setState({selectedMonth: next}, () => {
-      if(next == 0){this.props.getNextYear()};
+      if(next == 0){this.props.getNextYear();}
       this.props.onMonthChange(this.state.selectedMonth);
     });
   },
@@ -233,7 +233,7 @@ var HeaderControls = React.createClass({
     var prev = (this.state.selectedMonth + 11) % 12;
 
     this.setState({ selectedMonth: prev}, () => {
-      if(prev == 11){this.props.getPrevYear()};
+      if(prev == 11){this.props.getPrevYear();}
       this.props.onMonthChange(this.state.selectedMonth);
     });
   },
@@ -301,19 +301,19 @@ var CalendarPicker = React.createClass({
 
   onDayChange(day) {
     // onDayChange is called when the user selects a date, so we want to always call onDateChange with true
-    this.setState({day: day.day}, () => {this.onDateChange(true)});
+    this.setState({day: day.day}, () => {this.onDateChange(true);});
   },
 
   onMonthChange(month) {
-    this.setState({month: month}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement)});
+    this.setState({month: month}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement);});
   },
 
   getNextYear(){
-    this.setState({year: this.state.year + 1}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement)});
+    this.setState({year: this.state.year + 1}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement);});
   },
 
   getPrevYear() {
-    this.setState({year: this.state.year - 1}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement)});
+    this.setState({year: this.state.year - 1}, () => {this.onDateChange(this.props.changeDateOnCalendarMovement);});
   },
 
   onDateChange(changeDate=true) {
@@ -325,7 +325,7 @@ var CalendarPicker = React.createClass({
       date = new Date(year, month, day);
 
     if(changeDate) {
-      this.setState({date: date}, () => {this.props.onDateChange(date)});
+      this.setState({date: date}, () => {this.props.onDateChange(date);});
     }
   },
 
@@ -333,7 +333,7 @@ var CalendarPicker = React.createClass({
     this.setState({year: date.getFullYear(), month: date.getMonth(), date: date}, () => {
       this.refs.headerControls.setState({selectedMonth: date.getMonth()}, () => {
         this.refs.days.onPressDay(date.getDate());
-      })
+      });
     });
   },
 
