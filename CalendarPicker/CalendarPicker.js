@@ -301,23 +301,19 @@ var CalendarPicker = React.createClass({
   },
 
   onDayChange(day) {
-    this.setState({day: day.day});
-    this.onDateChange();
+    this.setState({day: day.day}, this.onDateChange);
   },
 
   onMonthChange(month) {
-    this.setState({month: month});
-    this.onDateChange();
+    this.setState({month: month}, this.onDateChange);
   },
 
   getNextYear(){
-    this.setState({year: this.state.year + 1});
-    this.onDateChange();
+    this.setState({year: this.state.year + 1}, this.onDateChange);
   },
 
   getPrevYear() {
-    this.setState({year: this.state.year - 1});
-    this.onDateChange();
+    this.setState({year: this.state.year - 1}, this.onDateChange);
   },
 
   onDateChange() {
