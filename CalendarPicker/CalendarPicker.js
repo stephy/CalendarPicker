@@ -41,7 +41,8 @@ var Day = React.createClass({
     screenWidth: React.PropTypes.number,
     startFromMonday: React.PropTypes.bool,
     selectedDayColor: React.PropTypes.string,
-    selectedDayTextColor: React.PropTypes.string
+    selectedDayTextColor: React.PropTypes.string,
+    textStyle: Text.propTypes.style
   },
   getDefaultProps () {
     return {
@@ -57,6 +58,7 @@ var Day = React.createClass({
   },
 
   render() {
+    var textStyle = this.props.textStyle;
     if (this.props.selected) {
       var selectedDayColorStyle = this.props.selectedDayColor ? {backgroundColor: this.props.selectedDayColor} : {};
       var selectedDayTextColorStyle = this.props.selectedDayTextColor ? {color: this.props.selectedDayTextColor} : {};
@@ -66,7 +68,7 @@ var Day = React.createClass({
             <TouchableOpacity
               style={styles.dayButton}
               onPress={() => this.props.onDayChange(this.props.day) }>
-              <Text style={[styles.dayLabel, selectedDayTextColorStyle]}>
+              <Text style={[styles.dayLabel, textStyle, selectedDayTextColorStyle]}>
                 {this.props.day}
               </Text>
             </TouchableOpacity>
@@ -79,7 +81,7 @@ var Day = React.createClass({
           <TouchableOpacity
             style={styles.dayButton}
             onPress={() => this.props.onDayChange(this.props.day) }>
-            <Text style={styles.dayLabel}>
+            <Text style={[styles.dayLabel, textStyle]}>
               {this.props.day}
             </Text>
           </TouchableOpacity>
@@ -96,7 +98,8 @@ var Days = React.createClass({
     year: React.PropTypes.number.isRequired,
     onDayChange: React.PropTypes.func.isRequired,
     selectedDayColor: React.PropTypes.string,
-    selectedDayTextColor: React.PropTypes.string
+    selectedDayTextColor: React.PropTypes.string,
+    textStyle: Text.propTypes.style
   },
   getInitialState() {
     return {
@@ -161,7 +164,8 @@ var Days = React.createClass({
                       onDayChange={this.onPressDay}
                       screenWidth={this.props.screenWidth}
                       selectedDayColor={this.props.selectedDayColor}
-                      selectedDayTextColor={this.props.selectedDayTextColor}  />);
+                      selectedDayTextColor={this.props.selectedDayTextColor}
+                      textStyle={this.props.textStyle} />);
             currentDay++;
           }
         } else {
@@ -188,7 +192,8 @@ var Days = React.createClass({
 
 var WeekDaysLabels = React.createClass({
   propTypes: {
-    screenWidth: React.PropTypes.number
+    screenWidth: React.PropTypes.number,
+    textStyle: Text.propTypes.style
   },
   getInitialState() {
     this.DAY_WIDTH = (this.props.screenWidth - 16)/7;
@@ -197,7 +202,7 @@ var WeekDaysLabels = React.createClass({
   render() {
     return (
       <View style={styles.dayLabelsWrapper}>
-        { (this.props.weekdays || WEEKDAYS).map((day, key) => { return <Text key={key} style={styles.dayLabels}>{day}</Text>; }) }
+        { (this.props.weekdays || WEEKDAYS).map((day, key) => { return <Text key={key} style={[styles.dayLabels, this.props.textStyle]}>{day}</Text>; }) }
       </View>
     );
   }
@@ -208,7 +213,8 @@ var HeaderControls = React.createClass({
     month: React.PropTypes.number.isRequired,
     getNextYear: React.PropTypes.func.isRequired,
     getPrevYear: React.PropTypes.func.isRequired,
-    onMonthChange: React.PropTypes.func.isRequired
+    onMonthChange: React.PropTypes.func.isRequired,
+    textStyle: Text.propTypes.style
   },
   getInitialState() {
     return {
@@ -259,21 +265,22 @@ var HeaderControls = React.createClass({
   },
 
   render() {
+    var textStyle = this.props.textStyle;
     return (
       <View style={styles.headerWrapper}>
         <View style={styles.monthSelector}>
           <TouchableOpacity onPress={this.getPrevious}>
-            <Text style={styles.prev}>{this.props.previousTitle || 'Previous'}</Text>
+            <Text style={[styles.prev, textStyle]}>{this.props.previousTitle || 'Previous'}</Text>
           </TouchableOpacity>
         </View>
         <View>
-          <Text style={styles.monthLabel}>
+          <Text style={[styles.monthLabel, textStyle]}>
             { (this.props.months || MONTHS)[this.state.selectedMonth] } { this.props.year }
           </Text>
         </View>
         <View style={styles.monthSelector}>
           <TouchableOpacity onPress={this.getNext}>
-            <Text style={styles.next}>{this.props.nextTitle || 'Next'}</Text>
+            <Text style={[styles.next, textStyle]}>{this.props.nextTitle || 'Next'}</Text>
           </TouchableOpacity>
         </View>
 
@@ -287,8 +294,6 @@ var CalendarPicker = React.createClass({
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
     screenWidth: React.PropTypes.number.isRequired,
-    selectedBackgroundColor: React.PropTypes.string,
-    styleSelectedDayText: Text.propTypes.style,
     startFromMonday: React.PropTypes.bool,
     weekdays: React.PropTypes.array,
     months: React.PropTypes.array,
@@ -296,7 +301,8 @@ var CalendarPicker = React.createClass({
     nextTitle: React.PropTypes.string,
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
-    scaleFactor: React.PropTypes.number
+    scaleFactor: React.PropTypes.number,
+    textStyle: Text.propTypes.style
   },
   getDefaultProps() {
     return {
@@ -355,11 +361,13 @@ var CalendarPicker = React.createClass({
           getPrevYear={this.getPrevYear}
           months={this.props.months}
           previousTitle={this.props.previousTitle}
-          nextTitle={this.props.nextTitle} />
+          nextTitle={this.props.nextTitle}
+          textStyle={this.props.textStyle} />
 
         <WeekDaysLabels
           screenWidth={this.props.screenWidth}
-          weekdays={this.props.weekdays}/>
+          weekdays={this.props.weekdays}
+          textStyle={this.props.textStyle} />
 
         <Days
           month={this.state.month}
@@ -367,11 +375,10 @@ var CalendarPicker = React.createClass({
           date={this.state.date}
           onDayChange={this.onDayChange}
           screenWidth={this.props.screenWidth}
-          selectedBackgroundColor={this.props.selectedBackgroundColor}
-          styleSelectedDayText={this.props.styleSelectedDayText}
           startFromMonday={this.props.startFromMonday}
           selectedDayColor={this.props.selectedDayColor}
-          selectedDayTextColor={this.props.selectedDayTextColor}  />
+          selectedDayTextColor={this.props.selectedDayTextColor}
+          textStyle={this.props.textStyle} />
       </View>
     );
   }
