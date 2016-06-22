@@ -36,7 +36,7 @@ CalendarPicker2 = React.createClass({
       <CalendarPicker
           selectedDate={this.state.date}
           onDateChange={this.onDateChange}
-          screenWidth={Dimensions.width}
+          screenWidth={Dimensions.get('window').width}
           weekdays = {['Mon', 'Tue', 'Wed', 'Th', 'Fri', 'Sat', 'Sun']}
           months = {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
           nextTitle={'Next'}
