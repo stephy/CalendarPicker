@@ -44,6 +44,7 @@ CalendarPicker2 = React.createClass({
           startFromMonday={true}
           selectedDayColor={'#E12518'}
           selectedDayTextColor={'#FFFFFF'}
+          textStyle={styles.calendarTextStyle}
                 style={{}} />
 
         <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
@@ -60,6 +61,10 @@ const styles = StyleSheet.create({
   selectedDate: {
     backgroundColor: 'rgba(0,0,0,0)',
     color: '#000'
+  },
+  calendarTextStyle: {
+    color: '#000',
+    fontFamily: 'Arial'
   }
 });
 
