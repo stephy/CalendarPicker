@@ -223,23 +223,39 @@ var HeaderControls = React.createClass({
   getNext() {
     var next = this.state.selectedMonth + 1;
     if (next > 11) {
-      this.setState({ selectedMonth: 0 });
-      this.props.getNextYear();
+      this.setState( { selectedMonth: 0 },
+        // Run this function as a callback to ensure state is set first
+        () => {
+          this.props.getNextYear();
+          this.props.onMonthChange(this.state.selectedMonth);
+        }
+      );
     } else {
-      this.setState({ selectedMonth: next });
+      this.setState({ selectedMonth: next },
+        () => {
+          this.props.onMonthChange(this.state.selectedMonth);
+        }
+      );
     }
-    this.props.onMonthChange(this.state.selectedMonth);
   },
 
   getPrevious() {
     var prev = this.state.selectedMonth - 1;
     if (prev < 0) {
-      this.setState({ selectedMonth: 11 });
-      this.props.getPrevYear();
+      this.setState({ selectedMonth: 11},
+        // Run this function as a callback to ensure state is set first
+        () => {
+          this.props.getPrevYear();
+          this.props.onMonthChange(this.state.selectedMonth);
+        }
+      );
     } else {
-      this.setState({ selectedMonth: prev });
+      this.setState({ selectedMonth: prev },
+        () => {
+          this.props.onMonthChange(this.state.selectedMonth);
+        }
+      );
     }
-    this.props.onMonthChange(this.state.selectedMonth);
   },
 
   render() {
@@ -301,23 +317,19 @@ var CalendarPicker = React.createClass({
   },
 
   onDayChange(day) {
-    this.setState({day: day.day});
-    this.onDateChange();
+    this.setState({day: day.day}, () => { this.onDateChange(); });
   },
 
   onMonthChange(month) {
-    this.setState({month: month});
-    this.onDateChange();
+    this.setState({month: month}, () => { this.onDateChange(); });
   },
 
   getNextYear(){
-    this.setState({year: this.state.year + 1});
-    this.onDateChange();
+    this.setState({year: this.state.year + 1}, () => { this.onDateChange(); });
   },
 
   getPrevYear() {
-    this.setState({year: this.state.year - 1});
-    this.onDateChange();
+    this.setState({year: this.state.year - 1}, () => { this.onDateChange(); });
   },
 
   onDateChange() {
