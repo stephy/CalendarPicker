@@ -283,12 +283,27 @@ var HeaderControls = React.createClass({
     }
   },
 
+  previousMonthDisabled() {
+    return ( this.props.minDate &&
+             ( this.props.year < this.props.minDate.getFullYear() ||
+               ( this.props.year == this.props.minDate.getFullYear() && this.state.selectedMonth <= this.props.minDate.getMonth() )
+             )
+           );
+  },
+
+  nextMonthDisabled() {
+    return ( this.props.maxDate &&
+             ( this.props.year > this.props.maxDate.getFullYear() ||
+               ( this.props.year == this.props.maxDate.getFullYear() && this.state.selectedMonth >= this.props.maxDate.getMonth() )
+             )
+           );
+  },
+
   render() {
     var textStyle = this.props.textStyle;
 
     var previous;
-    if ( this.props.year < this.props.minDate.getFullYear() ||
-         ( this.props.year == this.props.minDate.getFullYear() && this.state.selectedMonth <= this.props.minDate.getMonth() ) ) {
+    if ( this.previousMonthDisabled() ) {
       previous = (
         <Text style={[styles.prev, textStyle, styles.disabledTextColor]}>{this.props.previousTitle || 'Previous'}</Text>
       )
@@ -302,8 +317,7 @@ var HeaderControls = React.createClass({
     }
 
     var next;
-    if ( this.props.year > this.props.maxDate.getFullYear() ||
-         ( this.props.year == this.props.maxDate.getFullYear() && this.state.selectedMonth >= this.props.maxDate.getMonth() ) ) {
+    if ( this.nextMonthDisabled() ) {
       next = (
         <Text style={[styles.next, textStyle, styles.disabledTextColor]}>{this.props.nextTitle || 'Next'}</Text>
       )
