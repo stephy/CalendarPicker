@@ -114,7 +114,11 @@ function makeStyles(scaler) {
 
     weekRow: {
       flexDirection: 'row'
-    }
+    },
+
+    disabledTextColor: {
+      color: '#BBBBBB',
+    },
   };
 }
 
