@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     color: '#000'
   },
   calendarTextStyle: {
-    color: '#ccc',
+    color: '#000',
     fontFamily: 'Arial'
   }
 });
