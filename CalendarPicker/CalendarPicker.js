@@ -408,7 +408,7 @@ var CalendarPicker = React.createClass({
       date:  newProps.selectedDate,
       day:   newProps.selectedDate.getDate(),
       month: newProps.selectedDate.getMonth(),
-      year:  newProps.selectedDate.getFullYear(),
+      year:  newProps.selectedDate.getFullYear()
     });
   },
 
