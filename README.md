@@ -92,10 +92,10 @@ Submit PRs.
 
 I would like to call out some contributors who have been helping with this project
 
-@edvinerikson
-@thomaswright
-@brentvatne
-@kesha-antonov
-@jthestupidkid
-@adamkrell
-@joshuapinter
+- [edvinerikson](https://github.com/edvinerikson)
+- [thomaswright](https://github.com/thomaswright)
+- [brentvatne](https://github.com/brentvatne)
+- [kesha-antonov](https://github.com/kesha-antonov)
+- [jthestupidkid](https://github.com/jthestupidkid)
+- [adamkrell](https://github.com/adamkrell)
+- [joshuapinter](https://github.com/joshuapinter)
