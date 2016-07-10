@@ -79,7 +79,7 @@ var Day = React.createClass({
         </View>
       );
     } else {
-	  if (this.props.date < this.props.minDate || this.props.date > this.props.maxDate) {
+      if (this.props.date < this.props.minDate || this.props.date > this.props.maxDate) {
         return (
           <View style={styles.dayWrapper}>
             <Text style={[styles.dayLabel, textStyle, styles.disabledTextColor]}>
@@ -92,8 +92,8 @@ var Day = React.createClass({
         return (
           <View style={styles.dayWrapper}>
             <TouchableOpacity
-              style={styles.dayButton}
-              onPress={() => this.props.onDayChange(this.props.day) }>
+            style={styles.dayButton}
+            onPress={() => this.props.onDayChange(this.props.day) }>
               <Text style={[styles.dayLabel, textStyle]}>
                 {this.props.day}
               </Text>
@@ -306,28 +306,28 @@ var HeaderControls = React.createClass({
     if ( this.previousMonthDisabled() ) {
       previous = (
         <Text style={[styles.prev, textStyle, styles.disabledTextColor]}>{this.props.previousTitle || 'Previous'}</Text>
-      )
+      );
     }
     else {
       previous = (
         <TouchableOpacity onPress={this.getPrevious}>
           <Text style={[styles.prev, textStyle]}>{this.props.previousTitle || 'Previous'}</Text>
         </TouchableOpacity>
-      )
+      );
     }
 
     var next;
     if ( this.nextMonthDisabled() ) {
       next = (
         <Text style={[styles.next, textStyle, styles.disabledTextColor]}>{this.props.nextTitle || 'Next'}</Text>
-      )
+      );
     }
     else {
       next = (
         <TouchableOpacity onPress={this.getNext}>
           <Text style={[styles.next, textStyle]}>{this.props.nextTitle || 'Next'}</Text>
         </TouchableOpacity>
-      )
+      );
     }
 
     return (

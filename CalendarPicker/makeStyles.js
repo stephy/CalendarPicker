@@ -117,8 +117,8 @@ function makeStyles(scaler) {
     },
 
     disabledTextColor: {
-      color: '#BBBBBB',
-    },
+      color: '#BBBBBB'
+    }
   };
 }
 
