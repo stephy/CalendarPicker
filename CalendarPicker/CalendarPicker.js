@@ -32,7 +32,10 @@ var styles = StyleSheet.create(makeStyles(initialScale));
 
 var Day = React.createClass({
   propTypes: {
+    date: React.PropTypes.instanceOf(Date),
     onDayChange: React.PropTypes.func,
+    maxDate: React.PropTypes.instanceOf(Date),
+    minDate: React.PropTypes.instanceOf(Date),
     selected: React.PropTypes.bool,
     day: React.PropTypes.oneOfType([
       React.PropTypes.number,
@@ -76,23 +79,36 @@ var Day = React.createClass({
         </View>
       );
     } else {
-      return (
-        <View style={styles.dayWrapper}>
-          <TouchableOpacity
-            style={styles.dayButton}
-            onPress={() => this.props.onDayChange(this.props.day) }>
-            <Text style={[styles.dayLabel, textStyle]}>
+	  if (this.props.date < this.props.minDate || this.props.date > this.props.maxDate) {
+        return (
+          <View style={styles.dayWrapper}>
+            <Text style={[styles.dayLabel, textStyle, styles.disabledTextColor]}>
               {this.props.day}
             </Text>
-          </TouchableOpacity>
-        </View>
-      );
+          </View>
+        );
+      } 
+      else {
+        return (
+          <View style={styles.dayWrapper}>
+            <TouchableOpacity
+              style={styles.dayButton}
+              onPress={() => this.props.onDayChange(this.props.day) }>
+              <Text style={[styles.dayLabel, textStyle]}>
+                {this.props.day}
+              </Text>
+            </TouchableOpacity>
+          </View>
+        );
+      }
     }
   }
 });
 
 var Days = React.createClass({
   propTypes: {
+    maxDate: React.PropTypes.instanceOf(Date),
+    minDate: React.PropTypes.instanceOf(Date),
     date: React.PropTypes.instanceOf(Date).isRequired,
     month: React.PropTypes.number.isRequired,
     year: React.PropTypes.number.isRequired,
@@ -160,7 +176,9 @@ var Days = React.createClass({
                       key={j}
                       day={currentDay+1}
                       selected={this.state.selectedStates[currentDay]}
-                      date={this.props.date}
+                      date={new Date(year, month, currentDay + 1)}
+                      maxDate={this.props.maxDate}
+                      minDate={this.props.minDate}
                       onDayChange={this.onPressDay}
                       screenWidth={this.props.screenWidth}
                       selectedDayColor={this.props.selectedDayColor}
@@ -211,6 +229,7 @@ var WeekDaysLabels = React.createClass({
 var HeaderControls = React.createClass({
   propTypes: {
     month: React.PropTypes.number.isRequired,
+    year: React.PropTypes.number,
     getNextYear: React.PropTypes.func.isRequired,
     getPrevYear: React.PropTypes.func.isRequired,
     onMonthChange: React.PropTypes.func.isRequired,
@@ -264,14 +283,57 @@ var HeaderControls = React.createClass({
     }
   },
 
+  previousMonthDisabled() {
+    return ( this.props.minDate &&
+             ( this.props.year < this.props.minDate.getFullYear() ||
+               ( this.props.year == this.props.minDate.getFullYear() && this.state.selectedMonth <= this.props.minDate.getMonth() )
+             )
+           );
+  },
+
+  nextMonthDisabled() {
+    return ( this.props.maxDate &&
+             ( this.props.year > this.props.maxDate.getFullYear() ||
+               ( this.props.year == this.props.maxDate.getFullYear() && this.state.selectedMonth >= this.props.maxDate.getMonth() )
+             )
+           );
+  },
+
   render() {
     var textStyle = this.props.textStyle;
+
+    var previous;
+    if ( this.previousMonthDisabled() ) {
+      previous = (
+        <Text style={[styles.prev, textStyle, styles.disabledTextColor]}>{this.props.previousTitle || 'Previous'}</Text>
+      )
+    }
+    else {
+      previous = (
+        <TouchableOpacity onPress={this.getPrevious}>
+          <Text style={[styles.prev, textStyle]}>{this.props.previousTitle || 'Previous'}</Text>
+        </TouchableOpacity>
+      )
+    }
+
+    var next;
+    if ( this.nextMonthDisabled() ) {
+      next = (
+        <Text style={[styles.next, textStyle, styles.disabledTextColor]}>{this.props.nextTitle || 'Next'}</Text>
+      )
+    }
+    else {
+      next = (
+        <TouchableOpacity onPress={this.getNext}>
+          <Text style={[styles.next, textStyle]}>{this.props.nextTitle || 'Next'}</Text>
+        </TouchableOpacity>
+      )
+    }
+
     return (
       <View style={styles.headerWrapper}>
         <View style={styles.monthSelector}>
-          <TouchableOpacity onPress={this.getPrevious}>
-            <Text style={[styles.prev, textStyle]}>{this.props.previousTitle || 'Previous'}</Text>
-          </TouchableOpacity>
+          {previous}
         </View>
         <View>
           <Text style={[styles.monthLabel, textStyle]}>
@@ -279,9 +341,7 @@ var HeaderControls = React.createClass({
           </Text>
         </View>
         <View style={styles.monthSelector}>
-          <TouchableOpacity onPress={this.getNext}>
-            <Text style={[styles.next, textStyle]}>{this.props.nextTitle || 'Next'}</Text>
-          </TouchableOpacity>
+          {next}
         </View>
 
       </View>
@@ -291,6 +351,8 @@ var HeaderControls = React.createClass({
 
 var CalendarPicker = React.createClass({
   propTypes: {
+    maxDate: React.PropTypes.instanceOf(Date),
+    minDate: React.PropTypes.instanceOf(Date),
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
     screenWidth: React.PropTypes.number.isRequired,
@@ -354,6 +416,8 @@ var CalendarPicker = React.createClass({
     return (
       <View style={styles.calendar}>
         <HeaderControls
+          maxDate={this.props.maxDate}
+          minDate={this.props.minDate}
           year={this.state.year}
           month={this.state.month}
           onMonthChange={this.onMonthChange}
@@ -370,6 +434,8 @@ var CalendarPicker = React.createClass({
           textStyle={this.props.textStyle} />
 
         <Days
+          maxDate={this.props.maxDate}
+          minDate={this.props.minDate}
           month={this.state.month}
           year={this.state.year}
           date={this.state.date}
