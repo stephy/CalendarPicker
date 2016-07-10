@@ -371,7 +371,7 @@ var CalendarPicker = React.createClass({
     minDate: React.PropTypes.instanceOf(Date),
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
-    screenWidth: React.PropTypes.number.isRequired,
+    screenWidth: React.PropTypes.number,
     startFromMonday: React.PropTypes.bool,
     weekdays: React.PropTypes.array,
     months: React.PropTypes.array,
