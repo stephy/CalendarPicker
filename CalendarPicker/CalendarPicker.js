@@ -111,6 +111,13 @@ var Days = React.createClass({
     this.updateSelectedStates(this.props.date.getDate());
   },
 
+  // Trigger date change if new props are provided.
+  // Typically, when selectedDate is changed programmatically.
+  //
+  componentWillReceiveProps: function(newProps) {
+    this.updateSelectedStates(newProps.date.getDate());
+  },
+
   updateSelectedStates(day) {
     var selectedStates = [],
       daysInMonth = getDaysInMonth(this.props.month, this.props.year),
@@ -222,6 +229,15 @@ var HeaderControls = React.createClass({
     };
   },
 
+  // Trigger date change if new props are provided.
+  // Typically, when selectedDate is changed programmatically.
+  //
+  componentWillReceiveProps: function(newProps) {
+    this.setState({
+      selectedMonth: newProps.month
+    });
+  },
+
   // Logic seems a bit awkawardly split up between here and the CalendarPicker
   // component, eg: getNextYear is actually modifying the state of the parent,
   // could just let header controls hold all of the logic and have CalendarPicker
@@ -320,6 +336,18 @@ var CalendarPicker = React.createClass({
       year: this.props.selectedDate.getFullYear(),
       selectedDay: []
     };
+  },
+
+  // Trigger date change if new props are provided.
+  // Typically, when selectedDate is changed programmatically.
+  //
+  componentWillReceiveProps: function(newProps) {
+    this.setState({
+      date:  newProps.selectedDate,
+      day:   newProps.selectedDate.getDate(),
+      month: newProps.selectedDate.getMonth(),
+      year:  newProps.selectedDate.getFullYear(),
+    });
   },
 
   onDayChange(day) {
