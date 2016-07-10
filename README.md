@@ -71,6 +71,8 @@ const styles = StyleSheet.create({
 | selectedDayColor | string | Color for selected day |
 | textStyle | object | Style overall text. Change fontFamily, color, etc. |
 | scaleFactor | float | Optional. Default scales to window width |
+| minDate | Date | Optional. Specifies minimum date to be selected |
+| maxDate | Date | Optional. Specifies maximum date to be selected |
 
 
 # To Do:
