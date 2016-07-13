@@ -155,7 +155,7 @@ var Days = React.createClass({
 
   onPressDay(day) {
     this.updateSelectedStates(day);
-    this.props.onDayChange({day: day});
+    this.props.onDayChange(day);
   },
 
   // Not going to touch this one - I'd look at whether there is a more functional
@@ -413,7 +413,7 @@ var CalendarPicker = React.createClass({
   },
 
   onDayChange(day) {
-    this.setState({day: day.day}, () => { this.onDateChange(); });
+    this.setState({day: day,}, () => { this.onDateChange(); });
   },
 
   onMonthChange(month) {
