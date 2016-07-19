@@ -37,6 +37,7 @@ var Day = React.createClass({
     maxDate: React.PropTypes.instanceOf(Date),
     minDate: React.PropTypes.instanceOf(Date),
     selected: React.PropTypes.bool,
+    type: React.PropTypes.string,
     day: React.PropTypes.oneOfType([
       React.PropTypes.number,
       React.PropTypes.string
@@ -62,11 +63,19 @@ var Day = React.createClass({
 
   render() {
     var textStyle = this.props.textStyle;
+
+    var selectedWrapperStyle = styles.dayWrapper;
+    if(this.props.type == 'start_range')
+      selectedWrapperStyle = styles.startDayWrapper;
+    else if(this.props.type == 'end_range')
+      selectedWrapperStyle = styles.endDayWrapper;
+
     if (this.props.selected) {
       var selectedDayColorStyle = this.props.selectedDayColor ? {backgroundColor: this.props.selectedDayColor} : {};
       var selectedDayTextColorStyle = this.props.selectedDayTextColor ? {color: this.props.selectedDayTextColor} : {};
+      var dayWrapperStyle = this.props.type == 'in_range' || this.props.type == 'start_range' || this.props.type == 'end_range' ? selectedDayColorStyle : {};
       return (
-        <View style={styles.dayWrapper}>
+        <View style={[selectedWrapperStyle, dayWrapperStyle]}>
           <View style={[styles.dayButtonSelected, selectedDayColorStyle]}>
             <TouchableOpacity
               style={styles.dayButton}
@@ -87,7 +96,7 @@ var Day = React.createClass({
             </Text>
           </View>
         );
-      } 
+      }
       else {
         return (
           <View style={styles.dayWrapper}>
@@ -109,6 +118,8 @@ var Days = React.createClass({
   propTypes: {
     maxDate: React.PropTypes.instanceOf(Date),
     minDate: React.PropTypes.instanceOf(Date),
+    fromDate: React.PropTypes.instanceOf(Date),
+    toDate: React.PropTypes.instanceOf(Date),
     date: React.PropTypes.instanceOf(Date).isRequired,
     month: React.PropTypes.number.isRequired,
     year: React.PropTypes.number.isRequired,
@@ -119,42 +130,62 @@ var Days = React.createClass({
   },
   getInitialState() {
     return {
-      selectedStates: []
+      selectedStates: [],
+      selectedTypes: []
     };
   },
 
   componentDidMount() {
-    this.updateSelectedStates(this.props.date.getDate());
+    if(this.props.fromDate && this.props.toDate)
+      this.updateSelectedStates(this.props.fromDate.getDate(), this.props.toDate.getDate());
+    else
+      this.updateSelectedStates(this.props.date.getDate());
   },
 
   // Trigger date change if new props are provided.
   // Typically, when selectedDate is changed programmatically.
   //
   componentWillReceiveProps: function(newProps) {
-    this.updateSelectedStates(newProps.date.getDate());
+    if(newProps.fromDate && newProps.toDate)
+      this.updateSelectedStates(newProps.fromDate.getDate(), newProps.toDate.getDate());
+    else
+      this.updateSelectedStates(newProps.date.getDate());
   },
 
-  updateSelectedStates(day) {
+  updateSelectedStates(dayStart, dayEnd) {
     var selectedStates = [],
+      selectedTypes = [],
       daysInMonth = getDaysInMonth(this.props.month, this.props.year),
       i;
 
     for (i = 1; i <= daysInMonth; i++) {
-      if (i === day) {
+      if (i === dayStart && ! dayEnd) {
+        selectedTypes.push('single');
+        selectedStates.push(true);
+      } else if (i === dayStart && dayEnd ) {
+        selectedTypes.push('start_range');
+        selectedStates.push(true);
+      } else if (i === dayEnd && dayStart ) {
+        selectedTypes.push('end_range');
+        selectedStates.push(true);
+      } else if (i > dayStart && i < dayEnd ) {
+        selectedTypes.push('in_range');
         selectedStates.push(true);
       } else {
+        selectedTypes.push('');
         selectedStates.push(false);
       }
     }
 
     this.setState({
-      selectedStates: selectedStates
+      selectedStates: selectedStates,
+      selectedTypes: selectedTypes
     });
 
   },
 
   onPressDay(day) {
-    this.updateSelectedStates(day);
+    //this.updateSelectedStates(day);
     this.props.onDayChange({day: day});
   },
 
@@ -183,6 +214,7 @@ var Days = React.createClass({
                       key={j}
                       day={currentDay+1}
                       selected={this.state.selectedStates[currentDay]}
+                      type={this.state.selectedTypes[currentDay]}
                       date={new Date(year, month, currentDay + 1)}
                       maxDate={this.props.maxDate}
                       minDate={this.props.minDate}
@@ -369,6 +401,8 @@ var CalendarPicker = React.createClass({
   propTypes: {
     maxDate: React.PropTypes.instanceOf(Date),
     minDate: React.PropTypes.instanceOf(Date),
+    fromDate: React.PropTypes.instanceOf(Date),
+    toDate: React.PropTypes.instanceOf(Date),
     selectedDate: React.PropTypes.instanceOf(Date).isRequired,
     onDateChange: React.PropTypes.func,
     screenWidth: React.PropTypes.number,
@@ -380,7 +414,8 @@ var CalendarPicker = React.createClass({
     selectedDayColor: React.PropTypes.string,
     selectedDayTextColor: React.PropTypes.string,
     scaleFactor: React.PropTypes.number,
-    textStyle: Text.propTypes.style
+    textStyle: Text.propTypes.style,
+    allowRangeSelection: React.PropTypes.bool
   },
   getDefaultProps() {
     return {
@@ -391,11 +426,18 @@ var CalendarPicker = React.createClass({
     if (this.props.scaleFactor !== undefined) {
       styles = StyleSheet.create(makeStyles(this.props.scaleFactor));
     }
+
+    var startDate = this.props.selectedDate;
+    if(this.props.allowRangeSelection && this.props.fromDate)
+      startDate = this.props.fromDate;
+
     return {
-      date: this.props.selectedDate,
-      day: this.props.selectedDate.getDate(),
-      month: this.props.selectedDate.getMonth(),
-      year: this.props.selectedDate.getFullYear(),
+      fromDate: this.props.fromDate,
+      toDate: this.props.toDate,
+      date: startDate,
+      day: startDate.getDate(),
+      month: startDate.getMonth(),
+      year: startDate.getFullYear(),
       selectedDay: []
     };
   },
@@ -404,11 +446,17 @@ var CalendarPicker = React.createClass({
   // Typically, when selectedDate is changed programmatically.
   //
   componentWillReceiveProps: function(newProps) {
+    var startDate = newProps.selectedDate;
+    if(newProps.allowRangeSelection && newProps.fromDate)
+      startDate = newProps.fromDate;
+
     this.setState({
-      date:  newProps.selectedDate,
-      day:   newProps.selectedDate.getDate(),
-      month: newProps.selectedDate.getMonth(),
-      year:  newProps.selectedDate.getFullYear()
+      fromDate: newProps.fromDate,
+      toDate: newProps.toDate,
+      date: startDate,
+      day: startDate.getDate(),
+      month: startDate.getMonth(),
+      year: startDate.getFullYear()
     });
   },
 
@@ -436,8 +484,27 @@ var CalendarPicker = React.createClass({
     } = this.state,
       date = new Date(year, month, day);
 
-    this.setState({date: date});
-    this.props.onDateChange(date);
+    if (! this.props.allowRangeSelection) {
+      this.setState({date: date});
+      this.props.onDateChange(date);
+    } else {
+      var fromDate = this.state.fromDate,
+        toDate = this.state.toDate;
+      if (!fromDate) {
+        fromDate = date;
+      } else if (!toDate) {
+        if (date > fromDate) {
+          toDate = date;
+        } else {
+          fromDate = date;
+        }
+      } else if (fromDate && toDate) {
+        fromDate = date;
+        toDate = null;
+      }
+      this.setState({fromDate: fromDate, toDate: toDate});
+      this.props.onDateChange({start_date: fromDate, end_date: toDate});
+    }
   },
 
   render() {
@@ -464,6 +531,8 @@ var CalendarPicker = React.createClass({
         <Days
           maxDate={this.props.maxDate}
           minDate={this.props.minDate}
+          fromDate={this.state.fromDate}
+          toDate={this.state.toDate}
           month={this.state.month}
           year={this.state.year}
           date={this.state.date}
