@@ -110,6 +110,7 @@ var Days = React.createClass({
     maxDate: React.PropTypes.instanceOf(Date),
     minDate: React.PropTypes.instanceOf(Date),
     date: React.PropTypes.instanceOf(Date).isRequired,
+    day: React.PropTypes.number.isRequired,
     month: React.PropTypes.number.isRequired,
     year: React.PropTypes.number.isRequired,
     onDayChange: React.PropTypes.func.isRequired,
@@ -119,42 +120,22 @@ var Days = React.createClass({
   },
   getInitialState() {
     return {
-      selectedStates: []
+      //selectedStates: []
     };
   },
 
   componentDidMount() {
-    this.updateSelectedStates(this.props.date.getDate());
+    //this.updateSelectedStates(this.props.date.getDate());
   },
 
   // Trigger date change if new props are provided.
   // Typically, when selectedDate is changed programmatically.
   //
   componentWillReceiveProps: function(newProps) {
-    this.updateSelectedStates(newProps.date.getDate());
-  },
-
-  updateSelectedStates(day) {
-    var selectedStates = [],
-      daysInMonth = getDaysInMonth(this.props.month, this.props.year),
-      i;
-
-    for (i = 1; i <= daysInMonth; i++) {
-      if (i === day) {
-        selectedStates.push(true);
-      } else {
-        selectedStates.push(false);
-      }
-    }
-
-    this.setState({
-      selectedStates: selectedStates
-    });
-
+    //this.updateSelectedStates(newProps.date.getDate());
   },
 
   onPressDay(day) {
-    this.updateSelectedStates(day);
     this.props.onDayChange({day: day});
   },
 
@@ -182,7 +163,7 @@ var Days = React.createClass({
             columns.push(<Day
                       key={j}
                       day={currentDay+1}
-                      selected={this.state.selectedStates[currentDay]}
+                      selected={this.props.day === currentDay+1}
                       date={new Date(year, month, currentDay + 1)}
                       maxDate={this.props.maxDate}
                       minDate={this.props.minDate}
@@ -464,6 +445,7 @@ var CalendarPicker = React.createClass({
         <Days
           maxDate={this.props.maxDate}
           minDate={this.props.minDate}
+          day={this.state.day}
           month={this.state.month}
           year={this.state.year}
           date={this.state.date}
