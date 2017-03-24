@@ -21,12 +21,18 @@ var CalendarPicker = require('./CalendarPicker/CalendarPicker'),
 CalendarPicker2 = React.createClass({
   getInitialState: function() {
     return {
-      date: new Date()
+      date: new Date(),
+      start_date: new Date(),
+      rangeSelection: true,
+      end_date: null
     };
   },
 
   onDateChange: function(date) {
-    this.setState({ date: date });
+    if(this.state.rangeSelection)
+      this.setState({ start_date: date.start_date, end_date: date.end_date});
+    else
+      this.setState({ date: date });
   },
 
   render: function() {
@@ -35,7 +41,10 @@ CalendarPicker2 = React.createClass({
 
       <CalendarPicker
           selectedDate={this.state.date}
+          fromDate={this.state.start_date}
+          toDate={this.state.end_date}
           onDateChange={this.onDateChange}
+          allowRangeSelection={true}
           screenWidth={Dimensions.get('window').width}
           weekdays = {['Mon', 'Tue', 'Wed', 'Th', 'Fri', 'Sat', 'Sun']}
           months = {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']}
@@ -47,7 +56,14 @@ CalendarPicker2 = React.createClass({
           selectedDayTextColor={'#FFFFFF'}
                 style={{}} />
 
-        <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
+        { ! this.state.rangeSelection &&
+          <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>}
+        { this.state.rangeSelection &&
+          <View>
+            { this.state.start_date && <Text style={styles.selectedDate}> Start date: { this.state.start_date.toString() } </Text> }
+            { this.state.end_date && <Text style={styles.selectedDate}> End date: { this.state.end_date.toString() } </Text> }
+          </View>
+        }
       </View>
 
     );

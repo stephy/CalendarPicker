@@ -12,10 +12,33 @@ function makeStyles(scaler) {
       height: 320*scaler,
       marginTop: 10*scaler
     },
+
     dayWrapper: {
+      alignItems: 'center',
+      justifyContent: 'center',
       width: 50*scaler,
       height: 40*scaler,
       backgroundColor: 'rgba(0,0,0,0.0)'
+    },
+
+    startDayWrapper: {
+      width: 50*scaler,
+      height: 40*scaler,
+      borderTopLeftRadius: 20*scaler,
+      borderBottomLeftRadius: 20*scaler,
+      backgroundColor: '#5ce600',
+      alignSelf: 'center',
+      justifyContent: 'center'
+    },
+
+    endDayWrapper: {
+      width: 50*scaler,
+      height: 40*scaler,
+      borderTopRightRadius: 20*scaler,
+      borderBottomRightRadius: 20*scaler,
+      backgroundColor: '#5ce600',
+      alignSelf: 'center',
+      justifyContent: 'center'
     },
 
     dayButton: {
