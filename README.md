@@ -42,7 +42,7 @@ CalendarPicker2 = React.createClass({
           selectedDate={this.state.date}
           onDateChange={this.onDateChange}
           screenWidth={Dimensions.get('window').width}
-          selectedBackgroundColor={'#5ce600'} />
+          selectedDayColor={'#5ce600'} />
 
         <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
       </View>
