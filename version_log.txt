@@ -18,3 +18,5 @@ Version 3.0.0
 		This is necessary when you're changing the selectedDate prop of CalenderPicker programmatically.
 		For example, in our app after a user selects a date and clicks submit, we reset the form and set the CalendarPicker selectedDate to new Date(). However, the CalendarPicker calendar doesn't actually update.
 
+Version 4.0.0
+	- Add support for range date
