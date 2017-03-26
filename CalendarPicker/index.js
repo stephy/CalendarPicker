@@ -126,6 +126,8 @@ export default class CalendarPicker extends Component {
       maxDate,
       weekdays,
       months,
+      previousTitle,
+      nextTitle,
     } = this.props;
 
     return (
@@ -138,6 +140,8 @@ export default class CalendarPicker extends Component {
           onPressPrevious={this.handleOnPressPrevious}
           onPressNext={this.handleOnPressNext}
           months={months}
+          previousTitle={previousTitle}
+          nextTitle={nextTitle}
         />
         <Weekdays
           styles={styles}
