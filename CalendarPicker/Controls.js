@@ -6,7 +6,9 @@ import {
 
 export default function Controls({ styles, label, onPressControl }) {
   return (
-    <TouchableHighlight onPress={() => onPressControl()}>
+    <TouchableHighlight
+      onPress={() => onPressControl()}
+    >
       <Text style={styles}>
         { label }
       </Text>

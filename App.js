@@ -8,7 +8,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <CalendarPicker
           startFromMonday={false}
-          allowRangeSelection={true}
+          allowRangeSelection={false}
         />
       </View>
     );

@@ -25,7 +25,6 @@ export default class CalendarPicker extends Component {
       currentYear: null,
       selectedStartDate: null,
       selectedEndDate: null,
-      selectedDates: null,
       startFromMonday: false,
       allowRangeSelection: false,
     };
@@ -58,10 +57,14 @@ export default class CalendarPicker extends Component {
       currentMonth,
       selectedStartDate,
       selectedEndDate,
+      allowRangeSelection,
     } = this.state;
     const date = new Date(currentYear, currentMonth, day);
 
-    if (selectedStartDate && date > selectedStartDate && !selectedEndDate) {
+    if (allowRangeSelection &&
+        selectedStartDate &&
+        date > selectedStartDate &&
+        !selectedEndDate) {
       this.setState({
         selectedEndDate: date,
       });
