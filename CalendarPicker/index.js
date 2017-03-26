@@ -32,11 +32,12 @@ export default class CalendarPicker extends Component {
       initialDate,
       selectedDayColor,
       selectedDayTextColor,
+      scaleFactor,
     } = this.props;
 
     // The styles in makeStyles are intially scaled to this width
-    const IPHONE6_WIDTH = 375;
-    const initialScale = Dimensions.get('window').width / IPHONE6_WIDTH ;
+    const deviceWidth = Dimensions.get('window').width;
+    const initialScale = scaleFactor? deviceWidth / scaleFactor : deviceWidth / 375;
     const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor);
     const date = initialDate ? initialDate : new Date();
 

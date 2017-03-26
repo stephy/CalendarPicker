@@ -23,6 +23,7 @@ export default class App extends Component {
           nextTitle="Proximo"
           selectedDayColor="#ff1aff"
           selectedDayTextColor="#FFFFFF"
+          scaleFactor={375}
         />
       </View>
     );
