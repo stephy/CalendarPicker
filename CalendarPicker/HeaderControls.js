@@ -20,7 +20,7 @@ export default function HeaderControls(props) {
         <Controls
           label="Previous"
           onPressControl={onPressPrevious}
-          styles={styles.prev}
+          styles={styles}
         />
       </View>
       <View>
@@ -32,7 +32,7 @@ export default function HeaderControls(props) {
         <Controls
           label="Next"
           onPressControl={onPressNext}
-          styles={styles.next}
+          styles={styles}
         />
       </View>
     </View>

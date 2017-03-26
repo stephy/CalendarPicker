@@ -8,6 +8,7 @@ import {
 import { makeStyles } from './makeStyles';
 import HeaderControls from './HeaderControls';
 import Weekdays from './Weekdays';
+import DaysGridView from './DaysGridView';
 
 // The styles in makeStyles are intially scaled to this width
 const IPHONE6_WIDTH = 375;
@@ -24,6 +25,7 @@ export default class CalendarPicker extends Component {
     }
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
+    this.handleOnPressDay = this.handleOnPressDay.bind(this);
   }
 
   componentWillMount() {
@@ -35,6 +37,9 @@ export default class CalendarPicker extends Component {
       currentMonth: parseInt(date.getMonth()),
       currentYear: parseInt(date.getFullYear()),
     });
+  }
+  handleOnPressDay(day) {
+    console.log('Pressed day: ', day);
   }
 
   handleOnPressPrevious() {
@@ -87,6 +92,13 @@ export default class CalendarPicker extends Component {
         />
         <Weekdays
           styles={styles}
+        />
+        <DaysGridView
+          month={currentMonth}
+          year={currentYear}
+          styles={styles}
+          onPressDay={this.handleOnPressDay}
+          startFromMonday={false}
         />
       </View>
     );

@@ -15,7 +15,7 @@ export default function Controls({ styles, label, onPressControl }) {
 }
 
 Controls.propTypes = {
-  styles: PropTypes.shape().isRequired,
+  styles: PropTypes.shape({}).isRequired,
   label: PropTypes.string.isRequired,
   onPressControl: PropTypes.func.isRequired,
 };

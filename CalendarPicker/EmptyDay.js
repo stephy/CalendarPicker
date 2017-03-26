@@ -6,15 +6,14 @@ import {
 } from 'react-native';
 
 export default function Day(props) {
-  const { day, styles, onPressDay } = props;
+  const { styles } = props;
   return(
     <View style={styles.dayWrapper}>
       <View style={styles.dayButton}>
         <TouchableOpacity
           style={styles.dayButton}
-          onPress={() => onPressDay(day) }>
+        >
           <Text style={styles.dayLabel}>
-            { day }
           </Text>
         </TouchableOpacity>
       </View>
