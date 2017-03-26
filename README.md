@@ -76,17 +76,10 @@ const styles = StyleSheet.create({
 # To Do:
 
 - Add swipe gestures
-- Add ability to select date range
-
 
 # Suggestions?
 
-Drop an email to alves@stephanimoroni.com
-
-Open issues
-
-Submit PRs.
-
+Open Issues. Submit PRs.
 
 # Special thanks
 
