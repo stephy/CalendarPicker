@@ -85,7 +85,14 @@ export default class CalendarPicker extends Component {
   }
 
   render() {
-    const { initialDate, currentMonth, currentYear, selectedStartDate, startFromMonday } = this.state;
+    const {
+      initialDate,
+      currentMonth,
+      currentYear,
+      selectedStartDate,
+      startFromMonday
+    } = this.state;
+
     return (
       <View>
         <HeaderControls

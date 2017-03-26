@@ -10,6 +10,7 @@ import { Utils } from './Utils';
 
 export default function DaysGridView(props) {
   const { month, year, styles, onPressDay, startFromMonday } = props;
+  const today = new Date();
   // let's get the total of days in this month, we need the year as well, since
   // leap years have different amount of days in February
   const totalDays = Utils.getDaysInMonth(month, year);
@@ -29,7 +30,16 @@ export default function DaysGridView(props) {
         if (index >= firstWeekDay) {
           if (days.length > 0) {
             const day= days.shift() + 1;
-            return <Day key={day} day={day} styles={styles} onPressDay={onPressDay} />;
+            return (
+              <Day
+                key={day}
+                day={day}
+                month={month}
+                year={year}
+                styles={styles}
+                onPressDay={onPressDay}
+              />
+            );
           }
         } else {
           return <EmptyDay key={uuid()} styles={styles} />;
@@ -37,7 +47,16 @@ export default function DaysGridView(props) {
       } else {
         if (days.length > 0) {
           const day= days.shift() + 1;
-          return <Day key={day} day={day} styles={styles} onPressDay={onPressDay} />;
+          return (
+            <Day
+              key={day}
+              day={day}
+              month={month}
+              year={year}
+              styles={styles}
+              onPressDay={onPressDay}
+            />
+          );
         }
       }
 

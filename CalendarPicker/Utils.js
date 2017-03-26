@@ -17,5 +17,20 @@ export const Utils = {
   getDaysInMonth: function(month, year) {
     const lastDayOfMonth = new Date(year, month + 1, 0);
     return lastDayOfMonth.getDate();
+  },
+  compareDates: function(date1, date2) {
+    if (parseInt(date1.getDate()) !== parseInt(date2.getDate())) {
+      return false;
+    }
+
+    if (parseInt(date1.getMonth()) !== parseInt(date2.getMonth())) {
+      return false;
+    }
+
+    if (parseInt(date1.getFullYear()) !== parseInt(date2.getFullYear())) {
+      return false;
+    }
+
+    return true;
   }
 };

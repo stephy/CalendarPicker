@@ -54,6 +54,15 @@ export function makeStyles(scaler) {
       alignSelf: 'center'
     },
 
+    daySelected: {
+      width: 30*scaler,
+      height: 30*scaler,
+      borderRadius: 15*scaler,
+      marginTop: -10,
+      backgroundColor: '#CCCCCC',
+      alignSelf: 'center'
+    },
+
     dayLabel: {
       fontSize: 14*scaler,
       color: '#000',
