@@ -11,11 +11,6 @@ import HeaderControls from './HeaderControls';
 import Weekdays from './Weekdays';
 import DaysGridView from './DaysGridView';
 
-// The styles in makeStyles are intially scaled to this width
-const IPHONE6_WIDTH = 375;
-const initialScale = Dimensions.get('window').width / IPHONE6_WIDTH ;
-const styles = makeStyles(initialScale);
-
 export default class CalendarPicker extends Component {
   constructor(props) {
     super(props);
@@ -25,6 +20,7 @@ export default class CalendarPicker extends Component {
       currentYear: null,
       selectedStartDate: null,
       selectedEndDate: null,
+      styles: {},
     };
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
@@ -34,14 +30,21 @@ export default class CalendarPicker extends Component {
   componentWillMount() {
     const {
       initialDate,
+      selectedDayColor,
+      selectedDayTextColor,
     } = this.props;
 
+    // The styles in makeStyles are intially scaled to this width
+    const IPHONE6_WIDTH = 375;
+    const initialScale = Dimensions.get('window').width / IPHONE6_WIDTH ;
+    const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor);
     const date = initialDate ? initialDate : new Date();
 
     this.setState({
       initialDate: date,
       currentMonth: parseInt(date.getMonth()),
       currentYear: parseInt(date.getFullYear()),
+      styles,
     });
   }
 
@@ -117,6 +120,7 @@ export default class CalendarPicker extends Component {
       currentYear,
       selectedStartDate,
       selectedEndDate,
+      styles,
     } = this.state;
 
     const {

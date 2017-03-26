@@ -14,13 +14,15 @@ export default class App extends Component {
       <View style={styles.container}>
         <CalendarPicker
           startFromMonday={false}
-          allowRangeSelection={false}
+          allowRangeSelection={true}
           minDate={minDate}
           maxDate={maxDate}
           weekdays={['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']}
           months={['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']}
           previousTitle="Anterior"
           nextTitle="Proximo"
+          selectedDayColor="#ff1aff"
+          selectedDayTextColor="#FFFFFF"
         />
       </View>
     );

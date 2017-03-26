@@ -22,8 +22,10 @@ export default function Day(props) {
 
   const thisDay = new Date(year, month, day);
   const today = new Date();
+
   let dateOutOfRange = false;
   let daySelectedStyle = {};
+  let selectedDayColorStyle = {};
   let dateType;
 
   // First let's check if date is out of range
@@ -44,6 +46,7 @@ export default function Day(props) {
     // set today's style
     if (Utils.compareDates(thisDay,today)) {
       daySelectedStyle = styles.selectedToday;
+      selectedDayColorStyle = styles.selectedDayLabel;
     }
 
     // set selected day style
@@ -51,6 +54,7 @@ export default function Day(props) {
         selectedStartDate &&
         Utils.compareDates(thisDay,selectedStartDate)) {
       daySelectedStyle = styles.selectedDay;
+      selectedDayColorStyle = styles.selectedDayLabel;
     }
 
     // Set selected ranges styles
@@ -59,20 +63,24 @@ export default function Day(props) {
           // Apply style for start date
         if (Utils.compareDates(thisDay,selectedStartDate)) {
           daySelectedStyle = styles.startDayWrapper;
+          selectedDayColorStyle = styles.selectedDayLabel;
         }
         // Apply style for end date
         if (Utils.compareDates(thisDay,selectedEndDate)) {
           daySelectedStyle = styles.endDayWrapper;
+          selectedDayColorStyle = styles.selectedDayLabel;
         }
         // Apply style if start date is the same as end date
         if (Utils.compareDates(thisDay, selectedEndDate) &&
             Utils.compareDates(thisDay, selectedStartDate) &&
             Utils.compareDates(selectedEndDate,selectedStartDate)) {
             daySelectedStyle = styles.selectedDay;
+            selectedDayColorStyle = styles.selectedDayLabel;
         }
         // Apply style if this day is in range
         if (Utils.isDateInRange(thisDay, selectedStartDate, selectedEndDate)) {
           daySelectedStyle = styles.inRangeDay;
+          selectedDayColorStyle = styles.selectedDayLabel;
         }
       }
       // Apply style if start date has been selected but end date has not
@@ -80,6 +88,7 @@ export default function Day(props) {
           !selectedEndDate &&
           Utils.compareDates(thisDay, selectedStartDate)) {
           daySelectedStyle = styles.selectedDay;
+          selectedDayColorStyle = styles.selectedDayLabel;
       }
     }
   }
@@ -99,7 +108,7 @@ export default function Day(props) {
       <TouchableOpacity
         style={[styles.dayButton, daySelectedStyle]}
         onPress={() => onPressDay(day) }>
-        <Text style={styles.dayLabel}>
+        <Text style={[styles.dayLabel, selectedDayColorStyle]}>
           { day }
         </Text>
       </TouchableOpacity>
