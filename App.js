@@ -1,8 +1,12 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
 import CalendarPicker from './CalendarPicker';
 
-export default class App extends React.Component {
+export default class App extends Component {
   render() {
     const minDate = new Date();
     const maxDate = new Date(2017, 6, 3);
