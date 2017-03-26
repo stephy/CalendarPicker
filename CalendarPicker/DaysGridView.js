@@ -18,6 +18,7 @@ export default function DaysGridView(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
+    textStyle,
     minDate,
     maxDate,
   } = props;
@@ -54,11 +55,17 @@ export default function DaysGridView(props) {
                 allowRangeSelection={allowRangeSelection}
                 minDate={minDate}
                 maxDate={maxDate}
+                textStyle={textStyle}
               />
             );
           }
         } else {
-          return <EmptyDay key={uuid()} styles={styles} />;
+          return (
+            <EmptyDay
+              key={uuid()}
+              styles={styles}
+            />
+          );
         }
       } else {
         if (days.length > 0) {
@@ -76,6 +83,7 @@ export default function DaysGridView(props) {
               allowRangeSelection={allowRangeSelection}
               minDate={minDate}
               maxDate={maxDate}
+              textStyle={textStyle}
             />
           );
         }

@@ -16,6 +16,7 @@ export default function Day(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
+    textStyle,
     minDate,
     maxDate,
   } = props;
@@ -97,7 +98,7 @@ export default function Day(props) {
   if (dateOutOfRange) {
     return (
       <View style={styles.dayWrapper}>
-        <Text style={styles.disabledText}>
+        <Text style={[textStyle, styles.disabledText]}>
           { day }
         </Text>
       </View>
@@ -109,7 +110,7 @@ export default function Day(props) {
       <TouchableOpacity
         style={[styles.dayButton, daySelectedStyle]}
         onPress={() => onPressDay(day) }>
-        <Text style={[styles.dayLabel, selectedDayColorStyle]}>
+        <Text style={[styles.dayLabel, textStyle, selectedDayColorStyle]}>
           { day }
         </Text>
       </TouchableOpacity>

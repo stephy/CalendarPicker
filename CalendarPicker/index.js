@@ -139,6 +139,7 @@ export default class CalendarPicker extends Component {
       months,
       previousTitle,
       nextTitle,
+      textStyle,
     } = this.props;
 
     return (
@@ -153,11 +154,13 @@ export default class CalendarPicker extends Component {
           months={months}
           previousTitle={previousTitle}
           nextTitle={nextTitle}
+          textStyle={textStyle}
         />
         <Weekdays
           styles={styles}
           startFromMonday={startFromMonday}
           weekdays={weekdays}
+          textStyle={textStyle}
         />
         <DaysGridView
           month={currentMonth}
@@ -168,8 +171,9 @@ export default class CalendarPicker extends Component {
           allowRangeSelection={allowRangeSelection}
           selectedStartDate={selectedStartDate}
           selectedEndDate={selectedEndDate}
-          minDate={minDate.setHours(0,0,0,0)}
-          maxDate={maxDate.setHours(0,0,0,0)}
+          minDate={minDate && minDate.setHours(0,0,0,0)}
+          maxDate={maxDate && maxDate.setHours(0,0,0,0)}
+          textStyle={textStyle}
         />
       </View>
     );

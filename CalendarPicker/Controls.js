@@ -4,12 +4,12 @@ import {
   Text,
 } from 'react-native';
 
-export default function Controls({ styles, label, onPressControl }) {
+export default function Controls({ styles, textStyles, label, onPressControl }) {
   return (
     <TouchableOpacity
       onPress={() => onPressControl()}
     >
-      <Text style={styles}>
+      <Text style={[styles, textStyles]}>
         { label }
       </Text>
     </TouchableOpacity>

@@ -10,50 +10,205 @@ To use the calendar you just need to:
 	npm install react-native-calendar-picker
 
 How to use it:
+
 ```js
 import React, { Component } from 'react';
 import {
+  StyleSheet,
   Text,
   View
 } from 'react-native';
+import CalendarPicker from './CalendarPicker';
 
-import CalendarPicker from 'react-native-calendar-picker';
-
-CalendarPicker2 = React.createClass({
-  getInitialState: function() {
-    return {
-      date: new Date(),
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedStartDate: null,
     };
-  },
+    this.onDateChange = this.onDateChange.bind(this);
+  }
 
-  onDateChange: function(date) {
-    this.setState({ date: date });
-  },
+  onDateChange(date) {
+      this.setState({
+        selectedStartDate: date,
+      });
+    }
+  }
 
-  render: function() {
+  render() {
     return (
       <View style={styles.container}>
-
         <CalendarPicker
-          selectedDate={this.state.date}
           onDateChange={this.onDateChange}
-          screenWidth={Dimensions.get('window').width}
-          selectedBackgroundColor={'#5ce600'} />
+        />
 
-        <Text style={styles.selectedDate}> Date: { this.state.date.toString() } </Text>
+        <View>
+          <Text>SELECTED DATE:{ startDate }</Text>
+        </View>
       </View>
     );
   }
-});
+}
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    marginTop: 100,
   },
-  selectedDate: {
-    backgroundColor: 'rgba(0,0,0,0)',
-    color: '#000',
+});
+
+```
+
+### Start from Monday Example
+```js
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import CalendarPicker from './CalendarPicker';
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedStartDate: null,
+      selectedEndDate: null,
+    };
+    this.onDateChange = this.onDateChange.bind(this);
   }
+
+  onDateChange(date, type) {
+    if (type === 'END_DATE') {
+      this.setState({
+        selectedEndDate: date,
+      });
+    } else {
+      this.setState({
+        selectedStartDate: date,
+        selectedEndDate: null,
+      });
+    }
+  }
+
+  render() {
+    const { selectedStartDate, selectedEndDate } = this.state;
+    const minDate = new Date(); // Today
+    const maxDate = new Date(2017, 6, 3);
+    const startDate  =  selectedStartDate ? selectedStartDate.toString() : '';
+    const endDate = selectedEndDate ? selectedEndDate.toString() : '';
+
+    return (
+      <View style={styles.container}>
+        <CalendarPicker
+          startFromMonday={true}
+          allowRangeSelection={true}
+          minDate={minDate}
+          maxDate={maxDate}
+          todayBackgroundColor="#f2e6ff"
+          selectedDayColor="#7300e6"
+          selectedDayTextColor="#FFFFFF"
+          onDateChange={this.onDateChange}
+        />
+
+        <View>
+          <Text>SELECTED START DATE:{ startDate }</Text>
+          <Text>SELECTED END DATE:{ endDate }</Text>
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    marginTop: 100,
+  },
+});
+```
+
+### Complex Example
+```js
+import React, { Component } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import CalendarPicker from 'react-native-calendar-picker';
+
+export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedStartDate: null,
+      selectedEndDate: null,
+    };
+    this.onDateChange = this.onDateChange.bind(this);
+  }
+
+  onDateChange(date, type) {
+    if (type === 'END_DATE') {
+      this.setState({
+        selectedEndDate: date,
+      });
+    } else {
+      this.setState({
+        selectedStartDate: date,
+        selectedEndDate: null,
+      });
+    }
+  }
+
+  render() {
+    const { selectedStartDate, selectedEndDate } = this.state;
+    const minDate = new Date(); // Today
+    const maxDate = new Date(2017, 6, 3);
+    const startDate  =  selectedStartDate ? selectedStartDate.toString() : '';
+    const endDate = selectedEndDate ? selectedEndDate.toString() : '';
+
+    return (
+      <View style={styles.container}>
+        <CalendarPicker
+          startFromMonday={true}
+          allowRangeSelection={true}
+          minDate={minDate}
+          maxDate={maxDate}
+          weekdays={['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab', 'Dom']}
+          months={['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']}
+          previousTitle="Anterior"
+          nextTitle="Próximo"
+          todayBackgroundColor="#e6ffe6"
+          selectedDayColor="#66ff33"
+          selectedDayTextColor="#000000"
+          scaleFactor={375}
+          textStyle={{
+            fontFamily: 'Cochin',
+            color: '#000000',
+          }}
+          onDateChange={this.onDateChange}
+        />
+
+        <View>
+          <Text>SELECTED START DATE:{ startDate }</Text>
+          <Text>SELECTED END DATE:{ endDate }</Text>
+        </View>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+    marginTop: 100,
+  },
 });
 ```
 ## CalendarPicker Props
@@ -72,6 +227,17 @@ const styles = StyleSheet.create({
 | **`scaleFactor`** | `Number` | Optional. Default scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
 | **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
+
+# Styles
+Some styles will overwrite some won't. For instance:
+- If you provide textStyle with fontFamily and color, out of ranges dates will not apply your color, just fontFamily.
+
+Order of precedence:
+
+- defaultColor => textStyle => selectedDayColor
+- defaultTodayBackgroundColor => todayBackgroundColor
+- defaultBackgroundColor => selectedDayColor
+- defaultTextStyles => textStyle => selectedDayTextColor
 
 
 # To Do:
