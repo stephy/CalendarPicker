@@ -14,7 +14,7 @@ export default function DaysGridView(props) {
   // leap years have different amount of days in February
   const totalDays = Utils.getDaysInMonth(month, year);
   // Let's create a date for day one of the current given month and year
-  const firstDayOfMonth = new Date(year, month, 0);
+  const firstDayOfMonth = new Date(year, month, 1);
   // The getDay() method returns the day of the week (from 0 to 6) for the specified date.
   // Note: Sunday is 0, Monday is 1, and so on. We will need this to know what
   // day of the week to show day 1
@@ -32,7 +32,7 @@ export default function DaysGridView(props) {
             return <Day key={day} day={day} styles={styles} onPressDay={onPressDay} />;
           }
         } else {
-          return <EmptyDay key={uuid()}styles={styles} />;
+          return <EmptyDay key={uuid()} styles={styles} />;
         }
       } else {
         if (days.length > 0) {

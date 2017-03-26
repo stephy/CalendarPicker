@@ -13,7 +13,6 @@ export default function HeaderControls(props) {
   // index for month array in english
   const month = MONTHS[currentMonth];
   const year = currentYear;
-  console.log('STYLES: ', styles);
 
   return (
     <View style={styles.headerWrapper}>
