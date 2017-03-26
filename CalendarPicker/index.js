@@ -61,7 +61,6 @@ export default class CalendarPicker extends Component {
     } = this.state;
     const date = new Date(currentYear, currentMonth, day);
 
-
     if (selectedStartDate && date > selectedStartDate && !selectedEndDate) {
       this.setState({
         selectedEndDate: date,

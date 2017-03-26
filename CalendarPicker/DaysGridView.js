@@ -79,7 +79,7 @@ export default function DaysGridView(props) {
     return column;
   }
   return (
-    <View>
+    <View style={styles.daysWrapper}>
       { guideArray.map(index => (
           <View key={index} style={styles.weekRow}>
             { generateColumns(index) }
