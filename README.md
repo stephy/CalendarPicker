@@ -6,8 +6,9 @@ This is a Calendar Picker Component for React Native
 ![alt tag](https://github.com/stephy/CalendarPicker/master/assets/basic-react-native-calendar-picker.gif)
 
 To use the calendar you just need to:
-
-	npm install react-native-calendar-picker
+```sh
+	npm install --save react-native-calendar-picker
+```
 
 How to use it:
 
@@ -18,7 +19,7 @@ import {
   Text,
   View
 } from 'react-native';
-import CalendarPicker from './CalendarPicker';
+import CalendarPicker from 'react-native-calendar-picker';
 
 export default class App extends Component {
   constructor(props) {
@@ -58,8 +59,41 @@ const styles = StyleSheet.create({
     marginTop: 100,
   },
 });
-
 ```
+## CalendarPicker Props
+| Prop | Type | Description |
+:------------ |:---------------| :-----|
+| **`weekdays`** | `Array` | Optional. List of week days. Eg. `['Mon', 'Tue', ...]` Must be 7 days |
+| **`months`** | `Array` | Optional. List of months names. Eg. `['Jan', 'Feb', ...]` Must be 12 months |
+| **`startFromMonday`** | `Boolean` | Optional. Default first day of week will be Sunday. You can set start of week from Monday by setting this to true. Default is `false` |
+| **`allowRangeSelection`** | `Boolean` | Optional. Allow to select date ranges. Default is `false` |
+| **`previousTitle`** | `String` | Optional. Title of button for previous month. Default is `Previous` |
+| **`nextTitle`** | `String` | Optional. Title of button for next month. Default is `Next` |
+| **`selectedDayColor`** | `String` | Optional. Color for selected day |
+| **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
+| **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
+| **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
+| **`scaleFactor`** | `Number` | Optional. Default scales to window width |
+| **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
+| **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
+
+# Styles
+Some styles will overwrite some won't. For instance:
+- If you provide textStyle with fontFamily and color, out of ranges dates will not apply your color, just fontFamily.
+
+Order of precedence:
+
+- defaultColor => textStyle => selectedDayColor
+- defaultTodayBackgroundColor => todayBackgroundColor
+- defaultBackgroundColor => selectedDayColor
+- defaultTextStyles => textStyle => selectedDayTextColor
+
+
+# To Do:
+
+- Add swipe gestures
+
+# More Examples:
 
 ### Start from Monday Example
 ```js
@@ -69,7 +103,7 @@ import {
   Text,
   View
 } from 'react-native';
-import CalendarPicker from './CalendarPicker';
+import CalendarPicker from 'react-native-calendar-picker';
 
 export default class App extends Component {
   constructor(props) {
@@ -211,38 +245,6 @@ const styles = StyleSheet.create({
   },
 });
 ```
-## CalendarPicker Props
-| Prop | Type | Description |
-:------------ |:---------------| :-----|
-| **`weekdays`** | `Array` | Optional. List of week days. Eg. `['Mon', 'Tue', ...]` Must be 7 days |
-| **`months`** | `Array` | Optional. List of months names. Eg. `['Jan', 'Feb', ...]` Must be 12 months |
-| **`startFromMonday`** | `Boolean` | Optional. Default first day of week will be Sunday. You can set start of week from Monday by setting this to true. Default is `false` |
-| **`allowRangeSelection`** | `Boolean` | Optional. Allow to select date ranges. Default is `false` |
-| **`previousTitle`** | `String` | Optional. Title of button for previous month. Default is `Previous` |
-| **`nextTitle`** | `String` | Optional. Title of button for next month. Default is `Next` |
-| **`selectedDayColor`** | `String` | Optional. Color for selected day |
-| **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
-| **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
-| **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
-| **`scaleFactor`** | `Number` | Optional. Default scales to window width |
-| **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
-| **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
-
-# Styles
-Some styles will overwrite some won't. For instance:
-- If you provide textStyle with fontFamily and color, out of ranges dates will not apply your color, just fontFamily.
-
-Order of precedence:
-
-- defaultColor => textStyle => selectedDayColor
-- defaultTodayBackgroundColor => todayBackgroundColor
-- defaultBackgroundColor => selectedDayColor
-- defaultTextStyles => textStyle => selectedDayTextColor
-
-
-# To Do:
-
-- Add swipe gestures
 
 # Suggestions?
 
@@ -269,6 +271,6 @@ npm install
 // running on device
 npm start
 
-// running on iOS emulator
+// running on iOS Simulator
 npm run ios
 ```
