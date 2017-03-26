@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
 | **`nextTitle`** | `String` | Optional. Title of button for next month. Default is `Next` |
 | **`selectedDayColor`** | `String` | Optional. Color for selected day |
 | **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
+| **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
 | **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
 | **`scaleFactor`** | `Number` | Optional. Default scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |

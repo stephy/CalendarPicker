@@ -29,16 +29,17 @@ export default class CalendarPicker extends Component {
 
   componentWillMount() {
     const {
+      scaleFactor,
       initialDate,
       selectedDayColor,
       selectedDayTextColor,
-      scaleFactor,
+      todayBackgroundColor,
     } = this.props;
 
     // The styles in makeStyles are intially scaled to this width
     const deviceWidth = Dimensions.get('window').width;
     const initialScale = scaleFactor? deviceWidth / scaleFactor : deviceWidth / 375;
-    const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor);
+    const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor);
     const date = initialDate ? initialDate : new Date();
 
     this.setState({
@@ -59,6 +60,7 @@ export default class CalendarPicker extends Component {
 
     const {
       allowRangeSelection,
+      onDateChange,
     } = this.props;
 
     const date = new Date(currentYear, currentMonth, day);
@@ -70,11 +72,15 @@ export default class CalendarPicker extends Component {
       this.setState({
         selectedEndDate: date,
       });
+      // propagate to parent date has changed
+      onDateChange(date, Utils.END_DATE);
     } else {
       this.setState({
         selectedStartDate: date,
         selectedEndDate: null,
       });
+      // propagate to parent date has changed
+      onDateChange(date, Utils.START_DATE);
     }
   }
 
@@ -162,8 +168,8 @@ export default class CalendarPicker extends Component {
           allowRangeSelection={allowRangeSelection}
           selectedStartDate={selectedStartDate}
           selectedEndDate={selectedEndDate}
-          minDate={minDate}
-          maxDate={maxDate}
+          minDate={minDate.setHours(0,0,0,0)}
+          maxDate={maxDate.setHours(0,0,0,0)}
         />
       </View>
     );

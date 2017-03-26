@@ -22,6 +22,7 @@ export default function Day(props) {
 
   const thisDay = new Date(year, month, day);
   const today = new Date();
+  today.setHours(0,0,0,0);
 
   let dateOutOfRange = false;
   let daySelectedStyle = {};
