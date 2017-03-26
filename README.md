@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
 ```
 ## CalendarPicker Props
 | Prop | Type | Description |
-:------------ |:---------------:| :-----|
+:------------ |:---------------| :-----|
 | **`weekdays`** | `Array` | Optional. List of week days. Eg. `['Mon', 'Tue', ...]` Must be 7 days |
 | **`months`** | `Array` | Optional. List of months names. Eg. `['Jan', 'Feb', ...]` Must be 12 months |
 | **`startFromMonday`** | `Boolean` | Optional. Default first day of week will be Sunday. You can set start of week from Monday by setting this to true. Default is `false` |
@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
 
 Open Issues. Submit PRs.
 
-# Special thanks
+# Special Thanks
 
 I would like to call out some contributors who have been helping with this project
 
