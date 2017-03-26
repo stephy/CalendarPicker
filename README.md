@@ -3,7 +3,7 @@ Calendar Picker Component for React Native [![Build Status](https://travis-ci.or
 
 
 This is a Calendar Picker Component for React Native
-![alt tag](https://raw.github.com/stephy/CalendarPicker/master/calendarPicker.gif)
+![alt tag](https://github.com/stephy/CalendarPicker/master/assets/basic-react-native-calendar-picker.gif)
 
 To use the calendar you just need to:
 
@@ -259,3 +259,16 @@ I would like to call out some contributors who have been helping with this proje
 - [jthestupidkid](https://github.com/jthestupidkid)
 - [adamkrell](https://github.com/adamkrell)
 - [joshuapinter](https://github.com/joshuapinter)
+
+
+# Development
+
+```sh
+npm install
+
+// running on device
+npm start
+
+// running on iOS emulator
+npm run ios
+```
