@@ -8,10 +8,14 @@ This is a Calendar Picker Component for React Native
 
 To use the calendar you just need to:
 ```sh
-	npm install --save react-native-calendar-picker
+npm install --save react-native-calendar-picker
 ```
 
-How to use it:
+*Note: react-native-calendar-picker v5 is a complete re-write of the calendar. This calendar is now written using ES6 syntax. I kept most of the same functionalities and added support for date ranges.*
+
+If you need the old code I saved it on a branch <a href="https://github.com/stephy/CalendarPicker/tree/v4">v4</a>
+
+# How to use it
 
 ```js
 import React, { Component } from 'react';
