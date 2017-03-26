@@ -7,13 +7,17 @@ import {
 import { Utils } from './Utils';
 
 export default function Day(props) {
-  const { day, month, year, styles, onPressDay } = props;
+  const { day, month, year, styles, onPressDay, selectedStartDate } = props;
   const thisDay = new Date(year, month, day);
   const today = new Date();
   let daySelectedStyle = {};
 
   if (Utils.compareDates(thisDay,today)) {
-    daySelectedStyle = styles.daySelected;
+    daySelectedStyle = styles.selectedToday;
+  }
+
+  if (selectedStartDate && Utils.compareDates(thisDay,selectedStartDate)) {
+    daySelectedStyle = styles.selectedDay;
   }
 
   return(

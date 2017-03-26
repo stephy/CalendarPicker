@@ -41,6 +41,7 @@ export default class CalendarPicker extends Component {
       startFromMonday,
     });
   }
+
   handleOnPressDay(day) {
     const { currentYear, currentMonth } = this.state;
     this.setState({
@@ -94,7 +95,7 @@ export default class CalendarPicker extends Component {
     } = this.state;
 
     return (
-      <View>
+      <View syles={styles.calendar}>
         <HeaderControls
           styles={styles}
           currentMonth={currentMonth}
@@ -113,6 +114,7 @@ export default class CalendarPicker extends Component {
           styles={styles}
           onPressDay={this.handleOnPressDay}
           startFromMonday={startFromMonday}
+          selectedStartDate={selectedStartDate}
         />
       </View>
     );

@@ -9,7 +9,7 @@ export function makeStyles(scaler) {
   return {
     calendar: {
       height: 320*scaler,
-      marginTop: 10*scaler
+      marginTop: 10*scaler,
     },
 
     dayWrapper: {
@@ -54,15 +54,6 @@ export function makeStyles(scaler) {
       alignSelf: 'center'
     },
 
-    daySelected: {
-      width: 30*scaler,
-      height: 30*scaler,
-      borderRadius: 15*scaler,
-      marginTop: -10,
-      backgroundColor: '#CCCCCC',
-      alignSelf: 'center'
-    },
-
     dayLabel: {
       fontSize: 14*scaler,
       color: '#000',
@@ -94,10 +85,20 @@ export function makeStyles(scaler) {
     },
 
     selectedDay: {
-      width: 60*scaler,
-      height:60*scaler,
+      width: 30*scaler,
+      height:30*scaler,
       backgroundColor: '#5ce600',
       borderRadius: 30*scaler,
+      marginTop: -10,
+      alignSelf: 'center'
+    },
+
+    selectedToday: {
+      width: 30*scaler,
+      height:30*scaler,
+      backgroundColor: '#CCCCCC',
+      borderRadius: 30*scaler,
+      marginTop: -10,
       alignSelf: 'center'
     },
 

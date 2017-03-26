@@ -9,7 +9,7 @@ import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
 
 export default function DaysGridView(props) {
-  const { month, year, styles, onPressDay, startFromMonday } = props;
+  const { month, year, styles, onPressDay, startFromMonday, selectedStartDate } = props;
   const today = new Date();
   // let's get the total of days in this month, we need the year as well, since
   // leap years have different amount of days in February
@@ -38,6 +38,7 @@ export default function DaysGridView(props) {
                 year={year}
                 styles={styles}
                 onPressDay={onPressDay}
+                selectedStartDate={selectedStartDate}
               />
             );
           }
@@ -55,6 +56,7 @@ export default function DaysGridView(props) {
               year={year}
               styles={styles}
               onPressDay={onPressDay}
+              selectedStartDate={selectedStartDate}
             />
           );
         }
