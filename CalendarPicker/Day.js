@@ -56,7 +56,6 @@ export default function Day(props) {
       if (Utils.isDateInRange(thisDay, selectedStartDate, selectedEndDate)) {
         daySelectedStyle = styles.inRangeDay;
       }
-
     }
 
     // Apply style if start date has been selected but end date has not

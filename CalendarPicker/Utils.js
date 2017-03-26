@@ -35,16 +35,11 @@ export const Utils = {
 
     return true;
   },
-  isDateInRange(currentDate, startDate, endDate) {
-    if (parseInt(currentDate.getFullYear()) >= parseInt(startDate.getFullYear()) &&
-        parseInt(currentDate.getFullYear()) <= parseInt(endDate.getFullYear()) &&
-        parseInt(currentDate.getMonth()) >= parseInt(startDate.getMonth()) &&
-        parseInt(currentDate.getMonth()) <= parseInt(endDate.getMonth()) &&
-        parseInt(currentDate.getDate()) > parseInt(startDate.getDate()) &&
-        parseInt(currentDate.getDate()) < parseInt(endDate.getDate())
-      ) {
+  isDateInRange: function (currentDate, startDate, endDate) {
+    if (currentDate > startDate && currentDate < endDate) {
       return true;
     }
+
     return false;
   }
 };
