@@ -22,7 +22,8 @@ export default class CalendarPicker extends Component {
       initialDate: null,
       currentMonth: null,
       currentYear: null,
-      selectedStartDate: null
+      selectedStartDate: null,
+      startFromMonday: false,
     };
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
@@ -30,13 +31,14 @@ export default class CalendarPicker extends Component {
   }
 
   componentWillMount() {
-    const { initialDate } = this.props;
+    const { initialDate, startFromMonday } = this.props;
     const date = initialDate ? initialDate : new Date();
 
     this.setState({
       initialDate: date,
       currentMonth: parseInt(date.getMonth()),
       currentYear: parseInt(date.getFullYear()),
+      startFromMonday,
     });
   }
   handleOnPressDay(day) {
@@ -83,7 +85,7 @@ export default class CalendarPicker extends Component {
   }
 
   render() {
-    const { initialDate, currentMonth, currentYear, selectedStartDate } = this.state;
+    const { initialDate, currentMonth, currentYear, selectedStartDate, startFromMonday } = this.state;
     return (
       <View>
         <HeaderControls
@@ -96,13 +98,14 @@ export default class CalendarPicker extends Component {
         />
         <Weekdays
           styles={styles}
+          startFromMonday={startFromMonday}
         />
         <DaysGridView
           month={currentMonth}
           year={currentYear}
           styles={styles}
           onPressDay={this.handleOnPressDay}
-          startFromMonday={false}
+          startFromMonday={startFromMonday}
         />
       </View>
     );
