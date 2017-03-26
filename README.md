@@ -94,11 +94,11 @@ Order of precedence:
 - defaultTextStyles => textStyle => selectedDayTextColor
 
 
-# To Do:
+# To Do
 
 - Add swipe gestures
 
-# More Examples:
+# More Examples
 
 ### Start from Monday, allowRangeSelection, Min and Max Dates and Styles Changes Example
 ![alt tag](https://github.com/stephy/CalendarPicker/blob/master/assets/default-react-native-calendar-picker.gif)
