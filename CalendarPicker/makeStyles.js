@@ -4,7 +4,6 @@
  * Copyright 2016 Yahoo Inc.
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
-
 const DEFAULT_SELECTED_BACKGROUND_COLOR = '#5ce600';
 const DEFAULT_SELECTED_TEXT_COLOR = '#000000';
 const DEFAULT_TODAY_BACKGROUD_COLOR = '#CCCCCC';
@@ -16,7 +15,7 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
   return {
     calendar: {
       height: 320*scaler,
-      marginTop: 10*scaler,
+      marginTop: 10*scaler
     },
 
     dayButton: {
