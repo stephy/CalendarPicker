@@ -25,8 +25,6 @@ export default class CalendarPicker extends Component {
       currentYear: null,
       selectedStartDate: null,
       selectedEndDate: null,
-      startFromMonday: false,
-      allowRangeSelection: false,
     };
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
@@ -36,8 +34,6 @@ export default class CalendarPicker extends Component {
   componentWillMount() {
     const {
       initialDate,
-      startFromMonday,
-      allowRangeSelection
     } = this.props;
 
     const date = initialDate ? initialDate : new Date();
@@ -46,8 +42,6 @@ export default class CalendarPicker extends Component {
       initialDate: date,
       currentMonth: parseInt(date.getMonth()),
       currentYear: parseInt(date.getFullYear()),
-      startFromMonday,
-      allowRangeSelection,
     });
   }
 
@@ -57,8 +51,12 @@ export default class CalendarPicker extends Component {
       currentMonth,
       selectedStartDate,
       selectedEndDate,
-      allowRangeSelection,
     } = this.state;
+
+    const {
+      allowRangeSelection,
+    } = this.props;
+
     const date = new Date(currentYear, currentMonth, day);
 
     if (allowRangeSelection &&
@@ -119,11 +117,16 @@ export default class CalendarPicker extends Component {
       currentYear,
       selectedStartDate,
       selectedEndDate,
-      allowRangeSelection,
-      startFromMonday
     } = this.state;
 
-    console.log(this.state);
+    const {
+      allowRangeSelection,
+      startFromMonday,
+      minDate,
+      maxDate,
+      weekdays,
+      months,
+    } = this.props;
 
     return (
       <View syles={styles.calendar}>
@@ -134,10 +137,12 @@ export default class CalendarPicker extends Component {
           initialDate={initialDate}
           onPressPrevious={this.handleOnPressPrevious}
           onPressNext={this.handleOnPressNext}
+          months={months}
         />
         <Weekdays
           styles={styles}
           startFromMonday={startFromMonday}
+          weekdays={weekdays}
         />
         <DaysGridView
           month={currentMonth}
@@ -148,6 +153,8 @@ export default class CalendarPicker extends Component {
           allowRangeSelection={allowRangeSelection}
           selectedStartDate={selectedStartDate}
           selectedEndDate={selectedEndDate}
+          minDate={minDate}
+          maxDate={maxDate}
         />
       </View>
     );

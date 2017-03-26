@@ -4,11 +4,17 @@ import CalendarPicker from './CalendarPicker';
 
 export default class App extends React.Component {
   render() {
+    const minDate = new Date();
+    const maxDate = new Date(2017, 6, 3);
     return (
       <View style={styles.container}>
         <CalendarPicker
           startFromMonday={false}
           allowRangeSelection={false}
+          minDate={minDate}
+          maxDate={maxDate}
+          weekdays={['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab']}
+          months={['Janeiro', 'Fevereiro', 'Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']}
         />
       </View>
     );

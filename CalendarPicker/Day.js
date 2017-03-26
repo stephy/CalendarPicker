@@ -16,54 +16,82 @@ export default function Day(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
+    minDate,
+    maxDate,
   } = props;
 
   const thisDay = new Date(year, month, day);
   const today = new Date();
+  let dateOutOfRange = false;
   let daySelectedStyle = {};
   let dateType;
 
-  // set today's style
-  if (Utils.compareDates(thisDay,today)) {
-    daySelectedStyle = styles.selectedToday;
+  // First let's check if date is out of range
+  if (minDate) {
+    if (thisDay < minDate) {
+      dateOutOfRange = true;
+    }
   }
 
-  // set selected day style
-  if (!allowRangeSelection &&
-      selectedStartDate &&
-      Utils.compareDates(thisDay,selectedStartDate)) {
-    daySelectedStyle = styles.selectedDay;
+  if (maxDate) {
+    if (thisDay > maxDate) {
+      dateOutOfRange = true;
+    }
   }
 
-  // Set selected ranges styles
-  if (allowRangeSelection) {
-    if (selectedStartDate && selectedEndDate) {
-        // Apply style for start date
-      if (Utils.compareDates(thisDay,selectedStartDate)) {
-        daySelectedStyle = styles.startDayWrapper;
+  // If date is not out of range let's apply styles
+  if (!dateOutOfRange) {
+    // set today's style
+    if (Utils.compareDates(thisDay,today)) {
+      daySelectedStyle = styles.selectedToday;
+    }
+
+    // set selected day style
+    if (!allowRangeSelection &&
+        selectedStartDate &&
+        Utils.compareDates(thisDay,selectedStartDate)) {
+      daySelectedStyle = styles.selectedDay;
+    }
+
+    // Set selected ranges styles
+    if (allowRangeSelection) {
+      if (selectedStartDate && selectedEndDate) {
+          // Apply style for start date
+        if (Utils.compareDates(thisDay,selectedStartDate)) {
+          daySelectedStyle = styles.startDayWrapper;
+        }
+        // Apply style for end date
+        if (Utils.compareDates(thisDay,selectedEndDate)) {
+          daySelectedStyle = styles.endDayWrapper;
+        }
+        // Apply style if start date is the same as end date
+        if (Utils.compareDates(thisDay, selectedEndDate) &&
+            Utils.compareDates(thisDay, selectedStartDate) &&
+            Utils.compareDates(selectedEndDate,selectedStartDate)) {
+            daySelectedStyle = styles.selectedDay;
+        }
+        // Apply style if this day is in range
+        if (Utils.isDateInRange(thisDay, selectedStartDate, selectedEndDate)) {
+          daySelectedStyle = styles.inRangeDay;
+        }
       }
-      // Apply style for end date
-      if (Utils.compareDates(thisDay,selectedEndDate)) {
-        daySelectedStyle = styles.endDayWrapper;
-      }
-      // Apply style if start date is the same as end date
-      if (Utils.compareDates(thisDay, selectedEndDate) &&
-          Utils.compareDates(thisDay, selectedStartDate) &&
-          Utils.compareDates(selectedEndDate,selectedStartDate)) {
+      // Apply style if start date has been selected but end date has not
+      if (selectedStartDate &&
+          !selectedEndDate &&
+          Utils.compareDates(thisDay, selectedStartDate)) {
           daySelectedStyle = styles.selectedDay;
       }
-      // Apply style if this day is in range
-      if (Utils.isDateInRange(thisDay, selectedStartDate, selectedEndDate)) {
-        daySelectedStyle = styles.inRangeDay;
-      }
     }
+  }
 
-    // Apply style if start date has been selected but end date has not
-    if (selectedStartDate &&
-        !selectedEndDate &&
-        Utils.compareDates(thisDay, selectedStartDate)) {
-        daySelectedStyle = styles.selectedDay;
-    }
+  if (dateOutOfRange) {
+    return (
+      <View style={styles.dayWrapper}>
+        <Text style={styles.disabledText}>
+          { day }
+        </Text>
+      </View>
+    )
   }
 
   return (

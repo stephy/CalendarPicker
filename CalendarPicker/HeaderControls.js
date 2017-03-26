@@ -7,8 +7,8 @@ import { Utils } from './Utils';
 import Controls from './Controls';
 
 export default function HeaderControls(props) {
-  const { styles, initialDate, currentMonth, currentYear, onPressNext, onPressPrevious } = props;
-  const MONTHS = Utils.MONTHS; // English Month Array
+  const { styles, initialDate, currentMonth, currentYear, onPressNext, onPressPrevious, months } = props;
+  const MONTHS = months? months : Utils.MONTHS; // English Month Array
   // getMonth() call below will return the month number, we will use it as the
   // index for month array in english
   const month = MONTHS[currentMonth];

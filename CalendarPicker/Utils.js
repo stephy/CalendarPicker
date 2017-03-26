@@ -41,5 +41,5 @@ export const Utils = {
     }
 
     return false;
-  }
+  },
 };

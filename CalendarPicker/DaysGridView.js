@@ -18,6 +18,8 @@ export default function DaysGridView(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
+    minDate,
+    maxDate,
   } = props;
   const today = new Date();
   // let's get the total of days in this month, we need the year as well, since
@@ -50,6 +52,8 @@ export default function DaysGridView(props) {
                 selectedStartDate={selectedStartDate}
                 selectedEndDate={selectedEndDate}
                 allowRangeSelection={allowRangeSelection}
+                minDate={minDate}
+                maxDate={maxDate}
               />
             );
           }
@@ -70,6 +74,8 @@ export default function DaysGridView(props) {
               selectedStartDate={selectedStartDate}
               selectedEndDate={selectedEndDate}
               allowRangeSelection={allowRangeSelection}
+              minDate={minDate}
+              maxDate={maxDate}
             />
           );
         }

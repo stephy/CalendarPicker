@@ -6,11 +6,15 @@ import {
 import { Utils } from './Utils';
 
 export default function Weekdays(props) {
-  const { styles, startFromMonday } = props;
-  const weekdays = startFromMonday? Utils.WEEKDAYS_MON : Utils.WEEKDAYS; // English Week days Array
+  const { styles, startFromMonday, weekdays } = props;
+  let wd = weekdays;
+  if (!wd) {
+    wd = startFromMonday? Utils.WEEKDAYS_MON : Utils.WEEKDAYS; // English Week days Array
+  }
+
   return (
     <View style={styles.dayLabelsWrapper}>
-      { weekdays.map((day, key) => {
+      { wd.map((day, key) => {
           return (
             <Text key={key} style={styles.dayLabels}>
               {day}

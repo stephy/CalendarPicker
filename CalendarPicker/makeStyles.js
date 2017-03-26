@@ -156,8 +156,11 @@ export function makeStyles(scaler) {
       flexDirection: 'row'
     },
 
-    disabledTextColor: {
-      color: '#BBBBBB'
+    disabledText: {
+      fontSize: 14*scaler,
+      color: '#BBBBBB',
+      marginTop: -10,
+      alignSelf: 'center'
     }
   };
 }
