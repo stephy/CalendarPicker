@@ -3,6 +3,7 @@ Calendar Picker Component for React Native [![Build Status](https://travis-ci.or
 
 
 This is a Calendar Picker Component for React Native
+
 ![alt tag](https://github.com/stephy/CalendarPicker/blob/master/assets/basic-react-native-calendar-picker.gif)
 
 To use the calendar you just need to:
