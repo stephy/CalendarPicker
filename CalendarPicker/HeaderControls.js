@@ -13,6 +13,7 @@ export default function HeaderControls(props) {
   // index for month array in english
   const month = MONTHS[currentMonth];
   const year = currentYear;
+  console.log('STYLES: ', styles);
 
   return (
     <View style={styles.headerWrapper}>
@@ -20,7 +21,7 @@ export default function HeaderControls(props) {
         <Controls
           label="Previous"
           onPressControl={onPressPrevious}
-          styles={styles}
+          styles={styles.prev}
         />
       </View>
       <View>
@@ -32,7 +33,7 @@ export default function HeaderControls(props) {
         <Controls
           label="Next"
           onPressControl={onPressNext}
-          styles={styles}
+          styles={styles.next}
         />
       </View>
     </View>

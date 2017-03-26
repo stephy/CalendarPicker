@@ -13,7 +13,7 @@ import DaysGridView from './DaysGridView';
 // The styles in makeStyles are intially scaled to this width
 const IPHONE6_WIDTH = 375;
 const initialScale = Dimensions.get('window').width / IPHONE6_WIDTH ;
-const styles = StyleSheet.create(makeStyles(initialScale));
+const styles = makeStyles(initialScale);
 
 export default class CalendarPicker extends Component {
   constructor(props) {
@@ -22,7 +22,8 @@ export default class CalendarPicker extends Component {
       initialDate: null,
       currentMonth: null,
       currentYear: null,
-    }
+      selectedStartDate: null
+    };
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
     this.handleOnPressDay = this.handleOnPressDay.bind(this);
@@ -39,7 +40,10 @@ export default class CalendarPicker extends Component {
     });
   }
   handleOnPressDay(day) {
-    console.log('Pressed day: ', day);
+    const { currentYear, currentMonth } = this.state;
+    this.setState({
+      selectedStartDate: new Date(currentYear, currentMonth, day),
+    });
   }
 
   handleOnPressPrevious() {
@@ -79,7 +83,7 @@ export default class CalendarPicker extends Component {
   }
 
   render() {
-    const { initialDate, currentMonth, currentYear } = this.state;
+    const { initialDate, currentMonth, currentYear, selectedStartDate } = this.state;
     return (
       <View>
         <HeaderControls
