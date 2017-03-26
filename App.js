@@ -8,6 +8,7 @@ export default class App extends React.Component {
       <View style={styles.container}>
         <CalendarPicker
           startFromMonday={false}
+          allowRangeSelection={true}
         />
       </View>
     );
@@ -17,7 +18,7 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FFFFFF',
     marginTop: 100,
   },
 });

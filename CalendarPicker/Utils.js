@@ -6,6 +6,8 @@
  */
 
 export const Utils = {
+  START_DATE: 'START_DATE',
+  END_DATE: 'END_DATE',
   WEEKDAYS: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
   WEEKDAYS_MON: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   MONTHS: [
@@ -32,5 +34,17 @@ export const Utils = {
     }
 
     return true;
+  },
+  isDateInRange(currentDate, startDate, endDate) {
+    if (parseInt(currentDate.getFullYear()) >= parseInt(startDate.getFullYear()) &&
+        parseInt(currentDate.getFullYear()) <= parseInt(endDate.getFullYear()) &&
+        parseInt(currentDate.getMonth()) >= parseInt(startDate.getMonth()) &&
+        parseInt(currentDate.getMonth()) <= parseInt(endDate.getMonth()) &&
+        parseInt(currentDate.getDate()) > parseInt(startDate.getDate()) &&
+        parseInt(currentDate.getDate()) < parseInt(endDate.getDate())
+      ) {
+      return true;
+    }
+    return false;
   }
 };

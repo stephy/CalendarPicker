@@ -12,34 +12,6 @@ export function makeStyles(scaler) {
       marginTop: 10*scaler,
     },
 
-    dayWrapper: {
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: 50*scaler,
-      height: 40*scaler,
-      backgroundColor: 'rgba(0,0,0,0.0)'
-    },
-
-    startDayWrapper: {
-      width: 50*scaler,
-      height: 40*scaler,
-      borderTopLeftRadius: 20*scaler,
-      borderBottomLeftRadius: 20*scaler,
-      backgroundColor: '#5ce600',
-      alignSelf: 'center',
-      justifyContent: 'center'
-    },
-
-    endDayWrapper: {
-      width: 50*scaler,
-      height: 40*scaler,
-      borderTopRightRadius: 20*scaler,
-      borderBottomRightRadius: 20*scaler,
-      backgroundColor: '#5ce600',
-      alignSelf: 'center',
-      justifyContent: 'center'
-    },
-
     dayButton: {
       width: 50*scaler,
       height: 40*scaler,
@@ -79,7 +51,7 @@ export function makeStyles(scaler) {
 
     dayLabels: {
       width: 50*scaler,
-      fontSize: 10*scaler,
+      fontSize: 12*scaler,
       color: '#000',
       textAlign: 'center'
     },
@@ -100,6 +72,42 @@ export function makeStyles(scaler) {
       borderRadius: 30*scaler,
       marginTop: -10,
       alignSelf: 'center'
+    },
+
+    dayWrapper: {
+      alignItems: 'center',
+      justifyContent: 'center',
+      width: 50*scaler,
+      height: 40*scaler,
+      backgroundColor: 'rgba(0,0,0,0.0)'
+    },
+
+    startDayWrapper: {
+      width: 50*scaler,
+      height: 30*scaler,
+      borderTopLeftRadius: 20*scaler,
+      borderBottomLeftRadius: 20*scaler,
+      backgroundColor: '#5ce600',
+      marginTop: -10,
+      alignSelf: 'center',
+    },
+
+    endDayWrapper: {
+      width: 50*scaler,
+      height: 30*scaler,
+      borderTopRightRadius: 20*scaler,
+      borderBottomRightRadius: 20*scaler,
+      backgroundColor: '#5ce600',
+      marginTop: -10,
+      alignSelf: 'center',
+    },
+
+    inRangeDay: {
+      width: 50*scaler,
+      height: 30*scaler,
+      backgroundColor: '#5ce600',
+      marginTop: -10,
+      alignSelf: 'center',
     },
 
     monthLabel: {

@@ -6,6 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 import { makeStyles } from './makeStyles';
+import { Utils } from './Utils';
 import HeaderControls from './HeaderControls';
 import Weekdays from './Weekdays';
 import DaysGridView from './DaysGridView';
@@ -23,7 +24,10 @@ export default class CalendarPicker extends Component {
       currentMonth: null,
       currentYear: null,
       selectedStartDate: null,
+      selectedEndDate: null,
+      selectedDates: null,
       startFromMonday: false,
+      allowRangeSelection: false,
     };
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
@@ -31,7 +35,12 @@ export default class CalendarPicker extends Component {
   }
 
   componentWillMount() {
-    const { initialDate, startFromMonday } = this.props;
+    const {
+      initialDate,
+      startFromMonday,
+      allowRangeSelection
+    } = this.props;
+
     const date = initialDate ? initialDate : new Date();
 
     this.setState({
@@ -39,14 +48,30 @@ export default class CalendarPicker extends Component {
       currentMonth: parseInt(date.getMonth()),
       currentYear: parseInt(date.getFullYear()),
       startFromMonday,
+      allowRangeSelection,
     });
   }
 
-  handleOnPressDay(day) {
-    const { currentYear, currentMonth } = this.state;
-    this.setState({
-      selectedStartDate: new Date(currentYear, currentMonth, day),
-    });
+  handleOnPressDay(day, type) {
+    const {
+      currentYear,
+      currentMonth,
+      selectedStartDate,
+      selectedEndDate,
+    } = this.state;
+    const date = new Date(currentYear, currentMonth, day);
+
+    if (selectedStartDate &&
+      !selectedEndDate) {
+      this.setState({
+        selectedEndDate: date,
+      });
+    } else {
+      this.setState({
+        selectedStartDate: date,
+        selectedEndDate: null,
+      });
+    }
   }
 
   handleOnPressPrevious() {
@@ -91,8 +116,12 @@ export default class CalendarPicker extends Component {
       currentMonth,
       currentYear,
       selectedStartDate,
+      selectedEndDate,
+      allowRangeSelection,
       startFromMonday
     } = this.state;
+
+    console.log(this.state);
 
     return (
       <View syles={styles.calendar}>
@@ -114,7 +143,9 @@ export default class CalendarPicker extends Component {
           styles={styles}
           onPressDay={this.handleOnPressDay}
           startFromMonday={startFromMonday}
+          allowRangeSelection={allowRangeSelection}
           selectedStartDate={selectedStartDate}
+          selectedEndDate={selectedEndDate}
         />
       </View>
     );
