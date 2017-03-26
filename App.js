@@ -25,15 +25,19 @@ export default class App extends Component {
     } else {
       this.setState({
         selectedStartDate: date,
+        selectedEndDate: null,
       });
     }
   }
 
   render() {
+    const { selectedStartDate, selectedEndDate } = this.state;
     const minDate = new Date(); // Today
     const maxDate = new Date(2017, 6, 3);
-    console.log('this.state.selectedStartDate: ', this.state.selectedStartDate);
-    console.log('this.state.selectedEndDate: ', this.state.selectedEndDate);
+    const startDate  =  selectedStartDate ? selectedStartDate.toString() : '';
+    const endDate = selectedEndDate ? selectedEndDate.toString() : '';
+    console.log(selectedStartDate);
+    console.log(selectedEndDate);
     return (
       <View style={styles.container}>
         <CalendarPicker
@@ -51,6 +55,11 @@ export default class App extends Component {
           scaleFactor={375}
           onDateChange={this.onDateChange}
         />
+
+        <View>
+          <Text>{ startDate }</Text>
+          <Text>{ endDate }</Text>
+        </View>
       </View>
     );
   }

@@ -1,18 +1,18 @@
 import React, { PropTypes } from 'react';
 import {
-  TouchableHighlight,
+  TouchableOpacity,
   Text,
 } from 'react-native';
 
 export default function Controls({ styles, label, onPressControl }) {
   return (
-    <TouchableHighlight
+    <TouchableOpacity
       onPress={() => onPressControl()}
     >
       <Text style={styles}>
         { label }
       </Text>
-    </TouchableHighlight>
+    </TouchableOpacity>
   );
 }
 

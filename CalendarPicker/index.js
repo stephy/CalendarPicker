@@ -67,7 +67,7 @@ export default class CalendarPicker extends Component {
 
     if (allowRangeSelection &&
         selectedStartDate &&
-        date > selectedStartDate &&
+        date >= selectedStartDate &&
         !selectedEndDate) {
       this.setState({
         selectedEndDate: date,
