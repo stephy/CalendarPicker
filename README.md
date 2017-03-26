@@ -100,9 +100,8 @@ Order of precedence:
 
 # More Examples:
 
+### Start from Monday, allowRangeSelection, Min and Max Dates and Styles Changes Example
 ![alt tag](https://github.com/stephy/CalendarPicker/blob/master/assets/default-react-native-calendar-picker.gif)
-
-### Start from Monday Example
 ```js
 import React, { Component } from 'react';
 import {
@@ -173,8 +172,10 @@ const styles = StyleSheet.create({
 });
 ```
 
+### Complex Example, Changing Fonts and Colors, Language and etc...
+
 ![alt tag](https://github.com/stephy/CalendarPicker/blob/master/assets/react-native-calendar-picker-green-color-date-range.gif)
-### Complex Example, Changing Fonts and Colors, Language
+
 ```js
 import React, { Component } from 'react';
 import {
