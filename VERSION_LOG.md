@@ -1,26 +1,26 @@
 @contributors:
-**********
+
 Please do not change this file when creating a pull request
-**********
 
-NPM Versioning Log
+# NPM Versioning Log
 
--------------
-Version 3.0.0
+### Version 3.0.0
 	- Add min and max date
 	- Update calendar on props change
-
 	Details
-	- Add min and max date
-		Disables the day if it's less than minDate or greater than maxDate.
-		Also disables next and previous links when appropriate.
-	- Update calendar on props change
-		This is necessary when you're changing the selectedDate prop of CalenderPicker programmatically.
-		For example, in our app after a user selects a date and clicks submit, we reset the form and set the CalendarPicker selectedDate to new Date(). However, the CalendarPicker calendar doesn't actually update.
+		- Add min and max date
+			Disables the day if it's less than minDate or greater than maxDate.
+			Also disables next and previous links when appropriate.
+		- Update calendar on props change
+			This is necessary when you're changing the selectedDate prop of CalenderPicker programmatically.
+			For example, in our app after a user selects a date and clicks submit, we reset the form and set the CalendarPicker selectedDate to new Date(). However, the CalendarPicker calendar doesn't actually update.
 
-Version 4.0.0
+### Version 4.0.0
+
 	- Add support for range date
 
-Version 5.0.0
-  - Component rewrite in ES6
-  - Add themes support
+### Version 5.0.0
+
+	- Component Rewrite in ES6
+	- Attempt to keep all functionalities and be backwards compatible
+	- Add Support for Themes
