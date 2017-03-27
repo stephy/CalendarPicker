@@ -93,11 +93,6 @@ Order of precedence:
 - defaultBackgroundColor => selectedDayColor
 - defaultTextStyles => textStyle => selectedDayTextColor
 
-
-# To Do
-
-- Add swipe gestures
-
 # More Examples
 
 ### Start from Monday, allowRangeSelection, Min and Max Dates and Styles Changes Example
