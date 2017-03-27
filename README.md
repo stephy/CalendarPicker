@@ -1,8 +1,6 @@
-# react-native-calendar-picker [![npm version](https://badge.fury.io/js/react-native-calendar-picker.svg)](https://badge.fury.io/js/react-native-calendar-picker)
+# react-native-calendar-picker
 
-[![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/react-native-calendar-picker)
-
-Calendar Picker Component for React Native [![Build Status](https://travis-ci.org/stephy/CalendarPicker.svg?branch=master)](https://travis-ci.org/stephy/CalendarPicker)
+[![npm version](https://badge.fury.io/js/react-native-calendar-picker.svg)](https://badge.fury.io/js/react-native-calendar-picker) [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/react-native-calendar-picker) [![Build Status](https://travis-ci.org/stephy/CalendarPicker.svg?branch=master)](https://travis-ci.org/stephy/CalendarPicker)
 
 This is a Calendar Picker Component for React Native
 
@@ -277,7 +275,13 @@ I would like to call out some contributors who have been helping with this proje
 # Development
 
 ```sh
+git clone git@github.com:stephy/CalendarPicker.git CalendarPicker
 npm install
+
+// In Package.json modify
+"main": "./CalendarPicker",
+// to
+"main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
 
 // running on device
 npm start
