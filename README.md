@@ -26,7 +26,7 @@ import {
   Text,
   View
 } from 'react-native';
-import CalendarPicker from 'react-native-calendar-picker';
+import CalendarPicker from './CalendarPicker';
 
 export default class App extends Component {
   constructor(props) {
@@ -42,8 +42,9 @@ export default class App extends Component {
       selectedStartDate: date,
     });
   }
-
   render() {
+    const { selectedStartDate } = this.state;
+    const startDate = selectedStartDate ? selectedStartDate.toString() : '';
     return (
       <View style={styles.container}>
         <CalendarPicker
