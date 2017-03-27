@@ -1,6 +1,6 @@
 {
   "name": "react-native-calendar-picker",
-  "version": "5.6.0",
+  "version": "5.7.0",
   "description": "Calendar Picker Component for React Native",
   "devDependencies": {
     "jest-expo": "^0.3.0",
