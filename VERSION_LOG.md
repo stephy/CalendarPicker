@@ -23,4 +23,7 @@ Please do not change this file when creating a pull request
 
 	- Component Rewrite in ES6
 	- Attempt to keep all functionalities and be backwards compatible
-	- Add Support for Themes
+
+### Version 5.7.0
+
+	- Add gesture recognition, you can now swipe left and right to go to previous and next months

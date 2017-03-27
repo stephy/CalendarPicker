@@ -10,6 +10,15 @@ import { Utils } from './Utils';
 import HeaderControls from './HeaderControls';
 import Weekdays from './Weekdays';
 import DaysGridView from './DaysGridView';
+import Swiper from './Swiper';
+
+const SWIPE_LEFT = 'SWIPE_LEFT';
+const SWIPE_RIGHT = 'SWIPE_RIGHT';
+
+const swipeConfig = {
+  velocityThreshold: 0.3,
+  directionalOffsetThreshold: 80
+};
 
 export default class CalendarPicker extends Component {
   constructor(props) {
@@ -25,6 +34,7 @@ export default class CalendarPicker extends Component {
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
     this.handleOnPressDay = this.handleOnPressDay.bind(this);
+    this.onSwipe = this.onSwipe.bind(this);
   }
 
   componentWillMount() {
@@ -120,6 +130,17 @@ export default class CalendarPicker extends Component {
     }
   }
 
+  onSwipe(gestureName) {
+    switch (gestureName) {
+      case SWIPE_LEFT:
+        this.handleOnPressNext();
+        break;
+      case SWIPE_RIGHT:
+        this.handleOnPressPrevious();
+        break;
+    }
+  }
+
   render() {
     const {
       initialDate,
@@ -143,39 +164,44 @@ export default class CalendarPicker extends Component {
     } = this.props;
 
     return (
-      <View syles={styles.calendar}>
-        <HeaderControls
-          styles={styles}
-          currentMonth={currentMonth}
-          currentYear={currentYear}
-          initialDate={initialDate}
-          onPressPrevious={this.handleOnPressPrevious}
-          onPressNext={this.handleOnPressNext}
-          months={months}
-          previousTitle={previousTitle}
-          nextTitle={nextTitle}
-          textStyle={textStyle}
-        />
-        <Weekdays
-          styles={styles}
-          startFromMonday={startFromMonday}
-          weekdays={weekdays}
-          textStyle={textStyle}
-        />
-        <DaysGridView
-          month={currentMonth}
-          year={currentYear}
-          styles={styles}
-          onPressDay={this.handleOnPressDay}
-          startFromMonday={startFromMonday}
-          allowRangeSelection={allowRangeSelection}
-          selectedStartDate={selectedStartDate}
-          selectedEndDate={selectedEndDate}
-          minDate={minDate && minDate.setHours(0,0,0,0)}
-          maxDate={maxDate && maxDate.setHours(0,0,0,0)}
-          textStyle={textStyle}
-        />
-      </View>
+      <Swiper
+        onSwipe={(direction) => this.onSwipe(direction)}
+        config={swipeConfig}
+      >
+        <View syles={styles.calendar}>
+          <HeaderControls
+            styles={styles}
+            currentMonth={currentMonth}
+            currentYear={currentYear}
+            initialDate={initialDate}
+            onPressPrevious={this.handleOnPressPrevious}
+            onPressNext={this.handleOnPressNext}
+            months={months}
+            previousTitle={previousTitle}
+            nextTitle={nextTitle}
+            textStyle={textStyle}
+          />
+          <Weekdays
+            styles={styles}
+            startFromMonday={startFromMonday}
+            weekdays={weekdays}
+            textStyle={textStyle}
+          />
+          <DaysGridView
+            month={currentMonth}
+            year={currentYear}
+            styles={styles}
+            onPressDay={this.handleOnPressDay}
+            startFromMonday={startFromMonday}
+            allowRangeSelection={allowRangeSelection}
+            selectedStartDate={selectedStartDate}
+            selectedEndDate={selectedEndDate}
+            minDate={minDate && minDate.setHours(0,0,0,0)}
+            maxDate={maxDate && maxDate.setHours(0,0,0,0)}
+            textStyle={textStyle}
+          />
+        </View>
+      </Swiper>
     );
   }
 }
