@@ -38,10 +38,9 @@ export default class App extends Component {
   }
 
   onDateChange(date) {
-      this.setState({
-        selectedStartDate: date,
-      });
-    }
+    this.setState({
+      selectedStartDate: date,
+    });
   }
 
   render() {
