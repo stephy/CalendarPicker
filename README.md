@@ -26,7 +26,7 @@ import {
   Text,
   View
 } from 'react-native';
-import CalendarPicker from './CalendarPicker';
+import CalendarPicker from 'react-native-calendar-picker';
 
 export default class App extends Component {
   constructor(props) {
