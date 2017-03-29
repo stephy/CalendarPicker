@@ -6,7 +6,10 @@
     "jest-expo": "^0.3.0",
     "react-native-scripts": "0.0.25",
     "react-test-renderer": "~15.4.1",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "expo": "^15.1.0",
+    "react": "~15.4.0",
+    "react-native": "0.42.3"
   },
   "main": "./CalendarPicker",
   "scripts": {
@@ -63,9 +66,5 @@
   ],
   "directories": {},
   "_resolved": "https://registry.npmjs.org/react-native-calendar-picker/-/react-native-calendar-picker-1.0.1.tgz",
-  "dependencies": {
-    "expo": "^15.1.0",
-    "react": "~15.4.0",
-    "react-native": "0.42.3"
-  }
+  "dependencies": {}
 }
