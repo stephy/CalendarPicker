@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
 | **`scaleFactor`** | `Number` | Optional. Default scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
 | **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
+| **`initialDate`** | `Date` | Optional. Date that calendar opens to. Defaults to today. |
 
 # Styles
 Some styles will overwrite some won't. For instance:

@@ -24,23 +24,26 @@ export default class CalendarPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      initialDate: null,
       currentMonth: null,
       currentYear: null,
       selectedStartDate: null,
       selectedEndDate: null,
       styles: {},
     };
+    this.updateMonthYear = this.updateMonthYear.bind(this);
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
     this.handleOnPressDay = this.handleOnPressDay.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
   }
 
+  static defaultProps = {
+    initialDate: new Date()
+  }
+
   componentWillMount() {
     const {
       scaleFactor,
-      initialDate,
       selectedDayColor,
       selectedDayTextColor,
       todayBackgroundColor,
@@ -50,13 +53,21 @@ export default class CalendarPicker extends Component {
     const deviceWidth = Dimensions.get('window').width;
     const initialScale = scaleFactor? deviceWidth / scaleFactor : deviceWidth / 375;
     const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor);
-    const date = initialDate ? initialDate : new Date();
 
+    this.updateMonthYear(this.props, {styles});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.initialDate.getTime() !== this.props.initialDate.getTime()) {
+      this.updateMonthYear(nextProps, {});
+    }
+  }
+
+  updateMonthYear(props, addtlState) {
     this.setState({
-      initialDate: date,
-      currentMonth: parseInt(date.getMonth()),
-      currentYear: parseInt(date.getFullYear()),
-      styles,
+      currentMonth: parseInt(props.initialDate.getMonth()),
+      currentYear: parseInt(props.initialDate.getFullYear()),
+      ...addtlState
     });
   }
 
@@ -143,7 +154,6 @@ export default class CalendarPicker extends Component {
 
   render() {
     const {
-      initialDate,
       currentMonth,
       currentYear,
       selectedStartDate,
@@ -154,6 +164,7 @@ export default class CalendarPicker extends Component {
     const {
       allowRangeSelection,
       startFromMonday,
+      initialDate,
       minDate,
       maxDate,
       weekdays,
