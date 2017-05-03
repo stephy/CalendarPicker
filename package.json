@@ -11,6 +11,9 @@
     "react-test-renderer": "~15.4.1",
     "uuid": "^3.0.1"
   },
+  "peerDependencies": {
+    "babel-preset-expo": "^1.0.1"
+  },
   "main": "./CalendarPicker",
   "scripts": {
     "start": "react-native-scripts start",
