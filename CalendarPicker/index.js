@@ -56,7 +56,7 @@ export default class CalendarPicker extends Component {
     const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor);
 
     // Convert input date into timestamp
-    if (disabledDates) {
+    if (disabledDates && Array.isArray(disabledDates)) {
       disabledDates.map(function(date, index, disabledDates){
         date.setHours(0,0,0,0);
         disabledDates[index] = date.getTime();

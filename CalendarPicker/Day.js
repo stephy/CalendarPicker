@@ -44,7 +44,7 @@ export default function Day(props) {
     }
   }
 
-  if (disabledDates) {
+  if (disabledDates && Array.isArray(disabledDates)) {
     if (disabledDates.indexOf(thisDay.getTime()) >= 0) {
       dateOutOfRange = true;
     }
