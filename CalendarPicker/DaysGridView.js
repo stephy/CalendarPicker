@@ -113,4 +113,5 @@ DaysGridView.propTypes = {
   year: PropTypes.number.isRequired,
   onPressDay: PropTypes.func,
   startFromMonday: PropTypes.bool,
+  disabledDates: PropTypes.array
 }

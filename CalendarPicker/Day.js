@@ -129,4 +129,5 @@ Day.propTypes = {
   styles: PropTypes.shape({}),
   day: PropTypes.number,
   onPressDay: PropTypes.func,
+  disabledDates: PropTypes.array
 }
