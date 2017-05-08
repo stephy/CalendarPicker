@@ -27,6 +27,9 @@ export default class App extends Component {
       <View style={styles.container}>
         <CalendarPicker
           onDateChange={this.onDateChange}
+          markedDays={["2017/5/10", "2017/5/1"]}
+          selectedMarkedDaysColorStyle={{ backgroundColor: 'red' }}
+          selectedMarkedDaysTextColorStyle={{ color: '#fff'}}
         />
 
         <View>

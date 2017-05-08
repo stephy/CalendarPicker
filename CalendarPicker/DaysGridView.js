@@ -21,6 +21,9 @@ export default function DaysGridView(props) {
     textStyle,
     minDate,
     maxDate,
+    markedDays,
+    selectedMarkedDaysColorStyle,
+    selectedMarkedDaysTextColorStyle,
   } = props;
   const today = new Date();
   // let's get the total of days in this month, we need the year as well, since
@@ -35,6 +38,18 @@ export default function DaysGridView(props) {
   // fill up an array of days with the amount of days in the current month
   const days = Array.apply(null, {length: totalDays}).map(Number.call, Number);
   const guideArray = [ 0, 1, 2, 3, 4, 5, 6 ];
+
+  function checkDayIsMarked(day, month) {
+    let match = false;
+    markedDays.forEach(function (value) {
+      if (month == new Date(value).getMonth()) {
+        if (day == new Date(value).getDate()) {
+          match = true;
+        }
+      }
+    });
+    return match;
+  }
 
   function generateColumns(i) {
     const column = guideArray.map(index => {
@@ -56,6 +71,9 @@ export default function DaysGridView(props) {
                 minDate={minDate}
                 maxDate={maxDate}
                 textStyle={textStyle}
+                isMark={checkDayIsMarked(day, month)}
+                selectedMarkedDaysColorStyle={selectedMarkedDaysColorStyle}
+                selectedMarkedDaysTextColorStyle={selectedMarkedDaysTextColorStyle}
               />
             );
           }
@@ -84,6 +102,9 @@ export default function DaysGridView(props) {
               minDate={minDate}
               maxDate={maxDate}
               textStyle={textStyle}
+              isMark={checkDayIsMarked(day, month)}
+              selectedMarkedDaysColorStyle={selectedMarkedDaysColorStyle}
+              selectedMarkedDaysTextColorStyle={selectedMarkedDaysTextColorStyle}
             />
           );
         }

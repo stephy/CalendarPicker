@@ -38,7 +38,8 @@ export default class CalendarPicker extends Component {
   }
 
   static defaultProps = {
-    initialDate: new Date()
+    initialDate: new Date(),
+    markedDays: [],
   }
 
   componentWillMount() {
@@ -172,6 +173,9 @@ export default class CalendarPicker extends Component {
       previousTitle,
       nextTitle,
       textStyle,
+      markedDays,
+      selectedMarkedDaysColorStyle,
+      selectedMarkedDaysTextColorStyle,
     } = this.props;
 
     return (
@@ -209,6 +213,9 @@ export default class CalendarPicker extends Component {
             selectedEndDate={selectedEndDate}
             minDate={minDate && minDate.setHours(0,0,0,0)}
             maxDate={maxDate && maxDate.setHours(0,0,0,0)}
+            markedDays={markedDays}
+            selectedMarkedDaysColorStyle={selectedMarkedDaysColorStyle}
+            selectedMarkedDaysTextColorStyle={selectedMarkedDaysTextColorStyle}
             textStyle={textStyle}
           />
         </View>

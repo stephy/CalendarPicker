@@ -19,8 +19,9 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     },
 
     dayButton: {
-      width: 50*scaler,
-      height: 40*scaler,
+      width: 30*scaler,
+      height: 30*scaler,
+      borderRadius: 15*scaler,
       alignSelf: 'center'
     },
 
@@ -71,7 +72,6 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
       height:30*scaler,
       backgroundColor: SELECTED_BG_COLOR,
       borderRadius: 30*scaler,
-      marginTop: -10*scaler,
       alignSelf: 'center'
     },
 
@@ -80,7 +80,6 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
       height:30*scaler,
       backgroundColor: TODAY_BG_COLOR,
       borderRadius: 30*scaler,
-      marginTop: -10*scaler,
       alignSelf: 'center'
     },
 
