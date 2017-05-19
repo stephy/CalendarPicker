@@ -18,6 +18,8 @@ export default function DaysGridView(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
+    hideTodayHighlight,
+    highlightedDays,
     textStyle,
     minDate,
     maxDate,
@@ -53,6 +55,8 @@ export default function DaysGridView(props) {
                 selectedStartDate={selectedStartDate}
                 selectedEndDate={selectedEndDate}
                 allowRangeSelection={allowRangeSelection}
+                hideTodayHighlight={hideTodayHighlight}
+                highlightedDays={highlightedDays}
                 minDate={minDate}
                 maxDate={maxDate}
                 textStyle={textStyle}
@@ -81,6 +85,8 @@ export default function DaysGridView(props) {
               selectedStartDate={selectedStartDate}
               selectedEndDate={selectedEndDate}
               allowRangeSelection={allowRangeSelection}
+              hideTodayHighlight={hideTodayHighlight}
+              highlightedDays={highlightedDays}
               minDate={minDate}
               maxDate={maxDate}
               textStyle={textStyle}

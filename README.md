@@ -76,7 +76,12 @@ const styles = StyleSheet.create({
 | **`nextTitle`** | `String` | Optional. Title of button for next month. Default is `Next` |
 | **`selectedDayColor`** | `String` | Optional. Color for selected day |
 | **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
+| **`highlightDayColor`** | `String` | Optional. Color for highlighted days |
+| **`highlightDayTextColor`** | `String` | Optional. Text color for highlighted day |
+| **`highlightedDays`** | `Array` | Optional. Array of days (YYYY-MM-DD format) where a highlight should be applied |
+| **`hideTodayHighlight`** | `Boolean` | Optional. Toggle if today's highlight should be hidden |
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
+| **`onPressDay`** | `Function` | Optional. Callback function when a day is pressed to handle for yourself. Returns the day as a parameter. |
 | **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
 | **`scaleFactor`** | `Number` | Optional. Default scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |

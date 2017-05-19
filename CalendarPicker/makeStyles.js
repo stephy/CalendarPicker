@@ -6,12 +6,16 @@
  */
 const DEFAULT_SELECTED_BACKGROUND_COLOR = '#5ce600';
 const DEFAULT_SELECTED_TEXT_COLOR = '#000000';
-const DEFAULT_TODAY_BACKGROUD_COLOR = '#CCCCCC';
+const DEFAULT_HIGHLIGHT_BACKGROUND_COLOR = '#5ce600';
+const DEFAULT_HIGHLIGHT_TEXT_COLOR = '#000000';
+const DEFAULT_TODAY_BACKGROUND_COLOR = '#CCCCCC';
 
-export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundColor) {
+export function makeStyles(scaler, backgroundColor, textColor, highlightBgColor, highlightTextColor, todayBackgroundColor) {
+  const HIGHLIGHT_BG_COLOR = highlightBgColor ? highlightBgColor : DEFAULT_HIGHLIGHT_BACKGROUND_COLOR;
+  const HIGHLIGHT_TEXT_COLOR = highlightTextColor ? highlightTextColor : DEFAULT_HIGHLIGHT_TEXT_COLOR;
   const SELECTED_BG_COLOR = backgroundColor ? backgroundColor : DEFAULT_SELECTED_BACKGROUND_COLOR;
   const SELECTED_TEXT_COLOR = textColor ? textColor : DEFAULT_SELECTED_TEXT_COLOR;
-  const TODAY_BG_COLOR = todayBackgroundColor ? todayBackgroundColor : DEFAULT_TODAY_BACKGROUD_COLOR;
+  const TODAY_BG_COLOR = todayBackgroundColor ? todayBackgroundColor : DEFAULT_TODAY_BACKGROUND_COLOR;
   return {
     calendar: {
       height: 320*scaler,
@@ -36,6 +40,19 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
       fontSize: 14*scaler,
       color: '#000',
       marginTop: 6*scaler,
+      alignSelf: 'center'
+    },
+
+    highlightedDayLabel: {
+      color: HIGHLIGHT_TEXT_COLOR,
+    },
+
+    highlightedDay: {
+      width: 30*scaler,
+      height:30*scaler,
+      backgroundColor: HIGHLIGHT_BG_COLOR,
+      borderRadius: 30*scaler,
+      marginTop: -10*scaler,
       alignSelf: 'center'
     },
 
