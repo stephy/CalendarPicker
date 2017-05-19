@@ -49,15 +49,12 @@ export default class CalendarPicker extends Component {
       highlightDayColor,
       highlightDayTextColor,
       todayBackgroundColor,
-      highlightedDays,
     } = this.props;
 
     // The styles in makeStyles are intially scaled to this width
     const deviceWidth = Dimensions.get('window').width;
     const initialScale = scaleFactor? deviceWidth / scaleFactor : deviceWidth / 375;
     const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, highlightDayColor, highlightDayTextColor, todayBackgroundColor);
-
-    const highlightedDaysArray = highlightedDays ? highlightedDays : [];
 
     this.updateMonthYear(this.props, {styles});
   }
@@ -174,6 +171,7 @@ export default class CalendarPicker extends Component {
     const {
       allowRangeSelection,
       hideTodayHighlight,
+      highlightedDays,
       startFromMonday,
       initialDate,
       minDate,
@@ -184,6 +182,8 @@ export default class CalendarPicker extends Component {
       nextTitle,
       textStyle,
     } = this.props;
+
+    const highlightedDaysArray = highlightedDays ? highlightedDays : [];
 
     return (
       <Swiper
