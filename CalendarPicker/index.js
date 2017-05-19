@@ -83,7 +83,6 @@ export default class CalendarPicker extends Component {
 
     const {
       allowRangeSelection,
-      onPressDay,
       onDateChange,
     } = this.props;
 
@@ -105,10 +104,6 @@ export default class CalendarPicker extends Component {
       });
       // propagate to parent date has changed
       onDateChange(date, Utils.START_DATE);
-    }
-
-    if (onPressDay) {
-      onPressDay(date);
     }
   }
 
