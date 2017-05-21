@@ -10,7 +10,7 @@
     "react-test-renderer": "~15.4.1",
     "uuid": "^3.0.1"
   },
-  "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+  "main": "./CalendarPicker",
   "scripts": {
     "start": "react-native-scripts start",
     "eject": "react-native-scripts eject",
