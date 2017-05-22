@@ -30,6 +30,7 @@ export default class CalendarPicker extends Component {
       selectedEndDate: null,
       styles: {},
     };
+    this.updateScaledStyles = this.updateScaledStyles.bind(this);
     this.updateMonthYear = this.updateMonthYear.bind(this);
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
@@ -38,37 +39,51 @@ export default class CalendarPicker extends Component {
   }
 
   static defaultProps = {
-    initialDate: new Date()
+    initialDate: new Date(),
+    scaleFactor: 375,
   }
 
   componentWillMount() {
+    this.setState({...this.updateScaledStyles(this.props), ...this.updateMonthYear(this.props)});
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let newStyles = {};
+    if (nextProps.width !== this.props.width ||
+        nextProps.height !== this.props.height)
+    {
+      newStyles = this.updateScaledStyles(nextProps);
+    }
+
+    let newMonthYear = {}
+    if (nextProps.initialDate.getTime() !== this.props.initialDate.getTime()) {
+      this.updateMonthYear(nextProps, {});
+    }
+
+    this.setState({...newStyles, ...newMonthYear});
+  }
+
+  updateScaledStyles(props) {
     const {
       scaleFactor,
       selectedDayColor,
       selectedDayTextColor,
       todayBackgroundColor,
-    } = this.props;
+      width, height,
+    } = props;
 
     // The styles in makeStyles are intially scaled to this width
-    const deviceWidth = Dimensions.get('window').width;
-    const initialScale = scaleFactor? deviceWidth / scaleFactor : deviceWidth / 375;
-    const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor);
-
-    this.updateMonthYear(this.props, {styles});
+    const containerWidth = width ? width : Dimensions.get('window').width;
+    const containerHeight = height ? height : Dimensions.get('window').height;
+    const initialScale = Math.min(containerWidth, containerHeight) / scaleFactor;
+    return {styles: makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor)};
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.initialDate.getTime() !== this.props.initialDate.getTime()) {
-      this.updateMonthYear(nextProps, {});
-    }
-  }
-
-  updateMonthYear(props, addtlState) {
-    this.setState({
+  updateMonthYear(props) {
+    return {
       currentMonth: parseInt(props.initialDate.getMonth()),
       currentYear: parseInt(props.initialDate.getFullYear()),
-      ...addtlState
-    });
+    };
   }
 
   handleOnPressDay(day, type) {
