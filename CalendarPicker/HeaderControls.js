@@ -1,10 +1,7 @@
-import React, { PropTypes } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
-import { Utils } from './Utils';
-import Controls from './Controls';
+import React, { PropTypes } from "react";
+import { View, Text } from "react-native";
+import { Utils } from "./Utils";
+import Controls from "./Controls";
 
 export default function HeaderControls(props) {
   const {
@@ -18,28 +15,39 @@ export default function HeaderControls(props) {
     previousTitle,
     nextTitle,
     textStyle,
+    headerTextStyle,
+    headerStyle,
+    headerSideTextStyle,
+    headerMidTextStyle
   } = props;
-  const MONTHS = months? months : Utils.MONTHS; // English Month Array
+  const MONTHS = months ? months : Utils.MONTHS; // English Month Array
   // getMonth() call below will return the month number, we will use it as the
   // index for month array in english
-  const previous = previousTitle ? previousTitle : 'Previous';
-  const next = nextTitle ? nextTitle : 'Next';
+  const previous = previousTitle ? previousTitle : "Previous";
+  const next = nextTitle ? nextTitle : "Next";
   const month = MONTHS[currentMonth];
   const year = currentYear;
 
   return (
-    <View style={styles.headerWrapper}>
+    <View style={[styles.headerWrapper, headerStyle]}>
       <View style={styles.monthSelector}>
         <Controls
           label={previous}
           onPressControl={onPressPrevious}
           styles={styles.prev}
-          textStyles={textStyle}
+          textStyles={[textStyle, headerTextStyle, headerSideTextStyle]}
         />
       </View>
       <View>
-        <Text style={[styles.monthLabel, textStyle]}>
-           { month } { year }
+        <Text
+          style={[
+            styles.monthLabel,
+            textStyle,
+            headerTextStyle,
+            headerMidTextStyle
+          ]}
+        >
+          {month} {year}
         </Text>
       </View>
       <View style={styles.monthSelector}>
@@ -47,7 +55,7 @@ export default function HeaderControls(props) {
           label={next}
           onPressControl={onPressNext}
           styles={styles.next}
-          textStyles={textStyle}
+          textStyles={[textStyle, headerTextStyle, headerSideTextStyle]}
         />
       </View>
     </View>
@@ -59,5 +67,5 @@ HeaderControls.propTypes = {
   currentMonth: PropTypes.number,
   currentYear: PropTypes.number,
   onPressNext: PropTypes.func,
-  onPressPrevious: PropTypes.func,
+  onPressPrevious: PropTypes.func
 };

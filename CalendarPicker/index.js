@@ -1,19 +1,14 @@
-import React, { Component } from 'react';
-import {
-  View,
-  Text,
-  Dimensions,
-  StyleSheet,
-} from 'react-native';
-import { makeStyles } from './makeStyles';
-import { Utils } from './Utils';
-import HeaderControls from './HeaderControls';
-import Weekdays from './Weekdays';
-import DaysGridView from './DaysGridView';
-import Swiper from './Swiper';
+import React, { Component } from "react";
+import { View, Text, Dimensions, StyleSheet } from "react-native";
+import { makeStyles } from "./makeStyles";
+import { Utils } from "./Utils";
+import HeaderControls from "./HeaderControls";
+import Weekdays from "./Weekdays";
+import DaysGridView from "./DaysGridView";
+import Swiper from "./Swiper";
 
-const SWIPE_LEFT = 'SWIPE_LEFT';
-const SWIPE_RIGHT = 'SWIPE_RIGHT';
+const SWIPE_LEFT = "SWIPE_LEFT";
+const SWIPE_RIGHT = "SWIPE_RIGHT";
 
 const swipeConfig = {
   velocityThreshold: 0.3,
@@ -28,7 +23,7 @@ export default class CalendarPicker extends Component {
       currentYear: null,
       selectedStartDate: null,
       selectedEndDate: null,
-      styles: {},
+      styles: {}
     };
     this.updateMonthYear = this.updateMonthYear.bind(this);
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
@@ -38,23 +33,31 @@ export default class CalendarPicker extends Component {
   }
 
   static defaultProps = {
-    initialDate: new Date()
-  }
+    initialDate: new Date(),
+    markedDays: []
+  };
 
   componentWillMount() {
     const {
       scaleFactor,
       selectedDayColor,
       selectedDayTextColor,
-      todayBackgroundColor,
+      todayBackgroundColor
     } = this.props;
 
     // The styles in makeStyles are intially scaled to this width
-    const deviceWidth = Dimensions.get('window').width;
-    const initialScale = scaleFactor? deviceWidth / scaleFactor : deviceWidth / 375;
-    const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor);
+    const deviceWidth = Dimensions.get("window").width;
+    const initialScale = scaleFactor
+      ? deviceWidth / scaleFactor
+      : deviceWidth / 375;
+    const styles = makeStyles(
+      initialScale,
+      selectedDayColor,
+      selectedDayTextColor,
+      todayBackgroundColor
+    );
 
-    this.updateMonthYear(this.props, {styles});
+    this.updateMonthYear(this.props, { styles });
   }
 
   componentWillReceiveProps(nextProps) {
@@ -76,29 +79,28 @@ export default class CalendarPicker extends Component {
       currentYear,
       currentMonth,
       selectedStartDate,
-      selectedEndDate,
+      selectedEndDate
     } = this.state;
 
-    const {
-      allowRangeSelection,
-      onDateChange,
-    } = this.props;
+    const { allowRangeSelection, onDateChange } = this.props;
 
     const date = new Date(currentYear, currentMonth, day);
 
-    if (allowRangeSelection &&
-        selectedStartDate &&
-        date >= selectedStartDate &&
-        !selectedEndDate) {
+    if (
+      allowRangeSelection &&
+      selectedStartDate &&
+      date >= selectedStartDate &&
+      !selectedEndDate
+    ) {
       this.setState({
-        selectedEndDate: date,
+        selectedEndDate: date
       });
       // propagate to parent date has changed
       onDateChange(date, Utils.END_DATE);
     } else {
       this.setState({
         selectedStartDate: date,
-        selectedEndDate: null,
+        selectedEndDate: null
       });
       // propagate to parent date has changed
       onDateChange(date, Utils.START_DATE);
@@ -113,12 +115,12 @@ export default class CalendarPicker extends Component {
     if (previousMonth < 0) {
       this.setState({
         currentMonth: parseInt(11), // setting month to December
-        currentYear: parseInt(currentYear) - 1, // decrement year
+        currentYear: parseInt(currentYear) - 1 // decrement year
       });
     } else {
       this.setState({
         currentMonth: parseInt(previousMonth),
-        currentYear: parseInt(currentYear),
+        currentYear: parseInt(currentYear)
       });
     }
   }
@@ -131,12 +133,12 @@ export default class CalendarPicker extends Component {
     if (nextMonth > 11) {
       this.setState({
         currentMonth: parseInt(0), // setting month to January
-        currentYear: parseInt(currentYear) + 1, // increment year
+        currentYear: parseInt(currentYear) + 1 // increment year
       });
     } else {
       this.setState({
         currentMonth: parseInt(nextMonth),
-        currentYear: parseInt(currentYear),
+        currentYear: parseInt(currentYear)
       });
     }
   }
@@ -158,7 +160,7 @@ export default class CalendarPicker extends Component {
       currentYear,
       selectedStartDate,
       selectedEndDate,
-      styles,
+      styles
     } = this.state;
 
     const {
@@ -172,11 +174,20 @@ export default class CalendarPicker extends Component {
       previousTitle,
       nextTitle,
       textStyle,
+      markedDays,
+      selectedMarkedDaysColorStyle,
+      selectedMarkedDaysTextColorStyle,
+      headerStyle,
+      headerTextStyle,
+      headerSideTextStyle,
+      headerMidTextStyle,
+      weekDaysTextStyle,
+      weekDaysStyle
     } = this.props;
 
     return (
       <Swiper
-        onSwipe={(direction) => this.onSwipe(direction)}
+        onSwipe={direction => this.onSwipe(direction)}
         config={swipeConfig}
       >
         <View syles={styles.calendar}>
@@ -191,12 +202,18 @@ export default class CalendarPicker extends Component {
             previousTitle={previousTitle}
             nextTitle={nextTitle}
             textStyle={textStyle}
+            headerStyle={headerStyle}
+            headerTextStyle={headerTextStyle}
+            headerSideTextStyle={headerSideTextStyle}
+            headerMidTextStyle={headerMidTextStyle}
           />
           <Weekdays
             styles={styles}
             startFromMonday={startFromMonday}
             weekdays={weekdays}
+            weekDaysStyle={weekDaysStyle}
             textStyle={textStyle}
+            weekDaysTextStyle={weekDaysTextStyle}
           />
           <DaysGridView
             month={currentMonth}
@@ -207,8 +224,11 @@ export default class CalendarPicker extends Component {
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate}
             selectedEndDate={selectedEndDate}
-            minDate={minDate && minDate.setHours(0,0,0,0)}
-            maxDate={maxDate && maxDate.setHours(0,0,0,0)}
+            minDate={minDate && minDate.setHours(0, 0, 0, 0)}
+            maxDate={maxDate && maxDate.setHours(0, 0, 0, 0)}
+            markedDays={markedDays}
+            selectedMarkedDaysColorStyle={selectedMarkedDaysColorStyle}
+            selectedMarkedDaysTextColorStyle={selectedMarkedDaysTextColorStyle}
             textStyle={textStyle}
           />
         </View>
