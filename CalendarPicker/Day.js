@@ -49,7 +49,7 @@ export default function Day(props) {
   if (!dateOutOfRange) {
     // set highlights styles
     for (var key in highlightedDays){
-      var highlightedDate = new Date(highlightedDays[key]+" 00:00:00");
+      var highlightedDate = new Date(highlightedDays[key]+"T12:00:00Z");
       if (Utils.compareDates(thisDay,highlightedDate)){
         daySelectedStyle = styles.highlightedDay;
         selectedDayColorStyle = styles.highlightedDayLabel;
