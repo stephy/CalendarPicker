@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
 | **`highlightDayColor`** | `String` | Optional. Color for highlighted days |
 | **`highlightDayTextColor`** | `String` | Optional. Text color for highlighted day |
 | **`highlightedDays`** | `Array` | Optional. Array of days (YYYY-MM-DD format) where a highlight should be applied |
-| **`hideTodayHighlight`** | `Boolean` | Optional. Toggle if today's highlight should be hidden |
+| **`hideToday`** | `Boolean` | Optional. Toggle if the background color on today should be shown |
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
 | **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
 | **`scaleFactor`** | `Number` | Optional. Default scales to window width |

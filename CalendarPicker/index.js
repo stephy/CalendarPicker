@@ -165,7 +165,7 @@ export default class CalendarPicker extends Component {
 
     const {
       allowRangeSelection,
-      hideTodayHighlight,
+      hideToday,
       highlightedDays,
       startFromMonday,
       initialDate,
@@ -208,7 +208,7 @@ export default class CalendarPicker extends Component {
             month={currentMonth}
             year={currentYear}
             styles={styles}
-            hideTodayHighlight={hideTodayHighlight}
+            hideToday={hideToday}
             highlightedDays={highlightedDaysArray}
             onPressDay={this.handleOnPressDay}
             startFromMonday={startFromMonday}

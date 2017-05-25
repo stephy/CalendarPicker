@@ -16,7 +16,7 @@ export default function Day(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
-    hideTodayHighlight,
+    hideToday,
     highlightedDays,
     textStyle,
     minDate,
@@ -57,7 +57,7 @@ export default function Day(props) {
     }
 
     // set today's style
-    if (!hideTodayHighlight && Utils.compareDates(thisDay,today)) {
+    if (!hideToday && Utils.compareDates(thisDay,today)) {
       daySelectedStyle = styles.selectedToday;
       selectedDayColorStyle = styles.selectedDayLabel;
     }
