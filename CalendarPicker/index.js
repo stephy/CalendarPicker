@@ -69,14 +69,32 @@ export default class CalendarPicker extends Component {
       selectedDayColor,
       selectedDayTextColor,
       todayBackgroundColor,
+      selectedStartDate,
+      selectedEndDate,
       width, height,
-    } = props;
+    } = this.props;
 
     // The styles in makeStyles are intially scaled to this width
     const containerWidth = width ? width : Dimensions.get('window').width;
     const containerHeight = height ? height : Dimensions.get('window').height;
+    const containerWidth = Dimensions.get('window').width;
     const initialScale = Math.min(containerWidth, containerHeight) / scaleFactor;
-    return {styles: makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor)};
+    const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor);
+
+    this.updateMonthYear(this.props, {styles});
+
+    this.setState({
+      selectedStartDate: selectedStartDate ? selectedStartDate : null,
+      selectedEndDate: selectedEndDate ? selectedEndDate : null
+    })
+
+    return styles
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.initialDate.getTime() !== this.props.initialDate.getTime()) {
+      this.updateMonthYear(nextProps, {});
+    }
   }
 
   updateMonthYear(props) {
