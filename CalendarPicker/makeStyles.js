@@ -89,7 +89,7 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
       justifyContent: 'center',
       width: 50*scaler,
       height: 40*scaler,
-      backgroundColor: 'rgba(0,0,0,0.0)'
+      // backgroundColor: 'rgba(0,0,0,0.0)'
     },
 
     startDayWrapper: {
