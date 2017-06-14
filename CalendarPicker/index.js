@@ -72,6 +72,7 @@ export default class CalendarPicker extends Component {
       selectedStartDate,
       selectedEndDate,
       disabledDates,
+      disabledRanges,
       width, height
     } = this.props;
 
@@ -88,6 +89,17 @@ export default class CalendarPicker extends Component {
         date.setHours(0,0,0,0);
         disabledDates[index] = date.getTime();
       });
+    }
+
+    if (disabledRanges && Array.isArray(disabledRanges) && disabledRanges.length > 0) {
+      disabledRanges.map((range, index, disabledRanges) {
+        range.start_date.setHours(0,0,0,0)
+        range.end_date.setHours(0,0,0,0)
+        disabledRanges[index] = {
+          start_date: range.start_date.getTime(),
+          end_date: range.end_date.getTime()
+        }
+      })
     }
 
     this.updateMonthYear(this.props, {styles});
@@ -212,6 +224,7 @@ export default class CalendarPicker extends Component {
       weekdays,
       months,
       disabledDates,
+      disabledRanges,
       previousTitle,
       nextTitle,
       textStyle,
@@ -247,6 +260,7 @@ export default class CalendarPicker extends Component {
             styles={styles}
             onPressDay={this.handleOnPressDay}
             disabledDates={disabledDates}
+            disabledRanges={disabledRanges}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate}

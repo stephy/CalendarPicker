@@ -19,7 +19,8 @@ export default function Day(props) {
     textStyle,
     minDate,
     maxDate,
-    disabledDates
+    disabledDates,
+    disabledRanges
   } = props;
 
   const thisDay = new Date(year, month, day);
@@ -40,6 +41,17 @@ export default function Day(props) {
 
   if (maxDate) {
     if (thisDay > maxDate) {
+      dateOutOfRange = true;
+    }
+  }
+
+  for (let i = 0; i < disabledRanges.length; i++) {
+    const range = disabledRanges[i]
+    if (thisDay < disabledRanges[i].end_date) {
+      dateOutOfRange = true;
+    }
+
+    if (thisDay > disabledRanges[i].start_date) {
       dateOutOfRange = true;
     }
   }
