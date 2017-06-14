@@ -71,7 +71,8 @@ export default class CalendarPicker extends Component {
       todayBackgroundColor,
       selectedStartDate,
       selectedEndDate,
-      width, height,
+      disabledDates,
+      width, height
     } = this.props;
 
     // The styles in makeStyles are intially scaled to this width
@@ -80,6 +81,14 @@ export default class CalendarPicker extends Component {
     const containerWidth = Dimensions.get('window').width;
     const initialScale = Math.min(containerWidth, containerHeight) / scaleFactor;
     const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor);
+
+    // Convert input date into timestamp
+    if (disabledDates && Array.isArray(disabledDates)) {
+      disabledDates.map(function(date, index, disabledDates){
+        date.setHours(0,0,0,0);
+        disabledDates[index] = date.getTime();
+      });
+    }
 
     this.updateMonthYear(this.props, {styles});
 
@@ -202,6 +211,7 @@ export default class CalendarPicker extends Component {
       maxDate,
       weekdays,
       months,
+      disabledDates,
       previousTitle,
       nextTitle,
       textStyle,
@@ -236,6 +246,7 @@ export default class CalendarPicker extends Component {
             year={currentYear}
             styles={styles}
             onPressDay={this.handleOnPressDay}
+            disabledDates={disabledDates}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate}
