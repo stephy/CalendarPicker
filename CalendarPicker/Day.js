@@ -45,14 +45,16 @@ export default function Day(props) {
     }
   }
 
-  for (let i = 0; i < disabledRanges.length; i++) {
-    const range = disabledRanges[i]
-    if (thisDay < disabledRanges[i].end_date) {
-      dateOutOfRange = true;
-    }
+  if (disabledRanges && Array.isArray(disabledRanges) && disabledRanges.length > 0) {
+    for (let i = 0; i < disabledRanges.length; i++) {
+      const range = disabledRanges[i]
+      if (thisDay < disabledRanges[i].end_date) {
+        dateOutOfRange = true;
+      }
 
-    if (thisDay > disabledRanges[i].start_date) {
-      dateOutOfRange = true;
+      if (thisDay > disabledRanges[i].start_date) {
+        dateOutOfRange = true;
+      }
     }
   }
 
