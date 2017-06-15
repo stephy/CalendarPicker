@@ -45,21 +45,18 @@ export default function Day(props) {
     }
   }
 
+  const todayTime = thisDay.getTime()
   if (disabledRanges && Array.isArray(disabledRanges) && disabledRanges.length > 0) {
     for (let i = 0; i < disabledRanges.length; i++) {
       const range = disabledRanges[i]
-      if (thisDay < disabledRanges[i].end_date) {
-        dateOutOfRange = true;
-      }
-
-      if (thisDay > disabledRanges[i].start_date) {
+      if (todayTime < disabledRanges[i].end_date && todayTime >= disabledRanges[i].start_date) {
         dateOutOfRange = true;
       }
     }
   }
 
   if (disabledDates && Array.isArray(disabledDates)) {
-    if (disabledDates.indexOf(thisDay.getTime()) >= 0) {
+    if (disabledDates.indexOf(todayTime) >= 0) {
       dateOutOfRange = true;
     }
   }
