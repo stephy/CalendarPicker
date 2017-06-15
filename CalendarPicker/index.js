@@ -92,7 +92,7 @@ export default class CalendarPicker extends Component {
     }
 
     if (disabledRanges && Array.isArray(disabledRanges) && disabledRanges.length > 0) {
-      disabledRanges.map((range, index, disabledRanges) {
+      disabledRanges.map((range, index, disabledRanges) => {
         range.start_date.setHours(0,0,0,0)
         range.end_date.setHours(0,0,0,0)
         disabledRanges[index] = {
