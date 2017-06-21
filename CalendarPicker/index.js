@@ -47,12 +47,21 @@ export default class CalendarPicker extends Component {
       selectedDayColor,
       selectedDayTextColor,
       todayBackgroundColor,
+      disabledDates
     } = this.props;
 
     // The styles in makeStyles are intially scaled to this width
     const deviceWidth = Dimensions.get('window').width;
     const initialScale = scaleFactor? deviceWidth / scaleFactor : deviceWidth / 375;
     const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor);
+
+    // Convert input date into timestamp
+    if (disabledDates && Array.isArray(disabledDates)) {
+      disabledDates.map(function(date, index, disabledDates){
+        date.setHours(0,0,0,0);
+        disabledDates[index] = date.getTime();
+      });
+    }
 
     this.updateMonthYear(this.props, {styles});
   }
@@ -169,6 +178,7 @@ export default class CalendarPicker extends Component {
       maxDate,
       weekdays,
       months,
+      disabledDates,
       previousTitle,
       nextTitle,
       textStyle,
@@ -209,6 +219,7 @@ export default class CalendarPicker extends Component {
             selectedEndDate={selectedEndDate}
             minDate={minDate && minDate.setHours(0,0,0,0)}
             maxDate={maxDate && maxDate.setHours(0,0,0,0)}
+            disabledDates={disabledDates}
             textStyle={textStyle}
           />
         </View>

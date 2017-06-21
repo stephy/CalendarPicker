@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
 | **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
 | **`initialDate`** | `Date` | Optional. Date that calendar opens to. Defaults to today. |
+| **`disabledDates`** | `Array` | Optional. List of disabled date. Eg. `[new Date('10 May, 2017'), new Date('15 May, 2017'), ...]` |
 
 # Styles
 Some styles will overwrite some won't. For instance:
