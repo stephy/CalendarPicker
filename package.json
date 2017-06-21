@@ -1,6 +1,6 @@
 {
   "name": "react-native-calendar-picker",
-  "version": "5.7.0",
+  "version": "5.8.0",
   "description": "Calendar Picker Component for React Native",
   "devDependencies": {
     "expo": "^15.1.0",
@@ -69,6 +69,5 @@
   ],
   "directories": {},
   "_resolved": "https://registry.npmjs.org/react-native-calendar-picker/-/react-native-calendar-picker-1.0.1.tgz",
-  "dependencies": {
-  }
+  "dependencies": {}
 }
