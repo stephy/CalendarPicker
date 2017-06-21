@@ -16,6 +16,8 @@ export default function Day(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
+    hideToday,
+    highlightedDays,
     textStyle,
     minDate,
     maxDate,
@@ -45,8 +47,17 @@ export default function Day(props) {
 
   // If date is not out of range let's apply styles
   if (!dateOutOfRange) {
+    // set highlights styles
+    for (var key in highlightedDays){
+      var highlightedDate = new Date(highlightedDays[key]+"T12:00:00Z");
+      if (Utils.compareDates(thisDay,highlightedDate)){
+        daySelectedStyle = styles.highlightedDay;
+        selectedDayColorStyle = styles.highlightedDayLabel;
+      }
+    }
+
     // set today's style
-    if (Utils.compareDates(thisDay,today)) {
+    if (!hideToday && Utils.compareDates(thisDay,today)) {
       daySelectedStyle = styles.selectedToday;
       selectedDayColorStyle = styles.selectedDayLabel;
     }
