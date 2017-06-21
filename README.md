@@ -78,10 +78,12 @@ const styles = StyleSheet.create({
 | **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
 | **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
-| **`scaleFactor`** | `Number` | Optional. Default scales to window width |
+| **`scaleFactor`** | `Number` | Optional. Default (375) scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
 | **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
 | **`initialDate`** | `Date` | Optional. Date that calendar opens to. Defaults to today. |
+| **`width`** | `Number` | Optional. Width of CalendarPicker's container. Defaults to Dimensions width.|
+| **`height`** | `Number` | Optional. Height of CalendarPicker's container. Defaults to Dimensions height.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
