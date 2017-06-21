@@ -27,3 +27,8 @@ Please do not change this file when creating a pull request
 ### Version 5.7.0
 
 	- Add gesture recognition, you can now swipe left and right to go to previous and next months
+
+
+### Version 5.8.0
+
+	- Add support for initial date, Date that calendar opens to. Defaults to today. Fix expo dependencies

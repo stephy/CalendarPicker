@@ -23,10 +23,12 @@ export default class App extends Component {
   render() {
     const { selectedStartDate } = this.state;
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
+    const initialDate = new Date(2017,6,12);
     return (
       <View style={styles.container}>
         <CalendarPicker
           onDateChange={this.onDateChange}
+          initialDate={initialDate}
         />
 
         <View>
