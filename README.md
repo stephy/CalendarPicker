@@ -275,15 +275,22 @@ I would like to call out some contributors who have been helping with this proje
 ```sh
 git clone git@github.com:stephy/CalendarPicker.git CalendarPicker
 npm install
+```
 
-// In Package.json modify
+In Package.json modify
+```sh
 "main": "./CalendarPicker",
-// to
+```
+to
+```sh
 "main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
+```
 
-// running on device
+#### Running on device
+```sh
 npm start
-
-// running on iOS Simulator
+```
+#### Running on iOS Simulator
+```sh
 npm run ios
 ```
