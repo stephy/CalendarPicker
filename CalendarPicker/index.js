@@ -194,7 +194,7 @@ export default class CalendarPicker extends Component {
         onSwipe={(direction) => this.onSwipe(direction)}
         config={swipeConfig}
       >
-        <View syles={styles.calendar}>
+        <View style={styles.calendar}>
           <HeaderControls
             styles={styles}
             currentMonth={currentMonth}
