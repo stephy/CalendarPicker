@@ -108,7 +108,7 @@ export default class CalendarPicker extends Component {
       selectedEndDate: selectedEndDate ? selectedEndDate : null
     })
 
-    return styles
+    return { styles }
   }
 
   componentWillReceiveProps(nextProps) {
