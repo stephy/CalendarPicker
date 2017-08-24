@@ -44,7 +44,7 @@ export default class CalendarPicker extends Component {
   }
 
   componentWillMount() {
-    this.setState({...this.updateScaledStyles(this.props), ...this.updateMonthYear(this.props)});
+    this.setState({...this.updateScaledStyles(this.props), ...this.updateMonthYear(this.props.initialDate)});
   }
 
   componentWillReceiveProps(nextProps) {
@@ -57,7 +57,7 @@ export default class CalendarPicker extends Component {
 
     let newMonthYear = {}
     if (nextProps.initialDate.getTime() !== this.props.initialDate.getTime()) {
-      this.updateMonthYear(nextProps, {});
+      newMonthYear = {...this.updateMonthYear(nextProps.initialDate)};
     }
 
     this.setState({...newStyles, ...newMonthYear});
@@ -79,10 +79,10 @@ export default class CalendarPicker extends Component {
     return {styles: makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor)};
   }
 
-  updateMonthYear(props) {
+  updateMonthYear(initialDate = this.props.initialDate) {
     return {
-      currentMonth: parseInt(props.initialDate.getMonth()),
-      currentYear: parseInt(props.initialDate.getFullYear()),
+      currentMonth: parseInt(initialDate.getMonth()),
+      currentYear: parseInt(initialDate.getFullYear()),
     };
   }
 
@@ -121,14 +121,16 @@ export default class CalendarPicker extends Component {
   }
 
   handleOnPressPrevious() {
-    const { currentMonth, currentYear } = this.state;
-    const previousMonth = currentMonth - 1;
+    let { currentMonth, currentYear } = this.state;
+    let previousMonth = currentMonth - 1;
     // if previousMonth is negative it means the current month is January,
     // so we have to go back to previous year and set the current month to December
     if (previousMonth < 0) {
+      previousMonth = 11;
+      currentYear -= 1;  // decrement year
       this.setState({
-        currentMonth: parseInt(11), // setting month to December
-        currentYear: parseInt(currentYear) - 1, // decrement year
+        currentMonth: parseInt(previousMonth), // setting month to December
+        currentYear: parseInt(currentYear),
       });
     } else {
       this.setState({
@@ -136,17 +138,20 @@ export default class CalendarPicker extends Component {
         currentYear: parseInt(currentYear),
       });
     }
+    this.props.onMonthChange && this.props.onMonthChange(new Date(currentYear, previousMonth));
   }
 
   handleOnPressNext() {
-    const { currentMonth, currentYear } = this.state;
-    const nextMonth = currentMonth + 1;
+    let { currentMonth, currentYear } = this.state;
+    let nextMonth = currentMonth + 1;
     // if nextMonth is greater than 11 it means the current month is December,
     // so we have to go forward to the next year and set the current month to January
     if (nextMonth > 11) {
+      nextMonth = 0;
+      currentYear += 1;  // increment year
       this.setState({
-        currentMonth: parseInt(0), // setting month to January
-        currentYear: parseInt(currentYear) + 1, // increment year
+        currentMonth: parseInt(nextMonth), // setting month to January
+        currentYear: parseInt(currentYear),
       });
     } else {
       this.setState({
@@ -154,6 +159,7 @@ export default class CalendarPicker extends Component {
         currentYear: parseInt(currentYear),
       });
     }
+    this.props.onMonthChange && this.props.onMonthChange(new Date(currentYear, nextMonth));
   }
 
   onSwipe(gestureName) {

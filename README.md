@@ -84,6 +84,8 @@ const styles = StyleSheet.create({
 | **`initialDate`** | `Date` | Optional. Date that calendar opens to. Defaults to today. |
 | **`width`** | `Number` | Optional. Width of CalendarPicker's container. Defaults to Dimensions width.|
 | **`height`** | `Number` | Optional. Height of CalendarPicker's container. Defaults to Dimensions height.|
+| **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns `date` as first parameter.|
+| **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns `date` as first parameter.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
