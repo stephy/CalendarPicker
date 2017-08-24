@@ -27,14 +27,15 @@ export default function HeaderControls(props) {
   const month = MONTHS[currentMonth];
   const year = currentYear;
 
-  const controlStyles = styles.prev || {}
+  const prevControlStyles = styles.prev || {}
+  const nextControlStyles = styles.next || {}
   return (
     <View style={styles.headerWrapper}>
       <View style={styles.monthSelector}>
         <Controls
           label={previous}
           onPressControl={onPressPrevious}
-          styles={controlStyles}
+          styles={prevControlStyles}
           textStyles={textStyle}
         />
       </View>
@@ -47,7 +48,7 @@ export default function HeaderControls(props) {
         <Controls
           label={next}
           onPressControl={onPressNext}
-          styles={styles.next}
+          styles={nextControlStyles}
           textStyles={textStyle}
         />
       </View>
