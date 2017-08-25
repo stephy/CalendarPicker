@@ -227,6 +227,7 @@ export default class CalendarPicker extends Component {
       previousTitle,
       nextTitle,
       textStyle,
+      monthYearTitleStyle
     } = this.props;
 
     return (
@@ -244,6 +245,7 @@ export default class CalendarPicker extends Component {
             onPressNext={this.handleOnPressNext}
             months={months}
             previousTitle={previousTitle}
+            monthYearTitleStyle={monthYearTitleStyle}
             nextTitle={nextTitle}
             textStyle={textStyle}
           />
