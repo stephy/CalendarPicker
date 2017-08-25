@@ -230,6 +230,8 @@ export default class CalendarPicker extends Component {
       monthYearTitleStyle
     } = this.props;
 
+    const titleStyle = monthYearTitleStyle || {}
+
     return (
       <Swiper
         onSwipe={(direction) => this.onSwipe(direction)}
@@ -245,7 +247,7 @@ export default class CalendarPicker extends Component {
             onPressNext={this.handleOnPressNext}
             months={months}
             previousTitle={previousTitle}
-            monthYearTitleStyle={monthYearTitleStyle}
+            monthYearTitleStyle={titleStyle}
             nextTitle={nextTitle}
             textStyle={textStyle}
           />
