@@ -49,18 +49,24 @@ export default class CalendarPicker extends Component {
 
   componentWillReceiveProps(nextProps) {
     let newStyles = {};
+    let doStateUpdate = false;
+
     if (nextProps.width !== this.props.width ||
         nextProps.height !== this.props.height)
     {
       newStyles = this.updateScaledStyles(nextProps);
+      doStateUpdate = true;
     }
 
-    let newMonthYear = {}
+    let newMonthYear = {};
     if (nextProps.initialDate.getTime() !== this.props.initialDate.getTime()) {
-      newMonthYear = {...this.updateMonthYear(nextProps.initialDate)};
+      newMonthYear = this.updateMonthYear(nextProps.initialDate);
+      doStateUpdate = true;
     }
 
-    this.setState({...newStyles, ...newMonthYear});
+    if (doStateUpdate) {
+      this.setState({...newStyles, ...newMonthYear});
+    }
   }
 
   updateScaledStyles(props) {
