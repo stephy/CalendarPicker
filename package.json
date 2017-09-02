@@ -11,7 +11,8 @@
     "react-native": "^0.47.1",
     "react-native-scripts": "0.0.25",
     "react-test-renderer": "^16.0.0-alpha.12",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "prop-types": "^15.5.10",
   },
   "peerDependencies": {
     "babel-preset-expo": "^2.0.0"
@@ -73,7 +74,7 @@
   "directories": {},
   "_resolved": "https://registry.npmjs.org/react-native-calendar-picker/-/react-native-calendar-picker-1.0.1.tgz",
   "dependencies": {
-    "react-native": "^0.47.1",
-    "expo": "^15.1.0"
+    "expo": "^15.1.0",
+    "react-native": "^0.47.1"
   }
 }
