@@ -74,7 +74,6 @@
   "directories": {},
   "_resolved": "https://registry.npmjs.org/react-native-calendar-picker/-/react-native-calendar-picker-1.0.1.tgz",
   "dependencies": {
-    "expo": "^15.1.0",
-    "react-native": "^0.47.1"
+    "expo": "^15.1.0"
   }
 }
