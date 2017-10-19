@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
@@ -18,6 +19,7 @@ export default function HeaderControls(props) {
     previousTitle,
     nextTitle,
     textStyle,
+    monthYearTitleStyle
   } = props;
   const MONTHS = months? months : Utils.MONTHS; // English Month Array
   // getMonth() call below will return the month number, we will use it as the
@@ -27,18 +29,20 @@ export default function HeaderControls(props) {
   const month = MONTHS[currentMonth];
   const year = currentYear;
 
+  const prevControlStyles = styles.prev || {}
+  const nextControlStyles = styles.next || {}
   return (
     <View style={styles.headerWrapper}>
       <View style={styles.monthSelector}>
         <Controls
           label={previous}
           onPressControl={onPressPrevious}
-          styles={styles.prev}
+          styles={prevControlStyles}
           textStyles={textStyle}
         />
       </View>
       <View>
-        <Text style={[styles.monthLabel, textStyle]}>
+        <Text style={[styles.monthLabel, textStyle, monthYearTitleStyle]}>
            { month } { year }
         </Text>
       </View>
@@ -46,7 +50,7 @@ export default function HeaderControls(props) {
         <Controls
           label={next}
           onPressControl={onPressNext}
-          styles={styles.next}
+          styles={nextControlStyles}
           textStyles={textStyle}
         />
       </View>

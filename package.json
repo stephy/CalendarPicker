@@ -2,16 +2,17 @@
   "name": "react-native-calendar-picker",
   "version": "5.9.0",
   "description": "Calendar Picker Component for React Native",
-  "engines" : {
-    "node" : ">=7.6.0"
+  "engines": {
+    "node": ">=7.6.0"
   },
   "devDependencies": {
     "jest-expo": "^0.3.0",
-    "react": "~15.4.0",
-    "react-native": "0.42.3",
+    "react": "^16.0.0-beta.5",
+    "react-native": "^0.49.3",
     "react-native-scripts": "0.0.25",
-    "react-test-renderer": "~15.4.1",
-    "uuid": "^3.0.1"
+    "react-test-renderer": "^16.0.0-beta.5",
+    "uuid": "^3.0.1",
+    "prop-types": "^15.5.10"
   },
   "peerDependencies": {
     "babel-preset-expo": "^2.0.0"
@@ -73,7 +74,6 @@
   "directories": {},
   "_resolved": "https://registry.npmjs.org/react-native-calendar-picker/-/react-native-calendar-picker-1.0.1.tgz",
   "dependencies": {
-    "react-native": "^0.42.3",
     "expo": "^15.1.0"
   }
 }

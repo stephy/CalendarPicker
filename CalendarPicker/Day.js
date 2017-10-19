@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import {
   View,
   Text,
@@ -19,6 +20,8 @@ export default function Day(props) {
     textStyle,
     minDate,
     maxDate,
+    disabledDates,
+    disabledRanges
   } = props;
 
   const thisDay = new Date(year, month, day);
@@ -39,6 +42,22 @@ export default function Day(props) {
 
   if (maxDate) {
     if (thisDay > maxDate) {
+      dateOutOfRange = true;
+    }
+  }
+
+  const todayTime = thisDay.getTime()
+  if (disabledRanges && Array.isArray(disabledRanges) && disabledRanges.length > 0) {
+    for (let i = 0; i < disabledRanges.length; i++) {
+      const range = disabledRanges[i]
+      if (todayTime < disabledRanges[i].end_date && todayTime >= disabledRanges[i].start_date) {
+        dateOutOfRange = true;
+      }
+    }
+  }
+
+  if (disabledDates && Array.isArray(disabledDates)) {
+    if (disabledDates.indexOf(todayTime) >= 0) {
       dateOutOfRange = true;
     }
   }
@@ -122,4 +141,5 @@ Day.propTypes = {
   styles: PropTypes.shape({}),
   day: PropTypes.number,
   onPressDay: PropTypes.func,
+  disabledDates: PropTypes.array
 }

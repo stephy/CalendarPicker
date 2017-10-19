@@ -69,14 +69,52 @@ export default class CalendarPicker extends Component {
       selectedDayColor,
       selectedDayTextColor,
       todayBackgroundColor,
-      width, height,
-    } = props;
+      selectedStartDate,
+      selectedEndDate,
+      disabledDates,
+      disabledRanges,
+      width, height
+    } = this.props;
 
     // The styles in makeStyles are intially scaled to this width
     const containerWidth = width ? width : Dimensions.get('window').width;
     const containerHeight = height ? height : Dimensions.get('window').height;
     const initialScale = Math.min(containerWidth, containerHeight) / scaleFactor;
-    return {styles: makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor)};
+    const styles = makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor);
+
+    // Convert input date into timestamp
+    if (disabledDates && Array.isArray(disabledDates)) {
+      disabledDates.map(function(date, index, disabledDates){
+        date.setHours(0,0,0,0);
+        disabledDates[index] = date.getTime();
+      });
+    }
+
+    if (disabledRanges && Array.isArray(disabledRanges) && disabledRanges.length > 0) {
+      disabledRanges.map((range, index, disabledRanges) => {
+        range.start_date.setHours(0,0,0,0)
+        range.end_date.setHours(0,0,0,0)
+        disabledRanges[index] = {
+          start_date: range.start_date.getTime(),
+          end_date: range.end_date.getTime()
+        }
+      })
+    }
+
+    this.updateMonthYear(this.props, {styles});
+
+    this.setState({
+      selectedStartDate: selectedStartDate ? selectedStartDate : null,
+      selectedEndDate: selectedEndDate ? selectedEndDate : null
+    })
+
+    return { styles }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.initialDate.getTime() !== this.props.initialDate.getTime()) {
+      this.updateMonthYear(nextProps, {});
+    }
   }
 
   updateMonthYear(props) {
@@ -184,10 +222,15 @@ export default class CalendarPicker extends Component {
       maxDate,
       weekdays,
       months,
+      disabledDates,
+      disabledRanges,
       previousTitle,
       nextTitle,
       textStyle,
+      monthYearTitleStyle
     } = this.props;
+
+    const titleStyle = monthYearTitleStyle || {}
 
     return (
       <Swiper
@@ -204,6 +247,7 @@ export default class CalendarPicker extends Component {
             onPressNext={this.handleOnPressNext}
             months={months}
             previousTitle={previousTitle}
+            monthYearTitleStyle={titleStyle}
             nextTitle={nextTitle}
             textStyle={textStyle}
           />
@@ -218,6 +262,8 @@ export default class CalendarPicker extends Component {
             year={currentYear}
             styles={styles}
             onPressDay={this.handleOnPressDay}
+            disabledDates={disabledDates}
+            disabledRanges={disabledRanges}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate}

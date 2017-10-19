@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import uuid from 'uuid';
 import {
   View,
@@ -21,6 +22,8 @@ export default function DaysGridView(props) {
     textStyle,
     minDate,
     maxDate,
+    disabledDates,
+    disabledRanges
   } = props;
   const today = new Date();
   // let's get the total of days in this month, we need the year as well, since
@@ -55,6 +58,8 @@ export default function DaysGridView(props) {
                 allowRangeSelection={allowRangeSelection}
                 minDate={minDate}
                 maxDate={maxDate}
+                disabledDates={disabledDates}
+                disabledRanges={disabledRanges}
                 textStyle={textStyle}
               />
             );
@@ -83,6 +88,8 @@ export default function DaysGridView(props) {
               allowRangeSelection={allowRangeSelection}
               minDate={minDate}
               maxDate={maxDate}
+              disabledDates={disabledDates}
+              disabledRanges={disabledRanges}
               textStyle={textStyle}
             />
           );
@@ -110,4 +117,5 @@ DaysGridView.propTypes = {
   year: PropTypes.number.isRequired,
   onPressDay: PropTypes.func,
   startFromMonday: PropTypes.bool,
+  disabledDates: PropTypes.array
 }
