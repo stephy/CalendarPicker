@@ -1,8 +1,9 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import {
   TouchableOpacity,
   Text,
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default function Controls({ styles, textStyles, label, onPressControl }) {
   return (

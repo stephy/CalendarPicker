@@ -1,9 +1,10 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import {
   View,
   Text,
   TouchableOpacity
 } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default function Day(props) {
   const { styles } = props;

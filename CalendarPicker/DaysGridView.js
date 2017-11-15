@@ -1,9 +1,10 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import uuid from 'uuid';
 import {
   View,
   Text,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import Day from './Day';
 import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
