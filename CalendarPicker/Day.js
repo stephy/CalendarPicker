@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
+import moment from 'moment';
 
 export default function Day(props) {
   const {
@@ -22,40 +23,41 @@ export default function Day(props) {
     maxDate,
   } = props;
 
-  const thisDay = new Date(year, month, day);
-  const today = new Date();
-  today.setHours(0,0,0,0);
+  const thisDay = moment({year, month, day});
+  const today = moment();
 
-  let dateOutOfRange = false;
+  let dateOutOfRange;
   let daySelectedStyle = {};
   let selectedDayColorStyle = {};
-  let dateType;
+  let dateIsBeforeMin = false;
+  let dateIsAfterMax = false;
 
-  // First let's check if date is out of range
-  if (minDate) {
-    if (thisDay < minDate) {
-      dateOutOfRange = true;
-    }
-  }
-
+  // First let's check if date is out of range.
+  // Check whether props maxDate / minDate are defined. If not supplied,
+  // don't restrict dates.
   if (maxDate) {
-    if (thisDay > maxDate) {
-      dateOutOfRange = true;
-    }
+    dateIsAfterMax = thisDay.isAfter(maxDate, 'day');
   }
+  if (minDate) {
+    dateIsBeforeMin = thisDay.isBefore(minDate, 'day');
+  }
+  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin;
 
-  // If date is not out of range let's apply styles
+  // If date is in range let's apply styles
   if (!dateOutOfRange) {
     // set today's style
-    if (Utils.compareDates(thisDay,today)) {
+    if (thisDay.isSame(today, 'day')) {
       daySelectedStyle = styles.selectedToday;
       selectedDayColorStyle = styles.selectedDayLabel;
     }
 
+    let isThisDaySameAsSelectedStart = thisDay.isSame(selectedStartDate, 'day');
+    let isThisDaySameAsSelectedEnd = thisDay.isSame(selectedEndDate, 'day');
+
     // set selected day style
     if (!allowRangeSelection &&
         selectedStartDate &&
-        Utils.compareDates(thisDay,selectedStartDate)) {
+        isThisDaySameAsSelectedStart) {
       daySelectedStyle = styles.selectedDay;
       selectedDayColorStyle = styles.selectedDayLabel;
     }
@@ -64,24 +66,24 @@ export default function Day(props) {
     if (allowRangeSelection) {
       if (selectedStartDate && selectedEndDate) {
           // Apply style for start date
-        if (Utils.compareDates(thisDay,selectedStartDate)) {
+        if (thisDay.isSame(selectedStartDate, 'day')) {
           daySelectedStyle = styles.startDayWrapper;
           selectedDayColorStyle = styles.selectedDayLabel;
         }
         // Apply style for end date
-        if (Utils.compareDates(thisDay,selectedEndDate)) {
+        if (isThisDaySameAsSelectedEnd) {
           daySelectedStyle = styles.endDayWrapper;
           selectedDayColorStyle = styles.selectedDayLabel;
         }
         // Apply style if start date is the same as end date
-        if (Utils.compareDates(thisDay, selectedEndDate) &&
-            Utils.compareDates(thisDay, selectedStartDate) &&
-            Utils.compareDates(selectedEndDate,selectedStartDate)) {
+        if (isThisDaySameAsSelectedEnd &&
+            isThisDaySameAsSelectedStart &&
+            selectedEndDate.isSame(selectedStartDate, 'day')) {
             daySelectedStyle = styles.selectedDay;
             selectedDayColorStyle = styles.selectedDayLabel;
         }
         // Apply style if this day is in range
-        if (Utils.isDateInRange(thisDay, selectedStartDate, selectedEndDate)) {
+        if (thisDay.isSameOrAfter(selectedStartDate, 'day') && thisDay.isSameOrBefore(selectedEndDate, 'day')) {
           daySelectedStyle = styles.inRangeDay;
           selectedDayColorStyle = styles.selectedDayLabel;
         }
@@ -89,7 +91,7 @@ export default function Day(props) {
       // Apply style if start date has been selected but end date has not
       if (selectedStartDate &&
           !selectedEndDate &&
-          Utils.compareDates(thisDay, selectedStartDate)) {
+          isThisDaySameAsSelectedStart) {
           daySelectedStyle = styles.selectedDay;
           selectedDayColorStyle = styles.selectedDayLabel;
       }

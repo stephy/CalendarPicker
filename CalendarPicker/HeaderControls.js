@@ -10,7 +10,6 @@ import Controls from './Controls';
 export default function HeaderControls(props) {
   const {
     styles,
-    initialDate,
     currentMonth,
     currentYear,
     onPressNext,
@@ -56,7 +55,6 @@ export default function HeaderControls(props) {
 }
 
 HeaderControls.propTypes = {
-  initialDate: PropTypes.instanceOf(Date),
   currentMonth: PropTypes.number,
   currentYear: PropTypes.number,
   onPressNext: PropTypes.func,

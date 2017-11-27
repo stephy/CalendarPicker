@@ -15,7 +15,11 @@ npm install --save react-native-calendar-picker
 
 If you need the old code I saved it on a branch <a href="https://github.com/stephy/CalendarPicker/tree/v4">v4</a>
 
-# How to use it
+# Prerequisites
+
+CalendarPicker requires Moment JS.  Date props may be anything parseable by Moment: Javascript Date, Moment date, or ISO8601 datetime string.
+
+# Example
 
 ```js
 import React, { Component } from 'react';
@@ -84,8 +88,8 @@ const styles = StyleSheet.create({
 | **`initialDate`** | `Date` | Optional. Date that calendar opens to. Defaults to today. |
 | **`width`** | `Number` | Optional. Width of CalendarPicker's container. Defaults to Dimensions width.|
 | **`height`** | `Number` | Optional. Height of CalendarPicker's container. Defaults to Dimensions height.|
-| **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns `date` as first parameter.|
-| **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns `date` as first parameter.|
+| **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns Moment `date` as first parameter.|
+| **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns Moment `date` as first parameter.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
