@@ -3,12 +3,15 @@ import uuid from 'uuid';
 import {
   View,
   Text,
+  ViewPropTypes as RNViewPropTypes,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Day from './Day';
 import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
 import moment from 'moment';
+
+const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
 export default function DaysGridView(props) {
   const {
@@ -21,6 +24,9 @@ export default function DaysGridView(props) {
     selectedEndDate,
     allowRangeSelection,
     textStyle,
+    todayTextStyle,
+    selectedDayStyle,
+    customDatesStyles,
     minDate,
     maxDate,
   } = props;
@@ -58,6 +64,9 @@ export default function DaysGridView(props) {
                 minDate={minDate}
                 maxDate={maxDate}
                 textStyle={textStyle}
+                todayTextStyle={todayTextStyle}
+                selectedDayStyle={selectedDayStyle}
+                customDatesStyles={customDatesStyles}
               />
             );
           }
@@ -86,6 +95,9 @@ export default function DaysGridView(props) {
               minDate={minDate}
               maxDate={maxDate}
               textStyle={textStyle}
+              todayTextStyle={todayTextStyle}
+              selectedDayStyle={selectedDayStyle}
+              customDatesStyles={customDatesStyles}
             />
           );
         }
@@ -112,4 +124,16 @@ DaysGridView.propTypes = {
   year: PropTypes.number.isRequired,
   onPressDay: PropTypes.func,
   startFromMonday: PropTypes.bool,
+  selectedDayStyle: ViewPropTypes.style,
+  todayTextStyle: Text.propTypes.style,
+  customDatesStyles: PropTypes.arrayOf(PropTypes.shape({
+    date: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.instanceOf(Date),
+      PropTypes.instanceOf(moment)
+    ]),
+    containerStyle: ViewPropTypes.style,
+    style: ViewPropTypes.style,
+    textStyle: Text.propTypes.style,
+  })),
 }

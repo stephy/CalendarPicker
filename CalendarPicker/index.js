@@ -200,6 +200,9 @@ export default class CalendarPicker extends Component {
       previousTitle,
       nextTitle,
       textStyle,
+      todayTextStyle,
+      selectedDayStyle,
+      customDatesStyles,
     } = this.props;
 
     return (
@@ -238,6 +241,9 @@ export default class CalendarPicker extends Component {
             minDate={minDate && moment(minDate)}
             maxDate={maxDate && moment(maxDate)}
             textStyle={textStyle}
+            todayTextStyle={todayTextStyle}
+            selectedDayStyle={selectedDayStyle}
+            customDatesStyles={customDatesStyles}
           />
         </View>
       </Swiper>

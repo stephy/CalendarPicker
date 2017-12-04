@@ -79,9 +79,12 @@ const styles = StyleSheet.create({
 | **`previousTitle`** | `String` | Optional. Title of button for previous month. Default is `Previous` |
 | **`nextTitle`** | `String` | Optional. Title of button for next month. Default is `Next` |
 | **`selectedDayColor`** | `String` | Optional. Color for selected day |
+| **`selectedDayStyle`** | `ViewStyle` | Optional. Style for selected day. May override selectedDayColor.|
 | **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
+| **`todayTextStyle`** | `TextStyle` | Optional. Text styling for today. |
 | **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
+| **`customDatesStyles`** | `Array` | Optional. Style individual date(s). Array of objects `{date: Moment-parseable date, containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}` |
 | **`scaleFactor`** | `Number` | Optional. Default (375) scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
 | **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
@@ -258,6 +261,37 @@ const styles = StyleSheet.create({
   },
 });
 ```
+
+
+### Custom styling individual dates
+
+![alt tag](https://user-images.githubusercontent.com/6295083/33563899-bf899954-d8de-11e7-85cd-18a15524f008.png)
+
+```js
+
+let today = moment();
+let day = today.clone();
+let customDatesStyles = [];
+while(day.add(1, 'day').isSame(today, 'month')) {
+  customDatesStyles.push({
+    date: day.clone(),
+    // Random colors
+    style: {backgroundColor: '#'+('#00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6)},
+  });
+}
+
+render() {
+  return (
+    <CalendarPicker
+      todayTextStyle={{fontWeight: 'bold'}}
+      todayBackgroundColor={'transparent'}
+      customDatesStyles={this.state.selectedTab === 'tours' ? this.state.customTourDatesStyles : this.state.customRentalDatesStyles}
+      minDate={today}
+    />
+  );
+}
+```
+
 
 # Suggestions?
 
