@@ -16,7 +16,7 @@ import moment from 'moment';
 const SWIPE_LEFT = 'SWIPE_LEFT';
 const SWIPE_RIGHT = 'SWIPE_RIGHT';
 
-const swipeConfig = {
+const _swipeConfig = {
   velocityThreshold: 0.3,
   directionalOffsetThreshold: 80
 };
@@ -42,6 +42,7 @@ export default class CalendarPicker extends Component {
   static defaultProps = {
     initialDate: moment(),
     scaleFactor: 375,
+    enableSwipe: true,
   }
 
   componentWillMount() {
@@ -205,13 +206,14 @@ export default class CalendarPicker extends Component {
       selectedRangeStartStyle,
       selectedRangeStyle,
       selectedRangeEndStyle,
+      swipeConfig,
       customDatesStyles,
     } = this.props;
 
     return (
       <Swiper
-        onSwipe={(direction) => this.onSwipe(direction)}
-        config={swipeConfig}
+        onSwipe={direction => this.props.enableSwipe && this.onSwipe(direction)}
+        config={{..._swipeConfig, ...swipeConfig}}
       >
         <View syles={styles.calendar}>
           <HeaderControls

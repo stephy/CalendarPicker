@@ -94,6 +94,8 @@ const styles = StyleSheet.create({
 | **`initialDate`** | `Date` | Optional. Date that calendar opens to. Defaults to today. |
 | **`width`** | `Number` | Optional. Width of CalendarPicker's container. Defaults to Dimensions width.|
 | **`height`** | `Number` | Optional. Height of CalendarPicker's container. Defaults to Dimensions height.|
+| **`swipeConfig`** | `Object` | Optional. Config passed to Swiper.|
+| **`enableSwipe`** | `Boolean` | Optional. Whether to enable swiping. Default is `true` |
 | **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns Moment `date` as first parameter.|
 | **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns Moment `date` as first parameter.|
 
