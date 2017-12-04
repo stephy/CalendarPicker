@@ -202,6 +202,9 @@ export default class CalendarPicker extends Component {
       textStyle,
       todayTextStyle,
       selectedDayStyle,
+      selectedRangeStartStyle,
+      selectedRangeStyle,
+      selectedRangeEndStyle,
       customDatesStyles,
     } = this.props;
 
@@ -243,6 +246,9 @@ export default class CalendarPicker extends Component {
             textStyle={textStyle}
             todayTextStyle={todayTextStyle}
             selectedDayStyle={selectedDayStyle}
+            selectedRangeStartStyle={selectedRangeStartStyle}
+            selectedRangeStyle={selectedRangeStyle}
+            selectedRangeEndStyle={selectedRangeEndStyle}
             customDatesStyles={customDatesStyles}
           />
         </View>

@@ -26,6 +26,9 @@ export default function DaysGridView(props) {
     textStyle,
     todayTextStyle,
     selectedDayStyle,
+    selectedRangeStartStyle,
+    selectedRangeStyle,
+    selectedRangeEndStyle,
     customDatesStyles,
     minDate,
     maxDate,
@@ -66,6 +69,9 @@ export default function DaysGridView(props) {
                 textStyle={textStyle}
                 todayTextStyle={todayTextStyle}
                 selectedDayStyle={selectedDayStyle}
+                selectedRangeStartStyle={selectedRangeStartStyle}
+                selectedRangeStyle={selectedRangeStyle}
+                selectedRangeEndStyle={selectedRangeEndStyle}
                 customDatesStyles={customDatesStyles}
               />
             );
@@ -97,6 +103,9 @@ export default function DaysGridView(props) {
               textStyle={textStyle}
               todayTextStyle={todayTextStyle}
               selectedDayStyle={selectedDayStyle}
+              selectedRangeStartStyle={selectedRangeStartStyle}
+              selectedRangeStyle={selectedRangeStyle}
+              selectedRangeEndStyle={selectedRangeEndStyle}
               customDatesStyles={customDatesStyles}
             />
           );
@@ -125,6 +134,9 @@ DaysGridView.propTypes = {
   onPressDay: PropTypes.func,
   startFromMonday: PropTypes.bool,
   selectedDayStyle: ViewPropTypes.style,
+  selectedRangeStartStyle: ViewPropTypes.style,
+  selectedRangeStyle: ViewPropTypes.style,
+  selectedRangeEndStyle: ViewPropTypes.style,
   todayTextStyle: Text.propTypes.style,
   customDatesStyles: PropTypes.arrayOf(PropTypes.shape({
     date: PropTypes.oneOfType([
