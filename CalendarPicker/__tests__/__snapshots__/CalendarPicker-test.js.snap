@@ -107,7 +107,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             ]
           }
         >
-          June
+          December
            
           2017
         </Text>
@@ -169,7 +169,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           "borderColor": "rgba(0,0,0,0.2)",
           "borderTopWidth": 1,
           "flexDirection": "row",
-          "marginBottom": 10,
+          "justifyContent": "center",
           "paddingBottom": 10,
           "paddingTop": 10,
         }
@@ -306,6 +306,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
       style={
         Object {
           "alignSelf": "center",
+          "justifyContent": "center",
         }
       }
     >
@@ -331,8 +332,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
-                "width": 50,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
               }
             }
           >
@@ -353,9 +356,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "height": 40,
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
                   "opacity": 1,
-                  "width": 50,
+                  "width": 30,
                 }
               }
               testID={undefined}
@@ -370,7 +375,6 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   }
                 }
               />
@@ -392,8 +396,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
-                "width": 50,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
               }
             }
           >
@@ -414,9 +420,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "height": 40,
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
                   "opacity": 1,
-                  "width": 50,
+                  "width": 30,
                 }
               }
               testID={undefined}
@@ -431,7 +439,6 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   }
                 }
               />
@@ -453,8 +460,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
-                "width": 50,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
               }
             }
           >
@@ -475,9 +484,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "height": 40,
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
                   "opacity": 1,
-                  "width": 50,
+                  "width": 30,
                 }
               }
               testID={undefined}
@@ -492,7 +503,6 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   }
                 }
               />
@@ -514,8 +524,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
-                "width": 50,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
               }
             }
           >
@@ -536,9 +548,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "height": 40,
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
                   "opacity": 1,
-                  "width": 50,
+                  "width": 30,
                 }
               }
               testID={undefined}
@@ -553,7 +567,6 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   }
                 }
               />
@@ -569,6 +582,73 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               "justifyContent": "center",
               "width": 50,
             }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
+              }
+            }
+          >
+            <View
+              accessibilityComponentType={undefined}
+              accessibilityLabel={undefined}
+              accessibilityTraits={undefined}
+              accessible={true}
+              hitSlop={undefined}
+              isTVSelectable={true}
+              onLayout={undefined}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "width": 30,
+                }
+              }
+              testID={undefined}
+              tvParallaxProperties={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -588,9 +668,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -606,10 +688,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
@@ -619,13 +701,16 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
         </View>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -645,9 +730,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -663,10 +750,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
@@ -674,15 +761,26 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             </Text>
           </View>
         </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -702,9 +800,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -720,10 +820,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
@@ -731,1008 +831,18 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             </Text>
           </View>
         </View>
-      </View>
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-          }
-        }
-      >
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
+            Array [
               Object {
-                "alignSelf": "center",
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
                 "height": 40,
-                "opacity": 1,
+                "justifyContent": "center",
                 "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              4
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              5
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              6
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              7
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              8
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              9
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              10
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-          }
-        }
-      >
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              11
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              12
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              13
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              14
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              15
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              16
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              17
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-          }
-        }
-      >
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              18
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              19
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              20
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -1755,7 +865,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                 "backgroundColor": "#CCCCCC",
                 "borderRadius": 30,
                 "height": 30,
-                "marginTop": -10,
+                "justifyContent": "center",
                 "opacity": 1,
                 "width": 30,
               }
@@ -1773,28 +883,31 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {
                     "color": "#000000",
                   },
+                  undefined,
                 ]
               }
             >
-              21
+              4
             </Text>
           </View>
         </View>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -1814,9 +927,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -1832,26 +947,29 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
-              22
+              5
             </Text>
           </View>
         </View>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -1871,9 +989,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -1889,26 +1009,29 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
-              23
+              6
             </Text>
           </View>
         </View>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -1928,9 +1051,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -1946,14 +1071,138 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
-              24
+              7
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              8
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              9
             </Text>
           </View>
         </View>
@@ -1967,13 +1216,16 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
       >
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -1993,9 +1245,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -2011,10 +1265,956 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
+                ]
+              }
+            >
+              10
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              11
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              12
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              13
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              14
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              15
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              16
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              17
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              18
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              19
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              20
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              21
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              22
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              23
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              24
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
                 ]
               }
             >
@@ -2024,13 +2224,16 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
         </View>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -2050,9 +2253,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -2068,10 +2273,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
@@ -2081,13 +2286,16 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
         </View>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -2107,9 +2315,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -2125,10 +2335,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
@@ -2138,13 +2348,16 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
         </View>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -2164,9 +2377,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -2182,10 +2397,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
@@ -2195,13 +2410,16 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
         </View>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -2221,9 +2439,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -2239,10 +2459,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
@@ -2252,13 +2472,16 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
         </View>
         <View
           style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
           }
         >
           <View
@@ -2278,9 +2501,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
                 "opacity": 1,
-                "width": 50,
+                "width": 30,
               }
             }
             testID={undefined}
@@ -2296,10 +2521,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   },
                   undefined,
                   Object {},
+                  undefined,
                 ]
               }
             >
@@ -2314,7 +2539,70 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             "flexDirection": "row",
           }
         }
-      />
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "backgroundColor": "rgba(0,0,0,0.0)",
+                "height": 40,
+                "justifyContent": "center",
+                "width": 50,
+              },
+              undefined,
+            ]
+          }
+        >
+          <View
+            accessibilityComponentType={undefined}
+            accessibilityLabel={undefined}
+            accessibilityTraits={undefined}
+            accessible={true}
+            hitSlop={undefined}
+            isTVSelectable={true}
+            onLayout={undefined}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "opacity": 1,
+                "width": 30,
+              }
+            }
+            testID={undefined}
+            tvParallaxProperties={undefined}
+          >
+            <Text
+              accessible={true}
+              allowFontScaling={true}
+              ellipsizeMode="tail"
+              style={
+                Array [
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  },
+                  undefined,
+                  Object {},
+                  undefined,
+                ]
+              }
+            >
+              31
+            </Text>
+          </View>
+        </View>
+      </View>
       <View
         style={
           Object {
@@ -2434,7 +2722,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             ]
           }
         >
-          June
+          December
            
           2017
         </Text>
@@ -2496,7 +2784,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           "borderColor": "rgba(0,0,0,0.2)",
           "borderTopWidth": 1,
           "flexDirection": "row",
-          "marginBottom": 10,
+          "justifyContent": "center",
           "paddingBottom": 10,
           "paddingTop": 10,
         }
@@ -2633,6 +2921,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
       style={
         Object {
           "alignSelf": "center",
+          "justifyContent": "center",
         }
       }
     >
@@ -2658,8 +2947,10 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
-                "width": 50,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
               }
             }
           >
@@ -2680,9 +2971,11 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "height": 40,
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
                   "opacity": 1,
-                  "width": 50,
+                  "width": 30,
                 }
               }
               testID={undefined}
@@ -2697,7 +2990,6 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   }
                 }
               />
@@ -2719,8 +3011,10 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
-                "width": 50,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
               }
             }
           >
@@ -2741,9 +3035,11 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "height": 40,
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
                   "opacity": 1,
-                  "width": 50,
+                  "width": 30,
                 }
               }
               testID={undefined}
@@ -2758,7 +3054,6 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
                   }
                 }
               />
@@ -2780,8 +3075,10 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "height": 40,
-                "width": 50,
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
               }
             }
           >
@@ -2802,9 +3099,11 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "height": 40,
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
                   "opacity": 1,
-                  "width": 50,
+                  "width": 30,
                 }
               }
               testID={undefined}
@@ -2819,7 +3118,134 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                     "alignSelf": "center",
                     "color": "#000",
                     "fontSize": 14,
-                    "marginTop": 6,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.0)",
+              "height": 40,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
+              }
+            }
+          >
+            <View
+              accessibilityComponentType={undefined}
+              accessibilityLabel={undefined}
+              accessibilityTraits={undefined}
+              accessible={true}
+              hitSlop={undefined}
+              isTVSelectable={true}
+              onLayout={undefined}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "width": 30,
+                }
+              }
+              testID={undefined}
+              tvParallaxProperties={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
+                  }
+                }
+              />
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.0)",
+              "height": 40,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
+          <View
+            style={
+              Object {
+                "alignSelf": "center",
+                "borderRadius": 30,
+                "height": 30,
+                "justifyContent": "center",
+                "width": 30,
+              }
+            }
+          >
+            <View
+              accessibilityComponentType={undefined}
+              accessibilityLabel={undefined}
+              accessibilityTraits={undefined}
+              accessible={true}
+              hitSlop={undefined}
+              isTVSelectable={true}
+              onLayout={undefined}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignSelf": "center",
+                  "borderRadius": 30,
+                  "height": 30,
+                  "justifyContent": "center",
+                  "opacity": 1,
+                  "width": 30,
+                }
+              }
+              testID={undefined}
+              tvParallaxProperties={undefined}
+            >
+              <Text
+                accessible={true}
+                allowFontScaling={true}
+                ellipsizeMode="tail"
+                style={
+                  Object {
+                    "alignSelf": "center",
+                    "color": "#000",
+                    "fontSize": 14,
                   }
                 }
               />
@@ -2848,7 +3274,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -2878,7 +3304,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -2886,6 +3312,14 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             2
           </Text>
         </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
         <View
           style={
             Object {
@@ -2908,7 +3342,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -2938,7 +3372,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -2946,14 +3380,6 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             4
           </Text>
         </View>
-      </View>
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-          }
-        }
-      >
         <View
           style={
             Object {
@@ -2976,7 +3402,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3006,7 +3432,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3036,7 +3462,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3066,7 +3492,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3096,7 +3522,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3104,6 +3530,14 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             9
           </Text>
         </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
         <View
           style={
             Object {
@@ -3126,7 +3560,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3156,7 +3590,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3164,14 +3598,6 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             11
           </Text>
         </View>
-      </View>
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-          }
-        }
-      >
         <View
           style={
             Object {
@@ -3194,7 +3620,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3224,7 +3650,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3254,7 +3680,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3284,7 +3710,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3314,7 +3740,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3322,6 +3748,14 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             16
           </Text>
         </View>
+      </View>
+      <View
+        style={
+          Object {
+            "flexDirection": "row",
+          }
+        }
+      >
         <View
           style={
             Object {
@@ -3344,7 +3778,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3374,7 +3808,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3382,14 +3816,6 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             18
           </Text>
         </View>
-      </View>
-      <View
-        style={
-          Object {
-            "flexDirection": "row",
-          }
-        }
-      >
         <View
           style={
             Object {
@@ -3412,7 +3838,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3442,7 +3868,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   "alignSelf": "center",
                   "color": "#BBBBBB",
                   "fontSize": 14,
-                  "marginTop": -10,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -3461,56 +3887,24 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             }
           }
         >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
+          <Text
             accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
             style={
-              Object {
-                "alignSelf": "center",
-                "backgroundColor": "#f2e6ff",
-                "borderRadius": 30,
-                "height": 30,
-                "marginTop": -10,
-                "opacity": 1,
-                "width": 30,
-              }
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
             }
-            testID={undefined}
-            tvParallaxProperties={undefined}
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {
-                    "color": "#FFFFFF",
-                  },
-                ]
-              }
-            >
-              21
-            </Text>
-          </View>
+            21
+          </Text>
         </View>
         <View
           style={
@@ -3523,51 +3917,24 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             }
           }
         >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
+          <Text
             accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
             style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
             }
-            testID={undefined}
-            tvParallaxProperties={undefined}
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              22
-            </Text>
-          </View>
+            22
+          </Text>
         </View>
         <View
           style={
@@ -3580,165 +3947,24 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             }
           }
         >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
+          <Text
             accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
             style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
             }
-            testID={undefined}
-            tvParallaxProperties={undefined}
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              23
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              24
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
-              "justifyContent": "center",
-              "width": 50,
-            }
-          }
-        >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
-            accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
-            }
-            testID={undefined}
-            tvParallaxProperties={undefined}
-          >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              25
-            </Text>
-          </View>
+            23
+          </Text>
         </View>
       </View>
       <View
@@ -3759,51 +3985,24 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             }
           }
         >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
+          <Text
             accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
             style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
             }
-            testID={undefined}
-            tvParallaxProperties={undefined}
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              26
-            </Text>
-          </View>
+            24
+          </Text>
         </View>
         <View
           style={
@@ -3816,51 +4015,24 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             }
           }
         >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
+          <Text
             accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
             style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
             }
-            testID={undefined}
-            tvParallaxProperties={undefined}
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              27
-            </Text>
-          </View>
+            25
+          </Text>
         </View>
         <View
           style={
@@ -3873,51 +4045,24 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             }
           }
         >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
+          <Text
             accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
             style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
             }
-            testID={undefined}
-            tvParallaxProperties={undefined}
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              28
-            </Text>
-          </View>
+            26
+          </Text>
         </View>
         <View
           style={
@@ -3930,51 +4075,24 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             }
           }
         >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
+          <Text
             accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
             style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
             }
-            testID={undefined}
-            tvParallaxProperties={undefined}
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              29
-            </Text>
-          </View>
+            27
+          </Text>
         </View>
         <View
           style={
@@ -3987,51 +4105,84 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             }
           }
         >
-          <View
-            accessibilityComponentType={undefined}
-            accessibilityLabel={undefined}
-            accessibilityTraits={undefined}
+          <Text
             accessible={true}
-            hitSlop={undefined}
-            isTVSelectable={true}
-            onLayout={undefined}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
             style={
-              Object {
-                "alignSelf": "center",
-                "height": 40,
-                "opacity": 1,
-                "width": 50,
-              }
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
             }
-            testID={undefined}
-            tvParallaxProperties={undefined}
           >
-            <Text
-              accessible={true}
-              allowFontScaling={true}
-              ellipsizeMode="tail"
-              style={
-                Array [
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 14,
-                    "marginTop": 6,
-                  },
-                  undefined,
-                  Object {},
-                ]
-              }
-            >
-              30
-            </Text>
-          </View>
+            28
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.0)",
+              "height": 40,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
+            }
+          >
+            29
+          </Text>
+        </View>
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.0)",
+              "height": 40,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
+            }
+          >
+            30
+          </Text>
         </View>
       </View>
       <View
@@ -4040,7 +4191,38 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             "flexDirection": "row",
           }
         }
-      />
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.0)",
+              "height": 40,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
+          <Text
+            accessible={true}
+            allowFontScaling={true}
+            ellipsizeMode="tail"
+            style={
+              Array [
+                undefined,
+                Object {
+                  "alignSelf": "center",
+                  "color": "#BBBBBB",
+                  "fontSize": 14,
+                  "justifyContent": "center",
+                },
+              ]
+            }
+          >
+            31
+          </Text>
+        </View>
+      </View>
       <View
         style={
           Object {
