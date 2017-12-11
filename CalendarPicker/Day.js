@@ -2,7 +2,8 @@ import React from 'react';
 import {
   View,
   Text,
-  TouchableOpacity
+  TouchableOpacity,
+  StyleSheet
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
@@ -66,6 +67,11 @@ export default function Day(props) {
         customContainerStyle = cds.containerStyle;
         customDateStyle = cds.style;
         customTextStyle = cds.textStyle;
+        if (isToday && customDateStyle) {
+          // Custom date style overrides 'today' style. It may be reset below
+          // by date selection styling.
+          daySelectedStyle = {...StyleSheet.flatten(daySelectedStyle), ...customDateStyle};
+        }
         break;
       }
     }
