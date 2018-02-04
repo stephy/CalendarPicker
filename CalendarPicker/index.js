@@ -94,7 +94,7 @@ export default class CalendarPicker extends Component {
     };
   }
 
-  handleOnPressDay(day, type) {
+  handleOnPressDay(day) {
     const {
       currentYear,
       currentMonth,
@@ -179,6 +179,13 @@ export default class CalendarPicker extends Component {
         this.handleOnPressPrevious();
         break;
     }
+  }
+
+  resetSelections() {
+    this.setState({
+      selectedStartDate: null,
+      selectedEndDate: null,
+    });
   }
 
   render() {

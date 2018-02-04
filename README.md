@@ -297,6 +297,18 @@ render() {
 }
 ```
 
+## Methods
+
+These internal methods may be accessed through a ref to the CalendarPicker.
+
+| Name | Params | Description |
+:------------ |:---------------| :-----|
+| **`handleOnPressDay`** | day (Integer) | Programmatically select date. `day` is a number that is the day of the current month. Moment example for today's day of month: `moment().date()` |
+| **`handleOnPressNext`** |  | Programmatically advance to next month. |
+| **`handleOnPressPrevious`** |  | Programmatically advance to previous month. |
+| **`resetSelections`** |  | Clear date selections. Useful for resetting date range selection when user has picked a start date but not an end date. |
+
+
 
 # Suggestions?
 
@@ -313,6 +325,7 @@ I would like to call out some contributors who have been helping with this proje
 - [jthestupidkid](https://github.com/jthestupidkid)
 - [adamkrell](https://github.com/adamkrell)
 - [joshuapinter](https://github.com/joshuapinter)
+- [peacechen](https://github.com/peacechen)
 
 
 # Development
