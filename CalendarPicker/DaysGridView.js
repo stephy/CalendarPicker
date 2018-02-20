@@ -29,7 +29,7 @@ export default function DaysGridView(props) {
   // leap years have different amount of days in February
   const totalDays = Utils.getDaysInMonth(month, year);
   // Let's create a date for day one of the current given month and year
-  const firstDayOfMonth = startFromMonday ? moment({year, month, day: 0}) : moment({year, month, day: 1});
+  const firstDayOfMonth = moment({ year, month, day: 1 });
   // The weekday() method returns the day of the week (from 0 to 6) for the specified date.
   // Note: Sunday is 0, Monday is 1, and so on. We will need this to know what
   // day of the week to show day 1
@@ -38,10 +38,13 @@ export default function DaysGridView(props) {
   const days = Array.apply(null, {length: totalDays}).map(Number.call, Number);
   const guideArray = [ 0, 1, 2, 3, 4, 5, 6 ];
 
+  // Get the starting index, based upon whether we are using monday or sunday as first day.
+  const startIndex = (startFromMonday) ? (firstWeekDay - 1) % 7 : firstWeekDay;
+
   function generateColumns(i) {
     const column = guideArray.map(index => {
       if (i === 0) { // for first row, let's start showing the days on the correct weekday
-        if (index >= firstWeekDay) {
+        if (index >= startIndex) {
           if (days.length > 0) {
             const day= days.shift() + 1;
             return (
