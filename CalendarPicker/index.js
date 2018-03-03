@@ -217,6 +217,7 @@ export default class CalendarPicker extends Component {
       selectedRangeStyle,
       selectedRangeEndStyle,
       disabledDates,
+      minRangeDates,
       swipeConfig,
       customDatesStyles,
     } = this.props;
@@ -229,6 +230,16 @@ export default class CalendarPicker extends Component {
         let thisDate = moment(date);
         thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
         disabledDatesTime.push(thisDate.valueOf());
+      });
+    }
+
+    let minRangeDatesTime = [];
+
+    if (minRangeDates && Array.isArray(minRangeDates)) {
+      minRangeDates.map((minRangeDate)=>{
+        let thisDate = moment(minRangeDate.date);
+        thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+        minRangeDatesTime.push({date: thisDate.valueOf(), minDays: minRangeDate.minDays});
       });
     }
 
@@ -262,6 +273,7 @@ export default class CalendarPicker extends Component {
             styles={styles}
             onPressDay={this.handleOnPressDay}
             disabledDates={disabledDatesTime}
+            minRangeDates={minRangeDatesTime}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate && moment(selectedStartDate)}

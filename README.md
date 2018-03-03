@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
 | **`disabledDates`** | `Array` | Optional. Specifies dates that cannot be selected. Array of Dates. |
 | **`selectedStartDate`** | `Date` | Optional. Specifies a selected Start Date. |
 | **`selectedEndDate`** | `Date` | Optional. Specifies a selected End Date. |
+| **`minRangeDates`** | `Array` | Optional. Specifies a minimum range based off of the selected start date when using allowRangeSelection. Array of objects `{date: Moment-parsable date, minDays: Number` |
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
 | **`todayTextStyle`** | `TextStyle` | Optional. Text styling for today. |
 | **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
