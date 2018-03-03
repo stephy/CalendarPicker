@@ -84,6 +84,7 @@ const styles = StyleSheet.create({
 | **`selectedRangeStartStyle`** | `ViewStyle` | Optional. Style for range selected start day. |
 | **`selectedRangeEndStyle`** | `ViewStyle` | Optional. Style for range selected end day. |
 | **`selectedRangeStyle`** | `ViewStyle` | Optional. Style for all days in range selection. |
+| **`disabledDates`** | `Array` | Optional. Specifies dates that cannot be selected. Array of Dates. |
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
 | **`todayTextStyle`** | `TextStyle` | Optional. Text styling for today. |
 | **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
