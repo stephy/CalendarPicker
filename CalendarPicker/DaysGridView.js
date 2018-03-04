@@ -32,6 +32,7 @@ export default function DaysGridView(props) {
     customDatesStyles,
     minDate,
     maxDate,
+    disabledDates,
   } = props;
   const today = moment();
   // let's get the total of days in this month, we need the year as well, since
@@ -69,6 +70,7 @@ export default function DaysGridView(props) {
                 allowRangeSelection={allowRangeSelection}
                 minDate={minDate}
                 maxDate={maxDate}
+                disabledDates={disabledDates}
                 textStyle={textStyle}
                 todayTextStyle={todayTextStyle}
                 selectedDayStyle={selectedDayStyle}
@@ -103,6 +105,7 @@ export default function DaysGridView(props) {
               allowRangeSelection={allowRangeSelection}
               minDate={minDate}
               maxDate={maxDate}
+              disabledDates={disabledDates}
               textStyle={textStyle}
               todayTextStyle={todayTextStyle}
               selectedDayStyle={selectedDayStyle}
@@ -151,4 +154,5 @@ DaysGridView.propTypes = {
     style: ViewPropTypes.style,
     textStyle: Text.propTypes.style,
   })),
+  disabledDates: PropTypes.array,
 }

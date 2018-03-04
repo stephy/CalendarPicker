@@ -27,6 +27,7 @@ export default function Day(props) {
     todayTextStyle,
     minDate,
     maxDate,
+    disabledDates,
   } = props;
 
   const thisDay = moment({year, month, day});
@@ -38,6 +39,7 @@ export default function Day(props) {
   let propSelectedDayStyle;
   let dateIsBeforeMin = false;
   let dateIsAfterMax = false;
+  let dateIsDisabled = false;
   let customContainerStyle, customDateStyle, customTextStyle;
 
   // First let's check if date is out of range
@@ -49,7 +51,12 @@ export default function Day(props) {
   if (minDate) {
     dateIsBeforeMin = thisDay.isBefore(minDate, 'day');
   }
-  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin;
+
+  if (disabledDates && disabledDates.indexOf(thisDay.valueOf()) >= 0) {
+    dateIsDisabled = true;
+  }
+
+  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled;
 
   // If date is in range let's apply styles
   if (!dateOutOfRange) {
@@ -154,4 +161,5 @@ Day.propTypes = {
   styles: PropTypes.shape({}),
   day: PropTypes.number,
   onPressDay: PropTypes.func,
+  disabledDates: PropTypes.array,
 }

@@ -216,9 +216,21 @@ export default class CalendarPicker extends Component {
       selectedRangeStartStyle,
       selectedRangeStyle,
       selectedRangeEndStyle,
+      disabledDates,
       swipeConfig,
       customDatesStyles,
     } = this.props;
+
+    let disabledDatesTime = [];
+
+    // Convert input date into timestamp
+    if (disabledDates && Array.isArray(disabledDates)) {
+      disabledDates.map((date)=>{
+        let thisDate = moment(date);
+        thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+        disabledDatesTime.push(thisDate.valueOf());
+      });
+    }
 
     return (
       <Swiper
@@ -249,6 +261,7 @@ export default class CalendarPicker extends Component {
             year={currentYear}
             styles={styles}
             onPressDay={this.handleOnPressDay}
+            disabledDates={disabledDatesTime}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate && moment(selectedStartDate)}
