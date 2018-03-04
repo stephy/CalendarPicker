@@ -86,7 +86,7 @@ export default class CalendarPicker extends Component {
     const containerWidth = width ? width : Dimensions.get('window').width;
     const containerHeight = height ? height : Dimensions.get('window').height;
     const initialScale = Math.min(containerWidth, containerHeight) / scaleFactor;
-    this.setState({selectedStartDate: selectedStartDate, selectedEndDate: selectedEndDate});
+    this.setState({selectedStartDate, selectedEndDate});
     return {styles: makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor)};
   }
 
