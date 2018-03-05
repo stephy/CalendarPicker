@@ -217,7 +217,8 @@ export default class CalendarPicker extends Component {
       selectedRangeStyle,
       selectedRangeEndStyle,
       disabledDates,
-      minRangeDates,
+      minRangeDuration,
+      maxRangeDuration,
       swipeConfig,
       customDatesStyles,
     } = this.props;
@@ -233,14 +234,32 @@ export default class CalendarPicker extends Component {
       });
     }
 
-    let minRangeDatesTime = [];
+    let minRangeDurationTime = [];
 
-    if (minRangeDates && Array.isArray(minRangeDates)) {
-      minRangeDates.map((minRangeDate)=>{
-        let thisDate = moment(minRangeDate.date);
-        thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
-        minRangeDatesTime.push({date: thisDate.valueOf(), minDays: minRangeDate.minDays});
-      });
+    if (allowRangeSelection && minRangeDuration) {
+      if (Array.isArray(minRangeDuration)) {
+        minRangeDuration.map((minRangeDuration)=>{
+          let thisDate = moment(minRangeDuration.date);
+          thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+          minRangeDurationTime.push({date: thisDate.valueOf(), minDuration: minRangeDuration.minDuration});
+        });
+      } else {
+        minRangeDurationTime = minRangeDuration
+      }
+    }
+
+    let maxRangeDurationTime = [];
+
+    if (allowRangeSelection && maxRangeDuration) {
+      if (Array.isArray(maxRangeDuration)) {
+        maxRangeDuration.map((maxRangeDuration)=>{
+          let thisDate = moment(maxRangeDuration.date);
+          thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+          maxRangeDurationTime.push({date: thisDate.valueOf(), maxDuration: maxRangeDuration.maxDuration});
+        });
+      } else {
+        maxRangeDurationTime = maxRangeDuration
+      }
     }
 
     return (
@@ -273,7 +292,8 @@ export default class CalendarPicker extends Component {
             styles={styles}
             onPressDay={this.handleOnPressDay}
             disabledDates={disabledDatesTime}
-            minRangeDates={minRangeDatesTime}
+            minRangeDuration={minRangeDurationTime}
+            maxRangeDuration={maxRangeDurationTime}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate && moment(selectedStartDate)}
