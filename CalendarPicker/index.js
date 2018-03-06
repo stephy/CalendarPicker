@@ -217,6 +217,8 @@ export default class CalendarPicker extends Component {
       selectedRangeStyle,
       selectedRangeEndStyle,
       disabledDates,
+      minRangeDuration,
+      maxRangeDuration,
       swipeConfig,
       customDatesStyles,
     } = this.props;
@@ -230,6 +232,34 @@ export default class CalendarPicker extends Component {
         thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
         disabledDatesTime.push(thisDate.valueOf());
       });
+    }
+
+    let minRangeDurationTime = [];
+
+    if (allowRangeSelection && minRangeDuration) {
+      if (Array.isArray(minRangeDuration)) {
+        minRangeDuration.map((minRangeDuration)=>{
+          let thisDate = moment(minRangeDuration.date);
+          thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+          minRangeDurationTime.push({date: thisDate.valueOf(), minDuration: minRangeDuration.minDuration});
+        });
+      } else {
+        minRangeDurationTime = minRangeDuration
+      }
+    }
+
+    let maxRangeDurationTime = [];
+
+    if (allowRangeSelection && maxRangeDuration) {
+      if (Array.isArray(maxRangeDuration)) {
+        maxRangeDuration.map((maxRangeDuration)=>{
+          let thisDate = moment(maxRangeDuration.date);
+          thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+          maxRangeDurationTime.push({date: thisDate.valueOf(), maxDuration: maxRangeDuration.maxDuration});
+        });
+      } else {
+        maxRangeDurationTime = maxRangeDuration
+      }
     }
 
     return (
@@ -262,6 +292,8 @@ export default class CalendarPicker extends Component {
             styles={styles}
             onPressDay={this.handleOnPressDay}
             disabledDates={disabledDatesTime}
+            minRangeDuration={minRangeDurationTime}
+            maxRangeDuration={maxRangeDurationTime}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate && moment(selectedStartDate)}
