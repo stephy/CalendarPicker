@@ -27,6 +27,9 @@ export default function Day(props) {
     todayTextStyle,
     minDate,
     maxDate,
+    disabledDates,
+    minRangeDuration,
+    maxRangeDuration,
   } = props;
 
   const thisDay = moment({year, month, day});
@@ -38,6 +41,9 @@ export default function Day(props) {
   let propSelectedDayStyle;
   let dateIsBeforeMin = false;
   let dateIsAfterMax = false;
+  let dateIsDisabled = false;
+  let dateIsBeforeMinDuration = false;
+  let dateIsAfterMaxDuration = false;
   let customContainerStyle, customDateStyle, customTextStyle;
 
   // First let's check if date is out of range
@@ -49,7 +55,34 @@ export default function Day(props) {
   if (minDate) {
     dateIsBeforeMin = thisDay.isBefore(minDate, 'day');
   }
-  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin;
+
+  if (disabledDates && disabledDates.indexOf(thisDay.valueOf()) >= 0) {
+    dateIsDisabled = true;
+  }
+
+  if (allowRangeSelection && minRangeDuration && selectedStartDate && thisDay.valueOf() > selectedStartDate.valueOf()) {
+    if (Array.isArray(minRangeDuration)) {
+      let i = minRangeDuration.findIndex((i)=>(i.date === selectedStartDate.valueOf()));
+      if (i >= 0 && selectedStartDate.valueOf() + minRangeDuration[i].minDuration * 86400000 > thisDay.valueOf()) {
+        dateIsBeforeMinDuration = true;
+      }
+    } else if(selectedStartDate.valueOf() + minRangeDuration * 86400000 > thisDay.valueOf()) {
+      dateIsBeforeMinDuration = true;
+    }
+  }
+
+	if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.valueOf() > selectedStartDate.valueOf()) {
+		if (Array.isArray(maxRangeDuration)) {
+			let i = maxRangeDuration.findIndex((i)=>(i.date === selectedStartDate.valueOf()));
+			if (i >= 0 && selectedStartDate.valueOf() + maxRangeDuration[i].maxDuration * 86400000 < thisDay.valueOf()) {
+				dateIsAfterMaxDuration = true;
+			}
+		} else if(selectedStartDate.valueOf() + maxRangeDuration * 86400000 < thisDay.valueOf()) {
+			dateIsAfterMaxDuration = true;
+		}
+	}
+
+  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled || dateIsBeforeMinDuration || dateIsAfterMaxDuration;
 
   // If date is in range let's apply styles
   if (!dateOutOfRange) {
@@ -154,4 +187,7 @@ Day.propTypes = {
   styles: PropTypes.shape({}),
   day: PropTypes.number,
   onPressDay: PropTypes.func,
+  disabledDates: PropTypes.array,
+  minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
+  maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
 }

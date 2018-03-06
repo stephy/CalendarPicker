@@ -120,6 +120,7 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     monthLabel: {
       fontSize: 16*scaler,
       color: '#000',
+      marginBottom: 10*scaler,
       width: 180*scaler,
       textAlign: 'center'
     },
@@ -128,24 +129,23 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
       alignItems: 'center',
       flexDirection: 'row',
       alignSelf: 'center',
-      marginBottom: 10*scaler,
       padding: 5*scaler,
       paddingBottom: 3*scaler,
       backgroundColor: 'rgba(0,0,0,0.0)'
     },
 
     monthSelector: {
+      marginBottom: 10*scaler,
+      fontSize: 14*scaler,
       width: 80*scaler
     },
 
     prev: {
-      textAlign: 'left',
-      fontSize: 14*scaler
+      textAlign: 'left'
     },
 
     next: {
-      textAlign: 'right',
-      fontSize: 14*scaler
+      textAlign: 'right'
     },
 
     yearLabel: {

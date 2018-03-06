@@ -77,6 +77,8 @@ export default class CalendarPicker extends Component {
       selectedDayColor,
       selectedDayTextColor,
       todayBackgroundColor,
+      selectedStartDate,
+      selectedEndDate,
       width, height,
     } = props;
 
@@ -84,6 +86,7 @@ export default class CalendarPicker extends Component {
     const containerWidth = width ? width : Dimensions.get('window').width;
     const containerHeight = height ? height : Dimensions.get('window').height;
     const initialScale = Math.min(containerWidth, containerHeight) / scaleFactor;
+    this.setState({selectedStartDate, selectedEndDate});
     return {styles: makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor)};
   }
 
@@ -213,9 +216,51 @@ export default class CalendarPicker extends Component {
       selectedRangeStartStyle,
       selectedRangeStyle,
       selectedRangeEndStyle,
+      disabledDates,
+      minRangeDuration,
+      maxRangeDuration,
       swipeConfig,
       customDatesStyles,
     } = this.props;
+
+    let disabledDatesTime = [];
+
+    // Convert input date into timestamp
+    if (disabledDates && Array.isArray(disabledDates)) {
+      disabledDates.map((date)=>{
+        let thisDate = moment(date);
+        thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+        disabledDatesTime.push(thisDate.valueOf());
+      });
+    }
+
+    let minRangeDurationTime = [];
+
+    if (allowRangeSelection && minRangeDuration) {
+      if (Array.isArray(minRangeDuration)) {
+        minRangeDuration.map((minRangeDuration)=>{
+          let thisDate = moment(minRangeDuration.date);
+          thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+          minRangeDurationTime.push({date: thisDate.valueOf(), minDuration: minRangeDuration.minDuration});
+        });
+      } else {
+        minRangeDurationTime = minRangeDuration
+      }
+    }
+
+    let maxRangeDurationTime = [];
+
+    if (allowRangeSelection && maxRangeDuration) {
+      if (Array.isArray(maxRangeDuration)) {
+        maxRangeDuration.map((maxRangeDuration)=>{
+          let thisDate = moment(maxRangeDuration.date);
+          thisDate.set({'hour': 0, 'minute': 0, 'second': 0, 'millisecond': 0});
+          maxRangeDurationTime.push({date: thisDate.valueOf(), maxDuration: maxRangeDuration.maxDuration});
+        });
+      } else {
+        maxRangeDurationTime = maxRangeDuration
+      }
+    }
 
     return (
       <Swiper
@@ -246,6 +291,9 @@ export default class CalendarPicker extends Component {
             year={currentYear}
             styles={styles}
             onPressDay={this.handleOnPressDay}
+            disabledDates={disabledDatesTime}
+            minRangeDuration={minRangeDurationTime}
+            maxRangeDuration={maxRangeDurationTime}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate && moment(selectedStartDate)}
