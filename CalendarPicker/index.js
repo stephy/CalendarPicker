@@ -43,6 +43,7 @@ export default class CalendarPicker extends Component {
     initialDate: moment(),
     scaleFactor: 375,
     enableSwipe: true,
+    onDateChange: () => { console.log('onDateChange() not provided') },
   }
 
   componentWillMount() {
