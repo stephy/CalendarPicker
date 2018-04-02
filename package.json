@@ -6,6 +6,7 @@
     "node": ">=4.0.0"
   },
   "devDependencies": {
+    "expo": "^15.1.0",
     "jest-expo": "^0.3.0",
     "moment": "*",
     "react": "~15.4.0",
@@ -77,7 +78,6 @@
   "directories": {},
   "_resolved": "https://registry.npmjs.org/react-native-calendar-picker/-/react-native-calendar-picker-1.0.1.tgz",
   "dependencies": {
-    "expo": "^15.1.0",
     "prop-types": "^15.6.0",
     "uuid": "3.1.0"
   }
