@@ -30,6 +30,8 @@ export default class CalendarPicker extends Component {
       selectedStartDate: null,
       selectedEndDate: null,
       styles: {},
+      ...this.updateScaledStyles(props),
+      ...this.updateMonthYear(props.initialDate)
     };
     this.updateScaledStyles = this.updateScaledStyles.bind(this);
     this.updateMonthYear = this.updateMonthYear.bind(this);
@@ -46,24 +48,20 @@ export default class CalendarPicker extends Component {
     onDateChange: () => { console.log('onDateChange() not provided') },
   }
 
-  componentWillMount() {
-    this.setState({...this.updateScaledStyles(this.props), ...this.updateMonthYear(this.props.initialDate)});
-  }
-
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(prevProps, prevState) {
     let newStyles = {};
     let doStateUpdate = false;
 
-    if (nextProps.width !== this.props.width ||
-        nextProps.height !== this.props.height)
+    if (prevProps.width !== this.props.width ||
+        prevProps.height !== this.props.height)
     {
-      newStyles = this.updateScaledStyles(nextProps);
+      newStyles = this.updateScaledStyles(this.props);
       doStateUpdate = true;
     }
 
     let newMonthYear = {};
-    if (!moment(nextProps.initialDate).isSame(this.props.initialDate, 'day')) {
-      newMonthYear = this.updateMonthYear(nextProps.initialDate);
+    if (!moment(prevProps.initialDate).isSame(this.props.initialDate, 'day')) {
+      newMonthYear = this.updateMonthYear(this.props.initialDate);
       doStateUpdate = true;
     }
 
@@ -87,7 +85,6 @@ export default class CalendarPicker extends Component {
     const containerWidth = width ? width : Dimensions.get('window').width;
     const containerHeight = height ? height : Dimensions.get('window').height;
     const initialScale = Math.min(containerWidth, containerHeight) / scaleFactor;
-    this.setState({selectedStartDate, selectedEndDate});
     return {styles: makeStyles(initialScale, selectedDayColor, selectedDayTextColor, todayBackgroundColor)};
   }
 

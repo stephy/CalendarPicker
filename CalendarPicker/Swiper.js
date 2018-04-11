@@ -24,13 +24,7 @@ export default class Swiper extends Component {
   constructor(props, context) {
     super(props, context);
     this.swipeConfig = Object.assign(swipeConfig, props.config);
-  }
 
-  componentWillReceiveProps(props) {
-    this.swipeConfig = Object.assign(swipeConfig, props.config);
-  }
-
-  componentWillMount() {
     const responderEnd = this._handlePanResponderEnd.bind(this);
     const shouldSetResponder = this._handleShouldSetPanResponder.bind(this);
     this._panResponder = PanResponder.create({ //stop JS beautify collapse
@@ -39,6 +33,12 @@ export default class Swiper extends Component {
       onPanResponderRelease: responderEnd,
       onPanResponderTerminate: responderEnd
     });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.config !== this.props.config) {
+      this.swipeConfig = Object.assign(swipeConfig, this.props.config);
+    }
   }
 
   _handleShouldSetPanResponder(evt, gestureState) {
