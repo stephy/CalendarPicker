@@ -25,8 +25,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
   <View
     syles={
       Object {
-        "height": 320,
-        "marginTop": 10,
+        "height": 640,
+        "marginTop": 20,
       }
     }
   >
@@ -37,8 +37,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           "alignSelf": "center",
           "backgroundColor": "rgba(0,0,0,0.0)",
           "flexDirection": "row",
-          "padding": 5,
-          "paddingBottom": 3,
+          "padding": 10,
+          "paddingBottom": 6,
         }
       }
     >
@@ -72,9 +72,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             Array [
               Array [
                 Object {
-                  "fontSize": 14,
-                  "marginBottom": 10,
-                  "width": 80,
+                  "fontSize": 28,
+                  "marginBottom": 20,
+                  "width": 160,
                 },
                 Object {
                   "textAlign": "left",
@@ -96,10 +96,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             Array [
               Object {
                 "color": "#000",
-                "fontSize": 16,
-                "marginBottom": 10,
+                "fontSize": 32,
+                "marginBottom": 20,
                 "textAlign": "center",
-                "width": 180,
+                "width": 360,
               },
               undefined,
             ]
@@ -140,9 +140,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             Array [
               Array [
                 Object {
-                  "fontSize": 14,
-                  "marginBottom": 10,
-                  "width": 80,
+                  "fontSize": 28,
+                  "marginBottom": 20,
+                  "width": 160,
                 },
                 Object {
                   "textAlign": "right",
@@ -166,8 +166,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           "borderTopWidth": 1,
           "flexDirection": "row",
           "justifyContent": "center",
-          "paddingBottom": 10,
-          "paddingTop": 10,
+          "paddingBottom": 20,
+          "paddingTop": 20,
         }
       }
     >
@@ -179,9 +179,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -197,9 +197,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -215,9 +215,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -233,9 +233,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -251,9 +251,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -269,9 +269,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -287,9 +287,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -318,9 +318,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -328,10 +328,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
-                "width": 30,
+                "width": 60,
               }
             }
           >
@@ -352,11 +352,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "borderRadius": 30,
-                  "height": 30,
+                  "borderRadius": 60,
+                  "height": 60,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "width": 30,
+                  "width": 60,
                 }
               }
               testID={undefined}
@@ -370,7 +370,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   }
                 }
               />
@@ -382,9 +382,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -392,10 +392,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
-                "width": 30,
+                "width": 60,
               }
             }
           >
@@ -416,11 +416,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "borderRadius": 30,
-                  "height": 30,
+                  "borderRadius": 60,
+                  "height": 60,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "width": 30,
+                  "width": 60,
                 }
               }
               testID={undefined}
@@ -434,7 +434,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   }
                 }
               />
@@ -446,9 +446,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -456,10 +456,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
-                "width": 30,
+                "width": 60,
               }
             }
           >
@@ -480,11 +480,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "borderRadius": 30,
-                  "height": 30,
+                  "borderRadius": 60,
+                  "height": 60,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "width": 30,
+                  "width": 60,
                 }
               }
               testID={undefined}
@@ -498,7 +498,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   }
                 }
               />
@@ -510,9 +510,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -520,10 +520,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
-                "width": 30,
+                "width": 60,
               }
             }
           >
@@ -544,11 +544,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "borderRadius": 30,
-                  "height": 30,
+                  "borderRadius": 60,
+                  "height": 60,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "width": 30,
+                  "width": 60,
                 }
               }
               testID={undefined}
@@ -562,7 +562,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   }
                 }
               />
@@ -574,9 +574,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -584,10 +584,10 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
-                "width": 30,
+                "width": 60,
               }
             }
           >
@@ -608,11 +608,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "borderRadius": 30,
-                  "height": 30,
+                  "borderRadius": 60,
+                  "height": 60,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "width": 30,
+                  "width": 60,
                 }
               }
               testID={undefined}
@@ -626,7 +626,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   }
                 }
               />
@@ -639,9 +639,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -664,11 +664,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -683,7 +683,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -701,9 +701,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -726,11 +726,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -745,7 +745,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -771,9 +771,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -796,11 +796,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -815,7 +815,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -833,9 +833,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -858,11 +858,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -877,7 +877,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -895,9 +895,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -920,11 +920,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -939,7 +939,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -957,9 +957,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -982,11 +982,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1001,7 +1001,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1019,9 +1019,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1044,11 +1044,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1063,7 +1063,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1081,9 +1081,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1106,11 +1106,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1125,7 +1125,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1143,9 +1143,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1168,11 +1168,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1187,7 +1187,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1213,9 +1213,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1238,11 +1238,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1257,7 +1257,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1275,9 +1275,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1300,11 +1300,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1319,7 +1319,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1337,9 +1337,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1362,11 +1362,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1381,7 +1381,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1399,9 +1399,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1424,11 +1424,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1443,7 +1443,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1461,9 +1461,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1486,11 +1486,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1505,7 +1505,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1523,9 +1523,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1548,11 +1548,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1567,7 +1567,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1585,9 +1585,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1610,11 +1610,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1629,7 +1629,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1655,9 +1655,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1680,11 +1680,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1699,7 +1699,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1717,9 +1717,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1742,11 +1742,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1761,7 +1761,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1779,9 +1779,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1804,11 +1804,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1823,7 +1823,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1841,9 +1841,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1866,11 +1866,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1885,7 +1885,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1903,9 +1903,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1928,11 +1928,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -1947,7 +1947,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -1965,9 +1965,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -1990,11 +1990,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2009,7 +2009,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2027,9 +2027,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -2052,11 +2052,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2071,7 +2071,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2097,9 +2097,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -2122,11 +2122,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2141,7 +2141,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2159,9 +2159,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -2184,11 +2184,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2203,7 +2203,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2221,9 +2221,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -2246,11 +2246,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2265,7 +2265,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2283,9 +2283,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -2308,11 +2308,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2327,7 +2327,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2345,9 +2345,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -2370,11 +2370,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2389,7 +2389,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2407,9 +2407,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -2432,11 +2432,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2451,7 +2451,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2469,9 +2469,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -2494,11 +2494,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2513,7 +2513,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2539,9 +2539,9 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
               Object {
                 "alignItems": "center",
                 "backgroundColor": "rgba(0,0,0,0.0)",
-                "height": 40,
+                "height": 80,
                 "justifyContent": "center",
-                "width": 50,
+                "width": 100,
               },
               undefined,
             ]
@@ -2564,11 +2564,11 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
                 "opacity": 1,
-                "width": 30,
+                "width": 60,
               }
             }
             testID={undefined}
@@ -2583,7 +2583,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   },
                   undefined,
                   Object {},
@@ -2633,8 +2633,8 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
   <View
     syles={
       Object {
-        "height": 320,
-        "marginTop": 10,
+        "height": 640,
+        "marginTop": 20,
       }
     }
   >
@@ -2645,8 +2645,8 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           "alignSelf": "center",
           "backgroundColor": "rgba(0,0,0,0.0)",
           "flexDirection": "row",
-          "padding": 5,
-          "paddingBottom": 3,
+          "padding": 10,
+          "paddingBottom": 6,
         }
       }
     >
@@ -2680,9 +2680,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Array [
               Array [
                 Object {
-                  "fontSize": 14,
-                  "marginBottom": 10,
-                  "width": 80,
+                  "fontSize": 28,
+                  "marginBottom": 20,
+                  "width": 160,
                 },
                 Object {
                   "textAlign": "left",
@@ -2704,10 +2704,10 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Array [
               Object {
                 "color": "#000",
-                "fontSize": 16,
-                "marginBottom": 10,
+                "fontSize": 32,
+                "marginBottom": 20,
                 "textAlign": "center",
-                "width": 180,
+                "width": 360,
               },
               undefined,
             ]
@@ -2748,9 +2748,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Array [
               Array [
                 Object {
-                  "fontSize": 14,
-                  "marginBottom": 10,
-                  "width": 80,
+                  "fontSize": 28,
+                  "marginBottom": 20,
+                  "width": 160,
                 },
                 Object {
                   "textAlign": "right",
@@ -2774,8 +2774,8 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           "borderTopWidth": 1,
           "flexDirection": "row",
           "justifyContent": "center",
-          "paddingBottom": 10,
-          "paddingTop": 10,
+          "paddingBottom": 20,
+          "paddingTop": 20,
         }
       }
     >
@@ -2787,9 +2787,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -2805,9 +2805,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -2823,9 +2823,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -2841,9 +2841,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -2859,9 +2859,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -2877,9 +2877,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -2895,9 +2895,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           Array [
             Object {
               "color": "#000",
-              "fontSize": 12,
+              "fontSize": 24,
               "textAlign": "center",
-              "width": 50,
+              "width": 100,
             },
             undefined,
           ]
@@ -2926,9 +2926,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -2936,10 +2936,10 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
-                "width": 30,
+                "width": 60,
               }
             }
           >
@@ -2960,11 +2960,11 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "borderRadius": 30,
-                  "height": 30,
+                  "borderRadius": 60,
+                  "height": 60,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "width": 30,
+                  "width": 60,
                 }
               }
               testID={undefined}
@@ -2978,7 +2978,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   }
                 }
               />
@@ -2990,9 +2990,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3000,10 +3000,10 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
-                "width": 30,
+                "width": 60,
               }
             }
           >
@@ -3024,11 +3024,11 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "borderRadius": 30,
-                  "height": 30,
+                  "borderRadius": 60,
+                  "height": 60,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "width": 30,
+                  "width": 60,
                 }
               }
               testID={undefined}
@@ -3042,7 +3042,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   }
                 }
               />
@@ -3054,9 +3054,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3064,10 +3064,10 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
-                "width": 30,
+                "width": 60,
               }
             }
           >
@@ -3088,11 +3088,11 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "borderRadius": 30,
-                  "height": 30,
+                  "borderRadius": 60,
+                  "height": 60,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "width": 30,
+                  "width": 60,
                 }
               }
               testID={undefined}
@@ -3106,7 +3106,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   }
                 }
               />
@@ -3118,9 +3118,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3128,10 +3128,10 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             style={
               Object {
                 "alignSelf": "center",
-                "borderRadius": 30,
-                "height": 30,
+                "borderRadius": 60,
+                "height": 60,
                 "justifyContent": "center",
-                "width": 30,
+                "width": 60,
               }
             }
           >
@@ -3152,11 +3152,11 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
               style={
                 Object {
                   "alignSelf": "center",
-                  "borderRadius": 30,
-                  "height": 30,
+                  "borderRadius": 60,
+                  "height": 60,
                   "justifyContent": "center",
                   "opacity": 1,
-                  "width": 30,
+                  "width": 60,
                 }
               }
               testID={undefined}
@@ -3170,7 +3170,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                   Object {
                     "alignSelf": "center",
                     "color": "#000",
-                    "fontSize": 14,
+                    "fontSize": 28,
                   }
                 }
               />
@@ -3182,9 +3182,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3198,7 +3198,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3212,9 +3212,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3228,7 +3228,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3242,9 +3242,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3258,7 +3258,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3280,9 +3280,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3296,7 +3296,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3310,9 +3310,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3326,7 +3326,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3340,9 +3340,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3356,7 +3356,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3370,9 +3370,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3386,7 +3386,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3400,9 +3400,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3416,7 +3416,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3430,9 +3430,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3446,7 +3446,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3460,9 +3460,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3476,7 +3476,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3498,9 +3498,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3514,7 +3514,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3528,9 +3528,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3544,7 +3544,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3558,9 +3558,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3574,7 +3574,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3588,9 +3588,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3604,7 +3604,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3618,9 +3618,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3634,7 +3634,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3648,9 +3648,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3664,7 +3664,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3678,9 +3678,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3694,7 +3694,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3716,9 +3716,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3732,7 +3732,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3746,9 +3746,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3762,7 +3762,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3776,9 +3776,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3792,7 +3792,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3806,9 +3806,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3822,7 +3822,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3836,9 +3836,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3852,7 +3852,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3866,9 +3866,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3882,7 +3882,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3896,9 +3896,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3912,7 +3912,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3934,9 +3934,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3950,7 +3950,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3964,9 +3964,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -3980,7 +3980,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -3994,9 +3994,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -4010,7 +4010,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -4024,9 +4024,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -4040,7 +4040,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -4054,9 +4054,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -4070,7 +4070,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -4084,9 +4084,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -4100,7 +4100,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
@@ -4114,9 +4114,9 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
             Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.0)",
-              "height": 40,
+              "height": 80,
               "justifyContent": "center",
-              "width": 50,
+              "width": 100,
             }
           }
         >
@@ -4130,7 +4130,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 Object {
                   "alignSelf": "center",
                   "color": "#BBBBBB",
-                  "fontSize": 14,
+                  "fontSize": 28,
                   "justifyContent": "center",
                 },
               ]
