@@ -1,5 +1,5 @@
 import React from 'react';
-import uuid from 'uuid';
+import uuid from 'uuid/v4';
 import {
   View,
   Text,
