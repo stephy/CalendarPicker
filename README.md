@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
 ```js
 
 let today = moment();
-let day = today.clone();
+let day = today.clone().startOf('month');
 let customDatesStyles = [];
 while(day.add(1, 'day').isSame(today, 'month')) {
   customDatesStyles.push({
@@ -295,7 +295,7 @@ render() {
     <CalendarPicker
       todayTextStyle={{fontWeight: 'bold'}}
       todayBackgroundColor={'transparent'}
-      customDatesStyles={this.state.selectedTab === 'tours' ? this.state.customTourDatesStyles : this.state.customRentalDatesStyles}
+      customDatesStyles={customDatesStyles}
       minDate={today}
     />
   );
