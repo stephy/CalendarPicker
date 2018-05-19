@@ -27,8 +27,8 @@ export default class CalendarPicker extends Component {
     this.state = {
       currentMonth: null,
       currentYear: null,
-      selectedStartDate: null,
-      selectedEndDate: null,
+      selectedStartDate: props.selectedStartDate || null,
+      selectedEndDate: props.selectedEndDate ||null,
       styles: {},
       ...this.updateScaledStyles(props),
       ...this.updateMonthYear(props.initialDate)
@@ -53,7 +53,7 @@ export default class CalendarPicker extends Component {
     let doStateUpdate = false;
 
     if (prevProps.width !== this.props.width ||
-        prevProps.height !== this.props.height)
+      prevProps.height !== this.props.height)
     {
       newStyles = this.updateScaledStyles(this.props);
       doStateUpdate = true;
@@ -65,8 +65,15 @@ export default class CalendarPicker extends Component {
       doStateUpdate = true;
     }
 
+    if (this.props.selectedStartDate && this.props.selectedEndDate &&
+      !moment(prevState.selectedStartDate).isSame(this.props.selectedStartDate, 'day') &&
+      !moment(prevState.selectedEndDate).isSame(this.props.selectedEndDate, 'day')) {
+      doStateUpdate = true;
+    }
+
     if (doStateUpdate) {
-      this.setState({...newStyles, ...newMonthYear});
+      const { selectedStartDate = null, selectedEndDate = null } = this.props;
+      this.setState({...newStyles, ...newMonthYear, selectedStartDate, selectedEndDate});
     }
   }
 
@@ -111,9 +118,9 @@ export default class CalendarPicker extends Component {
     const date = moment({year: currentYear, month: currentMonth, day});
 
     if (allowRangeSelection &&
-        selectedStartDate &&
-        date.isSameOrAfter(selectedStartDate) &&
-        !selectedEndDate) {
+      selectedStartDate &&
+      date.isSameOrAfter(selectedStartDate) &&
+      !selectedEndDate) {
       this.setState({
         selectedEndDate: date,
       });
