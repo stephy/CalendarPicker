@@ -106,7 +106,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
           }
         >
           May
-
+           
           2018
         </Text>
       </View>
@@ -1542,7 +1542,6 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
             style={
               Object {
                 "alignSelf": "center",
-                "backgroundColor": "#CCCCCC",
                 "borderRadius": 60,
                 "height": 60,
                 "justifyContent": "center",
@@ -1565,9 +1564,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {
-                    "color": "#000000",
-                  },
+                  Object {},
                   undefined,
                 ]
               }
@@ -1801,6 +1798,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
             style={
               Object {
                 "alignSelf": "center",
+                "backgroundColor": "#CCCCCC",
                 "borderRadius": 60,
                 "height": 60,
                 "justifyContent": "center",
@@ -1823,7 +1821,9 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
+                  Object {
+                    "color": "#000000",
+                  },
                   undefined,
                 ]
               }
@@ -2524,7 +2524,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
           }
         >
           December
-
+           
           2017
         </Text>
       </View>
@@ -5132,7 +5132,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
           }
         >
           December
-
+           
           2017
         </Text>
       </View>

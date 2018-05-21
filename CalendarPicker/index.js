@@ -65,15 +65,20 @@ export default class CalendarPicker extends Component {
       doStateUpdate = true;
     }
 
-    if (this.props.selectedStartDate && this.props.selectedEndDate &&
-      !moment(prevState.selectedStartDate).isSame(this.props.selectedStartDate, 'day') &&
-      !moment(prevState.selectedEndDate).isSame(this.props.selectedEndDate, 'day')) {
+    let selectedDateRanges = {};
+    if (this.props.selectedStartDate && !moment(prevState.selectedStartDate).isSame(this.props.selectedStartDate, 'day') ||
+      this.props.selectedEndDate && !moment(prevState.selectedEndDate).isSame(this.props.selectedEndDate, 'day')) {
+      const { selectedStartDate = null, selectedEndDate = null } = this.props;
+      selectedDateRanges = {
+        selectedStartDate,
+        selectedEndDate
+      };
       doStateUpdate = true;
     }
 
     if (doStateUpdate) {
-      const { selectedStartDate = null, selectedEndDate = null } = this.props;
-      this.setState({...newStyles, ...newMonthYear, selectedStartDate, selectedEndDate});
+
+      this.setState({...newStyles, ...newMonthYear, ...selectedDateRanges});
     }
   }
 
@@ -83,8 +88,6 @@ export default class CalendarPicker extends Component {
       selectedDayColor,
       selectedDayTextColor,
       todayBackgroundColor,
-      selectedStartDate,
-      selectedEndDate,
       width, height,
     } = props;
 
