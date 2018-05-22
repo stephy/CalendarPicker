@@ -4,7 +4,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import CalenderPicker from '../index';
 
-
 describe('CalendarPicker', function() {
 	it('It renders calendar picker', () => {
 		const CalendarPicker = renderer.create(
@@ -34,4 +33,17 @@ describe('CalendarPicker', function() {
 		expect(CalendarPicker).toMatchSnapshot();
 	});
 
+	it('It handle selectedStartDate and selectedEndDate props', () => {
+		const selectedStartDate = new Date(2018, 5, 1);
+		const selectedEndDate = new Date(2018, 5, 15);
+		const CalendarPicker = renderer.create(
+			<CalenderPicker
+				allowRangeSelection={true}
+				selectedStartDate={selectedStartDate}
+				selectedEndDate={selectedEndDate}
+				onDateChange={() => {}}
+			/>
+		).toJSON();
+		expect(CalendarPicker).toMatchSnapshot();
+	});
 });
