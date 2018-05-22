@@ -4,7 +4,6 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import CalenderPicker from '../index';
 
-
 describe('CalendarPicker', function() {
 	it('It renders calendar picker', () => {
 		const CalendarPicker = renderer.create(
