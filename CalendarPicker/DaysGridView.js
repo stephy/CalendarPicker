@@ -45,7 +45,9 @@ export default function DaysGridView(props) {
   // The weekday() method returns the day of the week (from 0 to 6) for the specified date.
   // Note: Sunday is 0, Monday is 1, and so on. We will need this to know what
   // day of the week to show day 1
-  const firstWeekDay = firstDayOfMonth.weekday();
+  // timezone issue fix:
+  // use isoWeekday() instead of weekday() to get the consistent weekday of all locale
+  const firstWeekDay = firstDayOfMonth.isoWeekday();
   // fill up an array of days with the amount of days in the current month
   const days = Array.apply(null, {length: totalDays}).map(Number.call, Number);
   const guideArray = [ 0, 1, 2, 3, 4, 5, 6 ];
