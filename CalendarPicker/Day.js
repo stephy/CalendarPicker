@@ -151,7 +151,7 @@ export default function Day(props) {
       if (selectedStartDate &&
           !selectedEndDate &&
           isThisDaySameAsSelectedStart) {
-          daySelectedStyle = [styles.selectedDay, selectedRangeStyle, selectedRangeStartStyle || styles.selectedDayBackground];
+          daySelectedStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
           selectedDayColorStyle = styles.selectedDayLabel;
       }
     }
@@ -161,7 +161,7 @@ export default function Day(props) {
         <TouchableOpacity
           style={[customDateStyle, daySelectedStyle, propSelectedDayStyle ]}
           onPress={() => onPressDay(day) }>
-          <Text style={[styles.dayLabel, textStyle, selectedDayColorStyle, customTextStyle]}>
+          <Text style={[styles.dayLabel, textStyle, customTextStyle, selectedDayColorStyle]}>
             { day }
           </Text>
         </TouchableOpacity>
