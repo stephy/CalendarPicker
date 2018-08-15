@@ -287,6 +287,8 @@ while(day.add(1, 'day').isSame(today, 'month')) {
     date: day.clone(),
     // Random colors
     style: {backgroundColor: '#'+('#00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6)},
+    textStyle: {color: 'black'}, // sets the font color
+    containerStyle: [], // extra styling for day container
   });
 }
 
