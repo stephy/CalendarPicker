@@ -35,6 +35,7 @@ export default function DaysGridView(props) {
     disabledDates,
     minRangeDuration,
     maxRangeDuration,
+    planedDayes
   } = props;
   const today = moment();
   // let's get the total of days in this month, we need the year as well, since
@@ -53,12 +54,30 @@ export default function DaysGridView(props) {
   // Get the starting index, based upon whether we are using monday or sunday as first day.
   const startIndex = (startFromMonday) ? (firstWeekDay - 1) % 7 : firstWeekDay;
 
+  function isMarkedDay(day, month, year, compareDateArr) {
+    let newDate = (month + 1) + '/' + day + '/' + year;
+
+    for (let i = 0; i < compareDateArr.length; i++) {
+      let planedDay = +compareDateArr[i].format('D'),
+          planedMonth = +compareDateArr[i].format('M'),
+          planedYear = +compareDateArr[i].format('YYYY');
+
+        if ((planedDay === day) && (planedMonth === (month + 1)) && (planedYear === year)) {
+          return true
+        }
+    }
+
+  }
+
   function generateColumns(i) {
     const column = guideArray.map(index => {
       if (i === 0) { // for first row, let's start showing the days on the correct weekday
         if (index >= startIndex) {
           if (days.length > 0) {
             const day= days.shift() + 1;
+
+            const marked = isMarkedDay(day, month, year, planedDayes);
+
             return (
               <Day
                 key={day}
@@ -82,6 +101,7 @@ export default function DaysGridView(props) {
                 selectedRangeStyle={selectedRangeStyle}
                 selectedRangeEndStyle={selectedRangeEndStyle}
                 customDatesStyles={customDatesStyles}
+                marked={marked}
               />
             );
           }
@@ -96,6 +116,9 @@ export default function DaysGridView(props) {
       } else {
         if (days.length > 0) {
           const day= days.shift() + 1;
+
+          const marked = isMarkedDay(day, month, year, planedDayes);
+
           return (
             <Day
               key={day}
@@ -119,6 +142,7 @@ export default function DaysGridView(props) {
               selectedRangeStyle={selectedRangeStyle}
               selectedRangeEndStyle={selectedRangeEndStyle}
               customDatesStyles={customDatesStyles}
+              marked={marked}
             />
           );
         }

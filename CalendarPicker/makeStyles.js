@@ -19,16 +19,20 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     },
 
     dayButton: {
-      width: 30*scaler,
-      height: 30*scaler,
-      borderRadius: 30*scaler,
+      width: 35*scaler,
+      height: 35*scaler,
+      borderRadius: 3*scaler,
+      borderWidth: 1,
+      borderColor: 'rgba(255,255,255,0.25)',
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     dayLabel: {
-      fontSize: 14*scaler,
-      color: '#000',
+      fontSize: 13*scaler,
+      fontWeight: 'bold',
+      letterSpacing: 0.15,
+      color: '#FFF',
       alignSelf: 'center'
     },
 
@@ -37,15 +41,17 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     },
 
     dayLabelsWrapper: {
+      width: '100%',
       flexDirection: 'row',
       borderBottomWidth: 1,
-      borderTopWidth: 1,
-      paddingTop: 10*scaler,
-      paddingBottom: 10*scaler,
+      borderBottomColor: 'rgba(255,255,255,0.25)',
+      // borderTopWidth: 1,
+      paddingTop: 7*scaler,
+      paddingBottom: 7*scaler,
       alignSelf: 'center',
       justifyContent: 'center',
-      backgroundColor: 'rgba(0,0,0,0.0)',
-      borderColor: 'rgba(0,0,0,0.2)'
+      // backgroundColor: 'rgba(0,0,0,0.0)',
+      // borderColor: 'rgba(0,0,0,0.2)'
     },
 
     daysWrapper: {
@@ -54,9 +60,12 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     },
 
     dayLabels: {
-      width: 50*scaler,
-      fontSize: 12*scaler,
-      color: '#000',
+      width: 49*scaler,
+      fontSize: 14*scaler,
+      color: '#FFF',
+      letterSpacing: 0.2,
+      fontWeight: '500',
+      fontFamily: 'Montserrat',
       textAlign: 'center'
     },
 
@@ -73,19 +82,28 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     },
 
     selectedToday: {
-      width: 30*scaler,
-      height:30*scaler,
-      backgroundColor: TODAY_BG_COLOR,
-      borderRadius: 30*scaler,
+      // width: 30*scaler,
+      // height:30*scaler,
+      // backgroundColor: TODAY_BG_COLOR,
+      // borderRadius: 30*scaler,
+      // alignSelf: 'center',
+      // justifyContent: 'center'
+      width: 35*scaler,
+      height: 35*scaler,
+      borderRadius: 3*scaler,
+      // borderWidth: 1,
+      // borderColor: 'rgba(255,255,255,0.25)',
+      backgroundColor: '#FFF',
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     dayWrapper: {
+      margin: 7*scaler,
       alignItems: 'center',
       justifyContent: 'center',
-      width: 50*scaler,
-      height: 40*scaler,
+      width: 35*scaler,
+      height: 35*scaler,
       backgroundColor: 'rgba(0,0,0,0.0)'
     },
 

@@ -10,9 +10,9 @@ export default function Day(props) {
   const { styles } = props;
   return(
     <View style={styles.dayWrapper}>
-      <View style={styles.dayButton}>
+      <View /*style={styles.dayButton}*/>
         <TouchableOpacity
-          style={styles.dayButton}
+          /*style={styles.dayButton}*/
         >
           <Text style={styles.dayLabel}>
           </Text>
