@@ -12,6 +12,7 @@ import Weekdays from './Weekdays';
 import DaysGridView from './DaysGridView';
 import Swiper from './Swiper';
 import moment from 'moment';
+import LinearGradient from 'react-native-linear-gradient';
 
 const SWIPE_LEFT = 'SWIPE_LEFT';
 const SWIPE_RIGHT = 'SWIPE_RIGHT';
@@ -229,6 +230,7 @@ export default class CalendarPicker extends Component {
       maxRangeDuration,
       swipeConfig,
       customDatesStyles,
+      planedDayes
     } = this.props;
 
     let disabledDatesTime = [];
@@ -288,36 +290,57 @@ export default class CalendarPicker extends Component {
             nextTitle={nextTitle}
             textStyle={textStyle}
           />
-          <Weekdays
-            styles={styles}
-            startFromMonday={startFromMonday}
-            weekdays={weekdays}
-            textStyle={textStyle}
-          />
-          <DaysGridView
-            month={currentMonth}
-            year={currentYear}
-            styles={styles}
-            onPressDay={this.handleOnPressDay}
-            disabledDates={disabledDatesTime}
-            minRangeDuration={minRangeDurationTime}
-            maxRangeDuration={maxRangeDurationTime}
-            startFromMonday={startFromMonday}
-            allowRangeSelection={allowRangeSelection}
-            selectedStartDate={selectedStartDate && moment(selectedStartDate)}
-            selectedEndDate={selectedEndDate && moment(selectedEndDate)}
-            minDate={minDate && moment(minDate)}
-            maxDate={maxDate && moment(maxDate)}
-            textStyle={textStyle}
-            todayTextStyle={todayTextStyle}
-            selectedDayStyle={selectedDayStyle}
-            selectedRangeStartStyle={selectedRangeStartStyle}
-            selectedRangeStyle={selectedRangeStyle}
-            selectedRangeEndStyle={selectedRangeEndStyle}
-            customDatesStyles={customDatesStyles}
-          />
+          <LinearGradient
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            colors={['#484AAF', '#5880E6']}
+            style={customStyles.linearGradient}
+          >
+            <Weekdays
+              styles={styles}
+              startFromMonday={startFromMonday}
+              weekdays={weekdays}
+              textStyle={textStyle}
+            />
+            <DaysGridView
+              month={currentMonth}
+              year={currentYear}
+              styles={styles}
+              onPressDay={this.handleOnPressDay}
+              disabledDates={disabledDatesTime}
+              minRangeDuration={minRangeDurationTime}
+              maxRangeDuration={maxRangeDurationTime}
+              startFromMonday={startFromMonday}
+              allowRangeSelection={allowRangeSelection}
+              selectedStartDate={selectedStartDate && moment(selectedStartDate)}
+              selectedEndDate={selectedEndDate && moment(selectedEndDate)}
+              minDate={minDate && moment(minDate)}
+              maxDate={maxDate && moment(maxDate)}
+              textStyle={textStyle}
+              todayTextStyle={todayTextStyle}
+              selectedDayStyle={selectedDayStyle}
+              selectedRangeStartStyle={selectedRangeStartStyle}
+              selectedRangeStyle={selectedRangeStyle}
+              selectedRangeEndStyle={selectedRangeEndStyle}
+              customDatesStyles={customDatesStyles}
+              planedDayes={planedDayes}
+            />
+          </LinearGradient>
         </View>
       </Swiper>
     );
   }
 }
+
+const customStyles = StyleSheet.create({
+  linearGradient: {
+    borderRadius: 5,
+    shadowColor: 'rgba(69,118,200,0.5)',
+    shadowOpacity: 1,
+    shadowRadius: 10,
+    shadowOffset: {
+      height: 4,
+      width: 10
+    }
+  },
+});

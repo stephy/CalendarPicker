@@ -1,10 +1,38 @@
 {
-  "name": "react-native-calendar-picker",
-  "version": "5.20.0",
-  "description": "Calendar Picker Component for React Native",
-  "engines": {
-    "node": ">=4.0.0"
+  "_from": "git+https://github.com/SovaJob/CalendarPicker.git",
+  "_id": "react-native-calendar-picker@5.20.0",
+  "_inBundle": false,
+  "_location": "/react-native-calendar-picker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/SovaJob/CalendarPicker.git",
+    "rawSpec": "https://github.com/SovaJob/CalendarPicker.git",
+    "saveSpec": "git+https://github.com/SovaJob/CalendarPicker.git",
+    "fetchSpec": "https://github.com/SovaJob/CalendarPicker.git",
+    "gitCommittish": null
   },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/SovaJob/CalendarPicker.git#742d55511a1d1081b43407e086cb8f798b6a9a83",
+  "_spec": "https://github.com/SovaJob/CalendarPicker.git",
+  "_where": "/Users/aleksandrsova/Airlog",
+  "author": {
+    "name": "Stephani Alves",
+    "email": "alves@stephanimoroni.com"
+  },
+  "bugs": {
+    "url": "https://github.com/stephy/CalendarPicker/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "uuid": "3.2.1"
+  },
+  "deprecated": false,
+  "description": "Calendar Picker Component for React Native",
   "devDependencies": {
     "babel-jest": "^22.4.3",
     "jest": "^22.4.3",
@@ -14,26 +42,13 @@
     "react-native-scripts": "0.0.25",
     "react-test-renderer": "~15.4.1"
   },
-  "peerDependencies": {
-    "moment": "*",
-    "react": "*",
-    "react-native": "*"
+  "directories": {},
+  "engines": {
+    "node": ">=4.0.0"
   },
-  "main": "./CalendarPicker",
-  "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "node_modules/jest/bin/jest.js",
-    "test:watch": "node_modules/jest/bin/jest.js --watch"
-  },
+  "homepage": "https://github.com/stephy/CalendarPicker",
   "jest": {
     "preset": "react-native"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/stephy/CalendarPicker"
   },
   "keywords": [
     "calendar",
@@ -45,24 +60,31 @@
     "day",
     "picker"
   ],
-  "author": {
-    "name": "Stephani Alves",
-    "email": "alves@stephanimoroni.com"
-  },
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/stephy/CalendarPicker/issues"
-  },
-  "homepage": "https://github.com/stephy/CalendarPicker",
+  "main": "./CalendarPicker",
   "maintainers": [
     {
       "name": "stephy",
       "email": "alves@stephanimoroni.com"
     }
   ],
-  "directories": {},
-  "dependencies": {
-    "prop-types": "^15.6.0",
-    "uuid": "3.2.1"
-  }
+  "name": "react-native-calendar-picker",
+  "peerDependencies": {
+    "moment": "*",
+    "react": "*",
+    "react-native": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stephy/CalendarPicker.git"
+  },
+  "scripts": {
+    "android": "react-native-scripts android",
+    "eject": "react-native-scripts eject",
+    "ios": "react-native-scripts ios",
+    "start": "react-native-scripts start",
+    "test": "node_modules/jest/bin/jest.js",
+    "test:watch": "node_modules/jest/bin/jest.js --watch"
+  },
+  "version": "5.20.0"
 }

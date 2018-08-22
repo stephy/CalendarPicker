@@ -4,7 +4,6 @@ import {
   Text,
 } from 'react-native';
 import PropTypes from 'prop-types';
-//test
 
 export default function Controls({ styles, textStyles, label, onPressControl }) {
   return (
