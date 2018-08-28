@@ -60,24 +60,24 @@ export default function Day(props) {
     dateIsDisabled = true;
   }
 
-  if (allowRangeSelection && minRangeDuration && selectedStartDate && thisDay.valueOf() > selectedStartDate.valueOf()) {
+  if (allowRangeSelection && minRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
     if (Array.isArray(minRangeDuration)) {
-      let i = minRangeDuration.findIndex((i)=>(i.date === selectedStartDate.valueOf()));
-      if (i >= 0 && selectedStartDate.valueOf() + minRangeDuration[i].minDuration * 86400000 > thisDay.valueOf()) {
+      let i = minRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate, 'day')) );
+      if (i >= 0 && moment(selectedStartDate).add(minRangeDuration[i].minDuration, 'day').isAfter(thisDay, 'day') ) {
         dateIsBeforeMinDuration = true;
       }
-    } else if(selectedStartDate.valueOf() + minRangeDuration * 86400000 > thisDay.valueOf()) {
+    } else if(moment(selectedStartDate).add(minRangeDuration, 'day').isAfter(thisDay, 'day')) {
       dateIsBeforeMinDuration = true;
     }
   }
 
-	if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.valueOf() > selectedStartDate.valueOf()) {
+	if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
 		if (Array.isArray(maxRangeDuration)) {
-			let i = maxRangeDuration.findIndex((i)=>(i.date === selectedStartDate.valueOf()));
-			if (i >= 0 && selectedStartDate.valueOf() + maxRangeDuration[i].maxDuration * 86400000 < thisDay.valueOf()) {
+			let i = maxRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate, 'day')) );
+			if (i >= 0 && moment(selectedStartDate).add(maxRangeDuration[i].maxDuration, 'day').isBefore(thisDay, 'day') ) {
 				dateIsAfterMaxDuration = true;
 			}
-		} else if(selectedStartDate.valueOf() + maxRangeDuration * 86400000 < thisDay.valueOf()) {
+    } else if(moment(selectedStartDate).add(maxRangeDuration, 'day').isBefore(thisDay, 'day')) {
 			dateIsAfterMaxDuration = true;
 		}
 	}
