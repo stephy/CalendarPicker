@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
 | **`enableSwipe`** | `Boolean` | Optional. Whether to enable swiping. Default is `true` |
 | **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns Moment `date` as first parameter.|
 | **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns Moment `date` as first parameter.|
+| **`onSwipe`** | `Function` | Optional. Callback when swipe event is triggered. Returns swipe direction as first parameter.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
