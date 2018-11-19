@@ -33,6 +33,8 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     },
 
     selectedDayLabel: {
+      height: 30*scaler,
+      width: 30*scaler,
       color: SELECTED_TEXT_COLOR,
     },
 
