@@ -1,15 +1,11 @@
-import React from 'react';
-import uuid from 'uuid/v4';
-import {
-  View,
-  Text,
-  ViewPropTypes as RNViewPropTypes,
-} from 'react-native';
-import PropTypes from 'prop-types';
-import Day from './Day';
-import EmptyDay from './EmptyDay';
-import { Utils } from './Utils';
-import moment from 'moment';
+import React from "react";
+import uuid from "uuid/v4";
+import { View, Text, ViewPropTypes as RNViewPropTypes } from "react-native";
+import PropTypes from "prop-types";
+import Day from "./Day";
+import EmptyDay from "./EmptyDay";
+import { Utils } from "./Utils";
+import moment from "moment";
 
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
@@ -35,6 +31,7 @@ export default function DaysGridView(props) {
     disabledDates,
     minRangeDuration,
     maxRangeDuration,
+    disableFunc
   } = props;
   const today = moment();
   // let's get the total of days in this month, we need the year as well, since
@@ -47,18 +44,22 @@ export default function DaysGridView(props) {
   // See https://github.com/stephy/CalendarPicker/issues/49
   const firstWeekDay = firstDayOfMonth.isoWeekday();
   // fill up an array of days with the amount of days in the current month
-  const days = Array.apply(null, {length: totalDays}).map(Number.call, Number);
-  const guideArray = [ 0, 1, 2, 3, 4, 5, 6 ];
+  const days = Array.apply(null, { length: totalDays }).map(
+    Number.call,
+    Number
+  );
+  const guideArray = [0, 1, 2, 3, 4, 5, 6];
 
   // Get the starting index, based upon whether we are using monday or sunday as first day.
-  const startIndex = (startFromMonday) ? (firstWeekDay - 1) % 7 : firstWeekDay;
+  const startIndex = startFromMonday ? (firstWeekDay - 1) % 7 : firstWeekDay;
 
   function generateColumns(i) {
     const column = guideArray.map(index => {
-      if (i === 0) { // for first row, let's start showing the days on the correct weekday
+      if (i === 0) {
+        // for first row, let's start showing the days on the correct weekday
         if (index >= startIndex) {
           if (days.length > 0) {
-            const day= days.shift() + 1;
+            const day = days.shift() + 1;
             return (
               <Day
                 key={day}
@@ -73,6 +74,7 @@ export default function DaysGridView(props) {
                 minDate={minDate}
                 maxDate={maxDate}
                 disabledDates={disabledDates}
+                disableFunc={disableFunc}
                 minRangeDuration={minRangeDuration}
                 maxRangeDuration={maxRangeDuration}
                 textStyle={textStyle}
@@ -86,16 +88,11 @@ export default function DaysGridView(props) {
             );
           }
         } else {
-          return (
-            <EmptyDay
-              key={uuid()}
-              styles={styles}
-            />
-          );
+          return <EmptyDay key={uuid()} styles={styles} />;
         }
       } else {
         if (days.length > 0) {
-          const day= days.shift() + 1;
+          const day = days.shift() + 1;
           return (
             <Day
               key={day}
@@ -110,6 +107,7 @@ export default function DaysGridView(props) {
               minDate={minDate}
               maxDate={maxDate}
               disabledDates={disabledDates}
+              disableFunc={disableFunc}
               minRangeDuration={minRangeDuration}
               maxRangeDuration={maxRangeDuration}
               textStyle={textStyle}
@@ -123,18 +121,16 @@ export default function DaysGridView(props) {
           );
         }
       }
-
     });
     return column;
   }
   return (
     <View style={styles.daysWrapper}>
-      { guideArray.map(index => (
-          <View key={index} style={styles.weekRow}>
-            { generateColumns(index) }
-          </View>
-        ))
-      }
+      {guideArray.map(index => (
+        <View key={index} style={styles.weekRow}>
+          {generateColumns(index)}
+        </View>
+      ))}
     </View>
   );
 }
@@ -150,17 +146,20 @@ DaysGridView.propTypes = {
   selectedRangeStyle: ViewPropTypes.style,
   selectedRangeEndStyle: ViewPropTypes.style,
   todayTextStyle: Text.propTypes.style,
-  customDatesStyles: PropTypes.arrayOf(PropTypes.shape({
-    date: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-      PropTypes.instanceOf(moment)
-    ]),
-    containerStyle: ViewPropTypes.style,
-    style: ViewPropTypes.style,
-    textStyle: Text.propTypes.style,
-  })),
+  customDatesStyles: PropTypes.arrayOf(
+    PropTypes.shape({
+      date: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(Date),
+        PropTypes.instanceOf(moment)
+      ]),
+      containerStyle: ViewPropTypes.style,
+      style: ViewPropTypes.style,
+      textStyle: Text.propTypes.style
+    })
+  ),
   disabledDates: PropTypes.array,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
-}
+  disableFunc: PropTypes.func
+};
