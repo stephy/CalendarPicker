@@ -182,6 +182,10 @@ export default class CalendarPicker extends Component {
   }
 
   onSwipe(gestureName) {
+    if (typeof this.props.onSwipe === "function") {
+      this.props.onSwipe(gestureName);
+      return;
+    }
     switch (gestureName) {
       case SWIPE_LEFT:
         this.handleOnPressNext();
