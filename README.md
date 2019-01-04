@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
 | **`selectedRangeEndStyle`** | `ViewStyle` | Optional. Style for range selected end day. |
 | **`selectedRangeStyle`** | `ViewStyle` | Optional. Style for all days in range selection. |
 | **`disabledDates`** | `Array` | Optional. Specifies dates that cannot be selected. Array of Dates. |
-| **`disableFunc`** | `Function` | Optional. Function to disable dates, takes a 'moment' Object as  parameter, if the function return true on a date then it is disabled. For example the function `date => (date.day() === 6) || (date.day() === 0)` would disable all weekends |
+| **`disableFunc`** | `Function` | Optional. Function to disable dates, takes a `moment` Object from the node-module `moment` as  parameter, if the function return true on a date then it is disabled. For example the function `date => (date.day() === 6) || (date.day() === 0)` would disable all weekends. Keep in mind that if the function used is not correct then it will crash, also if the fuction is heavy it may slowdown the app. |
 | **`selectedStartDate`** | `Date` | Optional. Specifies a selected Start Date. |
 | **`selectedEndDate`** | `Date` | Optional. Specifies a selected End Date. |
 | **`minRangeDuration`** | `Number or Array` | Optional. Specifies a minimum range duration when using allowRangeSelection. Can either pass a number to be used for all dates or an Array of objects if the minimum range duration depends on the date `{date: Moment-parsable date, minDuration: Number` |
