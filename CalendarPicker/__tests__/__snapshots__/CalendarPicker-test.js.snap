@@ -105,9 +105,9 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
             ]
           }
         >
-          May
+          January
            
-          2018
+          2019
         </Text>
       </View>
       <View
@@ -494,8 +494,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -556,8 +556,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -618,8 +618,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -658,6 +658,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
             style={
               Object {
                 "alignSelf": "center",
+                "backgroundColor": "#CCCCCC",
                 "borderRadius": 60,
                 "height": 60,
                 "justifyContent": "center",
@@ -680,8 +681,10 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {
+                    "color": "#000000",
+                  },
                 ]
               }
             >
@@ -742,8 +745,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -812,8 +815,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -874,8 +877,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -936,8 +939,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -998,8 +1001,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1060,8 +1063,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1122,8 +1125,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1184,8 +1187,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1254,8 +1257,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1316,8 +1319,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1378,8 +1381,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1440,8 +1443,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1502,8 +1505,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1564,8 +1567,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1626,8 +1629,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1696,8 +1699,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1758,8 +1761,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1798,7 +1801,6 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
             style={
               Object {
                 "alignSelf": "center",
-                "backgroundColor": "#CCCCCC",
                 "borderRadius": 60,
                 "height": 60,
                 "justifyContent": "center",
@@ -1821,10 +1823,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {
-                    "color": "#000000",
-                  },
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1885,8 +1885,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -1947,8 +1947,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -2009,8 +2009,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -2071,8 +2071,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -2141,8 +2141,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -2203,8 +2203,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -2265,8 +2265,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -2327,8 +2327,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -2389,8 +2389,8 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3104,8 +3104,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3166,8 +3166,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3236,8 +3236,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3298,8 +3298,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3360,8 +3360,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3422,8 +3422,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3484,8 +3484,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3546,8 +3546,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3608,8 +3608,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3678,8 +3678,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3740,8 +3740,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3802,8 +3802,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3864,8 +3864,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3926,8 +3926,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -3988,8 +3988,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4050,8 +4050,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4120,8 +4120,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4182,8 +4182,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4244,8 +4244,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4306,8 +4306,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4368,8 +4368,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4430,8 +4430,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4492,8 +4492,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4562,8 +4562,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4624,8 +4624,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4686,8 +4686,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4748,8 +4748,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4810,8 +4810,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4872,8 +4872,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -4934,8 +4934,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
@@ -5004,8 +5004,8 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                     "fontSize": 28,
                   },
                   undefined,
-                  Object {},
                   undefined,
+                  Object {},
                 ]
               }
             >
