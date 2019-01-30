@@ -46,7 +46,7 @@ export default class CalendarPicker extends Component {
     scaleFactor: 375,
     enableSwipe: true,
     onDateChange: () => { console.log('onDateChange() not provided') },
-    enableDayPresses: true
+    enableDateChange: true
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -118,10 +118,10 @@ export default class CalendarPicker extends Component {
     const {
       allowRangeSelection,
       onDateChange,
-      enableDayPresses
+      enableDateChange
     } = this.props;
 
-    if(!enableDayPresses){
+    if(!enableDateChange){
       return;
     }
 
