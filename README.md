@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
 | **`height`** | `Number` | Optional. Height of CalendarPicker's container. Defaults to Dimensions height.|
 | **`swipeConfig`** | `Object` | Optional. Config passed to Swiper.|
 | **`enableSwipe`** | `Boolean` | Optional. Whether to enable swiping. Default is `true` |
+| **`enableDateChange`** | `Boolean` | Optional. Whether to enable pressing on day. Default is `true` |
 | **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns Moment `date` as first parameter.|
 | **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns Moment `date` as first parameter.|
 | **`onSwipe`** | `Function` | Optional. Callback when swipe event is triggered. Returns swipe direction as first parameter.|

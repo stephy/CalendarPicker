@@ -46,6 +46,7 @@ export default class CalendarPicker extends Component {
     scaleFactor: 375,
     enableSwipe: true,
     onDateChange: () => { console.log('onDateChange() not provided') },
+    enableDateChange: true
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -106,6 +107,7 @@ export default class CalendarPicker extends Component {
   }
 
   handleOnPressDay(day) {
+
     const {
       currentYear,
       currentMonth,
@@ -116,7 +118,12 @@ export default class CalendarPicker extends Component {
     const {
       allowRangeSelection,
       onDateChange,
+      enableDateChange
     } = this.props;
+
+    if(!enableDateChange){
+      return;
+    }
 
     const date = moment({year: currentYear, month: currentMonth, day});
 
