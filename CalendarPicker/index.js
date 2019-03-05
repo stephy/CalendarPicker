@@ -256,7 +256,8 @@ export default class CalendarPicker extends Component {
       minRangeDuration,
       maxRangeDuration,
       swipeConfig,
-      customDatesStyles
+      customDatesStyles,
+      enableDateChange
     } = this.props;
 
     let disabledDatesTime = [];
@@ -329,6 +330,7 @@ export default class CalendarPicker extends Component {
             textStyle={textStyle}
           />
           <DaysGridView
+            enableDateChange={enableDateChange}
             month={currentMonth}
             year={currentYear}
             styles={styles}
