@@ -30,6 +30,7 @@ export default function Day(props) {
     disabledDates,
     minRangeDuration,
     maxRangeDuration,
+    enableDateChange
   } = props;
 
   const thisDay = moment({year, month, day});
@@ -159,6 +160,7 @@ export default function Day(props) {
     return (
       <View style={[styles.dayWrapper, customContainerStyle]}>
         <TouchableOpacity
+          disabled={!enableDateChange}
           style={[customDateStyle, daySelectedStyle, propSelectedDayStyle ]}
           onPress={() => onPressDay(day) }>
           <Text style={[styles.dayLabel, textStyle, customTextStyle, selectedDayColorStyle]}>
