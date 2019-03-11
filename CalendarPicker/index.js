@@ -34,6 +34,7 @@ export default class CalendarPicker extends Component {
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
     this.handleOnPressDay = this.handleOnPressDay.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
+    this.resetSelections = this.resetSelections.bind(this);
   }
 
   static defaultProps = {
