@@ -12,7 +12,7 @@ function getBorderRadiusByShape(scaler, gridShape) {
   if (gridShape === 'square') {
     return 0;
   } else {
-    return 30 * scaler;
+    return 30*scaler;
   }
 }
 

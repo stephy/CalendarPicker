@@ -260,7 +260,7 @@ export default class CalendarPicker extends Component {
       maxRangeDuration,
       swipeConfig,
       customDatesStyles,
-      enableDateChange,
+      enableDateChange
     } = this.props;
 
     let disabledDatesTime = [];
