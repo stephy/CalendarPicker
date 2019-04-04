@@ -98,7 +98,8 @@ export default class CalendarPicker extends Component {
       selectedDayTextColor,
       todayBackgroundColor,
       width,
-      height
+      height,
+      gridShape
     } = props;
 
     // The styles in makeStyles are intially scaled to this width
@@ -111,7 +112,8 @@ export default class CalendarPicker extends Component {
         initialScale,
         selectedDayColor,
         selectedDayTextColor,
-        todayBackgroundColor
+        todayBackgroundColor,
+        gridShape
       )
     };
   }
@@ -258,7 +260,7 @@ export default class CalendarPicker extends Component {
       maxRangeDuration,
       swipeConfig,
       customDatesStyles,
-      enableDateChange
+      enableDateChange,
     } = this.props;
 
     let disabledDatesTime = [];

@@ -6,12 +6,21 @@
  */
 const DEFAULT_SELECTED_BACKGROUND_COLOR = '#5ce600';
 const DEFAULT_SELECTED_TEXT_COLOR = '#000000';
-const DEFAULT_TODAY_BACKGROUD_COLOR = '#CCCCCC';
+const DEFAULT_TODAY_BACKGROUND_COLOR = '#CCCCCC';
 
-export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundColor) {
+function getBorderRadiusByShape(scaler, gridShape) {
+  if (gridShape === 'square') {
+    return 0;
+  } else {
+    return 30 * scaler;
+  }
+}
+
+export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundColor, gridShape) {
   const SELECTED_BG_COLOR = backgroundColor ? backgroundColor : DEFAULT_SELECTED_BACKGROUND_COLOR;
   const SELECTED_TEXT_COLOR = textColor ? textColor : DEFAULT_SELECTED_TEXT_COLOR;
-  const TODAY_BG_COLOR = todayBackgroundColor ? todayBackgroundColor : DEFAULT_TODAY_BACKGROUD_COLOR;
+  const TODAY_BG_COLOR = todayBackgroundColor ? todayBackgroundColor : DEFAULT_TODAY_BACKGROUND_COLOR;
+
   return {
     calendar: {
       height: 320*scaler,
@@ -21,7 +30,7 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     dayButton: {
       width: 30*scaler,
       height: 30*scaler,
-      borderRadius: 30*scaler,
+      borderRadius: getBorderRadiusByShape(scaler, gridShape),
       alignSelf: 'center',
       justifyContent: 'center'
     },
@@ -63,7 +72,7 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     selectedDay: {
       width: 30*scaler,
       height:30*scaler,
-      borderRadius: 30*scaler,
+      borderRadius: getBorderRadiusByShape(scaler, gridShape),
       alignSelf: 'center',
       justifyContent: 'center'
     },
@@ -76,7 +85,7 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
       width: 30*scaler,
       height:30*scaler,
       backgroundColor: TODAY_BG_COLOR,
-      borderRadius: 30*scaler,
+      borderRadius: getBorderRadiusByShape(scaler, gridShape),
       alignSelf: 'center',
       justifyContent: 'center'
     },
