@@ -22,4 +22,5 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+.idea
 >>>>>>> origin/master
