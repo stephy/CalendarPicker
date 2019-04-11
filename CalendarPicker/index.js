@@ -1,15 +1,24 @@
-import React, { Component } from "react";
-import { View, Text, Dimensions, StyleSheet } from "react-native";
-import { makeStyles } from "./makeStyles";
-import { Utils } from "./Utils";
-import HeaderControls from "./HeaderControls";
-import Weekdays from "./Weekdays";
-import DaysGridView from "./DaysGridView";
-import Swiper from "./Swiper";
-import moment from "moment";
+import React, { Component } from 'react';
+import {
+  View,
+  Text,
+  Dimensions,
+  StyleSheet,
+} from 'react-native';
+import { makeStyles } from './makeStyles';
+import { Utils } from './Utils';
+import HeaderControls from './HeaderControls';
+import Weekdays from './Weekdays';
+import DaysGridView from './DaysGridView';
+import MonthsGridView from './MonthsGridView';
+import MonthsViewHeader from './MonthsViewHeader'
+import Swiper from './Swiper';
+import moment from 'moment';
+import YearsGridView from "./YearsGridView";
+import YearsViewHeader from "./YearsViewHeader";
 
-const SWIPE_LEFT = "SWIPE_LEFT";
-const SWIPE_RIGHT = "SWIPE_RIGHT";
+const SWIPE_LEFT = 'SWIPE_LEFT';
+const SWIPE_RIGHT = 'SWIPE_RIGHT';
 
 const _swipeConfig = {
   velocityThreshold: 0.3,
@@ -25,6 +34,7 @@ export default class CalendarPicker extends Component {
       selectedStartDate: props.selectedStartDate || null,
       selectedEndDate: props.selectedEndDate || null,
       styles: {},
+      currentView: "days",
       ...this.updateScaledStyles(props),
       ...this.updateMonthYear(props.initialDate)
     };
@@ -33,6 +43,14 @@ export default class CalendarPicker extends Component {
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
     this.handleOnPressDay = this.handleOnPressDay.bind(this);
+    this.handleOnPressMonth = this.handleOnPressMonth.bind(this);
+    this.handleOnPressYear = this.handleOnPressYear.bind(this);
+    this.handleOnSelectMonth = this.handleOnSelectMonth.bind(this);
+    this.handleOnMonthViewNext = this.handleOnMonthViewNext.bind(this);
+    this.handleOnMonthViewPrevious = this.handleOnMonthViewPrevious.bind(this);
+    this.handleOnSelectYear = this.handleOnSelectYear.bind(this);
+    this.handleOnYearViewNext = this.handleOnYearViewNext.bind(this);
+    this.handleOnYearViewPrevious = this.handleOnYearViewPrevious.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
     this.resetSelections = this.resetSelections.bind(this);
   }
@@ -162,6 +180,35 @@ export default class CalendarPicker extends Component {
     }
   }
 
+  handleOnSelectMonth(month) {
+    const {
+      currentYear
+    } = this.state;
+
+    const { enableDateChange } = this.props;
+
+    if (!enableDateChange) {
+      return;
+    }
+    this.setState({
+      currentMonth: parseInt(month),
+      currentYear: parseInt(currentYear),
+      currentView: "days"
+    });
+  }
+
+  handleOnSelectYear(year) {
+    const { enableDateChange } = this.props;
+
+    if (!enableDateChange) {
+      return;
+    }
+    this.setState({
+      currentYear: parseInt(year),
+      currentView: "days"
+    });
+  }
+
   handleOnPressPrevious() {
     let { currentMonth, currentYear } = this.state;
     let previousMonth = currentMonth - 1;
@@ -204,8 +251,57 @@ export default class CalendarPicker extends Component {
         currentYear: parseInt(currentYear)
       });
     }
-    this.props.onMonthChange &&
-      this.props.onMonthChange(moment({ year: currentYear, month: nextMonth }));
+    this.props.onMonthChange && this.props.onMonthChange(moment({year: currentYear, month: nextMonth}));
+  }
+
+  handleOnMonthViewPrevious() {
+    let { currentYear } = this.state;
+    let previousYear = currentYear - 1;
+    if(previousYear < 1900){
+      previousYear = 1900
+    }
+    this.setState({
+      currentYear: parseInt(previousYear)
+    });
+  }
+
+  handleOnMonthViewNext() {
+    let { currentYear } = this.state;
+    let nextYear = currentYear + 1;
+    this.setState({
+      currentYear: parseInt(nextYear)
+    });
+  }
+
+  handleOnYearViewPrevious() {
+    let { currentYear } = this.state;
+    let previousYear = currentYear - 25;
+    if(previousYear < 1900){
+      previousYear = 1900
+    }
+    this.setState({
+      currentYear: parseInt(previousYear)
+    });
+  }
+
+  handleOnYearViewNext() {
+    let { currentYear } = this.state;
+    let nextYear = currentYear + 25;
+    this.setState({
+      currentYear: parseInt(nextYear)
+    });
+  }
+
+  handleOnPressMonth() {
+    this.setState({
+      currentView: "months"
+    });
+  }
+
+  handleOnPressYear() {
+    this.setState({
+      currentView: "years"
+    });
   }
 
   onSwipe(gestureName) {
@@ -313,7 +409,55 @@ export default class CalendarPicker extends Component {
         onSwipe={direction => this.props.enableSwipe && this.onSwipe(direction)}
         config={{ ..._swipeConfig, ...swipeConfig }}
       >
-        <View style={styles.calendar}>
+        {this.state.currentView === "months" &&
+        <View styles={styles.calendar}>
+          <MonthsViewHeader
+            styles={styles}
+            currentYear={currentYear}
+            initialDate={moment(initialDate)}
+            months={months}
+            previousTitle={previousTitle}
+            nextTitle={nextTitle}
+            textStyle={textStyle}
+            onMonthViewPrevious={this.handleOnMonthViewPrevious}
+            onMonthViewNext={this.handleOnMonthViewNext}
+            onPressYear={this.handleOnPressYear}
+          />
+          <MonthsGridView
+            year={currentYear}
+            styles={styles}
+            onSelectMonth={this.handleOnSelectMonth}
+            minDate={minDate}
+            maxDate={maxDate}
+            disabledDates={disabledDates}
+            textStyle={textStyle}
+          />
+        </View>
+        }
+        {this.state.currentView === "years" &&
+        <View styles={styles.calendar}>
+          <YearsViewHeader
+            styles={styles}
+            initialDate={moment(initialDate)}
+            previousTitle={previousTitle}
+            nextTitle={nextTitle}
+            textStyle={textStyle}
+            onYearViewPrevious={this.handleOnYearViewPrevious}
+            onYearViewNext={this.handleOnYearViewNext}
+          />
+          <YearsGridView
+            year={currentYear}
+            styles={styles}
+            onSelectYear={this.handleOnSelectYear}
+            minDate={minDate}
+            maxDate={maxDate}
+            disabledDates={disabledDates}
+            textStyle={textStyle}
+          />
+        </View>
+        }
+        {this.state.currentView === "days" &&
+        <View styles={styles.calendar}>
           <HeaderControls
             styles={styles}
             currentMonth={currentMonth}
@@ -321,6 +465,8 @@ export default class CalendarPicker extends Component {
             initialDate={moment(initialDate)}
             onPressPrevious={this.handleOnPressPrevious}
             onPressNext={this.handleOnPressNext}
+            onPressMonth={this.handleOnPressMonth}
+            onPressYear={this.handleOnPressYear}
             months={months}
             previousTitle={previousTitle}
             nextTitle={nextTitle}
@@ -356,6 +502,7 @@ export default class CalendarPicker extends Component {
             customDatesStyles={customDatesStyles}
           />
         </View>
+        }
       </Swiper>
     );
   }

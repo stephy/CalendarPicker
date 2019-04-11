@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View,
   Text,
+  TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
@@ -14,6 +15,8 @@ export default function HeaderControls(props) {
     currentYear,
     onPressNext,
     onPressPrevious,
+    onPressMonth,
+    onPressYear,
     months,
     previousTitle,
     nextTitle,
@@ -35,11 +38,16 @@ export default function HeaderControls(props) {
         styles={[styles.monthSelector, styles.prev]}
         textStyles={textStyle}
       />
-      <View>
-        <Text style={[styles.monthLabel, textStyle]}>
-           { month } { year }
+      <TouchableOpacity onPress={onPressMonth}>
+        <Text style={[styles.headerMonthLabel, textStyle]} >
+          { month }
         </Text>
-      </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onPressYear}>
+        <Text style={[styles.headerYearLabel, textStyle]}>
+          { year }
+        </Text>
+      </TouchableOpacity>
       <Controls
         label={next}
         onPressControl={onPressNext}
@@ -55,4 +63,6 @@ HeaderControls.propTypes = {
   currentYear: PropTypes.number,
   onPressNext: PropTypes.func,
   onPressPrevious: PropTypes.func,
+  onPressMonth: PropTypes.func,
+  onPressYear: PropTypes.func
 };
