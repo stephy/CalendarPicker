@@ -238,7 +238,7 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     yearSelector: {
       marginBottom: 10*scaler,
       fontSize: 14*scaler,
-      width: 160*scaler
+      width: 80*scaler
     },
 
     prev: {
