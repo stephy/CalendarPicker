@@ -7,6 +7,10 @@
 const DEFAULT_SELECTED_BACKGROUND_COLOR = '#5ce600';
 const DEFAULT_SELECTED_TEXT_COLOR = '#000000';
 const DEFAULT_TODAY_BACKGROUND_COLOR = '#CCCCCC';
+const DEFAULT_MONTH_BACKGROUND_COLOR = "#007bff";
+const DEFAULT_YEAR_BACKGROUND_COLOR = "#007bff";
+const DEFAULT_MONTH_TEXT_COLOR = "#FFFFFF";
+const DEFAULT_YEAR_TEXT_COLOR = "#FFFFFF";
 
 function getBorderRadiusByShape(scaler, dayShape) {
   if (dayShape === 'square') {
@@ -16,10 +20,14 @@ function getBorderRadiusByShape(scaler, dayShape) {
   }
 }
 
-export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundColor, dayShape) {
+export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundColor, dayShape, monthBackgroundColor, yearBackgroundColor, monthTextColor, yearTextColor) {
   const SELECTED_BG_COLOR = backgroundColor ? backgroundColor : DEFAULT_SELECTED_BACKGROUND_COLOR;
   const SELECTED_TEXT_COLOR = textColor ? textColor : DEFAULT_SELECTED_TEXT_COLOR;
   const TODAY_BG_COLOR = todayBackgroundColor ? todayBackgroundColor : DEFAULT_TODAY_BACKGROUND_COLOR;
+  const MONTH_BG_COLOR = monthBackgroundColor ? monthBackgroundColor : DEFAULT_MONTH_BACKGROUND_COLOR;
+  const YEAR_BG_COLOR = yearBackgroundColor ? yearBackgroundColor : DEFAULT_YEAR_BACKGROUND_COLOR;
+  const MONTH_TEXT_COLOR = monthTextColor ? monthTextColor : DEFAULT_MONTH_TEXT_COLOR;
+  const YEAR_TEXT_COLOR = yearTextColor ? yearTextColor : DEFAULT_YEAR_TEXT_COLOR;
   return {
     calendar: {
       height: 320*scaler,
@@ -35,11 +43,21 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     },
 
     monthButton: {
-      width: 30*scaler,
-      height: 30*scaler,
-      borderRadius: 30*scaler,
+      backgroundColor: MONTH_BG_COLOR,
+      marginBottom: 10*scaler,
+      width: 100*scaler,
       alignSelf: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      marginRight: 3*scaler
+    },
+
+    yearButton: {
+      backgroundColor: YEAR_BG_COLOR,
+      marginBottom: 10*scaler,
+      width: 100*scaler,
+      alignSelf: 'center',
+      justifyContent: 'center',
+      marginLeft: 3*scaler
     },
 
     dayLabel: {
@@ -204,20 +222,14 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
 
     headerMonthLabel: {
       fontSize: 16*scaler,
-      color: '#000',
-      marginBottom: 10*scaler,
-      marginRight: 3*scaler,
-      width: 100*scaler,
-      textAlign: 'right'
+      color: MONTH_TEXT_COLOR,
+      textAlign: 'center'
     },
 
     headerYearLabel: {
       fontSize: 16*scaler,
-      color: '#000',
-      marginBottom: 10*scaler,
-      marginLeft: 3*scaler,
-      width: 80*scaler,
-      textAlign: 'left'
+      color: YEAR_TEXT_COLOR,
+      textAlign: 'center'
     },
 
     headerWrapper: {

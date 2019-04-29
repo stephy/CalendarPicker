@@ -21,7 +21,7 @@ export default function MonthsGridView(props) {
     maxDate,
     disabledDates,
   } = props;
-  const months = Array.from(Array(12).keys());
+  const months = Array.apply(null, {length: 12}).map(Number.call, Number);
   const columnArray = [ 0, 1, 2 ];
   const rowArray = [ 0, 1, 2, 3 ];
 
@@ -30,7 +30,7 @@ export default function MonthsGridView(props) {
       const month = months.shift();
       return (
         <Month
-          key={month}
+          key={index}
           month={month}
           year={year}
           styles={styles}
@@ -46,11 +46,12 @@ export default function MonthsGridView(props) {
   }
   return (
     <View style={styles.monthsWrapper}>
-      { rowArray.map(index => (
-        <View key={index} style={styles.monthRow}>
-          { generateColumns(index) }
-        </View>
-      ))
+      { rowArray.map(index => {
+        return(
+          <View key={index} style={styles.monthRow}>
+            { generateColumns(index) }
+          </View>
+        )})
       }
     </View>
   );

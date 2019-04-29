@@ -84,6 +84,8 @@ const styles = StyleSheet.create({
 | **`selectedRangeStartStyle`** | `ViewStyle` | Optional. Style for range selected start day. |
 | **`selectedRangeEndStyle`** | `ViewStyle` | Optional. Style for range selected end day. |
 | **`selectedRangeStyle`** | `ViewStyle` | Optional. Style for all days in range selection. |
+| **`monthBackgroundColor`** | `String` | Optional. Color for month button |
+| **`yearBackgroundColor`** | `String` | Optional. Color for year button |
 | **`disabledDates`** | `Array` | Optional. Specifies dates that cannot be selected. Array of Dates. |
 | **`selectedStartDate`** | `Date` | Optional. Specifies a selected Start Date. |
 | **`selectedEndDate`** | `Date` | Optional. Specifies a selected End Date. |
