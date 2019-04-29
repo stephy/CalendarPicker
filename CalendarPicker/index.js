@@ -418,7 +418,7 @@ export default class CalendarPicker extends Component {
         config={{ ..._swipeConfig, ...swipeConfig }}
       >
         {this.state.currentView === "months" &&
-        <View styles={styles.calendar}>
+        <View style={styles.calendar}>
           <MonthsViewHeader
             styles={styles}
             currentYear={currentYear}
@@ -443,7 +443,7 @@ export default class CalendarPicker extends Component {
         </View>
         }
         {this.state.currentView === "years" &&
-        <View styles={styles.calendar}>
+        <View style={styles.calendar}>
           <YearsViewHeader
             styles={styles}
             initialDate={moment(initialDate)}
@@ -465,7 +465,7 @@ export default class CalendarPicker extends Component {
         </View>
         }
         {this.state.currentView === "days" &&
-        <View styles={styles.calendar}>
+        <View style={styles.calendar}>
           <HeaderControls
             styles={styles}
             currentMonth={currentMonth}
