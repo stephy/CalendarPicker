@@ -37,29 +37,39 @@ export default function DaysGridView(props) {
     maxRangeDuration,
     enableDateChange
   } = props;
+
   const today = moment();
+
   // let's get the total of days in this month, we need the year as well, since
   // leap years have different amount of days in February
   const totalDays = Utils.getDaysInMonth(month, year);
+
   // Let's create a date for day one of the current given month and year
   const firstDayOfMonth = moment({ year, month, day: 1 });
+
   // isoWeekday() gets the ISO day of the week with 1 being Monday and 7 being Sunday.
   // We will need this to know what day of the week to show day 1
   // See https://github.com/stephy/CalendarPicker/issues/49
   const firstWeekDay = firstDayOfMonth.isoWeekday();
+
   // fill up an array of days with the amount of days in the current month
   const days = Array.apply(null, {length: totalDays}).map(Number.call, Number);
-  const guideArray = [ 0, 1, 2, 3, 4, 5, 6 ];
+
+  // 7 days in a week.
+  const dayArray = [ 0, 1, 2, 3, 4, 5, 6 ];
+
+  // There can be 4 to 6 rows of weeks in a month.
+  const weekArray = [ 0, 1, 2, 3, 4, 5 ];
 
   // Get the starting index, based upon whether we are using monday or sunday as first day.
-  const startIndex = (startFromMonday) ? (firstWeekDay - 1) % 7 : firstWeekDay;
+  const startIndex = (startFromMonday ? firstWeekDay - 1 : firstWeekDay) % 7;
 
-  function generateColumns(i) {
-    const column = guideArray.map(index => {
+  function generateDatesForWeek(i) {
+    return dayArray.map(dayIndex => {
       if (i === 0) { // for first row, let's start showing the days on the correct weekday
-        if (index >= startIndex) {
+        if (dayIndex >= startIndex) {
           if (days.length > 0) {
-            const day= days.shift() + 1;
+            const day = days.shift() + 1;
             return (
               <Day
                 key={day}
@@ -97,7 +107,7 @@ export default function DaysGridView(props) {
         }
       } else {
         if (days.length > 0) {
-          const day= days.shift() + 1;
+          const day = days.shift() + 1;
           return (
             <Day
               key={day}
@@ -126,15 +136,14 @@ export default function DaysGridView(props) {
           );
         }
       }
-
     });
-    return column;
   }
+
   return (
     <View style={styles.daysWrapper}>
-      { guideArray.map(index => (
-          <View key={index} style={styles.weekRow}>
-            { generateColumns(index) }
+      { weekArray.map(weekIndexOfMonth => (
+          <View key={weekIndexOfMonth} style={styles.weekRow}>
+            { generateDatesForWeek(weekIndexOfMonth) }
           </View>
         ))
       }
