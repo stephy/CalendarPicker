@@ -1866,7 +1866,6 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
             style={
               Object {
                 "alignSelf": "center",
-                "backgroundColor": "#CCCCCC",
                 "borderRadius": 60,
                 "height": 60,
                 "justifyContent": "center",
@@ -1890,9 +1889,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                   },
                   undefined,
                   undefined,
-                  Object {
-                    "color": "#000000",
-                  },
+                  Object {},
                 ]
               }
             >
