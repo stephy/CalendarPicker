@@ -23,8 +23,6 @@ export default function DaysGridView(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
-    textStyle,
-    todayTextStyle,
     selectedDayStyle,
     selectedRangeStartStyle,
     selectedRangeStyle,
@@ -35,41 +33,34 @@ export default function DaysGridView(props) {
     disabledDates,
     minRangeDuration,
     maxRangeDuration,
-    enableDateChange
+    theme,
+    dateFormat,
+    markedDates,
   } = props;
-
-  const today = moment();
-
   // let's get the total of days in this month, we need the year as well, since
   // leap years have different amount of days in February
   const totalDays = Utils.getDaysInMonth(month, year);
-
   // Let's create a date for day one of the current given month and year
   const firstDayOfMonth = moment({ year, month, day: 1 });
-
-  // isoWeekday() gets the ISO day of the week with 1 being Monday and 7 being Sunday.
-  // We will need this to know what day of the week to show day 1
-  // See https://github.com/stephy/CalendarPicker/issues/49
+  // The weekday() method returns the day of the week (from 0 to 6) for the specified date.
+  // Note: Sunday is 0, Monday is 1, and so on. We will need this to know what
+  // day of the week to show day 1
+  // timezone issue fix:
+  // use isoWeekday() instead of weekday() to get the consistent weekday of all locale
   const firstWeekDay = firstDayOfMonth.isoWeekday();
-
   // fill up an array of days with the amount of days in the current month
   const days = Array.apply(null, {length: totalDays}).map(Number.call, Number);
-
-  // 7 days in a week.
-  const dayArray = [ 0, 1, 2, 3, 4, 5, 6 ];
-
-  // There can be 4 to 6 rows of weeks in a month.
-  const weekArray = [ 0, 1, 2, 3, 4, 5 ];
+  const guideArray = [ 0, 1, 2, 3, 4, 5, 6 ];
 
   // Get the starting index, based upon whether we are using monday or sunday as first day.
-  const startIndex = (startFromMonday ? firstWeekDay - 1 : firstWeekDay) % 7;
+  const startIndex = (startFromMonday) ? (firstWeekDay - 1) % 7 : firstWeekDay;
 
-  function generateDatesForWeek(i) {
-    return dayArray.map(dayIndex => {
+  function generateColumns(i) {
+    const column = guideArray.map(index => {
       if (i === 0) { // for first row, let's start showing the days on the correct weekday
-        if (dayIndex >= startIndex) {
+        if (index >= startIndex) {
           if (days.length > 0) {
-            const day = days.shift() + 1;
+            const day= days.shift() + 1;
             return (
               <Day
                 key={day}
@@ -86,14 +77,14 @@ export default function DaysGridView(props) {
                 disabledDates={disabledDates}
                 minRangeDuration={minRangeDuration}
                 maxRangeDuration={maxRangeDuration}
-                textStyle={textStyle}
-                todayTextStyle={todayTextStyle}
                 selectedDayStyle={selectedDayStyle}
                 selectedRangeStartStyle={selectedRangeStartStyle}
                 selectedRangeStyle={selectedRangeStyle}
                 selectedRangeEndStyle={selectedRangeEndStyle}
                 customDatesStyles={customDatesStyles}
-                enableDateChange={enableDateChange}
+                theme={theme}
+                dateFormat={dateFormat}
+                markedDates={markedDates}
               />
             );
           }
@@ -107,7 +98,7 @@ export default function DaysGridView(props) {
         }
       } else {
         if (days.length > 0) {
-          const day = days.shift() + 1;
+          const day= days.shift() + 1;
           return (
             <Day
               key={day}
@@ -124,26 +115,27 @@ export default function DaysGridView(props) {
               disabledDates={disabledDates}
               minRangeDuration={minRangeDuration}
               maxRangeDuration={maxRangeDuration}
-              textStyle={textStyle}
-              todayTextStyle={todayTextStyle}
               selectedDayStyle={selectedDayStyle}
               selectedRangeStartStyle={selectedRangeStartStyle}
               selectedRangeStyle={selectedRangeStyle}
               selectedRangeEndStyle={selectedRangeEndStyle}
               customDatesStyles={customDatesStyles}
-              enableDateChange={enableDateChange}
+              theme={theme}
+              dateFormat={dateFormat}
+              markedDates={markedDates}
             />
           );
         }
       }
-    });
-  }
 
+    });
+    return column;
+  }
   return (
-    <View style={styles.daysWrapper}>
-      { weekArray.map(weekIndexOfMonth => (
-          <View key={weekIndexOfMonth} style={styles.weekRow}>
-            { generateDatesForWeek(weekIndexOfMonth) }
+    <View style={[styles.daysWrapper, { paddingBottom: 20 }]}>
+      { guideArray.map(index => (
+          <View key={index} style={styles.weekRow}>
+            { generateColumns(index) }
           </View>
         ))
       }
@@ -161,7 +153,6 @@ DaysGridView.propTypes = {
   selectedRangeStartStyle: ViewPropTypes.style,
   selectedRangeStyle: ViewPropTypes.style,
   selectedRangeEndStyle: ViewPropTypes.style,
-  todayTextStyle: Text.propTypes.style,
   customDatesStyles: PropTypes.arrayOf(PropTypes.shape({
     date: PropTypes.oneOfType([
       PropTypes.string,
@@ -170,7 +161,6 @@ DaysGridView.propTypes = {
     ]),
     containerStyle: ViewPropTypes.style,
     style: ViewPropTypes.style,
-    textStyle: Text.propTypes.style,
   })),
   disabledDates: PropTypes.array,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
