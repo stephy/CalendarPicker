@@ -19,6 +19,10 @@ If you need the old code I saved it on a branch <a href="https://github.com/step
 
 CalendarPicker requires Moment JS.  Date props may be anything parseable by Moment: Javascript Date, Moment date, or ISO8601 datetime string.
 
+```
+npm install --save moment
+```
+
 # Example
 
 ```js
