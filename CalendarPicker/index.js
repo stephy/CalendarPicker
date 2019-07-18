@@ -263,15 +263,20 @@ export default class CalendarPicker extends Component {
       enableDateChange
     } = this.props;
 
-    let disabledDatesTime = [];
+    let _disabledDates = [];
 
-    // Convert input date into timestamp
-    if (disabledDates && Array.isArray(disabledDates)) {
-      disabledDates.map(date => {
-        let thisDate = moment(date);
-        thisDate.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
-        disabledDatesTime.push(thisDate.valueOf());
-      });
+    if (disabledDates) {
+      if (Array.isArray(disabledDates)) {
+        // Convert input date into timestamp
+        disabledDates.map(date => {
+          let thisDate = moment(date);
+          thisDate.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
+          _disabledDates.push(thisDate.valueOf());
+        });
+      }
+      else if (disabledDates instanceof Function) {
+        _disabledDates = disabledDates;
+      }
     }
 
     let minRangeDurationTime = [];
@@ -338,7 +343,7 @@ export default class CalendarPicker extends Component {
             year={currentYear}
             styles={styles}
             onPressDay={this.handleOnPressDay}
-            disabledDates={disabledDatesTime}
+            disabledDates={_disabledDates}
             minRangeDuration={minRangeDurationTime}
             maxRangeDuration={maxRangeDurationTime}
             startFromMonday={startFromMonday}

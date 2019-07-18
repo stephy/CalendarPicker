@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
 | **`selectedRangeStartStyle`** | `ViewStyle` | Optional. Style for range selected start day. |
 | **`selectedRangeEndStyle`** | `ViewStyle` | Optional. Style for range selected end day. |
 | **`selectedRangeStyle`** | `ViewStyle` | Optional. Style for all days in range selection. |
-| **`disabledDates`** | `Array` | Optional. Specifies dates that cannot be selected. Array of Dates. |
+| **`disabledDates`** | `Array` or `Function` | Optional. Specifies dates that cannot be selected. Array of Dates, or a function that returns true for a given Moment date (apologies for the inverted logic). |
 | **`selectedStartDate`** | `Date` | Optional. Specifies a selected Start Date. |
 | **`selectedEndDate`** | `Date` | Optional. Specifies a selected End Date. |
 | **`minRangeDuration`** | `Number or Array` | Optional. Specifies a minimum range duration when using allowRangeSelection. Can either pass a number to be used for all dates or an Array of objects if the minimum range duration depends on the date `{date: Moment-parsable date, minDuration: Number` |
