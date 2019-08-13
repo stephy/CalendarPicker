@@ -5,13 +5,14 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-export default function Controls({ styles, textStyles, label, onPressControl }) {
+export default function Controls({ styles, textStyles, label, onPressControl, disabled }) {
   return (
     <TouchableOpacity
       onPress={() => onPressControl()}
+      disabled={disabled}
     >
       <Text style={[styles, textStyles]}>
-        { label }
+        { disabled ? null : label }
       </Text>
     </TouchableOpacity>
   );

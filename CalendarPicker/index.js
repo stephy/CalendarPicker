@@ -260,7 +260,8 @@ export default class CalendarPicker extends Component {
       maxRangeDuration,
       swipeConfig,
       customDatesStyles,
-      enableDateChange
+      enableDateChange,
+	  applyMinMaxDateOnMonthSelection,
     } = this.props;
 
     let _disabledDates = [];
@@ -330,6 +331,9 @@ export default class CalendarPicker extends Component {
             previousTitle={previousTitle}
             nextTitle={nextTitle}
             textStyle={textStyle}
+            applyMinMaxDateOnMonthSelection={applyMinMaxDateOnMonthSelection}
+            maxDate={maxDate}
+            minDate={minDate}
           />
           <Weekdays
             styles={styles}
