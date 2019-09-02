@@ -15,14 +15,6 @@ npm install --save react-native-calendar-picker
 
 If you need the old code I saved it on a branch <a href="https://github.com/stephy/CalendarPicker/tree/v4">v4</a>
 
-# Prerequisites
-
-CalendarPicker requires Moment JS.  Date props may be anything parseable by Moment: Javascript Date, Moment date, or ISO8601 datetime string.
-
-```
-npm install --save moment
-```
-
 # Example
 
 ```js
@@ -88,15 +80,15 @@ const styles = StyleSheet.create({
 | **`selectedRangeStartStyle`** | `ViewStyle` | Optional. Style for range selected start day. |
 | **`selectedRangeEndStyle`** | `ViewStyle` | Optional. Style for range selected end day. |
 | **`selectedRangeStyle`** | `ViewStyle` | Optional. Style for all days in range selection. |
-| **`disabledDates`** | `Array` or `Function` | Optional. Specifies dates that cannot be selected. Array of Dates, or a function that returns true for a given Moment date (apologies for the inverted logic). |
+| **`disabledDates`** | `Array` or `Function` | Optional. Specifies dates that cannot be selected. Array of Dates, or a function that returns true for a given dayjs date (apologies for the inverted logic). |
 | **`selectedStartDate`** | `Date` | Optional. Specifies a selected Start Date. |
 | **`selectedEndDate`** | `Date` | Optional. Specifies a selected End Date. |
-| **`minRangeDuration`** | `Number or Array` | Optional. Specifies a minimum range duration when using allowRangeSelection. Can either pass a number to be used for all dates or an Array of objects if the minimum range duration depends on the date `{date: Moment-parsable date, minDuration: Number` |
-| **`maxRangeDuration`** | `Number or Array` | Optional. Specifies a maximum range duration when using allowRangeSelection. Can either pass a number to be used for all dates or an Array of objects if the maximum range duration depends on the date `{date: Moment-parsable date, maxDuration: Number` |
+| **`minRangeDuration`** | `Number or Array` | Optional. Specifies a minimum range duration when using allowRangeSelection. Can either pass a number to be used for all dates or an Array of objects if the minimum range duration depends on the date `{date: dayjs-parsable date, minDuration: Number` |
+| **`maxRangeDuration`** | `Number or Array` | Optional. Specifies a maximum range duration when using allowRangeSelection. Can either pass a number to be used for all dates or an Array of objects if the maximum range duration depends on the date `{date: dayjs-parsable date, maxDuration: Number` |
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
 | **`todayTextStyle`** | `TextStyle` | Optional. Text styling for today. |
 | **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
-| **`customDatesStyles`** | `Array` | Optional. Style individual date(s). Array of objects `{date: Moment-parseable date, containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}` |
+| **`customDatesStyles`** | `Array` | Optional. Style individual date(s). Array of objects `{date: dayjs-parseable date, containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}` |
 | **`scaleFactor`** | `Number` | Optional. Default (375) scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
 | **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
@@ -106,8 +98,8 @@ const styles = StyleSheet.create({
 | **`swipeConfig`** | `Object` | Optional. Config passed to Swiper.|
 | **`enableSwipe`** | `Boolean` | Optional. Whether to enable swiping. Default is `true` |
 | **`enableDateChange`** | `Boolean` | Optional. Whether to enable pressing on day. Default is `true` |
-| **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns Moment `date` as first parameter.|
-| **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns Moment `date` as first parameter.|
+| **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns dayjs `date` as first parameter.|
+| **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns dayjs `date` as first parameter.|
 | **`onSwipe`** | `Function` | Optional. Callback when swipe event is triggered. Returns swipe direction as first parameter.|
 | **`dayShape`** | `String` | Optional. Shape of the Day component. Default is `circle`. Available options are `circle` and `square`.|
 
@@ -285,8 +277,9 @@ const styles = StyleSheet.create({
 ![alt tag](https://user-images.githubusercontent.com/6295083/33563899-bf899954-d8de-11e7-85cd-18a15524f008.png)
 
 ```js
+import dayjs from 'dayjs';
 
-let today = moment();
+let today = dayjs();
 let day = today.clone().startOf('month');
 let customDatesStyles = [];
 while(day.add(1, 'day').isSame(today, 'month')) {
@@ -317,7 +310,7 @@ These internal methods may be accessed through a ref to the CalendarPicker.
 
 | Name | Params | Description |
 :------------ |:---------------| :-----|
-| **`handleOnPressDay`** | day (Integer) | Programmatically select date. `day` is a number that is the day of the current month. Moment example for today's day of month: `moment().date()` |
+| **`handleOnPressDay`** | day (Integer) | Programmatically select date. `day` is a number that is the day of the current month. dayjs example for today's day of month: `dayjs().date()` |
 | **`handleOnPressNext`** |  | Programmatically advance to next month. |
 | **`handleOnPressPrevious`** |  | Programmatically advance to previous month. |
 | **`resetSelections`** |  | Clear date selections. Useful for resetting date range selection when user has picked a start date but not an end date. |

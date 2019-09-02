@@ -8,14 +8,14 @@
   "devDependencies": {
     "babel-jest": "^22.4.3",
     "jest": "^22.4.3",
-    "moment": "*",
+    "dayjs": "*",
     "react": "~15.4.0",
     "react-native": "0.42.3",
     "react-native-scripts": "0.0.25",
     "react-test-renderer": "~15.4.1"
   },
   "peerDependencies": {
-    "moment": "*",
+    "dayjs": "*",
     "react": "*",
     "react-native": "*"
   },

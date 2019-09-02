@@ -6,7 +6,7 @@ import HeaderControls from "./HeaderControls";
 import Weekdays from "./Weekdays";
 import DaysGridView from "./DaysGridView";
 import Swiper from "./Swiper";
-import moment from "moment";
+import dayjs from "dayjs";
 
 const SWIPE_LEFT = "SWIPE_LEFT";
 const SWIPE_RIGHT = "SWIPE_RIGHT";
@@ -38,7 +38,7 @@ export default class CalendarPicker extends Component {
   }
 
   static defaultProps = {
-    initialDate: moment(),
+    initialDate: dayjs(),
     scaleFactor: 375,
     enableSwipe: true,
     onDateChange: () => {
@@ -60,7 +60,7 @@ export default class CalendarPicker extends Component {
     }
 
     let newMonthYear = {};
-    if (!moment(prevProps.initialDate).isSame(this.props.initialDate, "day")) {
+    if (!dayjs(prevProps.initialDate).isSame(this.props.initialDate, "day")) {
       newMonthYear = this.updateMonthYear(this.props.initialDate);
       doStateUpdate = true;
     }
@@ -68,12 +68,12 @@ export default class CalendarPicker extends Component {
     let selectedDateRanges = {};
     if (
       (this.props.selectedStartDate &&
-        !moment(prevState.selectedStartDate).isSame(
+        !dayjs(prevState.selectedStartDate).isSame(
           this.props.selectedStartDate,
           "day"
         )) ||
       (this.props.selectedEndDate &&
-        !moment(prevState.selectedEndDate).isSame(
+        !dayjs(prevState.selectedEndDate).isSame(
           this.props.selectedEndDate,
           "day"
         ))
@@ -120,8 +120,8 @@ export default class CalendarPicker extends Component {
 
   updateMonthYear(initialDate = this.props.initialDate) {
     return {
-      currentMonth: parseInt(moment(initialDate).month()),
-      currentYear: parseInt(moment(initialDate).year())
+      currentMonth: parseInt(dayjs(initialDate).month()),
+      currentYear: parseInt(dayjs(initialDate).year())
     };
   }
 
@@ -139,7 +139,7 @@ export default class CalendarPicker extends Component {
       return;
     }
 
-    const date = moment({ year: currentYear, month: currentMonth, day });
+    const date = dayjs(new Date(currentYear, currentMonth, day));
 
     if (
       allowRangeSelection &&
@@ -182,7 +182,7 @@ export default class CalendarPicker extends Component {
     }
     this.props.onMonthChange &&
       this.props.onMonthChange(
-        moment({ year: currentYear, month: previousMonth })
+        dayjs(new Date(currentYear, previousMonth))
       );
   }
 
@@ -205,7 +205,7 @@ export default class CalendarPicker extends Component {
       });
     }
     this.props.onMonthChange &&
-      this.props.onMonthChange(moment({ year: currentYear, month: nextMonth }));
+      this.props.onMonthChange(dayjs(new Date(currentYear, nextMonth)));
   }
 
   onSwipe(gestureName) {
@@ -269,7 +269,7 @@ export default class CalendarPicker extends Component {
       if (Array.isArray(disabledDates)) {
         // Convert input date into timestamp
         disabledDates.map(date => {
-          let thisDate = moment(date);
+          let thisDate = dayjs(date);
           thisDate.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
           _disabledDates.push(thisDate.valueOf());
         });
@@ -284,7 +284,7 @@ export default class CalendarPicker extends Component {
     if (allowRangeSelection && minRangeDuration) {
       if (Array.isArray(minRangeDuration)) {
         minRangeDuration.map(minRangeDuration => {
-          let thisDate = moment(minRangeDuration.date);
+          let thisDate = dayjs(minRangeDuration.date);
           thisDate.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
           minRangeDurationTime.push({
             date: thisDate.valueOf(),
@@ -301,7 +301,7 @@ export default class CalendarPicker extends Component {
     if (allowRangeSelection && maxRangeDuration) {
       if (Array.isArray(maxRangeDuration)) {
         maxRangeDuration.map(maxRangeDuration => {
-          let thisDate = moment(maxRangeDuration.date);
+          let thisDate = dayjs(maxRangeDuration.date);
           thisDate.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
           maxRangeDurationTime.push({
             date: thisDate.valueOf(),
@@ -323,7 +323,7 @@ export default class CalendarPicker extends Component {
             styles={styles}
             currentMonth={currentMonth}
             currentYear={currentYear}
-            initialDate={moment(initialDate)}
+            initialDate={dayjs(initialDate)}
             onPressPrevious={this.handleOnPressPrevious}
             onPressNext={this.handleOnPressNext}
             months={months}
@@ -348,10 +348,10 @@ export default class CalendarPicker extends Component {
             maxRangeDuration={maxRangeDurationTime}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
-            selectedStartDate={selectedStartDate && moment(selectedStartDate)}
-            selectedEndDate={selectedEndDate && moment(selectedEndDate)}
-            minDate={minDate && moment(minDate)}
-            maxDate={maxDate && moment(maxDate)}
+            selectedStartDate={selectedStartDate && dayjs(selectedStartDate)}
+            selectedEndDate={selectedEndDate && dayjs(selectedEndDate)}
+            minDate={minDate && dayjs(minDate)}
+            maxDate={maxDate && dayjs(maxDate)}
             textStyle={textStyle}
             todayTextStyle={todayTextStyle}
             selectedDayStyle={selectedDayStyle}

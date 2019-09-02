@@ -6,7 +6,9 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
-import moment from 'moment';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween'
+dayjs.extend(isBetween);
 
 export default function Day(props) {
   const {
@@ -33,8 +35,8 @@ export default function Day(props) {
     enableDateChange
   } = props;
 
-  const thisDay = moment({year, month, day});
-  const today = moment();
+  const thisDay = dayjs(new Date(year, month, day));
+  const today = dayjs();
 
   let dateOutOfRange;
   let daySelectedStyle = styles.dayButton; // may be overridden depending on state
@@ -66,24 +68,24 @@ export default function Day(props) {
     }
   }
 
-  if (allowRangeSelection && minRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
+  if (allowRangeSelection && minRangeDuration && selectedStartDate && thisDay.isAfter(dayjs(selectedStartDate), 'day') ) {
     if (Array.isArray(minRangeDuration)) {
-      let i = minRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate, 'day')) );
-      if (i >= 0 && moment(selectedStartDate).add(minRangeDuration[i].minDuration, 'day').isAfter(thisDay, 'day') ) {
+      let i = minRangeDuration.findIndex(i => dayjs(i.date).isSame(dayjs(selectedStartDate, 'day')) );
+      if (i >= 0 && dayjs(selectedStartDate).add(minRangeDuration[i].minDuration, 'day').isAfter(thisDay, 'day') ) {
         dateIsBeforeMinDuration = true;
       }
-    } else if(moment(selectedStartDate).add(minRangeDuration, 'day').isAfter(thisDay, 'day')) {
+    } else if(dayjs(selectedStartDate).add(minRangeDuration, 'day').isAfter(thisDay, 'day')) {
       dateIsBeforeMinDuration = true;
     }
   }
 
-	if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
+	if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.isAfter(dayjs(selectedStartDate), 'day') ) {
 		if (Array.isArray(maxRangeDuration)) {
-			let i = maxRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate, 'day')) );
-			if (i >= 0 && moment(selectedStartDate).add(maxRangeDuration[i].maxDuration, 'day').isBefore(thisDay, 'day') ) {
+			let i = maxRangeDuration.findIndex(i => dayjs(i.date).isSame(dayjs(selectedStartDate, 'day')) );
+			if (i >= 0 && dayjs(selectedStartDate).add(maxRangeDuration[i].maxDuration, 'day').isBefore(thisDay, 'day') ) {
 				dateIsAfterMaxDuration = true;
 			}
-    } else if(moment(selectedStartDate).add(maxRangeDuration, 'day').isBefore(thisDay, 'day')) {
+    } else if(dayjs(selectedStartDate).add(maxRangeDuration, 'day').isBefore(thisDay, 'day')) {
 			dateIsAfterMaxDuration = true;
 		}
 	}
@@ -101,7 +103,7 @@ export default function Day(props) {
     }
 
     for (let cds of customDatesStyles) {
-      if (thisDay.isSame(moment(cds.date), 'day')) {
+      if (thisDay.isSame(dayjs(cds.date), 'day')) {
         customContainerStyle = cds.containerStyle;
         customDateStyle = cds.style;
         customTextStyle = cds.textStyle;

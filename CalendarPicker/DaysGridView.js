@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import Day from './Day';
 import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
-import moment from 'moment';
+import dayjs from 'dayjs';
 
 const ViewPropTypes = RNViewPropTypes || View.propTypes;
 
@@ -38,19 +38,19 @@ export default function DaysGridView(props) {
     enableDateChange
   } = props;
 
-  const today = moment();
+  const today = dayjs();
 
   // let's get the total of days in this month, we need the year as well, since
   // leap years have different amount of days in February
   const totalDays = Utils.getDaysInMonth(month, year);
 
   // Let's create a date for day one of the current given month and year
-  const firstDayOfMonth = moment({ year, month, day: 1 });
+  const firstDayOfMonth = dayjs(new Date(year, month, 1));
 
   // isoWeekday() gets the ISO day of the week with 1 being Monday and 7 being Sunday.
   // We will need this to know what day of the week to show day 1
   // See https://github.com/stephy/CalendarPicker/issues/49
-  const firstWeekDay = firstDayOfMonth.isoWeekday();
+  const firstWeekDay = firstDayOfMonth.day() === 0 ? 7 : firstDayOfMonth.day();
 
   // fill up an array of days with the amount of days in the current month
   const days = Array.apply(null, {length: totalDays}).map(Number.call, Number);
@@ -166,7 +166,7 @@ DaysGridView.propTypes = {
     date: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.instanceOf(Date),
-      PropTypes.instanceOf(moment)
+      PropTypes.instanceOf(dayjs)
     ]),
     containerStyle: ViewPropTypes.style,
     style: ViewPropTypes.style,
