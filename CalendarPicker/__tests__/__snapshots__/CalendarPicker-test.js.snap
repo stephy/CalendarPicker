@@ -89,6 +89,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
       </View>
       <View>
         <Text
+          accessibilityRole="header"
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
@@ -2503,6 +2504,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
       </View>
       <View>
         <Text
+          accessibilityRole="header"
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
@@ -5104,6 +5106,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
       </View>
       <View>
         <Text
+          accessibilityRole="header"
           accessible={true}
           allowFontScaling={true}
           ellipsizeMode="tail"
