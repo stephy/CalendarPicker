@@ -335,48 +335,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -399,48 +358,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -463,48 +381,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -527,48 +404,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -591,48 +427,7 @@ exports[`CalendarPicker It handle selectedStartDate and selectedEndDate props 1`
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -2750,48 +2545,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -2814,48 +2568,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -2878,48 +2591,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -2942,48 +2614,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -3006,48 +2637,7 @@ exports[`CalendarPicker It renders calendar picker 1`] = `
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -5352,48 +4942,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -5416,48 +4965,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -5480,48 +4988,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
@@ -5544,48 +5011,7 @@ exports[`CalendarPicker It renders calendar picker with props 1`] = `
                 "width": 60,
               }
             }
-          >
-            <View
-              accessibilityComponentType={undefined}
-              accessibilityLabel={undefined}
-              accessibilityTraits={undefined}
-              accessible={true}
-              hitSlop={undefined}
-              isTVSelectable={true}
-              onLayout={undefined}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignSelf": "center",
-                  "borderRadius": 60,
-                  "height": 60,
-                  "justifyContent": "center",
-                  "opacity": 1,
-                  "width": 60,
-                }
-              }
-              testID={undefined}
-              tvParallaxProperties={undefined}
-            >
-              <Text
-                accessible={true}
-                allowFontScaling={true}
-                ellipsizeMode="tail"
-                style={
-                  Object {
-                    "alignSelf": "center",
-                    "color": "#000",
-                    "fontSize": 28,
-                  }
-                }
-              />
-            </View>
-          </View>
+          />
         </View>
         <View
           style={
