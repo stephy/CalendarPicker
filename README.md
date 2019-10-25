@@ -82,6 +82,10 @@ const styles = StyleSheet.create({
 | **`allowRangeSelection`** | `Boolean` | Optional. Allow to select date ranges. Default is `false` |
 | **`previousTitle`** | `String` | Optional. Title of button for previous month. Default is `Previous` |
 | **`nextTitle`** | `String` | Optional. Title of button for next month. Default is `Next` |
+| **`prevCustomChild`** | `Any` | Optional. Replaces previousTitle with your own custom component (to be used along with prevCustomChild) |
+| **`nextCustomChild`** | `Any` | Optional. Replaces nextTitle with your own custom component (to be used along with nextCustomChild) |
+| **`prevCustomStyle`** | `Object` | Optional. Custom style wrapper for prevCustomChild |
+| **`nextCustomStyle`** | `Object` | Optional. Custom style wrapper for nextCustomChild |
 | **`selectedDayColor`** | `String` | Optional. Color for selected day |
 | **`selectedDayStyle`** | `ViewStyle` | Optional. Style for selected day. May override selectedDayColor.|
 | **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
@@ -308,6 +312,27 @@ render() {
       minDate={today}
     />
   );
+}
+```
+
+
+### Custom styling controls
+
+![alt tag](https://i.imgur.com/AkESq3H.png)
+
+```js
+render() {
+    <CalendarPicker
+      allowRangeSelection
+      //custom children components (<View> or <Image> or <Icon> or <Text> etc)
+      prevCustomChild={<ArrowLeft svgColor="green" svgWidth="24" svgHeight="24" />}
+      nextCustomChild={<ArrowRight svgColor="red" svgWidth="24" svgHeight="24" />}
+      prevCustomStyle={{ padding: 5 }} // controls the wrapper of prevCustomChild
+      nextCustomStyle={{ padding: 5 }} // controls the wrapper of nextCustomChild
+      todayBackgroundColor="blue"
+      selectedDayColor="red"
+      selectedDayTextColor="#fff"
+    />
 }
 ```
 
