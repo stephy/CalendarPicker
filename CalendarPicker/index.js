@@ -1,15 +1,15 @@
-import React, { Component } from "react";
-import { View, Text, Dimensions, StyleSheet } from "react-native";
-import { makeStyles } from "./makeStyles";
-import { Utils } from "./Utils";
-import HeaderControls from "./HeaderControls";
-import Weekdays from "./Weekdays";
-import DaysGridView from "./DaysGridView";
-import Swiper from "./Swiper";
-import moment from "moment";
+import React, { Component } from 'react';
+import { View, Dimensions } from 'react-native';
+import moment from 'moment';
+import { makeStyles } from './makeStyles';
+import { Utils } from './Utils';
+import HeaderControls from './HeaderControls';
+import Weekdays from './Weekdays';
+import DaysGridView from './DaysGridView';
+import Swiper from './Swiper';
 
-const SWIPE_LEFT = "SWIPE_LEFT";
-const SWIPE_RIGHT = "SWIPE_RIGHT";
+const SWIPE_LEFT = 'SWIPE_LEFT';
+const SWIPE_RIGHT = 'SWIPE_RIGHT';
 
 const _swipeConfig = {
   velocityThreshold: 0.3,
@@ -42,7 +42,7 @@ export default class CalendarPicker extends Component {
     scaleFactor: 375,
     enableSwipe: true,
     onDateChange: () => {
-      console.log("onDateChange() not provided");
+      console.log('onDateChange() not provided');
     },
     enableDateChange: true
   };
@@ -60,7 +60,7 @@ export default class CalendarPicker extends Component {
     }
 
     let newMonthYear = {};
-    if (!moment(prevProps.initialDate).isSame(this.props.initialDate, "day")) {
+    if (!moment(prevProps.initialDate).isSame(this.props.initialDate, 'day')) {
       newMonthYear = this.updateMonthYear(this.props.initialDate);
       doStateUpdate = true;
     }
@@ -70,12 +70,12 @@ export default class CalendarPicker extends Component {
       (this.props.selectedStartDate &&
         !moment(prevState.selectedStartDate).isSame(
           this.props.selectedStartDate,
-          "day"
+          'day'
         )) ||
       (this.props.selectedEndDate &&
         !moment(prevState.selectedEndDate).isSame(
           this.props.selectedEndDate,
-          "day"
+          'day'
         ))
     ) {
       const { selectedStartDate = null, selectedEndDate = null } = this.props;
@@ -103,8 +103,8 @@ export default class CalendarPicker extends Component {
     } = props;
 
     // The styles in makeStyles are intially scaled to this width
-    const containerWidth = width ? width : Dimensions.get("window").width;
-    const containerHeight = height ? height : Dimensions.get("window").height;
+    const containerWidth = width ? width : Dimensions.get('window').width;
+    const containerHeight = height ? height : Dimensions.get('window').height;
     const initialScale =
       Math.min(containerWidth, containerHeight) / scaleFactor;
     return {
@@ -209,17 +209,17 @@ export default class CalendarPicker extends Component {
   }
 
   onSwipe(gestureName) {
-    if (typeof this.props.onSwipe === "function") {
+    if (typeof this.props.onSwipe === 'function') {
       this.props.onSwipe(gestureName);
       return;
     }
     switch (gestureName) {
-      case SWIPE_LEFT:
-        this.handleOnPressNext();
-        break;
-      case SWIPE_RIGHT:
-        this.handleOnPressPrevious();
-        break;
+    case SWIPE_LEFT:
+      this.handleOnPressNext();
+      break;
+    case SWIPE_RIGHT:
+      this.handleOnPressPrevious();
+      break;
     }
   }
 
@@ -249,6 +249,10 @@ export default class CalendarPicker extends Component {
       months,
       previousTitle,
       nextTitle,
+      nextCustomChild,
+      prevCustomChild,
+      prevCustomStyle,
+      nextCustomStyle,
       textStyle,
       todayTextStyle,
       selectedDayStyle,
@@ -273,8 +277,7 @@ export default class CalendarPicker extends Component {
           thisDate.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
           _disabledDates.push(thisDate.valueOf());
         });
-      }
-      else if (disabledDates instanceof Function) {
+      } else if (disabledDates instanceof Function) {
         _disabledDates = disabledDates;
       }
     }
@@ -330,6 +333,10 @@ export default class CalendarPicker extends Component {
             previousTitle={previousTitle}
             nextTitle={nextTitle}
             textStyle={textStyle}
+            nextCustomChild={nextCustomChild}
+            prevCustomChild={prevCustomChild}
+            prevCustomStyle={prevCustomStyle}
+            nextCustomStyle={nextCustomStyle}
           />
           <Weekdays
             styles={styles}
