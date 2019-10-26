@@ -44,7 +44,8 @@ export default class CalendarPicker extends Component {
     onDateChange: () => {
       console.log("onDateChange() not provided");
     },
-    enableDateChange: true
+    enableDateChange: true,
+    headingLevel: 1
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -260,7 +261,8 @@ export default class CalendarPicker extends Component {
       maxRangeDuration,
       swipeConfig,
       customDatesStyles,
-      enableDateChange
+      enableDateChange,
+      headingLevel
     } = this.props;
 
     let _disabledDates = [];
@@ -330,6 +332,7 @@ export default class CalendarPicker extends Component {
             previousTitle={previousTitle}
             nextTitle={nextTitle}
             textStyle={textStyle}
+            headingLevel={headingLevel}
           />
           <Weekdays
             styles={styles}
