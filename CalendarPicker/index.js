@@ -44,7 +44,8 @@ export default class CalendarPicker extends Component {
     onDateChange: () => {
       console.log("onDateChange() not provided");
     },
-    enableDateChange: true
+    enableDateChange: true,
+    headingLevel: 1
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -262,6 +263,7 @@ export default class CalendarPicker extends Component {
       customDatesStyles,
       enableDateChange,
       restrictMonthNavigation,
+      headingLevel
     } = this.props;
 
     let _disabledDates = [];
@@ -334,6 +336,7 @@ export default class CalendarPicker extends Component {
             restrictMonthNavigation={restrictMonthNavigation}
             maxDate={maxDate}
             minDate={minDate}
+            headingLevel={headingLevel}
           />
           <Weekdays
             styles={styles}

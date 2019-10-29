@@ -2,6 +2,7 @@ import React from 'react';
 import {
   View,
   Text,
+  Platform
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
@@ -28,6 +29,7 @@ export default function HeaderControls(props) {
     restrictMonthNavigation,
     maxDate,
     minDate,
+    headingLevel
   } = props;
   const MONTHS = months? months : Utils.MONTHS; // English Month Array
   // getMonth() call below will return the month number, we will use it as the
@@ -40,6 +42,11 @@ export default function HeaderControls(props) {
   const disablePreviousMonth = restrictMonthNavigation && isSameMonthAndYear(minDate, currentMonth, currentYear);
   const disableNextMonth = restrictMonthNavigation && isSameMonthAndYear(maxDate, currentMonth, currentYear);
 
+  const accessibilityProps = { accessibilityRole: 'header' };
+  if (Platform.OS === 'web') {
+    accessibilityProps['aria-level'] = headingLevel;
+  }
+
   return (
     <View style={styles.headerWrapper}>
       <Controls
@@ -50,7 +57,7 @@ export default function HeaderControls(props) {
         textStyles={textStyle}
       />
       <View>
-        <Text style={[styles.monthLabel, textStyle]}>
+        <Text style={[styles.monthLabel, textStyle]} {...accessibilityProps}>
            { month } { year }
         </Text>
       </View>
