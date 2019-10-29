@@ -262,6 +262,7 @@ export default class CalendarPicker extends Component {
       swipeConfig,
       customDatesStyles,
       enableDateChange,
+      restrictMonthNavigation,
       headingLevel
     } = this.props;
 
@@ -332,6 +333,9 @@ export default class CalendarPicker extends Component {
             previousTitle={previousTitle}
             nextTitle={nextTitle}
             textStyle={textStyle}
+            restrictMonthNavigation={restrictMonthNavigation}
+            maxDate={maxDate}
+            minDate={minDate}
             headingLevel={headingLevel}
           />
           <Weekdays

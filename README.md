@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
 | **`swipeConfig`** | `Object` | Optional. Config passed to Swiper.|
 | **`enableSwipe`** | `Boolean` | Optional. Whether to enable swiping. Default is `true` |
 | **`enableDateChange`** | `Boolean` | Optional. Whether to enable pressing on day. Default is `true` |
+| **`restrictMonthNavigation`** | `Boolean` | Optional. Whether to disable Previous month button if it is before minDate or Next month button if it is after MaxDate. Default is `false` |
 | **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns Moment `date` as first parameter.|
 | **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns Moment `date` as first parameter.|
 | **`onSwipe`** | `Function` | Optional. Callback when swipe event is triggered. Returns swipe direction as first parameter.|
