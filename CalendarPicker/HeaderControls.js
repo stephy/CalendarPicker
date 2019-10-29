@@ -25,7 +25,7 @@ export default function HeaderControls(props) {
     previousTitle,
     nextTitle,
     textStyle,
-    applyMinMaxDateOnMonthSelection,
+    restrictMonthNavigation,
     maxDate,
     minDate,
   } = props;
@@ -37,8 +37,8 @@ export default function HeaderControls(props) {
   const month = MONTHS[currentMonth];
   const year = currentYear;
 
-  const disablePreviousMonth = applyMinMaxDateOnMonthSelection && isSameMonthAndYear(minDate, currentMonth, currentYear);
-  const disableNextMonth = applyMinMaxDateOnMonthSelection && isSameMonthAndYear(maxDate, currentMonth, currentYear);
+  const disablePreviousMonth = restrictMonthNavigation && isSameMonthAndYear(minDate, currentMonth, currentYear);
+  const disableNextMonth = restrictMonthNavigation && isSameMonthAndYear(maxDate, currentMonth, currentYear);
 
   return (
     <View style={styles.headerWrapper}>
