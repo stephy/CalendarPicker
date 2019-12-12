@@ -257,6 +257,7 @@ export default class CalendarPicker extends Component {
       selectedRangeStyle,
       selectedRangeEndStyle,
       disabledDates,
+      disabledDatesTextStyle,
       minRangeDuration,
       maxRangeDuration,
       swipeConfig,
@@ -351,6 +352,7 @@ export default class CalendarPicker extends Component {
             styles={styles}
             onPressDay={this.handleOnPressDay}
             disabledDates={_disabledDates}
+            disabledDatesTextStyle={disabledDatesTextStyle}
             minRangeDuration={minRangeDurationTime}
             maxRangeDuration={maxRangeDurationTime}
             startFromMonday={startFromMonday}
