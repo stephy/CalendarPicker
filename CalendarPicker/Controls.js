@@ -10,6 +10,7 @@ export default function Controls({ styles, textStyles, label, onPressControl, di
     <TouchableOpacity
       onPress={() => onPressControl()}
       disabled={disabled}
+      hitSlop={{ top: 20, bottom: 20, left: 50, right: 50 }}
     >
       <Text style={[styles, textStyles]}>
         { disabled ? null : label }
