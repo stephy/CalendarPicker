@@ -28,6 +28,7 @@ export default function Day(props) {
     minDate,
     maxDate,
     disabledDates,
+    disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
     enableDateChange
@@ -178,7 +179,7 @@ export default function Day(props) {
   else {  // dateOutOfRange = true
     return (
       <View style={styles.dayWrapper}>
-        <Text style={[textStyle, styles.disabledText]}>
+        <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle]}>
           { day }
         </Text>
       </View>

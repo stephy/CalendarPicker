@@ -33,6 +33,7 @@ export default function DaysGridView(props) {
     minDate,
     maxDate,
     disabledDates,
+    disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
     enableDateChange
@@ -84,6 +85,7 @@ export default function DaysGridView(props) {
                 minDate={minDate}
                 maxDate={maxDate}
                 disabledDates={disabledDates}
+                disabledDatesTextStyle={disabledDatesTextStyle}
                 minRangeDuration={minRangeDuration}
                 maxRangeDuration={maxRangeDuration}
                 textStyle={textStyle}
@@ -122,6 +124,7 @@ export default function DaysGridView(props) {
               minDate={minDate}
               maxDate={maxDate}
               disabledDates={disabledDates}
+              disabledDatesTextStyle={disabledDatesTextStyle}
               minRangeDuration={minRangeDuration}
               maxRangeDuration={maxRangeDuration}
               textStyle={textStyle}
@@ -173,6 +176,7 @@ DaysGridView.propTypes = {
     textStyle: Text.propTypes.style,
   })),
   disabledDates: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
+  disabledDatesTextStyle: Text.propTypes.style,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
 }
