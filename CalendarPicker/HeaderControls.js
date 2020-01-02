@@ -29,7 +29,9 @@ export default function HeaderControls(props) {
     restrictMonthNavigation,
     maxDate,
     minDate,
-    headingLevel
+    headingLevel,
+    previousTitleStyle,
+    nextTitleStyle,
   } = props;
   const MONTHS = months? months : Utils.MONTHS; // English Month Array
   // getMonth() call below will return the month number, we will use it as the
@@ -54,7 +56,7 @@ export default function HeaderControls(props) {
         label={previous}
         onPressControl={onPressPrevious}
         styles={[styles.monthSelector, styles.prev]}
-        textStyles={textStyle}
+        textStyles={[textStyle, previousTitleStyle]}
       />
       <View>
         <Text style={[styles.monthLabel, textStyle]} {...accessibilityProps}>
@@ -66,7 +68,7 @@ export default function HeaderControls(props) {
         label={next}
         onPressControl={onPressNext}
         styles={[styles.monthSelector, styles.next]}
-        textStyles={textStyle}
+        textStyles={[textStyle, nextTitleStyle]}
       />
     </View>
   );
