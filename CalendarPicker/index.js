@@ -264,7 +264,8 @@ export default class CalendarPicker extends Component {
       customDatesStyles,
       enableDateChange,
       restrictMonthNavigation,
-      headingLevel
+      headingLevel,
+      dayLabelsCustomWrapper,
     } = this.props;
 
     let _disabledDates = [];
@@ -344,6 +345,7 @@ export default class CalendarPicker extends Component {
             startFromMonday={startFromMonday}
             weekdays={weekdays}
             textStyle={textStyle}
+            dayLabelsCustomWrapper={dayLabelsCustomWrapper}
           />
           <DaysGridView
             enableDateChange={enableDateChange}
