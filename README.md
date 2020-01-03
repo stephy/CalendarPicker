@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
 | **`previousTitleStyle`** | `TextStyle` | Optional. Text styling for Previous text.|
 | **`nextTitleStyle`** | `TextStyle` | Optional. Text styling for Next text.|
 | **`dayLabelsWrapper`** | `ViewStyle` | Optional. Style for weekdays wrapper. E.g If you want to remove top and bottom divider line.|
-| **`weekdayStyles`** | `ViewStyle` | Optional. Style for changing color and style for any day of the week. E.g If you want all Sundays in RED color, and Mondays in BLUE color, etc. You need to pass array of styles. See example below.|
+| **`weekdayStyles`** | `ViewStyle` | Optional. Style for changing color and style for any day of the week. E.g If you want all Sundays in RED color, and Mondays in BLUE color, etc. You need to pass JSON object of styles. 0 for Sunday and 6 for Saturday, but if `startFromMonday=true`, then 0 for Monday and 6 for Sunday. See example below.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
@@ -334,38 +334,18 @@ render() {
         borderBottomWidth: 0,
         borderTopWidth: 0,
       }}
-      weekdayStyles={[
-        {
-          color: '#0f0',
+      weekdayStyles={{
+        0: {
+          color: '#00f',
           fontSize: 22,
           fontWeight: 'bold',
           backgroundColor: '#ff0',
         },
-        {
+        5: {
           color: '#000',
           fontSize: 22,
         },
-        {
-          color: '#00f',
-          fontSize: 22,
-        },
-        {
-          color: '#000',
-          fontSize: 22,
-        },
-        {
-          color: '#00f',
-          fontSize: 22,
-        },
-        {
-          color: '#000',
-          fontSize: 22,
-        },
-        {
-          color: '#00f',
-          fontSize: 22,
-        }
-      ]}
+      }}
     />
 ```
 
