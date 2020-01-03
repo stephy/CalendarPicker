@@ -113,6 +113,10 @@ const styles = StyleSheet.create({
 | **`onSwipe`** | `Function` | Optional. Callback when swipe event is triggered. Returns swipe direction as first parameter.|
 | **`dayShape`** | `String` | Optional. Shape of the Day component. Default is `circle`. Available options are `circle` and `square`.|
 | **`headingLevel`** | `Number` | Optional. Sets the aria-level for the calendar title heading when on Web. Default is `1`.|
+| **`previousTitleStyle`** | `TextStyle` | Optional. Text styling for Previous text.|
+| **`nextTitleStyle`** | `TextStyle` | Optional. Text styling for Next text.|
+| **`dayLabelsWrapper`** | `ViewStyle` | Optional. Style for weekdays wrapper. E.g If you want to remove top and bottom divider line.|
+| **`weekdayStyles`** | `ViewStyle` | Optional. Style for changing color and style for any day of the week. E.g If you want all Sundays in RED color, and Mondays in BLUE color, etc. You need to pass array of styles. See example below.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
@@ -312,6 +316,57 @@ render() {
     />
   );
 }
+```
+
+### Styling individual weekdays
+
+```js
+
+<CalendarPicker
+      textStyle={styles.calendarTextStyle}
+      weekdays={CALENDAR_WEEK_DAYS}
+      allowRangeSelection
+      previousTitle="<"
+      previousTitleStyle={{color: '#fff'}}
+      nextTitle=">"
+      nextTitleStyle={{color: '#f00'}}
+      dayLabelsWrapper={{
+        borderBottomWidth: 0,
+        borderTopWidth: 0,
+      }}
+      weekdayStyles={[
+        {
+          color: '#0f0',
+          fontSize: 22,
+          fontWeight: 'bold',
+          backgroundColor: '#ff0',
+        },
+        {
+          color: '#000',
+          fontSize: 22,
+        },
+        {
+          color: '#00f',
+          fontSize: 22,
+        },
+        {
+          color: '#000',
+          fontSize: 22,
+        },
+        {
+          color: '#00f',
+          fontSize: 22,
+        },
+        {
+          color: '#000',
+          fontSize: 22,
+        },
+        {
+          color: '#00f',
+          fontSize: 22,
+        }
+      ]}
+    />
 ```
 
 ## Methods

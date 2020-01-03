@@ -12,9 +12,8 @@ export default function Weekdays(props) {
     startFromMonday,
     weekdays,
     textStyle,
-    dayLabelsCustomWrapper,
-    isChangeSundayColor,
-    sundayColor,
+    dayLabelsWrapper,
+    weekdayStyles,
   } = props;
   let wd = weekdays;
   if (!wd) {
@@ -22,18 +21,20 @@ export default function Weekdays(props) {
   }
 
   return (
-    <View style={[styles.dayLabelsWrapper, dayLabelsCustomWrapper]}>
+    <View style={[styles.dayLabelsWrapper, dayLabelsWrapper]}>
       { wd.map((day, key) => {
         let updatedStyle = textStyle;
-        if (isChangeSundayColor) {
-          let matchIndex = 0;
-          if (startFromMonday) {
-            matchIndex = 6;
+        try {
+          if (weekdayStyles.length > 0) {
+            let currentDayStyle = weekdayStyles[+key];
+            if (currentDayStyle) {
+              updatedStyle = [updatedStyle, currentDayStyle];
+            }
           }
-          if (key === matchIndex) {
-            updatedStyle = {...updatedStyle, ...{color: sundayColor}};
-          }
+        } catch (error) {
+          console.log('Error while updating weekday style: ' + error);
         }
+
         console.log("DAY: " + day + " KEY: " + key);
           return (
             <Text key={key} style={[styles.dayLabels, updatedStyle]}>

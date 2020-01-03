@@ -48,7 +48,7 @@ export default class CalendarPicker extends Component {
     enableDateChange: true,
     headingLevel: 1,
     sundayColor: '#FFFFFF',
-    isChangeSundayColor: false,
+    weekdayStyles: [],
   };
 
   componentDidMount() {
@@ -56,21 +56,26 @@ export default class CalendarPicker extends Component {
   }
 
   updateAllSundays = currentDate => {
-    let day = currentDate
-      .clone()
-      .startOf('month')
-      .day('Sunday');
+    const {startFromMonday, weekdayStyles} = this.props;
+    let day = currentDate.clone().startOf('month');
 
     let customDatesStyles = [];
     do {
       console.log('Date: ' + day.date());
-      if (day.day() === 0) {
-        customDatesStyles.push({
-          date: day.clone(),
-          textStyle: {color: this.props.sundayColor},
-        });
+      let dayIndex = day.day();
+      if (startFromMonday) {
+        dayIndex = dayIndex - 1;
+        if (dayIndex < 0) {
+          dayIndex = 6; // This is Sunday.
+        }
       }
-    } while (day.add(7, 'day').isSame(currentDate, 'month'));
+      let currentDayStyle = weekdayStyles[dayIndex];
+      console.log('currentDayStyle: ' + JSON.stringify(currentDayStyle));
+      customDatesStyles.push({
+        date: day.clone(),
+        textStyle: currentDayStyle,
+      });
+    } while (day.add(1, 'day').isSame(currentDate, 'month'));
     this.setState({defaultCustomDatesStyles: customDatesStyles});
   };
 
@@ -208,7 +213,7 @@ export default class CalendarPicker extends Component {
       });
     }
     try {
-      if (this.props.isChangeSundayColor) {
+      if (this.props.weekdayStyles.length > 0) {
         this.updateAllSundays(
           moment({year: currentYear, month: previousMonth}),
         );
@@ -239,7 +244,7 @@ export default class CalendarPicker extends Component {
       });
     }
     try {
-      if (this.props.isChangeSundayColor) {
+      if (this.props.weekdayStyles.length > 0) {
         this.updateAllSundays(moment({year: currentYear, month: nextMonth}));
       }
     } catch (error) {}
@@ -304,21 +309,19 @@ export default class CalendarPicker extends Component {
       enableDateChange,
       restrictMonthNavigation,
       headingLevel,
-      dayLabelsCustomWrapper,
-      isChangeSundayColor,
-      sundayColor,
+      dayLabelsWrapper,
+      weekdayStyles,
       previousTitleStyle,
       nextTitleStyle,
     } = this.props;
 
     let _disabledDates = [];
     let tempCustomDatesStyles = customDatesStyles;
-    if (isChangeSundayColor) {
+    if (weekdayStyles.length > 0) {
       tempCustomDatesStyles = customDatesStyles
         ? customDatesStyles
         : defaultCustomDatesStyles;
     }
-
     if (disabledDates) {
       if (Array.isArray(disabledDates)) {
         // Convert input date into timestamp
@@ -396,9 +399,8 @@ export default class CalendarPicker extends Component {
             startFromMonday={startFromMonday}
             weekdays={weekdays}
             textStyle={textStyle}
-            dayLabelsCustomWrapper={dayLabelsCustomWrapper}
-            isChangeSundayColor={isChangeSundayColor}
-            sundayColor={sundayColor}
+            dayLabelsWrapper={dayLabelsWrapper}
+            weekdayStyles={weekdayStyles}
           />
           <DaysGridView
             enableDateChange={enableDateChange}
