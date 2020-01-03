@@ -48,20 +48,20 @@ export default class CalendarPicker extends Component {
     enableDateChange: true,
     headingLevel: 1,
     sundayColor: '#FFFFFF',
-    weekdayStyles: [],
+    weekdayStyles: {},
   };
 
   componentDidMount() {
-    this.updateAllSundays(moment());
+    this.updateDayOfWeekStyles(moment());
   }
 
-  updateAllSundays = currentDate => {
+  updateDayOfWeekStyles = currentDate => {
     const {startFromMonday, weekdayStyles} = this.props;
     let day = currentDate.clone().startOf('month');
 
     let customDatesStyles = [];
     do {
-      console.log('Date: ' + day.date());
+      // console.log('Date: ' + day.date());
       let dayIndex = day.day();
       if (startFromMonday) {
         dayIndex = dayIndex - 1;
@@ -70,11 +70,12 @@ export default class CalendarPicker extends Component {
         }
       }
       let currentDayStyle = weekdayStyles[dayIndex];
-      console.log('currentDayStyle: ' + JSON.stringify(currentDayStyle));
-      customDatesStyles.push({
-        date: day.clone(),
-        textStyle: currentDayStyle,
-      });
+      if (currentDayStyle) {
+        customDatesStyles.push({
+          date: day.clone(),
+          textStyle: currentDayStyle,
+        });
+      }
     } while (day.add(1, 'day').isSame(currentDate, 'month'));
     this.setState({defaultCustomDatesStyles: customDatesStyles});
   };
@@ -213,8 +214,8 @@ export default class CalendarPicker extends Component {
       });
     }
     try {
-      if (this.props.weekdayStyles.length > 0) {
-        this.updateAllSundays(
+      if (Object.entries(this.props.weekdayStyles).length) {
+        this.updateDayOfWeekStyles(
           moment({year: currentYear, month: previousMonth}),
         );
       }
@@ -244,8 +245,8 @@ export default class CalendarPicker extends Component {
       });
     }
     try {
-      if (this.props.weekdayStyles.length > 0) {
-        this.updateAllSundays(moment({year: currentYear, month: nextMonth}));
+      if (Object.entries(this.props.weekdayStyles).length > 0) {
+        this.updateDayOfWeekStyles(moment({year: currentYear, month: nextMonth}));
       }
     } catch (error) {}
     this.props.onMonthChange &&
@@ -317,7 +318,7 @@ export default class CalendarPicker extends Component {
 
     let _disabledDates = [];
     let tempCustomDatesStyles = customDatesStyles;
-    if (weekdayStyles.length > 0) {
+    if (Object.entries(weekdayStyles).length > 0) {
       tempCustomDatesStyles = customDatesStyles
         ? customDatesStyles
         : defaultCustomDatesStyles;

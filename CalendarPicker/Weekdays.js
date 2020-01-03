@@ -25,7 +25,7 @@ export default function Weekdays(props) {
       { wd.map((day, key) => {
         let updatedStyle = textStyle;
         try {
-          if (weekdayStyles.length > 0) {
+          if (weekdayStyles[+key]) {
             let currentDayStyle = weekdayStyles[+key];
             if (currentDayStyle) {
               updatedStyle = [updatedStyle, currentDayStyle];
@@ -35,7 +35,6 @@ export default function Weekdays(props) {
           console.log('Error while updating weekday style: ' + error);
         }
 
-        console.log("DAY: " + day + " KEY: " + key);
           return (
             <Text key={key} style={[styles.dayLabels, updatedStyle]}>
               {day}
