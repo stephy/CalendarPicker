@@ -1,6 +1,6 @@
 {
   "name": "react-native-calendar-picker",
-  "version": "6.0.3",
+  "version": "6.0.4",
   "description": "Calendar Picker Component for React Native",
   "engines": {
     "node": ">=4.0.0"

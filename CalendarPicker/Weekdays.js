@@ -13,7 +13,7 @@ export default function Weekdays(props) {
     weekdays,
     textStyle,
     dayLabelsWrapper,
-    weekdayStyles,
+    dayOfWeekStyles,
   } = props;
   let wd = weekdays;
   if (!wd) {
@@ -25,8 +25,8 @@ export default function Weekdays(props) {
       { wd.map((day, key) => {
         let updatedStyle = textStyle;
         try {
-          if (weekdayStyles[+key]) {
-            let currentDayStyle = weekdayStyles[+key];
+          if (dayOfWeekStyles[+key]) {
+            let currentDayStyle = dayOfWeekStyles[+key];
             if (currentDayStyle) {
               updatedStyle = [updatedStyle, currentDayStyle];
             }

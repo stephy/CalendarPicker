@@ -48,7 +48,7 @@ export default class CalendarPicker extends Component {
     enableDateChange: true,
     headingLevel: 1,
     sundayColor: '#FFFFFF',
-    weekdayStyles: {},
+    dayOfWeekStyles: {},
   };
 
   componentDidMount() {
@@ -56,7 +56,7 @@ export default class CalendarPicker extends Component {
   }
 
   updateDayOfWeekStyles = currentDate => {
-    const {startFromMonday, weekdayStyles} = this.props;
+    const {startFromMonday, dayOfWeekStyles} = this.props;
     let day = currentDate.clone().startOf('month');
 
     let customDatesStyles = [];
@@ -69,7 +69,7 @@ export default class CalendarPicker extends Component {
           dayIndex = 6; // This is Sunday.
         }
       }
-      let currentDayStyle = weekdayStyles[dayIndex];
+      let currentDayStyle = dayOfWeekStyles[dayIndex];
       if (currentDayStyle) {
         customDatesStyles.push({
           date: day.clone(),
@@ -214,7 +214,7 @@ export default class CalendarPicker extends Component {
       });
     }
     try {
-      if (Object.entries(this.props.weekdayStyles).length) {
+      if (Object.entries(this.props.dayOfWeekStyles).length) {
         this.updateDayOfWeekStyles(
           moment({year: currentYear, month: previousMonth}),
         );
@@ -245,7 +245,7 @@ export default class CalendarPicker extends Component {
       });
     }
     try {
-      if (Object.entries(this.props.weekdayStyles).length > 0) {
+      if (Object.entries(this.props.dayOfWeekStyles).length > 0) {
         this.updateDayOfWeekStyles(moment({year: currentYear, month: nextMonth}));
       }
     } catch (error) {}
@@ -311,14 +311,14 @@ export default class CalendarPicker extends Component {
       restrictMonthNavigation,
       headingLevel,
       dayLabelsWrapper,
-      weekdayStyles,
+      dayOfWeekStyles,
       previousTitleStyle,
       nextTitleStyle,
     } = this.props;
 
     let _disabledDates = [];
     let tempCustomDatesStyles = customDatesStyles;
-    if (Object.entries(weekdayStyles).length > 0) {
+    if (Object.entries(dayOfWeekStyles).length > 0) {
       tempCustomDatesStyles = customDatesStyles
         ? customDatesStyles
         : defaultCustomDatesStyles;
@@ -401,7 +401,7 @@ export default class CalendarPicker extends Component {
             weekdays={weekdays}
             textStyle={textStyle}
             dayLabelsWrapper={dayLabelsWrapper}
-            weekdayStyles={weekdayStyles}
+            dayOfWeekStyles={dayOfWeekStyles}
           />
           <DaysGridView
             enableDateChange={enableDateChange}
