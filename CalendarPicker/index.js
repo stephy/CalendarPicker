@@ -25,6 +25,7 @@ export default class CalendarPicker extends Component {
       selectedStartDate: props.selectedStartDate || null,
       selectedEndDate: props.selectedEndDate || null,
       styles: {},
+      defaultCustomDatesStyles: [],
       ...this.updateScaledStyles(props),
       ...this.updateMonthYear(props.initialDate)
     };
@@ -45,7 +46,38 @@ export default class CalendarPicker extends Component {
       console.log("onDateChange() not provided");
     },
     enableDateChange: true,
-    headingLevel: 1
+    headingLevel: 1,
+    sundayColor: '#FFFFFF',
+    weekdayStyles: {},
+  };
+
+  componentDidMount() {
+    this.updateDayOfWeekStyles(moment());
+  }
+
+  updateDayOfWeekStyles = currentDate => {
+    const {startFromMonday, weekdayStyles} = this.props;
+    let day = currentDate.clone().startOf('month');
+
+    let customDatesStyles = [];
+    do {
+      // console.log('Date: ' + day.date());
+      let dayIndex = day.day();
+      if (startFromMonday) {
+        dayIndex = dayIndex - 1;
+        if (dayIndex < 0) {
+          dayIndex = 6; // This is Sunday.
+        }
+      }
+      let currentDayStyle = weekdayStyles[dayIndex];
+      if (currentDayStyle) {
+        customDatesStyles.push({
+          date: day.clone(),
+          textStyle: currentDayStyle,
+        });
+      }
+    } while (day.add(1, 'day').isSame(currentDate, 'month'));
+    this.setState({defaultCustomDatesStyles: customDatesStyles});
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -181,6 +213,13 @@ export default class CalendarPicker extends Component {
         currentYear: parseInt(currentYear)
       });
     }
+    try {
+      if (Object.entries(this.props.weekdayStyles).length) {
+        this.updateDayOfWeekStyles(
+          moment({year: currentYear, month: previousMonth}),
+        );
+      }
+    } catch (error) {}
     this.props.onMonthChange &&
       this.props.onMonthChange(
         moment({ year: currentYear, month: previousMonth })
@@ -205,6 +244,11 @@ export default class CalendarPicker extends Component {
         currentYear: parseInt(currentYear)
       });
     }
+    try {
+      if (Object.entries(this.props.weekdayStyles).length > 0) {
+        this.updateDayOfWeekStyles(moment({year: currentYear, month: nextMonth}));
+      }
+    } catch (error) {}
     this.props.onMonthChange &&
       this.props.onMonthChange(moment({ year: currentYear, month: nextMonth }));
   }
@@ -237,7 +281,8 @@ export default class CalendarPicker extends Component {
       currentYear,
       selectedStartDate,
       selectedEndDate,
-      styles
+      styles,
+      defaultCustomDatesStyles,
     } = this.state;
 
     const {
@@ -264,11 +309,20 @@ export default class CalendarPicker extends Component {
       customDatesStyles,
       enableDateChange,
       restrictMonthNavigation,
-      headingLevel
+      headingLevel,
+      dayLabelsWrapper,
+      weekdayStyles,
+      previousTitleStyle,
+      nextTitleStyle,
     } = this.props;
 
     let _disabledDates = [];
-
+    let tempCustomDatesStyles = customDatesStyles;
+    if (Object.entries(weekdayStyles).length > 0) {
+      tempCustomDatesStyles = customDatesStyles
+        ? customDatesStyles
+        : defaultCustomDatesStyles;
+    }
     if (disabledDates) {
       if (Array.isArray(disabledDates)) {
         // Convert input date into timestamp
@@ -338,12 +392,16 @@ export default class CalendarPicker extends Component {
             maxDate={maxDate}
             minDate={minDate}
             headingLevel={headingLevel}
+            previousTitleStyle={previousTitleStyle}
+            nextTitleStyle={nextTitleStyle}
           />
           <Weekdays
             styles={styles}
             startFromMonday={startFromMonday}
             weekdays={weekdays}
             textStyle={textStyle}
+            dayLabelsWrapper={dayLabelsWrapper}
+            weekdayStyles={weekdayStyles}
           />
           <DaysGridView
             enableDateChange={enableDateChange}
@@ -367,7 +425,7 @@ export default class CalendarPicker extends Component {
             selectedRangeStartStyle={selectedRangeStartStyle}
             selectedRangeStyle={selectedRangeStyle}
             selectedRangeEndStyle={selectedRangeEndStyle}
-            customDatesStyles={customDatesStyles}
+            customDatesStyles={tempCustomDatesStyles}
           />
         </View>
       </Swiper>
