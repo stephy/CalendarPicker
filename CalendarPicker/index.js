@@ -24,6 +24,8 @@ export default class CalendarPicker extends Component {
       currentYear: null,
       selectedStartDate: props.selectedStartDate || null,
       selectedEndDate: props.selectedEndDate || null,
+      minDate: props.minDate && moment(props.minDate),
+      maxDate: props.maxDate && moment(props.maxDate),
       styles: {},
       defaultCustomDatesStyles: [],
       ...this.updateScaledStyles(props),
@@ -83,6 +85,7 @@ export default class CalendarPicker extends Component {
   componentDidUpdate(prevProps, prevState) {
     let newStyles = {};
     let doStateUpdate = false;
+    let minDate, maxDate;
 
     if (
       prevProps.width !== this.props.width ||
@@ -119,8 +122,11 @@ export default class CalendarPicker extends Component {
       doStateUpdate = true;
     }
 
+    minDate = this.props.minDate && moment(this.props.minDate);
+    maxDate = this.props.maxDate && moment(this.props.maxDate);
+
     if (doStateUpdate) {
-      this.setState({ ...newStyles, ...newMonthYear, ...selectedDateRanges });
+      this.setState({ ...newStyles, ...newMonthYear, ...selectedDateRanges, minDate, maxDate });
     }
   }
 
@@ -289,8 +295,6 @@ export default class CalendarPicker extends Component {
       allowRangeSelection,
       startFromMonday,
       initialDate,
-      minDate,
-      maxDate,
       weekdays,
       months,
       previousTitle,
@@ -389,8 +393,8 @@ export default class CalendarPicker extends Component {
             nextTitle={nextTitle}
             textStyle={textStyle}
             restrictMonthNavigation={restrictMonthNavigation}
-            maxDate={maxDate}
-            minDate={minDate}
+            minDate={this.state.minDate}
+            maxDate={this.state.maxDate}
             headingLevel={headingLevel}
             previousTitleStyle={previousTitleStyle}
             nextTitleStyle={nextTitleStyle}
@@ -417,8 +421,8 @@ export default class CalendarPicker extends Component {
             allowRangeSelection={allowRangeSelection}
             selectedStartDate={selectedStartDate && moment(selectedStartDate)}
             selectedEndDate={selectedEndDate && moment(selectedEndDate)}
-            minDate={minDate && moment(minDate)}
-            maxDate={maxDate && moment(maxDate)}
+            minDate={this.state.minDate}
+            maxDate={this.state.maxDate}
             textStyle={textStyle}
             todayTextStyle={todayTextStyle}
             selectedDayStyle={selectedDayStyle}
