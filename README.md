@@ -380,27 +380,16 @@ I would like to call out some contributors who have been helping with this proje
 - [peacechen](https://github.com/peacechen)
 
 
-# Development
+# Sample Application
 
+The sample app is an Expo project created with `create-react-native-app`.
 ```sh
-git clone git@github.com:stephy/CalendarPicker.git CalendarPicker
+cd example
+npm run cp
 npm install
-```
-
-In Package.json modify
-```sh
-"main": "./CalendarPicker",
-```
-to
-```sh
-"main": "./node_modules/react-native-scripts/build/bin/crna-entry.js",
-```
-
-#### Running on device
-```sh
 npm start
 ```
-#### Running on iOS Simulator
-```sh
-npm run ios
-```
+
+## Development
+
+The source files are copied from the project root directory into `example/node_modules` using `npm run cp`.  If a source file is modified, it must be copied over again with `npm run cp`.

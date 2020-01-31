@@ -5,15 +5,6 @@
   "engines": {
     "node": ">=4.0.0"
   },
-  "devDependencies": {
-    "babel-jest": "^22.4.3",
-    "jest": "^22.4.3",
-    "moment": "*",
-    "react": "~15.4.0",
-    "react-native": "0.42.3",
-    "react-native-scripts": "0.0.25",
-    "react-test-renderer": "~15.4.1"
-  },
   "peerDependencies": {
     "moment": "*",
     "react": "*",
@@ -21,15 +12,8 @@
   },
   "main": "./CalendarPicker",
   "scripts": {
-    "start": "react-native-scripts start",
-    "eject": "react-native-scripts eject",
-    "android": "react-native-scripts android",
-    "ios": "react-native-scripts ios",
-    "test": "node_modules/jest/bin/jest.js",
-    "test:watch": "node_modules/jest/bin/jest.js --watch"
-  },
-  "jest": {
-    "preset": "react-native"
+    "start": "echo \"example folder contains sample app (see README)\" && exit 1",
+    "test": "echo \"example folder contains the tests (see README)\" && exit 1"
   },
   "repository": {
     "type": "git",

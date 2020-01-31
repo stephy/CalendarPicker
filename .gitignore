@@ -5,6 +5,10 @@ npm-debug.*
 
 node_modules/**/*
 
+example/node_modules/
+example/CalendarPicker/
+example/package-lock.json
+
 # Xcode
 build/
 *.pbxuser

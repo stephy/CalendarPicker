@@ -11,6 +11,8 @@ export default class App extends Component {
     super(props);
     this.state = {
       selectedStartDate: null,
+      minDate: new Date(2020, 0, 20),
+      maxDate: new Date(2020, 1, 30)
     };
     this.onDateChange = this.onDateChange.bind(this);
   }
@@ -18,17 +20,20 @@ export default class App extends Component {
   onDateChange(date) {
     this.setState({
       selectedStartDate: date,
+      minDate: new Date(2020, 0, 24),
     });
   }
   render() {
     const { selectedStartDate } = this.state;
     const startDate = selectedStartDate ? selectedStartDate.toString() : '';
-    const initialDate = new Date(2017,6,12);
+    const initialDate = this.state.minDate;
     return (
       <View style={styles.container}>
         <CalendarPicker
           onDateChange={this.onDateChange}
           initialDate={initialDate}
+          minDate={this.state.minDate}
+  				maxDate={this.state.maxDate}
         />
 
         <View>
