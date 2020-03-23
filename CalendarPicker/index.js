@@ -38,6 +38,7 @@ export default class CalendarPicker extends Component {
     this.handleOnPressDay = this.handleOnPressDay.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
     this.resetSelections = this.resetSelections.bind(this);
+    this.setStartDate = this.setStartDate.bind(this);
   }
 
   static defaultProps = {
@@ -278,6 +279,12 @@ export default class CalendarPicker extends Component {
     this.setState({
       selectedStartDate: null,
       selectedEndDate: null
+    });
+  }
+
+setStartDate(date) {
+    this.setState({
+      selectedStartDate: date, 
     });
   }
 
