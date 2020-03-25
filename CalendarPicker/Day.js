@@ -34,7 +34,7 @@ export default function Day(props) {
     enableDateChange
   } = props;
 
-  const thisDay = moment({year, month, day});
+  const thisDay = moment({year, month, day, hour: 12 });
   const today = moment();
 
   let dateOutOfRange;

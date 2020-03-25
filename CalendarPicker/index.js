@@ -178,12 +178,12 @@ export default class CalendarPicker extends Component {
       return;
     }
 
-    const date = moment({ year: currentYear, month: currentMonth, day });
+    const date = moment({ year: currentYear, month: currentMonth, day, hour: 12 });
 
     if (
       allowRangeSelection &&
       selectedStartDate &&
-      date.isSameOrAfter(selectedStartDate) &&
+      date.isSameOrAfter(selectedStartDate, "day") &&
       !selectedEndDate
     ) {
       this.setState({
