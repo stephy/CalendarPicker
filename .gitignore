@@ -2,6 +2,7 @@ node_modules/
 .expo/
 npm-debug.*
 .DS_Store
+package-lock.json
 
 node_modules/**/*
 
