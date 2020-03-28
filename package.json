@@ -6,7 +6,7 @@
     "node": ">=4.0.0"
   },
   "peerDependencies": {
-    "moment": "*",
+    "moment": ">=2.0.0",
     "react": "*",
     "react-native": "*"
   },
