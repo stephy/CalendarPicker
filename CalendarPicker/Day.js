@@ -5,7 +5,6 @@ import {
   TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { Utils } from './Utils';
 import moment from 'moment';
 
 export default function Day(props) {
@@ -69,7 +68,7 @@ export default function Day(props) {
 
   if (allowRangeSelection && minRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
     if (Array.isArray(minRangeDuration)) {
-      let i = minRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate, 'day')) );
+      let i = minRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate), 'day') );
       if (i >= 0 && moment(selectedStartDate).add(minRangeDuration[i].minDuration, 'day').isAfter(thisDay, 'day') ) {
         dateIsBeforeMinDuration = true;
       }
@@ -80,7 +79,7 @@ export default function Day(props) {
 
 	if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
 		if (Array.isArray(maxRangeDuration)) {
-			let i = maxRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate, 'day')) );
+			let i = maxRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate), 'day') );
 			if (i >= 0 && moment(selectedStartDate).add(maxRangeDuration[i].maxDuration, 'day').isBefore(thisDay, 'day') ) {
 				dateIsAfterMaxDuration = true;
 			}
