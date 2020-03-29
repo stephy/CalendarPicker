@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
 | **`maxRangeDuration`** | `Number or Array` | Optional. Specifies a maximum range duration when using allowRangeSelection. Can either pass a number to be used for all dates or an Array of objects if the maximum range duration depends on the date `{date: Moment-parsable date, maxDuration: Number}` |
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
 | **`todayTextStyle`** | `TextStyle` | Optional. Text styling for today. |
-| **`textStyle`** | `Object` | Optional. Style overall text. Change fontFamily, color, etc. |
+| **`textStyle`** | `TextStyle` | Optional. Style overall text. Change fontFamily, color, etc. |
 | **`customDatesStyles`** | `Array` | Optional. Style individual date(s). Array of objects `{date: Moment-parseable date, containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}` |
 | **`scaleFactor`** | `Number` | Optional. Default (375) scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
 | **`previousTitleStyle`** | `TextStyle` | Optional. Text styling for Previous text.|
 | **`nextTitleStyle`** | `TextStyle` | Optional. Text styling for Next text.|
 | **`dayLabelsWrapper`** | `ViewStyle` | Optional. Style for weekdays wrapper. E.g If you want to remove top and bottom divider line.|
-| **`dayOfWeekStyles`** | `ViewStyle` | Optional. Style for changing color and style for any day of the week. E.g If you want all Sundays in RED color, and Mondays in BLUE color, etc. You need to pass JSON object of styles. 0 for Sunday and 6 for Saturday, but if `startFromMonday=true`, then 0 for Monday and 6 for Sunday. See example below.|
+| **`dayOfWeekStyles`** | `TextStyle` | Optional. Style for changing color and style for any day of the week. E.g If you want all Sundays in RED color, and Mondays in BLUE color, etc. You need to pass JSON object of styles. 0 for Sunday and 6 for Saturday, but if `startFromMonday=true`, then 0 for Monday and 6 for Sunday. See example below.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
