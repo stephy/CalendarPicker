@@ -360,6 +360,12 @@ These internal methods may be accessed through a ref to the CalendarPicker.
 | **`handleOnPressPrevious`** |  | Programmatically advance to previous month. |
 | **`resetSelections`** |  | Clear date selections. Useful for resetting date range selection when user has picked a start date but not an end date. |
 
+## TypeScript
+
+Definitions are available at https://www.npmjs.com/package/@types/react-native-calendar-picker courtesy of [automatensalat](https://github.com/automatensalat).
+```
+npm install --save @types/react-native-calendar-picker
+```
 
 
 # Suggestions?
