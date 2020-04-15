@@ -172,7 +172,12 @@ export default class CalendarPicker extends Component {
       selectedEndDate
     } = this.state;
 
-    const { allowRangeSelection, onDateChange, enableDateChange } = this.props;
+    const {
+      allowRangeSelection,
+      onDateChange,
+      enableDateChange,
+      allowBackwardRangeSelect,
+    } = this.props;
 
     if (!enableDateChange) {
       return;
@@ -180,15 +185,17 @@ export default class CalendarPicker extends Component {
 
     const date = moment({ year: currentYear, month: currentMonth, day, hour: 12 });
 
-    if (
-      allowRangeSelection &&
-      selectedStartDate &&
-      date.isSameOrAfter(selectedStartDate, "day") &&
-      !selectedEndDate
-    ) {
-      this.setState({
-        selectedEndDate: date
-      });
+    if (allowRangeSelection && selectedStartDate && !selectedEndDate) {
+      if (date.isSameOrAfter(selectedStartDate, "day")) {
+        this.setState({
+          selectedEndDate: date
+        });
+      } else if (allowBackwardRangeSelect) {
+        this.setState({
+          selectedStartDate: date,
+          selectedEndDate: selectedStartDate,
+        });
+      }
       // propagate to parent date has changed
       onDateChange(date, Utils.END_DATE);
     } else {
