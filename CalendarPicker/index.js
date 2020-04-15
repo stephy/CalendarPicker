@@ -172,29 +172,114 @@ export default class CalendarPicker extends Component {
       selectedEndDate
     } = this.state;
 
-    const { allowRangeSelection, onDateChange, enableDateChange } = this.props;
+    const {
+      allowRangeSelection,
+      onDateChange,
+      enableDateChange,
+      allowBackwardRangeSelect,
+      maxRangeDuration,
+    } = this.props;
 
     if (!enableDateChange) {
       return;
     }
 
-    const date = moment({ year: currentYear, month: currentMonth, day, hour: 12 });
+    const date = moment({ year: currentYear, month: currentMonth, day, hour: 12 }),
+      startDate = selectedStartDate && moment(selectedStartDate),
+      endDate = selectedEndDate && moment(selectedEndDate);
 
-    if (
-      allowRangeSelection &&
-      selectedStartDate &&
-      date.isSameOrAfter(selectedStartDate, "day") &&
-      !selectedEndDate
-    ) {
-      this.setState({
-        selectedEndDate: date
-      });
-      // propagate to parent date has changed
-      onDateChange(date, Utils.END_DATE);
+    if (allowRangeSelection && startDate && !endDate) {
+      if (date.isSameOrAfter(startDate, 'day')) {
+        this.setState({
+          selectedEndDate: date,
+        });
+        // propagate to parent date has changed
+        onDateChange(date, Utils.END_DATE);
+        if (
+          maxRangeDuration &&
+          !isNaN(maxRangeDuration) &&
+          date.diff(startDate, 'days') > maxRangeDuration
+        ) {
+          const newStartDate = date.clone().subtract(maxRangeDuration, 'days');
+          this.setState({
+            selectedStartDate: newStartDate,
+          });
+          // propagate to parent date has changed
+          onDateChange(newStartDate, Utils.START_DATE);
+        }
+      } else if (allowBackwardRangeSelect) {
+        if (
+          maxRangeDuration &&
+          !isNaN(maxRangeDuration) &&
+          startDate.diff(date, 'days') > maxRangeDuration
+        ) {
+          const newEndDate = date.clone().add(maxRangeDuration, 'days');
+          this.setState({
+            selectedStartDate: date,
+            selectedEndDate: newEndDate,
+          });
+          // propagate to parent date has changed
+          onDateChange(date, Utils.START_DATE);
+          onDateChange(newEndDate, Utils.END_DATE);
+        } else {
+          this.setState({
+            selectedStartDate: date,
+            selectedEndDate: startDate,
+          });
+          // propagate to parent date has changed
+          onDateChange(date, Utils.START_DATE);
+          onDateChange(startDate, Utils.END_DATE);
+        }
+      } else {
+        this.setState({
+          selectedStartDate: date,
+          selectedEndDate: null,
+        });
+        // propagate to parent date has changed
+        onDateChange(date, Utils.START_DATE);
+      }
+    } else if (allowRangeSelection && startDate) {
+      if (endDate.diff(date, 'days') > maxRangeDuration) {
+        if (date.isBefore(endDate)) {
+          const newEndDate = date.clone().add(maxRangeDuration, 'days');
+          this.setState({
+            selectedStartDate: date,
+            selectedEndDate: newEndDate,
+          });
+          // propagate to parent date has changed
+          onDateChange(date, Utils.START_DATE);
+          onDateChange(newEndDate, Utils.END_DATE);
+        } else if (allowBackwardRangeSelect) {
+          const newStartDate = date.clone().subtract(maxRangeDuration, 'days');
+          this.setState({
+            selectedStartDate: newStartDate,
+            selectedEndDate: date,
+          });
+          // propagate to parent date has changed
+          onDateChange(newStartDate, Utils.START_DATE);
+          onDateChange(date, Utils.END_DATE);
+        } else {
+          this.setState({
+            selectedStartDate: date,
+            selectedEndDate: null,
+          });
+          // propagate to parent date has changed
+          onDateChange(date, Utils.START_DATE);
+          onDateChange(null, Utils.END_DATE);
+        }
+      } else {
+        this.setState({
+          selectedStartDate: date,
+          selectedEndDate: null,
+        });
+        // propagate to parent date has changed
+        onDateChange(date, Utils.START_DATE);
+        onDateChange(null, Utils.END_DATE);
+      }
     } else {
       this.setState({
         selectedStartDate: date,
-        selectedEndDate: null
+        selectedEndDate: null,
       });
       // propagate to parent date has changed
       onDateChange(date, Utils.START_DATE);
@@ -293,6 +378,7 @@ export default class CalendarPicker extends Component {
 
     const {
       allowRangeSelection,
+      allowBackwardRangeSelect,
       startFromMonday,
       initialDate,
       weekdays,
@@ -419,6 +505,7 @@ export default class CalendarPicker extends Component {
             maxRangeDuration={maxRangeDurationTime}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
+            allowBackwardRangeSelect={allowBackwardRangeSelect}
             selectedStartDate={selectedStartDate && moment(selectedStartDate)}
             selectedEndDate={selectedEndDate && moment(selectedEndDate)}
             minDate={this.state.minDate}

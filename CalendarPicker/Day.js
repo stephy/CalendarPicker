@@ -18,6 +18,7 @@ export default function Day(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
+    allowBackwardRangeSelect,
     selectedDayStyle,
     selectedRangeStartStyle,
     selectedRangeStyle,
@@ -77,7 +78,13 @@ export default function Day(props) {
     }
   }
 
-	if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
+  if (
+    allowRangeSelection &&
+    maxRangeDuration &&
+    selectedStartDate &&
+    thisDay.isAfter(moment(selectedStartDate), 'day') &&
+    (!selectedEndDate || !allowBackwardRangeSelect)
+  ) {
 		if (Array.isArray(maxRangeDuration)) {
 			let i = maxRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate), 'day') );
 			if (i >= 0 && moment(selectedStartDate).add(maxRangeDuration[i].maxDuration, 'day').isBefore(thisDay, 'day') ) {
