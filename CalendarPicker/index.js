@@ -54,7 +54,7 @@ export default class CalendarPicker extends Component {
   };
 
   componentDidMount() {
-    this.updateDayOfWeekStyles(moment());
+    this.updateDayOfWeekStyles(this.props.initialDate ? moment(this.props.initialDate) : moment());
   }
 
   updateDayOfWeekStyles = currentDate => {
@@ -324,7 +324,7 @@ export default class CalendarPicker extends Component {
     let tempCustomDatesStyles = customDatesStyles;
     if (Object.entries(dayOfWeekStyles).length > 0) {
       tempCustomDatesStyles = customDatesStyles
-        ? customDatesStyles
+        ? customDatesStyles.concat(defaultCustomDatesStyles)
         : defaultCustomDatesStyles;
     }
     if (disabledDates) {
