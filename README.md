@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
 | **`todayTextStyle`** | `TextStyle` | Optional. Text styling for today. |
 | **`textStyle`** | `TextStyle` | Optional. Style overall text. Change fontFamily, color, etc. |
 | **`customDatesStyles`** | `Array` | Optional. Style individual date(s). Array of objects `{date: Moment-parseable date, containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}` |
+| **`customDatesStylesPriority`** | `String` | Optional. Precedence of `customDates` or `dayOfWeek` styles. Default `dayOfWeek` |
 | **`scaleFactor`** | `Number` | Optional. Default (375) scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
 | **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
