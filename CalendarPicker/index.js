@@ -27,12 +27,13 @@ export default class CalendarPicker extends Component {
       minDate: props.minDate && moment(props.minDate),
       maxDate: props.maxDate && moment(props.maxDate),
       styles: {},
-      defaultCustomDatesStyles: [],
       ...this.updateScaledStyles(props),
-      ...this.updateMonthYear(props.initialDate)
+      ...this.updateMonthYear(props.initialDate),
+      ...this.updateDayOfWeekStyles(props.initialDate),
     };
     this.updateScaledStyles = this.updateScaledStyles.bind(this);
     this.updateMonthYear = this.updateMonthYear.bind(this);
+    this.updateDayOfWeekStyles = this.updateDayOfWeekStyles.bind(this);
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
     this.handleOnPressDay = this.handleOnPressDay.bind(this);
@@ -51,42 +52,17 @@ export default class CalendarPicker extends Component {
     headingLevel: 1,
     sundayColor: '#FFFFFF',
     dayOfWeekStyles: {},
+    customDatesStyles: [],
+    customDatesStylesPriority: "dayOfWeek",
   };
 
   componentDidMount() {
-    this.updateDayOfWeekStyles(this.props.initialDate ? moment(this.props.initialDate) : moment());
   }
 
-  updateDayOfWeekStyles = currentDate => {
-    const {startFromMonday, dayOfWeekStyles} = this.props;
-    let day = currentDate.clone().startOf('month');
-
-    let customDatesStyles = [];
-    do {
-      // console.log('Date: ' + day.date());
-      let dayIndex = day.day();
-      if (startFromMonday) {
-        dayIndex = dayIndex - 1;
-        if (dayIndex < 0) {
-          dayIndex = 6; // This is Sunday.
-        }
-      }
-      let currentDayStyle = dayOfWeekStyles[dayIndex];
-      if (currentDayStyle) {
-        customDatesStyles.push({
-          date: day.clone(),
-          textStyle: currentDayStyle,
-        });
-      }
-    } while (day.add(1, 'day').isSame(currentDate, 'month'));
-    this.setState({defaultCustomDatesStyles: customDatesStyles});
-  };
-
   componentDidUpdate(prevProps, prevState) {
-    let newStyles = {};
     let doStateUpdate = false;
-    let minDate, maxDate;
 
+    let newStyles = {};
     if (
       prevProps.width !== this.props.width ||
       prevProps.height !== this.props.height
@@ -122,11 +98,24 @@ export default class CalendarPicker extends Component {
       doStateUpdate = true;
     }
 
-    minDate = this.props.minDate && moment(this.props.minDate);
-    maxDate = this.props.maxDate && moment(this.props.maxDate);
+    let customDatesStyles = {};
+    if (this.props.startFromMonday !== prevProps.startFromMonday ||
+        this.props.dayOfWeekStyles !== prevProps.dayOfWeekStyles ||
+        this.props.customDatesStylesPriority !== prevProps.customDatesStylesPriority ||
+        this.props.customDatesStyles !== prevProps.customDatesStyles
+    ) {
+      customDatesStyles = this.updateDayOfWeekStyles(
+        moment({year: this.state.currentYear, month: this.state.currentMonth}),
+      );
+      doStateUpdate = true;
+    }
+
+    let minDate = this.props.minDate && moment(this.props.minDate);
+    let maxDate = this.props.maxDate && moment(this.props.maxDate);
 
     if (doStateUpdate) {
-      this.setState({ ...newStyles, ...newMonthYear, ...selectedDateRanges, minDate, maxDate });
+      this.setState({ ...newStyles, ...newMonthYear, ...selectedDateRanges,
+                      ...customDatesStyles, minDate, maxDate });
     }
   }
 
@@ -201,6 +190,44 @@ export default class CalendarPicker extends Component {
     }
   }
 
+  updateDayOfWeekStyles(currentDate) {
+    const {
+      startFromMonday,
+      dayOfWeekStyles,
+      customDatesStyles: propsCustomDatesStyles,
+      customDatesStylesPriority
+    } = this.props;
+
+    let day = moment(currentDate).startOf('month');
+    let customDayOfWeekStyles = [];
+    do {
+      let dayIndex = day.day();
+      if (startFromMonday) {
+        dayIndex = dayIndex - 1;
+        if (dayIndex < 0) {
+          dayIndex = 6; // This is Sunday.
+        }
+      }
+      let currentDayStyle = dayOfWeekStyles[dayIndex];
+      if (currentDayStyle) {
+        customDayOfWeekStyles.push({
+          date: day.clone(),
+          textStyle: currentDayStyle,
+        });
+      }
+    } while (day.add(1, 'day').isSame(currentDate, 'month'));
+
+    let customDatesStyles = [];
+    if (customDatesStylesPriority === "dayOfWeek") {
+      customDatesStyles = [...customDayOfWeekStyles, ...propsCustomDatesStyles];
+    }
+    else {
+      customDatesStyles = [...propsCustomDatesStyles, ...customDayOfWeekStyles];
+    }
+
+    return { customDatesStyles };
+  };
+
   handleOnPressPrevious() {
     let { currentMonth, currentYear } = this.state;
     let previousMonth = currentMonth - 1;
@@ -208,28 +235,9 @@ export default class CalendarPicker extends Component {
     // so we have to go back to previous year and set the current month to December
     if (previousMonth < 0) {
       previousMonth = 11;
-      currentYear -= 1; // decrement year
-      this.setState({
-        currentMonth: parseInt(previousMonth), // setting month to December
-        currentYear: parseInt(currentYear)
-      });
-    } else {
-      this.setState({
-        currentMonth: parseInt(previousMonth),
-        currentYear: parseInt(currentYear)
-      });
+      currentYear--;
     }
-    try {
-      if (Object.entries(this.props.dayOfWeekStyles).length) {
-        this.updateDayOfWeekStyles(
-          moment({year: currentYear, month: previousMonth}),
-        );
-      }
-    } catch (error) {}
-    this.props.onMonthChange &&
-      this.props.onMonthChange(
-        moment({ year: currentYear, month: previousMonth })
-      );
+    this.handleOnPressFinisher({year: currentYear, month: previousMonth});
   }
 
   handleOnPressNext() {
@@ -239,24 +247,28 @@ export default class CalendarPicker extends Component {
     // so we have to go forward to the next year and set the current month to January
     if (nextMonth > 11) {
       nextMonth = 0;
-      currentYear += 1; // increment year
-      this.setState({
-        currentMonth: parseInt(nextMonth), // setting month to January
-        currentYear: parseInt(currentYear)
-      });
-    } else {
-      this.setState({
-        currentMonth: parseInt(nextMonth),
-        currentYear: parseInt(currentYear)
-      });
+      currentYear++;
     }
+    this.handleOnPressFinisher({year: currentYear, month: nextMonth});
+  }
+
+  handleOnPressFinisher({year, month}) {
+    let dayOfWeekStyles = {};
+    let currentMonthYear = moment({year, month});
     try {
-      if (Object.entries(this.props.dayOfWeekStyles).length > 0) {
-        this.updateDayOfWeekStyles(moment({year: currentYear, month: nextMonth}));
+      if (Object.entries(this.props.dayOfWeekStyles).length) {
+        dayOfWeekStyles = this.updateDayOfWeekStyles(currentMonthYear);
       }
-    } catch (error) {}
-    this.props.onMonthChange &&
-      this.props.onMonthChange(moment({ year: currentYear, month: nextMonth }));
+    }
+    catch (error) {}
+
+    this.setState({
+      ...dayOfWeekStyles,
+      currentMonth: parseInt(month),
+      currentYear: parseInt(year)
+    });
+
+    this.props.onMonthChange && this.props.onMonthChange(currentMonthYear);
   }
 
   onSwipe(gestureName) {
@@ -288,7 +300,7 @@ export default class CalendarPicker extends Component {
       selectedStartDate,
       selectedEndDate,
       styles,
-      defaultCustomDatesStyles,
+      customDatesStyles,
     } = this.state;
 
     const {
@@ -310,7 +322,6 @@ export default class CalendarPicker extends Component {
       minRangeDuration,
       maxRangeDuration,
       swipeConfig,
-      customDatesStyles,
       enableDateChange,
       restrictMonthNavigation,
       headingLevel,
@@ -320,13 +331,10 @@ export default class CalendarPicker extends Component {
       nextTitleStyle,
     } = this.props;
 
+
+
+
     let _disabledDates = [];
-    let tempCustomDatesStyles = customDatesStyles;
-    if (Object.entries(dayOfWeekStyles).length > 0) {
-      tempCustomDatesStyles = customDatesStyles
-        ? customDatesStyles.concat(defaultCustomDatesStyles)
-        : defaultCustomDatesStyles;
-    }
     if (disabledDates) {
       if (Array.isArray(disabledDates)) {
         // Convert input date into timestamp
@@ -429,7 +437,7 @@ export default class CalendarPicker extends Component {
             selectedRangeStartStyle={selectedRangeStartStyle}
             selectedRangeStyle={selectedRangeStyle}
             selectedRangeEndStyle={selectedRangeEndStyle}
-            customDatesStyles={tempCustomDatesStyles}
+            customDatesStyles={customDatesStyles}
           />
         </View>
       </Swiper>
