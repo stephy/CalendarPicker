@@ -3,4 +3,4 @@ language: node_js
 node_js:
   - "lts/*"
   - "node"
-before_script: cd example && npm run cp && npm install
+before_script: cd example && npm install && npm run cp
