@@ -13,4 +13,4 @@ export default function EmptyDay(props) {
 
 EmptyDay.propTypes = {
   styles: PropTypes.shape({})
-}
+};

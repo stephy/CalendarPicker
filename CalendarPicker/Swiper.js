@@ -35,7 +35,7 @@ export default class Swiper extends Component {
     });
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.config !== this.props.config) {
       this.swipeConfig = Object.assign(swipeConfig, this.props.config);
     }
@@ -59,18 +59,18 @@ export default class Swiper extends Component {
     const {SWIPE_LEFT, SWIPE_RIGHT, SWIPE_UP, SWIPE_DOWN} = swipeDirections;
     onSwipe && onSwipe(swipeDirection, gestureState);
     switch (swipeDirection) {
-      case SWIPE_LEFT:
-        onSwipeLeft && onSwipeLeft(gestureState);
-        break;
-      case SWIPE_RIGHT:
-        onSwipeRight && onSwipeRight(gestureState);
-        break;
-      case SWIPE_UP:
-        onSwipeUp && onSwipeUp(gestureState);
-        break;
-      case SWIPE_DOWN:
-        onSwipeDown && onSwipeDown(gestureState);
-        break;
+    case SWIPE_LEFT:
+      onSwipeLeft && onSwipeLeft(gestureState);
+      break;
+    case SWIPE_RIGHT:
+      onSwipeRight && onSwipeRight(gestureState);
+      break;
+    case SWIPE_UP:
+      onSwipeUp && onSwipeUp(gestureState);
+      break;
+    case SWIPE_DOWN:
+      onSwipeDown && onSwipeDown(gestureState);
+      break;
     }
   }
 
@@ -104,4 +104,4 @@ export default class Swiper extends Component {
   render() {
     return (<View {...this.props} {...this._panResponder.panHandlers}/>);
   }
-};
+}

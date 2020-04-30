@@ -35,15 +35,18 @@ export default function Weekdays(props) {
           console.log('Error while updating weekday style: ' + error);
         }
 
-          return (
-            <Text key={key} style={[styles.dayLabels, updatedStyle]}>
-              {day}
-            </Text>
-          );
-        })
+        return (
+          <Text key={key} style={[styles.dayLabels, updatedStyle]}>
+            {day}
+          </Text>
+        );
+      })
       }
     </View>
   );
 }
 
-Weekdays.propTypes = {};
+Weekdays.propTypes = {
+  startFromMonday: PropTypes.bool,
+  weekdays: PropTypes.array,
+};

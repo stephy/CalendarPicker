@@ -77,16 +77,16 @@ export default function Day(props) {
     }
   }
 
-	if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
-		if (Array.isArray(maxRangeDuration)) {
-			let i = maxRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate), 'day') );
-			if (i >= 0 && moment(selectedStartDate).add(maxRangeDuration[i].maxDuration, 'day').isBefore(thisDay, 'day') ) {
-				dateIsAfterMaxDuration = true;
-			}
+  if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
+    if (Array.isArray(maxRangeDuration)) {
+      let i = maxRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate), 'day') );
+      if (i >= 0 && moment(selectedStartDate).add(maxRangeDuration[i].maxDuration, 'day').isBefore(thisDay, 'day') ) {
+        dateIsAfterMaxDuration = true;
+      }
     } else if(moment(selectedStartDate).add(maxRangeDuration, 'day').isBefore(thisDay, 'day')) {
-			dateIsAfterMaxDuration = true;
-		}
-	}
+      dateIsAfterMaxDuration = true;
+    }
+  }
 
   dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled || dateIsBeforeMinDuration || dateIsAfterMaxDuration;
 
@@ -130,7 +130,7 @@ export default function Day(props) {
     // Set selected ranges styles
     if (allowRangeSelection) {
       if (selectedStartDate && selectedEndDate) {
-          // Apply style for start date
+        // Apply style for start date
         if (isThisDaySameAsSelectedStart) {
           daySelectedStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
           selectedDayColorStyle = styles.selectedDayLabel;
@@ -144,8 +144,8 @@ export default function Day(props) {
         if (isThisDaySameAsSelectedEnd &&
             isThisDaySameAsSelectedStart &&
             selectedEndDate.isSame(selectedStartDate, 'day')) {
-            daySelectedStyle = [styles.selectedDay, styles.selectedDayBackground, selectedRangeStyle];
-            selectedDayColorStyle = styles.selectedDayLabel;
+          daySelectedStyle = [styles.selectedDay, styles.selectedDayBackground, selectedRangeStyle];
+          selectedDayColorStyle = styles.selectedDayLabel;
         }
         // Apply style if this day is in range
         if (thisDay.isBetween(selectedStartDate, selectedEndDate, 'day')) {
@@ -157,8 +157,8 @@ export default function Day(props) {
       if (selectedStartDate &&
           !selectedEndDate &&
           isThisDaySameAsSelectedStart) {
-          daySelectedStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
-          selectedDayColorStyle = styles.selectedDayLabel;
+        daySelectedStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
+        selectedDayColorStyle = styles.selectedDayLabel;
       }
     }
 
@@ -182,13 +182,13 @@ export default function Day(props) {
           { day }
         </Text>
       </View>
-    )
+    );
   }
 }
 
 Day.defaultProps = {
   customDatesStyles: [],
-}
+};
 
 Day.propTypes = {
   styles: PropTypes.shape({}),
@@ -197,4 +197,4 @@ Day.propTypes = {
   disabledDates: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
-}
+};

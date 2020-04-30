@@ -10,7 +10,7 @@ import Controls from './Controls';
 
 function isSameMonthAndYear(date, month, year) {
   if (date) {
-    return date.month() === month && date.year() === year
+    return date.month() === month && date.year() === year;
   }
   return false;
 }
@@ -60,7 +60,7 @@ export default function HeaderControls(props) {
       />
       <View>
         <Text style={[styles.monthLabel, textStyle]} {...accessibilityProps}>
-           { month } { year }
+          { month } { year }
         </Text>
       </View>
       <Controls

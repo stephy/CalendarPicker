@@ -39,8 +39,6 @@ export default function DaysGridView(props) {
     enableDateChange
   } = props;
 
-  const today = moment();
-
   // let's get the total of days in this month, we need the year as well, since
   // leap years have different amount of days in February
   const totalDays = Utils.getDaysInMonth(month, year);
@@ -145,10 +143,10 @@ export default function DaysGridView(props) {
   return (
     <View style={styles.daysWrapper}>
       { weekArray.map(weekIndexOfMonth => (
-          <View key={weekIndexOfMonth} style={styles.weekRow}>
-            { generateDatesForWeek(weekIndexOfMonth) }
-          </View>
-        ))
+        <View key={weekIndexOfMonth} style={styles.weekRow}>
+          { generateDatesForWeek(weekIndexOfMonth) }
+        </View>
+      ))
       }
     </View>
   );
@@ -179,4 +177,4 @@ DaysGridView.propTypes = {
   disabledDatesTextStyle: Text.propTypes.style,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
-}
+};
