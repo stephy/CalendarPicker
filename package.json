@@ -13,7 +13,9 @@
   "main": "./CalendarPicker",
   "scripts": {
     "start": "echo \"example folder contains sample app (see README)\" && exit 1",
-    "test": "echo \"example folder contains the tests (see README)\" && exit 1"
+    "test": "echo \"example folder contains the tests (see README)\" && exit 1",
+    "lint": "eslint CalendarPicker --fix",
+    "postinstall": "cpx \".githooks/*\" \".git/hooks\" -u"
   },
   "repository": {
     "type": "git",
@@ -48,5 +50,11 @@
   "dependencies": {
     "prop-types": "^15.6.0",
     "uuid": "3.2.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "cpx": "^1.5.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.19.0"
   }
 }

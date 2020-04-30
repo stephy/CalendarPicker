@@ -16,6 +16,7 @@ module.exports = {
             2,
             'always'
         ],
+        'linebreak-style': [2, 'windows'],
         'react/prop-types': [0]
     },
     env: {
@@ -24,17 +25,8 @@ module.exports = {
         browser: true
     },
     extends: ['eslint:recommended', 'plugin:react/recommended'],
-    ecmaFeatures: {
-        modules: true,
-        jsx: true,
-        experimentalObjectRestSpread: true,
-        modules: true
-    },
+    parser: 'babel-eslint',
     parserOptions: {
-      sourceType: 'module',
-      ecmaFeatures: {
-        jsx: true,
-      }
     },
     plugins: [
         'react'
