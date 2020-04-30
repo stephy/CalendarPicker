@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
 | **`enableSwipe`** | `Boolean` | Optional. Whether to enable swiping. Default is `true` |
 | **`enableDateChange`** | `Boolean` | Optional. Whether to enable pressing on day. Default is `true` |
 | **`restrictMonthNavigation`** | `Boolean` | Optional. Whether to disable Previous month button if it is before minDate or Next month button if it is after MaxDate. Default is `false` |
-| **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns Moment `date` as first parameter.|
+| **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns Moment `date` as first param; `START_DATE` or `END_DATE` as second param.|
 | **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns Moment `date` as first parameter.|
 | **`onSwipe`** | `Function` | Optional. Callback when swipe event is triggered. Returns swipe direction as first parameter.|
 | **`dayShape`** | `String` | Optional. Shape of the Day component. Default is `circle`. Available options are `circle` and `square`.|
