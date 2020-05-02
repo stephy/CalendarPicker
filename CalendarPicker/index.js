@@ -22,8 +22,8 @@ export default class CalendarPicker extends Component {
     this.state = {
       currentMonth: null,
       currentYear: null,
-      selectedStartDate: props.selectedStartDate || null,
-      selectedEndDate: props.selectedEndDate || null,
+      selectedStartDate: props.selectedStartDate && moment(props.selectedStartDate),
+      selectedEndDate: props.selectedEndDate && moment(props.selectedEndDate),
       minDate: props.minDate && moment(props.minDate),
       maxDate: props.maxDate && moment(props.maxDate),
       styles: {},
@@ -78,22 +78,15 @@ export default class CalendarPicker extends Component {
     }
 
     let selectedDateRanges = {};
-    if (
-      (this.props.selectedStartDate &&
-        !moment(prevState.selectedStartDate).isSame(
-          this.props.selectedStartDate,
-          'day'
-        )) ||
-      (this.props.selectedEndDate &&
-        !moment(prevState.selectedEndDate).isSame(
-          this.props.selectedEndDate,
-          'day'
-        ))
+    const { selectedStartDate, selectedEndDate } = this.props;
+    if ((selectedStartDate && prevState.selectedStartDate &&
+        prevState.selectedStartDate.isSame(selectedStartDate, 'day')) ||
+      (selectedEndDate && prevState.selectedEndDate &&
+        prevState.selectedEndDate.isSame(this.props.selectedEndDate, 'day'))
     ) {
-      const { selectedStartDate = null, selectedEndDate = null } = this.props;
       selectedDateRanges = {
-        selectedStartDate,
-        selectedEndDate
+        selectedStartDate: selectedStartDate && moment(selectedStartDate),
+        selectedEndDate: selectedEndDate && moment(selectedEndDate)
       };
       doStateUpdate = true;
     }
@@ -161,7 +154,12 @@ export default class CalendarPicker extends Component {
       selectedEndDate
     } = this.state;
 
-    const { allowRangeSelection, onDateChange, enableDateChange } = this.props;
+    const {
+      allowRangeSelection,
+      allowBackwardRangeSelect,
+      enableDateChange,
+      onDateChange,
+    } = this.props;
 
     if (!enableDateChange) {
       return;
@@ -169,17 +167,24 @@ export default class CalendarPicker extends Component {
 
     const date = moment({ year: currentYear, month: currentMonth, day, hour: 12 });
 
-    if (
-      allowRangeSelection &&
-      selectedStartDate &&
-      date.isSameOrAfter(selectedStartDate, 'day') &&
-      !selectedEndDate
-    ) {
-      this.setState({
-        selectedEndDate: date
-      });
-      // propagate to parent date has changed
-      onDateChange(date, Utils.END_DATE);
+    if (allowRangeSelection && selectedStartDate && !selectedEndDate) {
+      if (date.isSameOrAfter(selectedStartDate, 'day')) {
+        this.setState({
+          selectedEndDate: date
+        });
+        // propagate to parent date has changed
+        onDateChange(date, Utils.END_DATE);
+      }
+      else if (allowBackwardRangeSelect) { // date is before selectedStartDate
+        // Flip dates so that start is always before end.
+        const endDate = selectedStartDate.clone();
+        this.setState({
+          selectedStartDate: date,
+          selectedEndDate: endDate
+        });
+        onDateChange(date, Utils.START_DATE);
+        onDateChange(endDate, Utils.END_DATE);
+      }
     } else {
       this.setState({
         selectedStartDate: date,
@@ -307,6 +312,7 @@ export default class CalendarPicker extends Component {
 
     const {
       allowRangeSelection,
+      allowBackwardRangeSelect,
       startFromMonday,
       initialDate,
       weekdays,
@@ -426,8 +432,9 @@ export default class CalendarPicker extends Component {
             maxRangeDuration={maxRangeDurationTime}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
-            selectedStartDate={selectedStartDate && moment(selectedStartDate)}
-            selectedEndDate={selectedEndDate && moment(selectedEndDate)}
+            allowBackwardRangeSelect={allowBackwardRangeSelect}
+            selectedStartDate={selectedStartDate}
+            selectedEndDate={selectedEndDate}
             minDate={this.state.minDate}
             maxDate={this.state.maxDate}
             textStyle={textStyle}

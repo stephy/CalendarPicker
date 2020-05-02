@@ -18,6 +18,7 @@ export default function Day(props) {
     selectedStartDate,
     selectedEndDate,
     allowRangeSelection,
+    allowBackwardRangeSelect,
     selectedDayStyle,
     selectedRangeStartStyle,
     selectedRangeStyle,
@@ -43,8 +44,8 @@ export default function Day(props) {
   let dateIsBeforeMin = false;
   let dateIsAfterMax = false;
   let dateIsDisabled = false;
-  let dateIsBeforeMinDuration = false;
-  let dateIsAfterMaxDuration = false;
+  let dateRangeLessThanMin = false;
+  let dateRangeGreaterThanMax = false;
   let customContainerStyle, customDateStyle, customTextStyle;
 
   // First let's check if date is out of range
@@ -66,29 +67,38 @@ export default function Day(props) {
     }
   }
 
-  if (allowRangeSelection && minRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
-    if (Array.isArray(minRangeDuration)) {
-      let i = minRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate), 'day') );
-      if (i >= 0 && moment(selectedStartDate).add(minRangeDuration[i].minDuration, 'day').isAfter(thisDay, 'day') ) {
-        dateIsBeforeMinDuration = true;
+  if (allowRangeSelection && selectedStartDate && !selectedEndDate) {
+    let daysDiff = thisDay.diff(selectedStartDate, 'days'); // may be + or -
+    daysDiff = allowBackwardRangeSelect ? Math.abs(daysDiff) : daysDiff;
+
+    if (maxRangeDuration) {
+      if (Array.isArray(maxRangeDuration)) {
+        let maxRangeEntry = maxRangeDuration.find(mrd => selectedStartDate.isSame(mrd.date, 'day') );
+        if (maxRangeEntry && daysDiff > maxRangeEntry.maxDuration) {
+          dateRangeGreaterThanMax = true;
+        }
+      } else if(daysDiff > maxRangeDuration) {
+        dateRangeGreaterThanMax = true;
       }
-    } else if(moment(selectedStartDate).add(minRangeDuration, 'day').isAfter(thisDay, 'day')) {
-      dateIsBeforeMinDuration = true;
+    }
+
+    if (minRangeDuration) {
+      if (Array.isArray(minRangeDuration)) {
+        let minRangeEntry = minRangeDuration.find(mrd => selectedStartDate.isSame(mrd.date, 'day') );
+        if (minRangeEntry && daysDiff < minRangeEntry.minDuration && daysDiff !== 0) {
+          dateRangeLessThanMin = true;
+        }
+      } else if(daysDiff < minRangeDuration && daysDiff !== 0) {
+        dateRangeLessThanMin = true;
+      }
+    }
+
+    if (!allowBackwardRangeSelect && daysDiff < 0) {
+      dateRangeLessThanMin = true;
     }
   }
 
-  if (allowRangeSelection && maxRangeDuration && selectedStartDate && thisDay.isAfter(moment(selectedStartDate), 'day') ) {
-    if (Array.isArray(maxRangeDuration)) {
-      let i = maxRangeDuration.findIndex(i => moment(i.date).isSame(moment(selectedStartDate), 'day') );
-      if (i >= 0 && moment(selectedStartDate).add(maxRangeDuration[i].maxDuration, 'day').isBefore(thisDay, 'day') ) {
-        dateIsAfterMaxDuration = true;
-      }
-    } else if(moment(selectedStartDate).add(maxRangeDuration, 'day').isBefore(thisDay, 'day')) {
-      dateIsAfterMaxDuration = true;
-    }
-  }
-
-  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled || dateIsBeforeMinDuration || dateIsAfterMaxDuration;
+  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled || dateRangeLessThanMin || dateRangeGreaterThanMax;
 
   // If date is in range let's apply styles
   if (!dateOutOfRange) {
