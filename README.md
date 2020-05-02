@@ -83,6 +83,8 @@ const styles = StyleSheet.create({
 | **`allowBackwardRangeSelect`** | `Boolean` | Optional. Allow selecting range in reverse. Default is `false` |
 | **`previousTitle`** | `String` | Optional. Title of button for previous month. Default is `Previous` |
 | **`nextTitle`** | `String` | Optional. Title of button for next month. Default is `Next` |
+| **`previousTitleStyle`** | `TextStyle` | Optional. Text styling for Previous text.|
+| **`nextTitleStyle`** | `TextStyle` | Optional. Text styling for Next text.|
 | **`selectedDayColor`** | `String` | Optional. Color for selected day |
 | **`selectedDayStyle`** | `ViewStyle` | Optional. Style for selected day. May override selectedDayColor.|
 | **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
@@ -115,8 +117,8 @@ const styles = StyleSheet.create({
 | **`onSwipe`** | `Function` | Optional. Callback when swipe event is triggered. Returns swipe direction as first parameter.|
 | **`dayShape`** | `String` | Optional. Shape of the Day component. Default is `circle`. Available options are `circle` and `square`.|
 | **`headingLevel`** | `Number` | Optional. Sets the aria-level for the calendar title heading when on Web. Default is `1`.|
-| **`previousTitleStyle`** | `TextStyle` | Optional. Text styling for Previous text.|
-| **`nextTitleStyle`** | `TextStyle` | Optional. Text styling for Next text.|
+| **`selectMonthTitle`** | `String` | Optional. Title of month selector view. Default is `Select Month`.|
+| **`selectYearTitle`** | `String` | Optional. Title of year selector view. Default is `Select Year`.|
 | **`dayLabelsWrapper`** | `ViewStyle` | Optional. Style for weekdays wrapper. E.g If you want to remove top and bottom divider line.|
 | **`dayOfWeekStyles`** | `TextStyle` | Optional. Style for changing color and style for any day of the week. E.g If you want all Sundays in RED color, and Mondays in BLUE color, etc. You need to pass JSON object of styles. 0 for Sunday and 6 for Saturday, but if `startFromMonday=true`, then 0 for Monday and 6 for Sunday. See example below.|
 

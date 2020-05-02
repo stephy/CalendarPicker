@@ -11,14 +11,14 @@ export default class App extends Component {
   constructor(props) {
     super(props);
 
-    let minDate = moment().subtract(10, 'day');
+    let minDate = moment().subtract(15, 'day');
     let day = minDate.clone();
     let customDatesStyles = [];
     for (let i = 0; i < 30; i++) {
       customDatesStyles.push({
         date: day.clone(),
         // Random colors
-        style: {backgroundColor: '#'+('#00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6)},
+        style: {backgroundColor: '#'+('#00000'+(Math.random()*(64<<22)|32768).toString(16)).slice(-6)},
         textStyle: {color: 'black'}, // sets the font color
         containerStyle: [], // extra styling for day container
       });

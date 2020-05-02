@@ -2,18 +2,12 @@ import React from 'react';
 import {
   View,
   Text,
-  Platform
+  Platform,
+  TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
 import Controls from './Controls';
-
-function isSameMonthAndYear(date, month, year) {
-  if (date) {
-    return date.month() === month && date.year() === year;
-  }
-  return false;
-}
 
 export default function HeaderControls(props) {
   const {
@@ -22,6 +16,8 @@ export default function HeaderControls(props) {
     currentYear,
     onPressNext,
     onPressPrevious,
+    onPressMonth,
+    onPressYear,
     months,
     previousTitle,
     nextTitle,
@@ -33,16 +29,12 @@ export default function HeaderControls(props) {
     previousTitleStyle,
     nextTitleStyle,
   } = props;
-  const MONTHS = months? months : Utils.MONTHS; // English Month Array
-  // getMonth() call below will return the month number, we will use it as the
-  // index for month array in english
-  const previous = previousTitle ? previousTitle : 'Previous';
-  const next = nextTitle ? nextTitle : 'Next';
-  const month = MONTHS[currentMonth];
+  const MONTHS = months || Utils.MONTHS; // English Month Array
+  const monthName = MONTHS[currentMonth];
   const year = currentYear;
 
-  const disablePreviousMonth = restrictMonthNavigation && isSameMonthAndYear(minDate, currentMonth, currentYear);
-  const disableNextMonth = restrictMonthNavigation && isSameMonthAndYear(maxDate, currentMonth, currentYear);
+  const disablePreviousMonth = restrictMonthNavigation && Utils.isSameMonthAndYear(minDate, currentMonth, currentYear);
+  const disableNextMonth = restrictMonthNavigation && Utils.isSameMonthAndYear(maxDate, currentMonth, currentYear);
 
   const accessibilityProps = { accessibilityRole: 'header' };
   if (Platform.OS === 'web') {
@@ -53,19 +45,24 @@ export default function HeaderControls(props) {
     <View style={styles.headerWrapper}>
       <Controls
         disabled={disablePreviousMonth}
-        label={previous}
+        label={previousTitle}
         onPressControl={onPressPrevious}
         styles={[styles.monthSelector, styles.prev]}
         textStyles={[textStyle, previousTitleStyle]}
       />
-      <View>
-        <Text style={[styles.monthLabel, textStyle]} {...accessibilityProps}>
-          { month } { year }
+      <TouchableOpacity onPress={onPressMonth}>
+        <Text style={[styles.monthHeaderMainText, textStyle]} {...accessibilityProps}>
+          { monthName }
         </Text>
-      </View>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={onPressYear}>
+        <Text style={[styles.yearHeaderMainText, textStyle]}>
+          { year }
+        </Text>
+      </TouchableOpacity>
       <Controls
         disabled={disableNextMonth}
-        label={next}
+        label={nextTitle}
         onPressControl={onPressNext}
         styles={[styles.monthSelector, styles.next]}
         textStyles={[textStyle, nextTitleStyle]}
@@ -79,4 +76,6 @@ HeaderControls.propTypes = {
   currentYear: PropTypes.number,
   onPressNext: PropTypes.func,
   onPressPrevious: PropTypes.func,
+  onPressMonth: PropTypes.func,
+  onPressYear: PropTypes.func,
 };

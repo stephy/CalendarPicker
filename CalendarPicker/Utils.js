@@ -20,4 +20,10 @@ export const Utils = {
     const lastDayOfMonth = new Date(year, month + 1, 0);
     return lastDayOfMonth.getDate();
   },
+  isSameMonthAndYear: function(date, month, year) {
+    if (date) {
+      return date.month() === month && date.year() === year;
+    }
+    return false;
+  },
 };
