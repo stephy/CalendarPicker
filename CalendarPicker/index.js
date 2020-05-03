@@ -33,9 +33,13 @@ export default class CalendarPicker extends Component {
       ...this.updateScaledStyles(props),
       ...this.updateMonthYear(props.initialDate),
       ...this.updateDayOfWeekStyles(props.initialDate),
+      ...this.updateDisabledDates(props.disabledDates),
+      ...this.updateMinMaxRanges(props.minRangeDuration, props.maxRangeDuration),
     };
     this.updateScaledStyles = this.updateScaledStyles.bind(this);
     this.updateMonthYear = this.updateMonthYear.bind(this);
+    this.updateDisabledDates = this.updateDisabledDates.bind(this);
+    this.updateMinMaxRanges = this.updateMinMaxRanges.bind(this);
     this.updateDayOfWeekStyles = this.updateDayOfWeekStyles.bind(this);
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
@@ -114,12 +118,28 @@ export default class CalendarPicker extends Component {
       doStateUpdate = true;
     }
 
+    let disabledDates = {};
+    if (prevProps.disabledDates !== this.props.disabledDates) {
+      disabledDates = this.updateDisabledDates(this.props.disabledDates);
+      doStateUpdate = true;
+    }
+
+    let rangeDurations = {};
+    if (prevProps.minRangeDuration !== this.props.minRangeDuration ||
+        prevProps.maxRangeDuration !== this.props.maxRangeDuration
+    ) {
+      const {minRangeDuration, maxRangeDuration} = this.props;
+      rangeDurations = this.updateMinMaxRanges(minRangeDuration, maxRangeDuration);
+      doStateUpdate = true;
+    }
+
     let minDate = this.props.minDate && moment(this.props.minDate);
     let maxDate = this.props.maxDate && moment(this.props.maxDate);
 
     if (doStateUpdate) {
       this.setState({ ...newStyles, ...newMonthYear, ...selectedDateRanges,
-        ...customDatesStyles, minDate, maxDate });
+        ...customDatesStyles, ...disabledDates, ...rangeDurations,
+        minDate, maxDate });
     }
   }
 
@@ -155,6 +175,60 @@ export default class CalendarPicker extends Component {
       currentMonth: parseInt(moment(initialDate).month()),
       currentYear: parseInt(moment(initialDate).year())
     };
+  }
+
+  updateDisabledDates(_disabledDates = []) {
+    let disabledDates = [];
+    if (_disabledDates) {
+      if (Array.isArray(_disabledDates)) {
+        // Convert input date into timestamp
+        _disabledDates.map(date => {
+          let thisDate = moment(date);
+          thisDate.set({ hour: 12, minute: 0, second: 0, millisecond: 0 });
+          disabledDates.push(thisDate.valueOf());
+        });
+      }
+      else if (_disabledDates instanceof Function) {
+        disabledDates = _disabledDates;
+      }
+    }
+    return { disabledDates };
+  }
+
+  updateMinMaxRanges(_minRangeDuration, _maxRangeDuration) {
+    let minRangeDuration = [];
+    let maxRangeDuration = [];
+
+    if (_minRangeDuration) {
+      if (Array.isArray(_minRangeDuration)) {
+        _minRangeDuration.map(mrd => {
+          let thisDate = moment(mrd.date);
+          thisDate.set({ hour: 12, minute: 0, second: 0, millisecond: 0 });
+          minRangeDuration.push({
+            date: thisDate.valueOf(),
+            minDuration: mrd.minDuration
+          });
+        });
+      } else {
+        minRangeDuration = _minRangeDuration;
+      }
+    }
+
+    if (_maxRangeDuration) {
+      if (Array.isArray(_maxRangeDuration)) {
+        _maxRangeDuration.map(mrd => {
+          let thisDate = moment(mrd.date);
+          thisDate.set({ hour: 12, minute: 0, second: 0, millisecond: 0 });
+          maxRangeDuration.push({
+            date: thisDate.valueOf(),
+            maxDuration: mrd.maxDuration
+          });
+        });
+      } else {
+        maxRangeDuration = _maxRangeDuration;
+      }
+    }
+    return {minRangeDuration, maxRangeDuration};
   }
 
   handleOnPressDay(day) {
@@ -368,8 +442,11 @@ export default class CalendarPicker extends Component {
       currentYear,
       minDate,
       maxDate,
+      minRangeDuration,
+      maxRangeDuration,
       selectedStartDate,
       selectedEndDate,
+      disabledDates,
       styles,
       customDatesStyles,
     } = this.state;
@@ -391,10 +468,7 @@ export default class CalendarPicker extends Component {
       selectedRangeStartStyle,
       selectedRangeStyle,
       selectedRangeEndStyle,
-      disabledDates,
       disabledDatesTextStyle,
-      minRangeDuration,
-      maxRangeDuration,
       swipeConfig,
       enableDateChange,
       restrictMonthNavigation,
@@ -404,55 +478,6 @@ export default class CalendarPicker extends Component {
       selectMonthTitle,
       selectYearTitle,
     } = this.props;
-
-    let _disabledDates = [];
-    if (disabledDates) {
-      if (Array.isArray(disabledDates)) {
-        // Convert input date into timestamp
-        disabledDates.map(date => {
-          let thisDate = moment(date);
-          thisDate.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
-          _disabledDates.push(thisDate.valueOf());
-        });
-      }
-      else if (disabledDates instanceof Function) {
-        _disabledDates = disabledDates;
-      }
-    }
-
-    let minRangeDurationTime = [];
-
-    if (allowRangeSelection && minRangeDuration) {
-      if (Array.isArray(minRangeDuration)) {
-        minRangeDuration.map(minRangeDuration => {
-          let thisDate = moment(minRangeDuration.date);
-          thisDate.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
-          minRangeDurationTime.push({
-            date: thisDate.valueOf(),
-            minDuration: minRangeDuration.minDuration
-          });
-        });
-      } else {
-        minRangeDurationTime = minRangeDuration;
-      }
-    }
-
-    let maxRangeDurationTime = [];
-
-    if (allowRangeSelection && maxRangeDuration) {
-      if (Array.isArray(maxRangeDuration)) {
-        maxRangeDuration.map(maxRangeDuration => {
-          let thisDate = moment(maxRangeDuration.date);
-          thisDate.set({ hour: 0, minute: 0, second: 0, millisecond: 0 });
-          maxRangeDurationTime.push({
-            date: thisDate.valueOf(),
-            maxDuration: maxRangeDuration.maxDuration
-          });
-        });
-      } else {
-        maxRangeDurationTime = maxRangeDuration;
-      }
-    }
 
     let content;
     switch (this.state.currentView) {
@@ -530,10 +555,10 @@ export default class CalendarPicker extends Component {
             year={currentYear}
             styles={styles}
             onPressDay={this.handleOnPressDay}
-            disabledDates={_disabledDates}
+            disabledDates={disabledDates}
             disabledDatesTextStyle={disabledDatesTextStyle}
-            minRangeDuration={minRangeDurationTime}
-            maxRangeDuration={maxRangeDurationTime}
+            minRangeDuration={minRangeDuration}
+            maxRangeDuration={maxRangeDuration}
             startFromMonday={startFromMonday}
             allowRangeSelection={allowRangeSelection}
             allowBackwardRangeSelect={allowBackwardRangeSelect}
