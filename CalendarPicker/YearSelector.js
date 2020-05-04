@@ -34,6 +34,8 @@ export default class YearSelector extends Component {
       minDate,
       maxDate,
       restrictNavigation,
+      previousComponent,
+      nextComponent,
       previousTitle,
       nextTitle,
       previousTitleStyle,
@@ -55,6 +57,8 @@ export default class YearSelector extends Component {
           maxDate={maxDate}
           restrictNavigation={restrictNavigation}
           currentYear={this.state.currentYear}
+          previousComponent={previousComponent}
+          nextComponent={nextComponent}
           previousTitle={previousTitle}
           nextTitle={nextTitle}
           previousTitleStyle={previousTitleStyle}

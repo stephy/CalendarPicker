@@ -5,22 +5,36 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-export default function Controls({ styles, textStyles, label, onPressControl, disabled }) {
+export default function Controls(props) {
+  const {
+    styles,
+    textStyles,
+    label,
+    component,
+    onPressControl,
+    disabled,
+  } = props;
+
   return (
     <TouchableOpacity
       onPress={() => onPressControl()}
+      style={[styles]}
       disabled={disabled}
       hitSlop={{ top: 20, bottom: 20, left: 50, right: 50 }}
     >
-      <Text style={[styles, textStyles]}>
-        { disabled ? null : label }
-      </Text>
+      { component ?
+        ( disabled ? null : component )
+        :
+        <Text style={[textStyles]}>
+          { disabled ? null : label }
+        </Text>
+      }
     </TouchableOpacity>
   );
 }
 
 Controls.propTypes = {
-  styles: PropTypes.array.isRequired,
-  label: PropTypes.string.isRequired,
+  styles: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+  label: PropTypes.string,
   onPressControl: PropTypes.func.isRequired,
 };

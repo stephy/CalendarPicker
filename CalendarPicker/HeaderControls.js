@@ -19,15 +19,17 @@ export default function HeaderControls(props) {
     onPressMonth,
     onPressYear,
     months,
+    previousComponent,
+    nextComponent,
     previousTitle,
     nextTitle,
+    previousTitleStyle,
+    nextTitleStyle,
     textStyle,
     restrictMonthNavigation,
     maxDate,
     minDate,
     headingLevel,
-    previousTitleStyle,
-    nextTitleStyle,
   } = props;
   const MONTHS = months || Utils.MONTHS; // English Month Array
   const monthName = MONTHS[currentMonth];
@@ -46,9 +48,10 @@ export default function HeaderControls(props) {
       <Controls
         disabled={disablePreviousMonth}
         label={previousTitle}
+        component={previousComponent}
         onPressControl={onPressPrevious}
-        styles={[styles.monthSelector, styles.prev]}
-        textStyles={[textStyle, previousTitleStyle]}
+        styles={styles.previousContainer}
+        textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
       />
       <TouchableOpacity onPress={onPressMonth}>
         <Text style={[styles.monthHeaderMainText, textStyle]} {...accessibilityProps}>
@@ -63,9 +66,10 @@ export default function HeaderControls(props) {
       <Controls
         disabled={disableNextMonth}
         label={nextTitle}
+        component={nextComponent}
         onPressControl={onPressNext}
-        styles={[styles.monthSelector, styles.next]}
-        textStyles={[textStyle, nextTitleStyle]}
+        styles={styles.nextContainer}
+        textStyles={[styles.navButtonText, textStyle, nextTitleStyle]}
       />
     </View>
   );

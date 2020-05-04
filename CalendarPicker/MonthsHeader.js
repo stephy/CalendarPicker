@@ -22,7 +22,7 @@ export default function MonthsHeader(props) {
   return (
     <View style={styles.headerWrapper}>
       <View>
-        <Text style={[styles.monthHeaderText, textStyle]}>
+        <Text style={[styles.monthsHeaderText, textStyle]}>
           { title }
         </Text>
       </View>

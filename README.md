@@ -85,6 +85,8 @@ const styles = StyleSheet.create({
 | **`nextTitle`** | `String` | Optional. Title of button for next month. Default is `Next` |
 | **`previousTitleStyle`** | `TextStyle` | Optional. Text styling for Previous text.|
 | **`nextTitleStyle`** | `TextStyle` | Optional. Text styling for Next text.|
+| **`previousComponent`** | `Object` | Optional. Component to use in `Previous` button. Overrides `previousTitle` & `previousTitleStyle`. |
+| **`nextComponent`** | `Object` | Optional. Component to use in `Next` button. Overrides `nextTitle` & `nextTitleStyle`.  |
 | **`selectedDayColor`** | `String` | Optional. Color for selected day |
 | **`selectedDayStyle`** | `ViewStyle` | Optional. Style for selected day. May override selectedDayColor.|
 | **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |

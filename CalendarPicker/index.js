@@ -458,6 +458,8 @@ export default class CalendarPicker extends Component {
       initialDate,
       weekdays,
       months,
+      previousComponent,
+      nextComponent,
       previousTitle,
       nextTitle,
       previousTitleStyle,
@@ -508,6 +510,8 @@ export default class CalendarPicker extends Component {
           minDate={minDate}
           maxDate={maxDate}
           restrictNavigation={restrictMonthNavigation}
+          previousComponent={previousComponent}
+          nextComponent={nextComponent}
           previousTitle={previousTitle}
           nextTitle={nextTitle}
           previousTitleStyle={previousTitleStyle}
@@ -531,15 +535,17 @@ export default class CalendarPicker extends Component {
             onPressMonth={this.handleOnPressMonth}
             onPressYear={this.handleOnPressYear}
             months={months}
+            previousComponent={previousComponent}
+            nextComponent={nextComponent}
             previousTitle={previousTitle}
             nextTitle={nextTitle}
+            previousTitleStyle={previousTitleStyle}
+            nextTitleStyle={nextTitleStyle}
             textStyle={textStyle}
             restrictMonthNavigation={restrictMonthNavigation}
             minDate={minDate}
             maxDate={maxDate}
             headingLevel={headingLevel}
-            previousTitleStyle={previousTitleStyle}
-            nextTitleStyle={nextTitleStyle}
           />
           <Weekdays
             styles={styles}

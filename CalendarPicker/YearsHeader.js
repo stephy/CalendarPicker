@@ -16,6 +16,8 @@ export default function YearsHeader(props) {
     restrictNavigation,
     styles,
     textStyle,
+    previousComponent,
+    nextComponent,
     previousTitle,
     nextTitle,
     previousTitleStyle,
@@ -38,19 +40,21 @@ export default function YearsHeader(props) {
       <Controls
         disabled={disablePrevious}
         label={previousTitle}
+        component={previousComponent}
         onPressControl={onYearViewPrevious}
-        styles={[styles.yearSelectorControl, styles.prev]}
-        textStyles={[textStyle, previousTitleStyle]}
+        styles={styles.previousContainer}
+        textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
       />
-      <Text style={[styles.yearSelectorHeaderText, textStyle]} {...accessibilityProps}>
+      <Text style={[styles.yearsHeaderText, textStyle]} {...accessibilityProps}>
         { title }
       </Text>
       <Controls
         disabled={disableNext}
         label={nextTitle}
+        component={nextComponent}
         onPressControl={onYearViewNext}
-        styles={[styles.yearSelectorControl, styles.next]}
-        textStyles={[textStyle, nextTitleStyle]}
+        styles={styles.nextContainer}
+        textStyles={[styles.navButtonText, textStyle, nextTitleStyle]}
       />
     </View>
   );
