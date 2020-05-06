@@ -74,7 +74,7 @@ export default class CalendarPicker extends Component {
   componentDidMount() {
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     let doStateUpdate = false;
 
     let newStyles = {};
@@ -94,10 +94,8 @@ export default class CalendarPicker extends Component {
 
     let selectedDateRanges = {};
     const { selectedStartDate, selectedEndDate } = this.props;
-    if ((selectedStartDate && prevState.selectedStartDate &&
-        prevState.selectedStartDate.isSame(selectedStartDate, 'day')) ||
-      (selectedEndDate && prevState.selectedEndDate &&
-        prevState.selectedEndDate.isSame(this.props.selectedEndDate, 'day'))
+    if (selectedStartDate !== prevProps.selectedStartDate ||
+        selectedEndDate !== prevProps.selectedEndDate
     ) {
       selectedDateRanges = {
         selectedStartDate: selectedStartDate && moment(selectedStartDate),
@@ -257,7 +255,7 @@ export default class CalendarPicker extends Component {
         this.setState({
           selectedEndDate: date
         });
-        // propagate to parent date has changed
+        // Sync start date with parent
         onDateChange(date, Utils.END_DATE);
       }
       else if (allowBackwardRangeSelect) { // date is before selectedStartDate
@@ -266,17 +264,25 @@ export default class CalendarPicker extends Component {
         this.setState({
           selectedStartDate: date,
           selectedEndDate: endDate
+        }, () => {
+          // Sync both start and end dates with parent *after* state update.
+          onDateChange(this.state.selectedStartDate, Utils.START_DATE);
+          onDateChange(this.state.selectedEndDate, Utils.END_DATE);
         });
-        onDateChange(date, Utils.START_DATE);
-        onDateChange(endDate, Utils.END_DATE);
       }
     } else {
+      const syncEndDate = !!selectedEndDate;
       this.setState({
         selectedStartDate: date,
         selectedEndDate: null
+      }, () => {
+        // Sync start date with parent *after* state update.
+        onDateChange(this.state.selectedStartDate, Utils.START_DATE);
+        if (syncEndDate) {
+          // sync end date with parent - must be cleared if previously set.
+          onDateChange(null, Utils.END_DATE);
+        }
       });
-      // propagate to parent date has changed
-      onDateChange(date, Utils.START_DATE);
     }
   }
 
