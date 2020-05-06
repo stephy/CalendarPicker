@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
+  TextInput,
+  Switch,
 } from 'react-native';
 import moment from 'moment';
 import CalendarPicker from './CalendarPicker';
@@ -33,39 +36,141 @@ export default class App extends Component {
     };
 
     this.state = {
-      selectedStartDate: null,
-      minDate,
-      maxDate: moment().add(90, 'day'),
       customDatesStyles,
       dayOfWeekStyles,
+      enableRangeSelect: false,
+      minDate,
+      maxDate: moment().add(90, 'day'),
+      minRangeDuration: "1",
+      maxRangeDuration: "5",
+      selectedStartDate: null,
     };
     this.onDateChange = this.onDateChange.bind(this);
+    this.clear = this.clear.bind(this);
+    this.toggleEnableRange = this.toggleEnableRange.bind(this);
+    this.onMinRangeDuration = this.onMinRangeDuration.bind(this);
+    this.onMaxRangeDuration = this.onMaxRangeDuration.bind(this);
   }
 
-  onDateChange(date) {
+  onDateChange(date, type) {
+    if (type === "START_DATE") {
+      this.setState({
+        selectedStartDate: date,
+      });
+    }
+    else {
+      this.setState({
+        selectedEndDate: date,
+      });
+    }
+  }
+
+  clear() {
     this.setState({
-      selectedStartDate: date,
+      selectedStartDate: null,
+      selectedEndDate: null,
+    });
+  }
+
+  toggleEnableRange(text) {
+    this.setState({
+      enableRangeSelect: !this.state.enableRangeSelect,
+      selectedStartDate: null,
+      selectedEndDate: null,
+    });
+  }
+
+  onMinRangeDuration(val) {
+    let parsedVal = parseInt(val);
+    this.setState({
+      minRangeDuration: val && !isNaN(parsedVal) ? parsedVal + "" : undefined,
+      selectedStartDate: null,
+      selectedEndDate: null,
+    });
+  }
+
+  onMaxRangeDuration(val) {
+    let parsedVal = parseInt(val);
+    this.setState({
+      maxRangeDuration: val && !isNaN(parsedVal) ? parsedVal + "" : undefined,
+      selectedStartDate: null,
+      selectedEndDate: null,
     });
   }
 
   render() {
-    const { selectedStartDate } = this.state;
-    const startDate = selectedStartDate ? selectedStartDate.format('YYYY-MM-DD') : '';
-    const initialDate = this.state.minDate;
+    const {
+      customDatesStyles,
+      dayOfWeekStyles,
+      enableRangeSelect,
+      minDate,
+      maxDate,
+      minRangeDuration,
+      maxRangeDuration,
+      selectedStartDate,
+      selectedEndDate,
+    } = this.state;
+    const formattedStartDate = selectedStartDate ? selectedStartDate.format('YYYY-MM-DD') : '';
+    const formattedEndDate = selectedEndDate ? selectedEndDate.format('YYYY-MM-DD') : '';
+
     return (
       <View style={styles.container}>
         <CalendarPicker
+          selectedStartDate={selectedStartDate}
+          selectedEndDate={selectedEndDate}
           onDateChange={this.onDateChange}
-          initialDate={initialDate}
-          minDate={this.state.minDate}
-  				maxDate={this.state.maxDate}
-          customDatesStyles={this.state.customDatesStyles}
-          dayOfWeekStyles={this.state.dayOfWeekStyles}
+          initialDate={minDate}
+          customDatesStyles={customDatesStyles}
+          dayOfWeekStyles={dayOfWeekStyles}
+          minDate={minDate}
+          maxDate={maxDate}
+          allowRangeSelection={enableRangeSelect}
+          allowBackwardRangeSelect={enableRangeSelect}
+          minRangeDuration={minRangeDuration && parseInt(minRangeDuration)}
+          maxRangeDuration={maxRangeDuration && parseInt(maxRangeDuration)}
         />
 
-        <View>
-          <Text>SELECTED DATE:  { startDate }</Text>
+        <View style={styles.topSpacing}>
+          <Text style={styles.text}>Selected (Start) date:  { formattedStartDate }</Text>
+          { !!formattedEndDate &&
+            <Text style={styles.text}>Selected End date:  { formattedEndDate }</Text>
+          }
         </View>
+
+        <View style={styles.topSpacing}>
+          <Button onPress={this.clear} title="Clear Selection"/>
+        </View>
+
+        <View style={styles.topSpacing}>
+          <Text style={styles.text}>Range select:</Text>
+        </View>
+        <Switch
+          trackColor={{ false: "#767577", true: "#81b0ff" }}
+          thumbColor={enableRangeSelect ? "#f5dd4b" : "#f4f3f4"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={this.toggleEnableRange}
+          value={enableRangeSelect}
+        />
+
+        { enableRangeSelect &&
+          <View>
+            <Text style={styles.text}>minRangeDuration:</Text>
+            <TextInput
+              style={styles.textInput}
+              onChangeText={this.onMinRangeDuration}
+              value={minRangeDuration || ""}
+              keyboardType={"number-pad"}
+            />
+
+            <Text style={styles.text}>maxRangeDuration:</Text>
+            <TextInput
+              style={styles.textInput}
+              onChangeText={this.onMaxRangeDuration}
+              value={maxRangeDuration || ""}
+              keyboardType={"number-pad"}
+            />
+          </View>
+        }
       </View>
     );
   }
@@ -76,5 +181,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#FFFFFF',
     marginTop: 100,
+    alignItems: 'center',
   },
+  topSpacing: {
+    marginTop:60
+  },
+  text: {
+    fontSize: 24,
+  },
+  textInput: {
+    height: 40,
+    fontSize: 24,
+    borderColor: 'gray',
+    borderWidth: 1,
+  }
 });
