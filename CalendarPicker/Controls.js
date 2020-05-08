@@ -18,9 +18,9 @@ export default function Controls(props) {
   return (
     <TouchableOpacity
       onPress={() => onPressControl()}
-      style={[styles]}
+      style={styles}
       disabled={disabled}
-      hitSlop={{ top: 20, bottom: 20, left: 50, right: 50 }}
+      hitSlop={{ top: 20, bottom: 20, left: 40, right: 40 }}
     >
       { component ?
         ( disabled ? null : component )

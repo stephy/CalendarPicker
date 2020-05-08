@@ -155,16 +155,16 @@ export default class CalendarPicker extends Component {
     // The styles in makeStyles are intially scaled to this width
     const containerWidth = width ? width : Dimensions.get('window').width;
     const containerHeight = height ? height : Dimensions.get('window').height;
-    const initialScale =
-      Math.min(containerWidth, containerHeight) / scaleFactor;
     return {
-      styles: makeStyles(
-        initialScale,
+      styles: makeStyles({
+        containerWidth,
+        containerHeight,
+        scaleFactor,
         selectedDayColor,
         selectedDayTextColor,
         todayBackgroundColor,
         dayShape
-      )
+      })
     };
   }
 

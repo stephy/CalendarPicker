@@ -16,9 +16,19 @@ function getBorderRadiusByShape(scaler, dayShape) {
   }
 }
 
-export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundColor, dayShape) {
-  const SELECTED_BG_COLOR = backgroundColor ? backgroundColor : DEFAULT_SELECTED_BACKGROUND_COLOR;
-  const SELECTED_TEXT_COLOR = textColor ? textColor : DEFAULT_SELECTED_TEXT_COLOR;
+export function makeStyles(params) {
+  const {
+    containerWidth,
+    containerHeight,
+    scaleFactor,
+    selectedDayColor,
+    selectedDayTextColor,
+    todayBackgroundColor,
+    dayShape
+  } = params;
+  const scaler = Math.min(containerWidth, containerHeight) / scaleFactor;
+  const SELECTED_BG_COLOR = selectedDayColor ? selectedDayColor : DEFAULT_SELECTED_BACKGROUND_COLOR;
+  const SELECTED_TEXT_COLOR = selectedDayTextColor ? selectedDayTextColor : DEFAULT_SELECTED_TEXT_COLOR;
   const TODAY_BG_COLOR = todayBackgroundColor ? todayBackgroundColor : DEFAULT_TODAY_BACKGROUND_COLOR;
 
   return {
@@ -127,24 +137,30 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     },
 
     headerWrapper: {
-      alignItems: 'center',
       flexDirection: 'row',
+      alignItems: 'center',
       alignSelf: 'center',
+      justifyContent: 'space-between',
+      width: containerWidth,
       padding: 5*scaler,
       paddingBottom: 3*scaler,
+      marginBottom: 10*scaler,
       backgroundColor: 'rgba(0,0,0,0.0)'
     },
 
+    monthYearHeaderWrapper: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingHorizontal: 3*scaler,
+    },
+
     previousContainer: {
-      marginBottom: 10*scaler,
-      width: 80*scaler,
-      textAlign: 'left',
+      marginLeft: 10*scaler,
     },
 
     nextContainer: {
-      marginBottom: 10*scaler,
-      width: 80*scaler,
-      textAlign: 'right',
+      marginRight: 10*scaler,
       alignItems: 'flex-end',
     },
 
@@ -170,10 +186,8 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     monthHeaderMainText: {
       fontSize: 16*scaler,
       color: '#000',
-      marginBottom: 10*scaler,
-      marginRight: 3*scaler,
-      width: 100*scaler,
-      textAlign: 'right'
+      textAlign: 'right',
+      marginHorizontal: 3*scaler,
     },
 
     monthButton: {
@@ -182,6 +196,13 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
       borderRadius: 30*scaler,
       alignSelf: 'center',
       justifyContent: 'center'
+    },
+
+    monthsHeaderText: {
+      flex: 1,
+      fontSize: 16*scaler,
+      color: '#000',
+      textAlign: 'center'
     },
 
     monthContainer: {
@@ -196,31 +217,20 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     },
 
     monthsWrapper: {
-      alignSelf: 'stretch',
+      alignSelf: 'center',
       justifyContent: 'center',
+      width: containerWidth,
     },
 
     monthsRow: {
       flexDirection: 'row',
       padding: 20*scaler,
-      justifyContent: 'space-between',
-    },
-
-    monthsHeaderText: {
-      fontSize: 16*scaler,
-      color: '#000',
-      marginBottom: 10*scaler,
-      width: 180*scaler,
-      textAlign: 'center'
     },
 
     yearHeaderMainText: {
       fontSize: 16*scaler,
       color: '#000',
-      marginBottom: 10*scaler,
-      marginLeft: 3*scaler,
-      width: 80*scaler,
-      textAlign: 'left'
+      marginHorizontal: 3*scaler,
     },
 
     yearContainer: {
@@ -237,14 +247,14 @@ export function makeStyles(scaler, backgroundColor, textColor, todayBackgroundCo
     yearsHeaderText: {
       fontSize: 16*scaler,
       color: '#000',
-      marginBottom: 10*scaler,
       width: 180*scaler,
       textAlign: 'center'
     },
 
     yearsWrapper: {
-      alignSelf: 'stretch',
-      justifyContent: 'center'
+      alignSelf: 'center',
+      justifyContent: 'center',
+      width: containerWidth,
     },
 
     yearsRow: {
