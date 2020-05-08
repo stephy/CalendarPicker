@@ -37,12 +37,27 @@ export default function DaysGridView(props) {
     disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
-    enableDateChange
+    enableDateChange,
+    showDayStragglers,
   } = props;
 
   // let's get the total of days in this month, we need the year as well, since
   // leap years have different amount of days in February
   const totalDays = Utils.getDaysInMonth(month, year);
+
+  // Calculate days in prev month for day stragglers.
+  let totalDaysPrevMonth, prevMonth, prevMonthYear, dayNextMonth;
+  if (showDayStragglers) {
+    prevMonth = month - 1;
+    prevMonthYear = year;
+    if (prevMonth < 0) {
+      prevMonth = 11;
+      prevMonthYear--;
+    }
+    totalDaysPrevMonth = Utils.getDaysInMonth(prevMonth, prevMonthYear);
+    // Next month's day always starts at 1 and never overflows
+    dayNextMonth = 1;
+  }
 
   // Let's create a date for day one of the current given month and year
   const firstDayOfMonth = moment({ year, month, day: 1 });
@@ -64,80 +79,87 @@ export default function DaysGridView(props) {
   // Get the starting index, based upon whether we are using monday or sunday as first day.
   const startIndex = (startFromMonday ? firstWeekDay - 1 : firstWeekDay) % 7;
 
+  function renderDayInCurrentMonth() {
+    const day = days.shift() + 1;
+    return (
+      <Day
+        key={day}
+        day={day}
+        month={month}
+        year={year}
+        styles={styles}
+        onPressDay={onPressDay}
+        selectedStartDate={selectedStartDate}
+        selectedEndDate={selectedEndDate}
+        allowRangeSelection={allowRangeSelection}
+        allowBackwardRangeSelect={allowBackwardRangeSelect}
+        minDate={minDate}
+        maxDate={maxDate}
+        disabledDates={disabledDates}
+        disabledDatesTextStyle={disabledDatesTextStyle}
+        minRangeDuration={minRangeDuration}
+        maxRangeDuration={maxRangeDuration}
+        textStyle={textStyle}
+        todayTextStyle={todayTextStyle}
+        selectedDayStyle={selectedDayStyle}
+        selectedRangeStartStyle={selectedRangeStartStyle}
+        selectedRangeStyle={selectedRangeStyle}
+        selectedRangeEndStyle={selectedRangeEndStyle}
+        customDatesStyles={customDatesStyles}
+        enableDateChange={enableDateChange}
+      />
+    );
+  }
+
+  function renderDayStraggler({key, day}) {
+    return (
+      <Day
+        key={key}
+        day={day}
+        styles={styles}
+        disabledDates={() => true}
+        disabledDatesTextStyle={disabledDatesTextStyle}
+        textStyle={textStyle}
+      />
+    );
+  }
+
+
   function generateDatesForWeek(i) {
+    let lastFilledRow = 0;
     return dayArray.map(dayIndex => {
-      if (i === 0) { // for first row, let's start showing the days on the correct weekday
+      if (i === 0) {
+        // first row: start current month's day on the correct weekday
         if (dayIndex >= startIndex) {
           if (days.length > 0) {
-            const day = days.shift() + 1;
-            return (
-              <Day
-                key={day}
-                day={day}
-                month={month}
-                year={year}
-                styles={styles}
-                onPressDay={onPressDay}
-                selectedStartDate={selectedStartDate}
-                selectedEndDate={selectedEndDate}
-                allowRangeSelection={allowRangeSelection}
-                allowBackwardRangeSelect={allowBackwardRangeSelect}
-                minDate={minDate}
-                maxDate={maxDate}
-                disabledDates={disabledDates}
-                disabledDatesTextStyle={disabledDatesTextStyle}
-                minRangeDuration={minRangeDuration}
-                maxRangeDuration={maxRangeDuration}
-                textStyle={textStyle}
-                todayTextStyle={todayTextStyle}
-                selectedDayStyle={selectedDayStyle}
-                selectedRangeStartStyle={selectedRangeStartStyle}
-                selectedRangeStyle={selectedRangeStyle}
-                selectedRangeEndStyle={selectedRangeEndStyle}
-                customDatesStyles={customDatesStyles}
-                enableDateChange={enableDateChange}
-              />
-            );
+            return renderDayInCurrentMonth();
           }
         } else {
-          return (
-            <EmptyDay
-              key={uuid()}
-              styles={styles}
-            />
-          );
+          return showDayStragglers ?
+            // Show previous month's days
+            renderDayStraggler({
+              key: '' + i + dayIndex,
+              day: totalDaysPrevMonth - startIndex + dayIndex + 1,
+            })
+            :
+            ( //... otherwise blank
+              <EmptyDay
+                key={uuid()}
+                styles={styles}
+              />
+            );
         }
       } else {
         if (days.length > 0) {
-          const day = days.shift() + 1;
-          return (
-            <Day
-              key={day}
-              day={day}
-              month={month}
-              year={year}
-              styles={styles}
-              onPressDay={onPressDay}
-              selectedStartDate={selectedStartDate}
-              selectedEndDate={selectedEndDate}
-              allowRangeSelection={allowRangeSelection}
-              allowBackwardRangeSelect={allowBackwardRangeSelect}
-              minDate={minDate}
-              maxDate={maxDate}
-              disabledDates={disabledDates}
-              disabledDatesTextStyle={disabledDatesTextStyle}
-              minRangeDuration={minRangeDuration}
-              maxRangeDuration={maxRangeDuration}
-              textStyle={textStyle}
-              todayTextStyle={todayTextStyle}
-              selectedDayStyle={selectedDayStyle}
-              selectedRangeStartStyle={selectedRangeStartStyle}
-              selectedRangeStyle={selectedRangeStyle}
-              selectedRangeEndStyle={selectedRangeEndStyle}
-              customDatesStyles={customDatesStyles}
-              enableDateChange={enableDateChange}
-            />
-          );
+          lastFilledRow = i;
+          return renderDayInCurrentMonth();
+        }
+        else if (showDayStragglers && i <= lastFilledRow) {
+          // Show next month's days
+          return renderDayStraggler({
+            key: '' + i + dayIndex,
+            day: dayNextMonth++,
+          });
         }
       }
     });

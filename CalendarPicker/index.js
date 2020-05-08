@@ -485,6 +485,7 @@ export default class CalendarPicker extends Component {
       dayOfWeekStyles,
       selectMonthTitle,
       selectYearTitle,
+      showDayStragglers,
     } = this.props;
 
     let content;
@@ -578,6 +579,7 @@ export default class CalendarPicker extends Component {
             selectedEndDate={selectedEndDate}
             minDate={minDate}
             maxDate={maxDate}
+            showDayStragglers={showDayStragglers}
             textStyle={textStyle}
             todayTextStyle={todayTextStyle}
             selectedDayStyle={selectedDayStyle}
