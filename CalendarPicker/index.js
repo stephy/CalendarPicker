@@ -46,8 +46,7 @@ export default class CalendarPicker extends Component {
     this.handleOnPressDay = this.handleOnPressDay.bind(this);
     this.handleOnPressMonth = this.handleOnPressMonth.bind(this);
     this.handleOnPressYear = this.handleOnPressYear.bind(this);
-    this.handleOnSelectMonth = this.handleOnSelectMonth.bind(this);
-    this.handleOnSelectYear = this.handleOnSelectYear.bind(this);
+    this.handleOnSelectMonthYear = this.handleOnSelectMonthYear.bind(this);
     this.onSwipe = this.onSwipe.bind(this);
     this.resetSelections = this.resetSelections.bind(this);
   }
@@ -381,41 +380,10 @@ export default class CalendarPicker extends Component {
     });
   }
 
-  handleOnSelectMonth(month) {
-    if (!this.props.enableDateChange) {
-      return;
-    }
+  handleOnSelectMonthYear({month, year}) {
     this.setState({
-      currentMonth: parseInt(month),
-      currentView: 'days'
-    });
-  }
-
-  handleOnSelectYear(year) {
-    if (!this.props.enableDateChange) {
-      return;
-    }
-
-    // Guard against navigating to months beyond min/max dates.
-    let currentMonth = this.state.currentMonth;
-    if (this.state.maxDate) {
-      const maxDateMonth = this.state.maxDate.month();
-      const maxDateYear = this.state.maxDate.year();
-      if (year === maxDateYear && currentMonth > maxDateMonth) {
-        currentMonth = maxDateMonth;
-      }
-    }
-    if (this.state.minDate) {
-      const minDateMonth = this.state.minDate.month();
-      const minDateYear = this.state.minDate.year();
-      if (year === minDateYear && currentMonth < minDateMonth) {
-        currentMonth = minDateMonth;
-      }
-    }
-
-    this.setState({
-      currentYear: parseInt(year),
-      currentMonth,
+      currentYear: year,
+      currentMonth: month,
       currentView: 'days'
     });
   }
@@ -500,7 +468,7 @@ export default class CalendarPicker extends Component {
           months={months}
           minDate={minDate}
           maxDate={maxDate}
-          onSelectMonth={this.handleOnSelectMonth}
+          onSelectMonth={this.handleOnSelectMonthYear}
           headingLevel={headingLevel}
           disabledDates={disabledDates}
         />
@@ -513,6 +481,7 @@ export default class CalendarPicker extends Component {
           textStyle={textStyle}
           title={selectYearTitle}
           initialDate={moment(initialDate)}
+          currentMonth={currentMonth}
           currentYear={currentYear}
           minDate={minDate}
           maxDate={maxDate}
@@ -523,7 +492,7 @@ export default class CalendarPicker extends Component {
           nextTitle={nextTitle}
           previousTitleStyle={previousTitleStyle}
           nextTitleStyle={nextTitleStyle}
-          onSelectYear={this.handleOnSelectYear}
+          onSelectYear={this.handleOnSelectMonthYear}
           headingLevel={headingLevel}
           disabledDates={disabledDates}
         />

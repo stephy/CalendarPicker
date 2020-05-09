@@ -7,6 +7,8 @@ import Year from './Year';
 export default function YearsGridView(props) {
   const {
     intialYear,
+    currentMonth,
+    currentYear,
     styles,
     onSelectYear,
     textStyle,
@@ -15,15 +17,17 @@ export default function YearsGridView(props) {
     disabledDates,
   } = props;
   const guideArray = [ 0, 1, 2, 3, 4 ];
-  let currentYear = intialYear - 13; // center current year in grid
+  let year = intialYear - 13; // center current year in grid
 
   function generateColumns() {
     const column = guideArray.map(() => {
-      currentYear++;
+      year++;
       return (
         <Year
-          key={currentYear}
-          year={currentYear}
+          key={year}
+          year={year}
+          currentMonth={currentMonth}
+          currentYear={currentYear}
           styles={styles}
           onSelectYear={onSelectYear}
           minDate={minDate}
@@ -38,7 +42,7 @@ export default function YearsGridView(props) {
   return (
     <View style={styles.yearsWrapper}>
       { guideArray.map(index => (
-        <View key={currentYear + index + ''} style={styles.yearsRow}>
+        <View key={year} style={styles.yearsRow}>
           { generateColumns(index) }
         </View>
       ))

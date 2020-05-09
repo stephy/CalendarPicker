@@ -10,42 +10,53 @@ import moment from 'moment';
 export default function Year(props) {
   const {
     year,
+    currentMonth,
+    currentYear,
     styles,
     onSelectYear,
     textStyle,
     minDate,
     maxDate,
-    disabledDates
+    // disabledDates
   } = props;
 
-  const thisYear = moment({year});
+  let yearOutOfRange;
+  let yearIsBeforeMin = false;
+  let yearIsAfterMax = false;
+  let yearIsDisabled = false;
 
-  let dateOutOfRange;
-  let dateIsBeforeMin = false;
-  let dateIsAfterMax = false;
-  let dateIsDisabled = false;
-
-  // First let's check if date is out of range
-  // Check whether props maxDate / minDate are defined. If not supplied,
-  // don't restrict dates.
+  // Check whether year is outside of min/max range.
   if (maxDate) {
-    dateIsAfterMax = thisYear.isAfter(maxDate, 'year');
+    yearIsAfterMax = year > maxDate.year();
   }
   if (minDate) {
-    dateIsBeforeMin = thisYear.isBefore(minDate, 'year');
+    yearIsBeforeMin = year < minDate.year();
   }
 
-  if (disabledDates && disabledDates.indexOf(thisYear.valueOf()) >= 0) {
-    dateIsDisabled = true;
-  }
+  // ToDo: disabledDates is tricky because a year may have partially disabled dates
+  // while still selectable. The code would need to check every day of the year
+  // to know whether a year should be disabled.
 
-  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled;
+  yearOutOfRange = yearIsAfterMax || yearIsBeforeMin || yearIsDisabled;
+
+  const onSelect = () => {
+    // Guard against navigating to months beyond min/max dates.
+    let month = currentMonth;
+    let currentMonthYear = moment({year: currentYear, month});
+    if (maxDate && currentMonthYear.isAfter(maxDate, 'month')) {
+      month = maxDate.month();
+    }
+    if (minDate && currentMonthYear.isBefore(minDate, 'month')) {
+      month = minDate.month();
+    }
+    onSelectYear({month, year});
+  };
 
   return (
     <View style={[styles.yearContainer]}>
-      { !dateOutOfRange ?
+      { !yearOutOfRange ?
         <TouchableOpacity
-          onPress={() => onSelectYear(year) }>
+          onPress={onSelect}>
           <Text style={[styles.yearText, textStyle]}>
             { year }
           </Text>

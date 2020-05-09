@@ -10,7 +10,7 @@ import Controls from './Controls';
 export default function YearsHeader(props) {
   const {
     title,
-    currentYear,
+    year,
     maxDate,
     minDate,
     restrictNavigation,
@@ -27,8 +27,8 @@ export default function YearsHeader(props) {
     headingLevel,
   } = props;
 
-  const disablePrevious = restrictNavigation && (minDate.year() >= currentYear);
-  const disableNext = restrictNavigation && (maxDate.year() <= currentYear);
+  const disablePrevious = restrictNavigation && (minDate.year() >= year);
+  const disableNext = restrictNavigation && (maxDate.year() <= year);
 
   const accessibilityProps = { accessibilityRole: 'header' };
   if (Platform.OS === 'web') {

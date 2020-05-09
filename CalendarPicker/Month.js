@@ -6,7 +6,6 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
-import moment from 'moment';
 
 export default function Month(props) {
   const {
@@ -18,40 +17,47 @@ export default function Month(props) {
     textStyle,
     minDate,
     maxDate,
-    disabledDates
+    // disabledDates
   } = props;
 
   const MONTHS = months || Utils.MONTHS; // English Month Array
   const monthName = MONTHS[month];
 
-  const thisMonth = moment({year, month});
+  let monthOutOfRange;
+  let monthIsBeforeMin = false;
+  let monthIsAfterMax = false;
+  let monthIsDisabled = false;
 
-  let dateOutOfRange;
-  let dateIsBeforeMin = false;
-  let dateIsAfterMax = false;
-  let dateIsDisabled = false;
-
-  // First let's check if date is out of range
-  // Check whether props maxDate / minDate are defined. If not supplied,
-  // don't restrict dates.
+  // Check whether month is outside of min/max range.
   if (maxDate) {
-    dateIsAfterMax = thisMonth.isAfter(maxDate, 'month');
+    monthIsAfterMax = month > maxDate.month();
   }
   if (minDate) {
-    dateIsBeforeMin = thisMonth.isBefore(minDate, 'month');
+    monthIsBeforeMin = month < minDate.month();
   }
 
-  if (disabledDates && disabledDates.indexOf(thisMonth.valueOf()) >= 0) {
-    dateIsDisabled = true;
-  }
+  // ToDo: disabledDates is tricky because a month may have partially disabled dates
+  // while still selectable. The code would need to check every day of the month
+  // to know whether a month should be disabled.
 
-  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled;
+  monthOutOfRange = monthIsAfterMax || monthIsBeforeMin || monthIsDisabled;
+
+  const onSelect = () => {
+    let _year = year;
+    if (minDate && (year < minDate.year())) {
+      _year = minDate.year();
+    }
+    if (maxDate && (year > maxDate.year())) {
+      _year = maxDate.year();
+    }
+    onSelectMonth({month, year: _year});
+  };
 
   return (
     <View style={[styles.monthContainer]}>
-      { !dateOutOfRange ?
+      { !monthOutOfRange ?
         <TouchableOpacity
-          onPress={() => onSelectMonth(month) }>
+          onPress={onSelect}>
           <Text style={[styles.monthText, textStyle]}>
             { monthName }
           </Text>
