@@ -454,6 +454,7 @@ export default class CalendarPicker extends Component {
       selectMonthTitle,
       selectYearTitle,
       showDayStragglers,
+      monthYearHeaderWrapper,
     } = this.props;
 
     let content;
@@ -522,6 +523,7 @@ export default class CalendarPicker extends Component {
             minDate={minDate}
             maxDate={maxDate}
             headingLevel={headingLevel}
+            monthYearHeaderWrapper={monthYearHeaderWrapper}
           />
           <Weekdays
             styles={styles}
