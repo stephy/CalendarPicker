@@ -124,6 +124,7 @@ const styles = StyleSheet.create({
 | **`selectYearTitle`** | `String` | Optional. Title of year selector view. Default is `Select Year`.|
 | **`dayLabelsWrapper`** | `ViewStyle` | Optional. Style for weekdays wrapper. E.g If you want to remove top and bottom divider line.|
 | **`dayOfWeekStyles`** | `TextStyle` | Optional. Style for changing color and style for any day of the week. E.g If you want all Sundays in RED color, and Mondays in BLUE color, etc. You need to pass JSON object of styles. 0 for Sunday and 6 for Saturday, but if `startFromMonday=true`, then 0 for Monday and 6 for Sunday. See example below.|
+| **`monthYearHeaderWrapper`** | `ViewStyle` | Optional. Style for header MonthYear title wrapper. E.g If you want to change the order of year and month.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
