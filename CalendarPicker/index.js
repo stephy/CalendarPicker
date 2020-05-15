@@ -471,7 +471,6 @@ export default class CalendarPicker extends Component {
           maxDate={maxDate}
           onSelectMonth={this.handleOnSelectMonthYear}
           headingLevel={headingLevel}
-          disabledDates={disabledDates}
         />
       );
       break;
@@ -495,7 +494,6 @@ export default class CalendarPicker extends Component {
           nextTitleStyle={nextTitleStyle}
           onSelectYear={this.handleOnSelectMonthYear}
           headingLevel={headingLevel}
-          disabledDates={disabledDates}
         />
       );
       break;
