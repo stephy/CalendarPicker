@@ -4,7 +4,7 @@
 
 This is a Calendar Picker Component for React Native
 
-![alt tag](https://raw.githubusercontent.com/stephy/CalendarPicker/master/assets/basic-react-native-calendar-picker.gif)
+![alt tag](https://user-images.githubusercontent.com/6295083/82028634-87a2b880-965b-11ea-90ce-1bde67f31157.gif)
 
 To use the calendar you just need to:
 ```sh
@@ -140,7 +140,7 @@ Order of precedence:
 # More Examples
 
 ### Start from Monday, allowRangeSelection, Min and Max Dates and Styles Changes Example
-![alt tag](https://raw.githubusercontent.com/stephy/CalendarPicker/master/assets/default-react-native-calendar-picker.gif)
+![alt tag](https://user-images.githubusercontent.com/6295083/82028654-8f625d00-965b-11ea-8076-45ae609be296.gif)
 ```js
 import React, { Component } from 'react';
 import {
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
 
 ### Complex Example, Changing Fonts and Colors, Language and etc...
 
-![alt tag](https://github.com/stephy/CalendarPicker/blob/master/assets/react-native-calendar-picker-green-color-date-range.gif)
+![alt tag](https://user-images.githubusercontent.com/6295083/82028709-9c7f4c00-965b-11ea-9705-790ce38929c0.gif)
 
 ```js
 import React, { Component } from 'react';
