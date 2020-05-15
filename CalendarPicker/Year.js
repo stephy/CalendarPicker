@@ -17,7 +17,6 @@ export default function Year(props) {
     textStyle,
     minDate,
     maxDate,
-    // disabledDates
   } = props;
 
   let yearOutOfRange;
@@ -33,9 +32,7 @@ export default function Year(props) {
     yearIsBeforeMin = year < minDate.year();
   }
 
-  // ToDo: disabledDates is tricky because a year may have partially disabled dates
-  // while still selectable. The code would need to check every day of the year
-  // to know whether a year should be disabled.
+  // ToDo: disabledYears props to disable years separate from disabledDates
 
   yearOutOfRange = yearIsAfterMax || yearIsBeforeMin || yearIsDisabled;
 
@@ -74,5 +71,4 @@ Year.propTypes = {
   styles: PropTypes.shape({}),
   year: PropTypes.number,
   onSelectYear: PropTypes.func,
-  disabledDates: PropTypes.array,
 };

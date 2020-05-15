@@ -24,7 +24,6 @@ export default class MonthSelector extends Component {
       minDate,
       maxDate,
       onSelectMonth,
-      disabledDates,
     } = this.props;
 
     return (
@@ -43,7 +42,6 @@ export default class MonthSelector extends Component {
           minDate={minDate}
           maxDate={maxDate}
           onSelectMonth={onSelectMonth}
-          disabledDates={disabledDates}
         />
       </View>
     );
