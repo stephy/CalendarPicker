@@ -14,7 +14,6 @@ export default function YearsGridView(props) {
     textStyle,
     minDate,
     maxDate,
-    disabledDates,
   } = props;
   const guideArray = [ 0, 1, 2, 3, 4 ];
   let year = intialYear - 13; // center current year in grid
@@ -32,7 +31,6 @@ export default function YearsGridView(props) {
           onSelectYear={onSelectYear}
           minDate={minDate}
           maxDate={maxDate}
-          disabledDates={disabledDates}
           textStyle={textStyle}
         />
       );
@@ -55,5 +53,4 @@ YearsGridView.propTypes = {
   styles: PropTypes.shape(),
   intialYear: PropTypes.number.isRequired,
   onSelectYear: PropTypes.func,
-  disabledDates: PropTypes.array
 };

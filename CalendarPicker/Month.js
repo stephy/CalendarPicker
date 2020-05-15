@@ -17,7 +17,6 @@ export default function Month(props) {
     textStyle,
     minDate,
     maxDate,
-    // disabledDates
   } = props;
 
   const MONTHS = months || Utils.MONTHS; // English Month Array
@@ -36,9 +35,7 @@ export default function Month(props) {
     monthIsBeforeMin = month < minDate.month();
   }
 
-  // ToDo: disabledDates is tricky because a month may have partially disabled dates
-  // while still selectable. The code would need to check every day of the month
-  // to know whether a month should be disabled.
+  // ToDo: disabledMonths props to disable months separate from disabledDates
 
   monthOutOfRange = monthIsAfterMax || monthIsBeforeMin || monthIsDisabled;
 
@@ -76,5 +73,4 @@ Month.propTypes = {
   currentMonth: PropTypes.number,
   currentYear: PropTypes.number,
   onSelectMonth: PropTypes.func,
-  disabledDates: PropTypes.array,
 };
