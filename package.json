@@ -14,8 +14,7 @@
   "scripts": {
     "start": "echo \"example folder contains sample app (see README)\" && exit 1",
     "test": "echo \"example folder contains the tests (see README)\" && exit 1",
-    "lint": "eslint CalendarPicker --fix",
-    "postinstall": "cpx \".githooks/*\" \".git/hooks\" -u"
+    "lint": "eslint CalendarPicker --fix"
   },
   "repository": {
     "type": "git",
