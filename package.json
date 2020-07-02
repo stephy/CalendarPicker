@@ -1,6 +1,6 @@
 {
   "name": "react-native-calendar-picker",
-  "version": "6.1.4",
+  "version": "6.1.5",
   "description": "Calendar Picker Component for React Native",
   "engines": {
     "node": ">=4.0.0"
@@ -15,7 +15,7 @@
     "start": "echo \"example folder contains sample app (see README)\" && exit 1",
     "test": "echo \"example folder contains the tests (see README)\" && exit 1",
     "lint": "eslint CalendarPicker --fix",
-    "postinstall": "./node_modules/.bin/node-git-hooks"
+    "postinstall": "node-git-hooks"
   },
   "repository": {
     "type": "git",
