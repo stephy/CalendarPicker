@@ -103,8 +103,8 @@ const styles = StyleSheet.create({
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
 | **`todayTextStyle`** | `TextStyle` | Optional. Text styling for today. |
 | **`textStyle`** | `TextStyle` | Optional. Style overall text. Change fontFamily, color, etc. |
-| **`customDatesStyles`** | `Array` | Optional. Style individual date(s). Array of objects `{date: Moment-parseable date, containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}` |
-| **`customDatesStylesPriority`** | `String` | Optional. Precedence of `customDates` or `dayOfWeek` styles. Default `dayOfWeek` |
+| **`customDatesStyles`** | `Array` or `Func` | Optional. Style individual date(s). Supports an array of objects `{date: Moment-parseable date, containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}`, or a callback which receives a date param and returns `{containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}` for that date. |
+| **`customDayHeaderStyles`** | `Func` | Optional. Style day of week header (Monday - Sunday). Callback that receives ISO `{dayOfWeek, month, year}` and should return `{style: ViewStyle, textStyle: TextStyle}` |
 | **`scaleFactor`** | `Number` | Optional. Default (375) scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
 | **`maxDate`** | `Date` | Optional. Specifies maximum date to be selected |
@@ -123,7 +123,8 @@ const styles = StyleSheet.create({
 | **`selectMonthTitle`** | `String` | Optional. Title of month selector view. Default is `Select Month`.|
 | **`selectYearTitle`** | `String` | Optional. Title of year selector view. Default is `Select Year`.|
 | **`dayLabelsWrapper`** | `ViewStyle` | Optional. Style for weekdays wrapper. E.g If you want to remove top and bottom divider line.|
-| **`dayOfWeekStyles`** | `TextStyle` | Optional. Style for changing color and style for any day of the week. E.g If you want all Sundays in RED color, and Mondays in BLUE color, etc. You need to pass JSON object of styles. 0 for Sunday and 6 for Saturday, but if `startFromMonday=true`, then 0 for Monday and 6 for Sunday. See example below.|
+| **`dayOfWeekStyles`** | `Deprecated` | Use `customDatesStyles` & `customDayHeaderStyles` callbacks to style individual dates, days of week, and/or header. |
+| **`customDatesStylesPriority`** | `Deprecated` | Use `customDatesStyles` & `customDayHeaderStyles` callbacks to style individual dates, days of week, and/or header. |
 | **`monthYearHeaderWrapperStyle`** | `ViewStyle` | Optional. Style for header MonthYear title wrapper. E.g If you want to change the order of year and month.|
 
 # Styles
@@ -326,34 +327,51 @@ render() {
 }
 ```
 
-### Styling individual weekdays
+### Styling each day of the week and the day name header.
 
 ```js
 
-<CalendarPicker
-      textStyle={styles.calendarTextStyle}
-      weekdays={CALENDAR_WEEK_DAYS}
-      allowRangeSelection
-      previousTitle="<"
-      previousTitleStyle={{color: '#fff'}}
-      nextTitle=">"
-      nextTitleStyle={{color: '#f00'}}
-      dayLabelsWrapper={{
-        borderBottomWidth: 0,
-        borderTopWidth: 0,
-      }}
-      dayOfWeekStyles={{
-        0: {
-          color: '#00f',
+const customDayHeaderStylesCallback = {dayOfWeek, month, year} => {
+  switch(dayOfWeek) { // can also evaluate month, year
+    case 4: // Thursday
+      return {
+        style: {
+          borderRadius: 12,
+          backgroundColor: 'cyan',
+        },
+        textStyle: {
+          color: 'blue',
           fontSize: 22,
           fontWeight: 'bold',
-          backgroundColor: '#ff0',
+        }
+      };
+  }
+}
+
+const customDatesStylesCallback = date => {
+  switch(date.isoWeekday()) {
+    case 1: // Monday
+      return {
+        style:{
+          backgroundColor: '#909',
         },
-        5: {
-          color: '#000',
-          fontSize: 22,
-        },
-      }}
+        textStyle: {
+          color: '#0f0',
+          fontWeight: 'bold',
+        }
+      };
+    case 7: // Sunday
+      return {
+        textStyle: {
+          color: 'red',
+        }
+      };
+  }
+}
+
+<CalendarPicker
+      customDayHeaderStyles={customDayHeaderStylesCallback}
+      customDatesStyles={customDatesStylesCallback}
     />
 ```
 

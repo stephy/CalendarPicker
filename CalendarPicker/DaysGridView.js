@@ -188,16 +188,19 @@ DaysGridView.propTypes = {
   selectedRangeStyle: ViewPropTypes.style,
   selectedRangeEndStyle: ViewPropTypes.style,
   todayTextStyle: Text.propTypes.style,
-  customDatesStyles: PropTypes.arrayOf(PropTypes.shape({
-    date: PropTypes.oneOfType([
-      PropTypes.string,
-      PropTypes.instanceOf(Date),
-      PropTypes.instanceOf(moment)
-    ]),
-    containerStyle: ViewPropTypes.style,
-    style: ViewPropTypes.style,
-    textStyle: Text.propTypes.style,
-  })),
+  customDatesStyles: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.arrayOf(PropTypes.shape({
+      date: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.instanceOf(Date),
+        PropTypes.instanceOf(moment)
+      ]),
+      containerStyle: ViewPropTypes.style,
+      style: ViewPropTypes.style,
+      textStyle: Text.propTypes.style,
+    })),
+  ]),
   disabledDates: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
   disabledDatesTextStyle: Text.propTypes.style,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),

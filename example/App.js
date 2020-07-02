@@ -28,16 +28,8 @@ export default class App extends Component {
       day.add(1, 'day');
     }
 
-    let dayOfWeekStyles = {
-      5: {
-        color: '#00f',
-        fontWeight: 'bold',
-      }
-    };
-
     this.state = {
       customDatesStyles,
-      dayOfWeekStyles,
       enableRangeSelect: false,
       minDate,
       maxDate: moment().add(90, 'day'),
@@ -98,10 +90,25 @@ export default class App extends Component {
     });
   }
 
+  customDayHeaderStylesCallback({dayOfWeek, month, year}) {
+    switch(dayOfWeek) {
+      case 4: // Thursday
+        return {
+          style: {
+            borderRadius: 12,
+            backgroundColor: 'cyan',
+          },
+          textStyle: {
+            color: 'blue',
+            fontWeight: 'bold',
+          }
+        };
+    }
+  }
+
   render() {
     const {
       customDatesStyles,
-      dayOfWeekStyles,
       enableRangeSelect,
       minDate,
       maxDate,
@@ -121,7 +128,7 @@ export default class App extends Component {
           onDateChange={this.onDateChange}
           initialDate={minDate}
           customDatesStyles={customDatesStyles}
-          dayOfWeekStyles={dayOfWeekStyles}
+          customDayHeaderStyles={this.customDayHeaderStylesCallback}
           minDate={minDate}
           maxDate={maxDate}
           allowRangeSelection={enableRangeSelect}

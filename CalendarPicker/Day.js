@@ -110,18 +110,26 @@ export default function Day(props) {
       selectedDayColorStyle = todayTextStyle || styles.selectedDayLabel;
     }
 
-    for (let cds of customDatesStyles) {
-      if (thisDay.isSame(moment(cds.date), 'day')) {
-        customContainerStyle = cds.containerStyle;
-        customDateStyle = cds.style;
-        customTextStyle = cds.textStyle;
-        if (isToday && customDateStyle) {
-          // Custom date style overrides 'today' style. It may be reset below
-          // by date selection styling.
-          daySelectedStyle = [daySelectedStyle, customDateStyle];
+    if (Array.isArray(customDatesStyles)) {
+      for (let cds of customDatesStyles) {
+        if (thisDay.isSame(moment(cds.date), 'day')) {
+          customContainerStyle = cds.containerStyle;
+          customDateStyle = cds.style;
+          customTextStyle = cds.textStyle;
+          break;
         }
-        break;
       }
+    }
+    else if (customDatesStyles instanceof Function) {
+      let cds = customDatesStyles(thisDay) || {};
+      customContainerStyle = cds.containerStyle;
+      customDateStyle = cds.style;
+      customTextStyle = cds.textStyle;
+    }
+    if (isToday && customDateStyle) {
+      // Custom date style overrides 'today' style. It may be reset below
+      // by date selection styling.
+      daySelectedStyle = [daySelectedStyle, customDateStyle];
     }
 
     let isThisDaySameAsSelectedStart = thisDay.isSame(selectedStartDate, 'day');
