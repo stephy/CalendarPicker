@@ -32,7 +32,6 @@ export default class CalendarPicker extends Component {
       styles: {},
       ...this.updateScaledStyles(props),
       ...this.updateMonthYear(props.initialDate),
-      ...this.updateDayOfWeekStyles(props.initialDate),
       ...this.updateDisabledDates(props.disabledDates),
       ...this.updateMinMaxRanges(props.minRangeDuration, props.maxRangeDuration),
     };
@@ -40,7 +39,6 @@ export default class CalendarPicker extends Component {
     this.updateMonthYear = this.updateMonthYear.bind(this);
     this.updateDisabledDates = this.updateDisabledDates.bind(this);
     this.updateMinMaxRanges = this.updateMinMaxRanges.bind(this);
-    this.updateDayOfWeekStyles = this.updateDayOfWeekStyles.bind(this);
     this.handleOnPressPrevious = this.handleOnPressPrevious.bind(this);
     this.handleOnPressNext = this.handleOnPressNext.bind(this);
     this.handleOnPressDay = this.handleOnPressDay.bind(this);
@@ -62,8 +60,6 @@ export default class CalendarPicker extends Component {
     headingLevel: 1,
     sundayColor: '#FFFFFF',
     customDatesStyles: [],
-    customDatesStylesPriority: 'dayOfWeek', // ToDo: Deprecated. Remove.
-    dayOfWeekStyles: {}, // ToDo: Deprecated. Remove.
     previousTitle: 'Previous',
     nextTitle: 'Next',
     selectMonthTitle: 'Select Month',
@@ -103,21 +99,6 @@ export default class CalendarPicker extends Component {
       doStateUpdate = true;
     }
 
-    // ----------------------------------------------------------------
-    // ToDo: Deprecated. Remove entire block
-    let customDatesStyles = {};
-    if (this.props.startFromMonday !== prevProps.startFromMonday ||
-        this.props.dayOfWeekStyles !== prevProps.dayOfWeekStyles ||
-        this.props.customDatesStylesPriority !== prevProps.customDatesStylesPriority ||
-        this.props.customDatesStyles !== prevProps.customDatesStyles
-    ) {
-      customDatesStyles = this.updateDayOfWeekStyles(
-        moment({year: this.state.currentYear, month: this.state.currentMonth}),
-      );
-      doStateUpdate = true;
-    }
-    // ----------------------------------------------------------------
-
     let disabledDates = {};
     if (prevProps.disabledDates !== this.props.disabledDates) {
       disabledDates = this.updateDisabledDates(this.props.disabledDates);
@@ -138,8 +119,7 @@ export default class CalendarPicker extends Component {
 
     if (doStateUpdate) {
       this.setState({ ...newStyles, ...newMonthYear, ...selectedDateRanges,
-        ...customDatesStyles, ...disabledDates, ...rangeDurations,
-        minDate, maxDate });
+        ...disabledDates, ...rangeDurations, minDate, maxDate });
     }
   }
 
@@ -288,53 +268,6 @@ export default class CalendarPicker extends Component {
     }
   }
 
-  // ----------------------------------------------------------------
-  // ToDo: Deprecated. Remove entire function and refactor accordingly.
-  updateDayOfWeekStyles(currentDate) {
-    if (this.props.customDatesStyles instanceof Function) {
-      return { customDatesStyles: this.props.customDatesStyles };
-    }
-
-    const {
-      startFromMonday,
-      dayOfWeekStyles, //ToDo: Deprecated. Remove.
-      customDatesStyles: propsCustomDatesStyles,
-      customDatesStylesPriority
-    } = this.props;
-
-    let day = moment(currentDate).startOf('month');
-    let customDayOfWeekStyles = [];
-    do {
-      let dayIndex = day.day();
-      if (startFromMonday) {
-        dayIndex = dayIndex - 1;
-        if (dayIndex < 0) {
-          dayIndex = 6; // This is Sunday.
-        }
-      }
-      let currentDayStyle = dayOfWeekStyles[dayIndex];
-      if (currentDayStyle) {
-        console.warn('CalendarPicker: dayOfWeekStyles is deprecated. Use customDatesStyles / customDayHeaderStyles callbacks instead.');
-        customDayOfWeekStyles.push({
-          date: day.clone(),
-          textStyle: currentDayStyle,
-        });
-      }
-    } while (day.add(1, 'day').isSame(currentDate, 'month'));
-
-    let customDatesStyles = [];
-    if (customDatesStylesPriority === 'dayOfWeek') {
-      customDatesStyles = [...customDayOfWeekStyles, ...propsCustomDatesStyles];
-    }
-    else {
-      console.warn('CalendarPicker: customDatesStylesPriority is deprecated. Use customDatesStyles / customDayHeaderStyles callbacks instead.');
-      customDatesStyles = [...propsCustomDatesStyles, ...customDayOfWeekStyles];
-    }
-
-    return { customDatesStyles };
-  }
-  // ----------------------------------------------------------------
-
   handleOnPressPrevious() {
     let { currentMonth, currentYear } = this.state;
     let previousMonth = currentMonth - 1;
@@ -360,26 +293,12 @@ export default class CalendarPicker extends Component {
   }
 
   handleOnPressFinisher({year, month}) {
-    // ----------------------------------------------------------------
-    // ToDo: Deprecated. Remove
-    let dayOfWeekStyles = {};
-    let currentMonthYear = moment({year, month});
-    try {
-      if (Object.entries(this.props.dayOfWeekStyles).length) {
-        dayOfWeekStyles = this.updateDayOfWeekStyles(currentMonthYear);
-      }
-    }
-    catch (error) {
-      console.log('dayOfWeekStyles error');
-    }
-    // ----------------------------------------------------------------
-
     this.setState({
-      ...dayOfWeekStyles, //ToDo: Deprecated. Remove.
       currentMonth: parseInt(month),
       currentYear: parseInt(year)
     });
 
+    const currentMonthYear = moment({year, month, hour: 12});
     this.props.onMonthChange && this.props.onMonthChange(currentMonthYear);
   }
 
@@ -437,7 +356,6 @@ export default class CalendarPicker extends Component {
       selectedEndDate,
       disabledDates,
       styles,
-      customDatesStyles,
     } = this.state;
 
     const {
@@ -465,7 +383,7 @@ export default class CalendarPicker extends Component {
       restrictMonthNavigation,
       headingLevel,
       dayLabelsWrapper,
-      dayOfWeekStyles, // ToDo: Deprecated. Remove.
+      customDatesStyles,
       customDayHeaderStyles,
       selectMonthTitle,
       selectYearTitle,
@@ -547,7 +465,6 @@ export default class CalendarPicker extends Component {
             weekdays={weekdays}
             textStyle={textStyle}
             dayLabelsWrapper={dayLabelsWrapper}
-            dayOfWeekStyles={dayOfWeekStyles}
             customDayHeaderStyles={customDayHeaderStyles}
           />
           <DaysGridView

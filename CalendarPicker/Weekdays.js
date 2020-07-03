@@ -16,7 +16,6 @@ export default function Weekdays(props) {
     textStyle,
     dayLabelsWrapper,
     customDayHeaderStyles,
-    dayOfWeekStyles, // ToDo: Deprecated. Remove.
   } = props;
 
   // dayOfWeekNums: ISO week day numbers
@@ -36,23 +35,6 @@ export default function Weekdays(props) {
           customDayOfWeekStyles = customDayHeaderStyles({dayOfWeek, month, year}) || {};
           dayOfWeekTextStyle.push(customDayOfWeekStyles.textStyle);
         }
-        // ----------------------------------------------------------------
-        // ToDo: Deprecated. Remove
-        else {
-          try {
-            if (dayOfWeekStyles[+key]) {
-              console.warn('CalendarPicker: dayOfWeekStyles is deprecated. Use customDatesStyles / customDayHeaderStyles callbacks instead.');
-              let currentDayStyle = dayOfWeekStyles[+key];
-              if (currentDayStyle) {
-                dayOfWeekTextStyle.push(currentDayStyle);
-              }
-            }
-          } catch (error) {
-            console.log('Error while updating weekday style: ' + error);
-          }
-        }
-        // ----------------------------------------------------------------
-
         return (
           <View style={customDayOfWeekStyles.style} key={key}>
             <Text style={dayOfWeekTextStyle}>
