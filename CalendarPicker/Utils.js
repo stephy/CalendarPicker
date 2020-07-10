@@ -26,4 +26,27 @@ export const Utils = {
     }
     return false;
   },
+  // Test whether objects' values are different.
+  // `exclusions` param ignores provided keys.
+  // Returns array of keys that are different (empty array means identical).
+  shallowDiff: function(a, b, exclusions = []) {
+    const diffs = [];
+    for (let key of Object.keys(a)) {
+      if (exclusions.includes(key)) {
+        continue;
+      }
+      if (a[key] !== b[key]) {
+        diffs.push(key);
+      }
+    }
+    return diffs;
+  },
+  // Robust compare Moment dates.
+  compareDates: function(a, b, granularity) {
+    // Allow for falsy (null & undefined) equality.
+    if (!a && !b) {
+      return true;
+    }
+    return !!a && !!b && a.isSame(b, granularity);
+  }
 };

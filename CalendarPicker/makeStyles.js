@@ -32,6 +32,9 @@ export function makeStyles(params) {
   const TODAY_BG_COLOR = todayBackgroundColor ? todayBackgroundColor : DEFAULT_TODAY_BACKGROUND_COLOR;
 
   return {
+    containerWidth,
+    containerHeight,
+
     calendar: {
       height: 320*scaler,
       marginTop: 10*scaler

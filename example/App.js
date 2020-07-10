@@ -123,6 +123,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <CalendarPicker
+          scrollable
           selectedStartDate={selectedStartDate}
           selectedEndDate={selectedEndDate}
           onDateChange={this.onDateChange}
@@ -191,7 +192,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   topSpacing: {
-    marginTop:60
+    marginTop:20
   },
   text: {
     fontSize: 24,

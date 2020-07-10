@@ -4,16 +4,16 @@
 
 This is a Calendar Picker Component for React Native
 
+### Scrollable CalendarPicker — New in 7.x
+
+The `scrollable` prop was introduced in 7.0.0 and features a bi-directional infinite scroller. It recycles months using RecyclerListView, shifting them as the ends are reached. If the Chrome debugger is used during development, month shifting may be erratic due to a [RN setTimeout bug](https://github.com/facebook/react-native/issues/4470). To prevent month shifts at the ends of the scroller, set `restrictMonthNavigation`, `minDate`, and `maxDate` range to 5 years or less.
+
 ![alt tag](https://user-images.githubusercontent.com/6295083/82028634-87a2b880-965b-11ea-90ce-1bde67f31157.gif)
 
 To use the calendar you just need to:
 ```sh
 npm install --save react-native-calendar-picker
 ```
-
-*Note: react-native-calendar-picker v5 is a complete re-write of the calendar. This calendar is now written using ES6 syntax. I kept most of the same functionalities and added support for date ranges.*
-
-If you need the old code I saved it on a branch <a href="https://github.com/stephy/CalendarPicker/tree/v4">v4</a>
 
 # Prerequisites
 
@@ -111,19 +111,21 @@ const styles = StyleSheet.create({
 | **`initialDate`** | `Date` | Optional. Date that calendar opens to. Defaults to today. |
 | **`width`** | `Number` | Optional. Width of CalendarPicker's container. Defaults to Dimensions width.|
 | **`height`** | `Number` | Optional. Height of CalendarPicker's container. Defaults to Dimensions height.|
-| **`swipeConfig`** | `Object` | Optional. Config passed to Swiper.|
-| **`enableSwipe`** | `Boolean` | Optional. Whether to enable swiping. Default is `true` |
+| **`scrollable`**                | `Boolean`    | Optional. Months are scrollable if true. Default is `false` |
+| **`horizontal`**                | `Boolean`    | Optional. Scroll axis when `scrollable` set. Default is `true` |
 | **`enableDateChange`** | `Boolean` | Optional. Whether to enable pressing on day. Default is `true` |
 | **`restrictMonthNavigation`** | `Boolean` | Optional. Whether to disable Previous month button if it is before minDate or Next month button if it is after MaxDate. Default is `false` |
 | **`onDateChange`** | `Function` | Optional. Callback when a date is selected. Returns Moment `date` as first param; `START_DATE` or `END_DATE` as second param.|
 | **`onMonthChange`** | `Function` | Optional. Callback when Previous / Next month is pressed. Returns Moment `date` as first parameter.|
-| **`onSwipe`** | `Function` | Optional. Callback when swipe event is triggered. Returns swipe direction as first parameter.|
 | **`dayShape`** | `String` | Optional. Shape of the Day component. Default is `circle`. Available options are `circle` and `square`.|
 | **`headingLevel`** | `Number` | Optional. Sets the aria-level for the calendar title heading when on Web. Default is `1`.|
 | **`selectMonthTitle`** | `String` | Optional. Title of month selector view. Default is "Select Month in " + {year}.|
 | **`selectYearTitle`** | `String` | Optional. Title of year selector view. Default is "Select Year".|
 | **`dayLabelsWrapper`** | `ViewStyle` | Optional. Style for weekdays wrapper. E.g If you want to remove top and bottom divider line.|
-| **`dayOfWeekStyles`** | `Deprecated` | Use `customDatesStyles` & `customDayHeaderStyles` callbacks to style individual dates, days of week, and/or header. |
+| **`enableSwipe`**               | `Deprecated` | Use `scrollable`. |
+| **`swipeConfig`**               | `Deprecated` | Use `scrollable`. |
+| **`onSwipe`**                   | `Deprecated` | Use `onMonthChange`. |
+| **`dayOfWeekStyles`**           | `Deprecated` | Use `customDatesStyles` & `customDayHeaderStyles` callbacks to style individual dates, days of week, and/or header. |
 | **`customDatesStylesPriority`** | `Deprecated` | Use `customDatesStyles` & `customDayHeaderStyles` callbacks to style individual dates, days of week, and/or header. |
 | **`monthYearHeaderWrapperStyle`** | `ViewStyle` | Optional. Style for header MonthYear title wrapper. E.g If you want to change the order of year and month.|
 
@@ -402,6 +404,7 @@ Open Issues. Submit PRs.
 
 I would like to call out some contributors who have been helping with this project
 
+- [peacechen](https://github.com/peacechen)
 - [edvinerikson](https://github.com/edvinerikson)
 - [thomaswright](https://github.com/thomaswright)
 - [brentvatne](https://github.com/brentvatne)
@@ -409,7 +412,6 @@ I would like to call out some contributors who have been helping with this proje
 - [jthestupidkid](https://github.com/jthestupidkid)
 - [adamkrell](https://github.com/adamkrell)
 - [joshuapinter](https://github.com/joshuapinter)
-- [peacechen](https://github.com/peacechen)
 
 
 # Sample Application
@@ -424,4 +426,4 @@ npm start
 
 ## Development
 
-The source files are copied from the project root directory into `example/node_modules` using `npm run cp`.  If a source file is modified, it must be copied over again with `npm run cp`.
+The source files are copied from the project root directory into `example` using `npm run cp`.  If a source file is modified, it must be copied over again with `npm run cp`.

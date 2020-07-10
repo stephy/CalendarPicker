@@ -27,7 +27,7 @@ export default class MonthSelector extends Component {
     } = this.props;
 
     return (
-      <View>
+      <View styles={styles.calendar}>
         <MonthsHeader
           styles={styles}
           textStyle={textStyle}
