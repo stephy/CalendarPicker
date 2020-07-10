@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
 | **`onSwipe`** | `Function` | Optional. Callback when swipe event is triggered. Returns swipe direction as first parameter.|
 | **`dayShape`** | `String` | Optional. Shape of the Day component. Default is `circle`. Available options are `circle` and `square`.|
 | **`headingLevel`** | `Number` | Optional. Sets the aria-level for the calendar title heading when on Web. Default is `1`.|
-| **`selectMonthTitle`** | `String` | Optional. Title of month selector view. Default is `Select Month`.|
-| **`selectYearTitle`** | `String` | Optional. Title of year selector view. Default is `Select Year`.|
+| **`selectMonthTitle`** | `String` | Optional. Title of month selector view. Default is "Select Month in " + {year}.|
+| **`selectYearTitle`** | `String` | Optional. Title of year selector view. Default is "Select Year".|
 | **`dayLabelsWrapper`** | `ViewStyle` | Optional. Style for weekdays wrapper. E.g If you want to remove top and bottom divider line.|
 | **`dayOfWeekStyles`** | `Deprecated` | Use `customDatesStyles` & `customDayHeaderStyles` callbacks to style individual dates, days of week, and/or header. |
 | **`customDatesStylesPriority`** | `Deprecated` | Use `customDatesStyles` & `customDayHeaderStyles` callbacks to style individual dates, days of week, and/or header. |

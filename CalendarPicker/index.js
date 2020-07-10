@@ -62,7 +62,7 @@ export default class CalendarPicker extends Component {
     customDatesStyles: [],
     previousTitle: 'Previous',
     nextTitle: 'Next',
-    selectMonthTitle: 'Select Month',
+    selectMonthTitle: 'Select Month in ',
     selectYearTitle: 'Select Year',
   };
 

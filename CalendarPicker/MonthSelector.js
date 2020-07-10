@@ -31,7 +31,7 @@ export default class MonthSelector extends Component {
         <MonthsHeader
           styles={styles}
           textStyle={textStyle}
-          title={title}
+          title={title + currentYear}
           headingLevel={headingLevel}
         />
         <MonthsGridView

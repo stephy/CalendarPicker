@@ -28,10 +28,10 @@ export default function Month(props) {
   let monthIsDisabled = false;
 
   // Check whether month is outside of min/max range.
-  if (maxDate) {
+  if (maxDate && (maxDate.year() === year)) {
     monthIsAfterMax = month > maxDate.month();
   }
-  if (minDate) {
+  if (minDate && (minDate.year() === year)) {
     monthIsBeforeMin = month < minDate.month();
   }
 
