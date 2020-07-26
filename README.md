@@ -383,7 +383,7 @@ These internal methods may be accessed through a ref to the CalendarPicker.
 
 | Name | Params | Description |
 :------------ |:---------------| :-----|
-| **`handleOnPressDay`** | day (Integer) | Programmatically select date. `day` is a number that is the day of the current month. Moment example for today's day of month: `moment().date()` |
+| **`handleOnPressDay`** | `{year, month, day} (Integers)` | Programmatically select date. `year`, `month` and `day` are numbers. `day` is the day of the current month. Moment example for today's day of month: `moment().date()` |
 | **`handleOnPressNext`** |  | Programmatically advance to next month. |
 | **`handleOnPressPrevious`** |  | Programmatically advance to previous month. |
 | **`resetSelections`** |  | Clear date selections. Useful for resetting date range selection when user has picked a start date but not an end date. |
