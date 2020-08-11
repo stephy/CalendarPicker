@@ -26,7 +26,7 @@ export default function Day(props) {
     selectedRangeEndStyle,
     textStyle,
     todayTextStyle,
-    selectedDayTextStyle: propsSelectedDayTextStyle,
+    selectedDayTextStyle: propSelectedDayTextStyle,
     minDate,
     maxDate,
     disabledDates,
@@ -116,7 +116,7 @@ export default function Day(props) {
     if (isToday) {
       daySelectedStyle = styles.selectedToday;
       // todayTextStyle prop overrides selectedDayTextColor (created via makeStyles)
-      selectedDayTextStyle = [propsSelectedDayTextStyle, todayTextStyle || styles.selectedDayLabel];
+      selectedDayTextStyle = [propSelectedDayTextStyle, todayTextStyle || styles.selectedDayLabel];
     }
 
     if (Array.isArray(customDatesStyles)) {
@@ -146,7 +146,7 @@ export default function Day(props) {
         selectedStartDate &&
         isThisDaySameAsSelectedStart) {
       daySelectedStyle = styles.selectedDay;
-      selectedDayTextStyle = [propsselectedDayTextStyle, styles.selectedDayLabel, isToday && todayTextStyle];
+      selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel, isToday && todayTextStyle];
       // selectedDayStyle prop overrides selectedDayColor (created via makeStyles)
       propSelectedDayStyle = selectedDayStyle || styles.selectedDayBackground;
     }
@@ -157,24 +157,24 @@ export default function Day(props) {
         // Apply style for start date
         if (isThisDaySameAsSelectedStart) {
           daySelectedStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
-          selectedDayTextStyle = [propsselectedDayTextStyle, styles.selectedDayLabel];
+          selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
         }
         // Apply style for end date
         if (isThisDaySameAsSelectedEnd) {
           daySelectedStyle = [styles.endDayWrapper, selectedRangeStyle, selectedRangeEndStyle];
-          selectedDayTextStyle = [propsselectedDayTextStyle, styles.selectedDayLabel];
+          selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
         }
         // Apply style if start date is the same as end date
         if (isThisDaySameAsSelectedEnd &&
             isThisDaySameAsSelectedStart &&
             selectedEndDate.isSame(selectedStartDate, 'day')) {
           daySelectedStyle = [styles.selectedDay, styles.selectedDayBackground, selectedRangeStyle];
-          selectedDayTextStyle = [propsselectedDayTextStyle, styles.selectedDayLabel];
+          selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
         }
         // Apply style if this day is in range
         if (thisDay.isBetween(selectedStartDate, selectedEndDate, 'day')) {
           daySelectedStyle = [styles.inRangeDay, selectedRangeStyle];
-          selectedDayTextStyle = [propsselectedDayTextStyle, styles.selectedDayLabel];
+          selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
         }
       }
       // Apply style if start date has been selected but end date has not
@@ -182,7 +182,7 @@ export default function Day(props) {
           !selectedEndDate &&
           isThisDaySameAsSelectedStart) {
         daySelectedStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
-        selectedDayTextStyle = [propsselectedDayTextStyle, styles.selectedDayLabel];
+        selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
       }
     }
 
