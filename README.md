@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
 | **`selectedDayColor`** | `String` | Optional. Color for selected day |
 | **`selectedDayStyle`** | `ViewStyle` | Optional. Style for selected day. May override selectedDayColor.|
 | **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
+| **`selectedDayTextStyle`** | `Object` | Optional. Text style for selected day |
 | **`selectedRangeStartStyle`** | `ViewStyle` | Optional. Style for range selected start day. |
 | **`selectedRangeEndStyle`** | `ViewStyle` | Optional. Style for range selected end day. |
 | **`selectedRangeStyle`** | `ViewStyle` | Optional. Style for all days in range selection. |
