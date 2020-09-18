@@ -343,6 +343,8 @@ export default class CalendarPicker extends Component {
       currentView: 'days',
       ...scrollableState,
     });
+    
+    this.handleOnPressFinisher({year, month});
   }
 
   resetSelections = () => {
