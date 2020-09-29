@@ -302,15 +302,17 @@ export default class CalendarPicker extends Component {
     this.handleOnPressFinisher({year, month: nextMonth, scrollFinisher});
   }
 
-  handleOnPressFinisher = ({year, month, scrollFinisher}) => {
+  handleOnPressFinisher = ({year, month, scrollFinisher, extraState}) => {
     if (scrollFinisher) {
       scrollFinisher();
     }
     else {
       const currentMonth = parseInt(month);
       const currentYear = parseInt(year);
-      const renderMonthParams = {...this.state.renderMonthParams, month, year};
-      this.setState({ currentMonth, currentYear, renderMonthParams });
+      const renderMonthParams = extraState || {
+        renderMonthParams: {...this.state.renderMonthParams, month, year}
+      };
+      this.setState({ currentMonth, currentYear, ...renderMonthParams });
     }
     const currentMonthYear = moment({year, month, hour: 12});
     this.props.onMonthChange && this.props.onMonthChange(currentMonthYear);
@@ -331,18 +333,17 @@ export default class CalendarPicker extends Component {
   handleOnSelectMonthYear = ({month, year}) => {
     const currentYear = year;
     const currentMonth = month;
-    const scrollableState = !this.props.scrollable ? {} :
-      {
-        renderMonthParams: {...this.state.renderMonthParams, month, year},
-        ...this.createMonths(this.props, {currentYear, currentMonth}),
-      };
+    const scrollableState = this.props.scrollable ? {
+      ...this.createMonths(this.props, {currentYear, currentMonth}),
+    } : {};
 
-    this.setState({
-      currentYear,
-      currentMonth,
+    const extraState = {
+      renderMonthParams: {...this.state.renderMonthParams, month, year},
       currentView: 'days',
       ...scrollableState,
-    });
+    };
+
+    this.handleOnPressFinisher({month, year, extraState});
   }
 
   resetSelections = () => {
