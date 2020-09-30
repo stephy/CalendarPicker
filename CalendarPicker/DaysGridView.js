@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  ViewPropTypes as RNViewPropTypes,
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Day from './Day';
@@ -10,7 +9,9 @@ import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
 import moment from 'moment';
 
-const ViewPropTypes = RNViewPropTypes || View.propTypes;
+const ViewPropTypes = PropTypes.shape({
+  style: PropTypes.any,
+});
 
 export default class DaysGridView extends Component {
   constructor(props) {
