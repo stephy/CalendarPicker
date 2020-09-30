@@ -27,8 +27,8 @@ export default function YearsHeader(props) {
     headingLevel,
   } = props;
 
-  const disablePrevious = restrictNavigation && (minDate.year() >= year);
-  const disableNext = restrictNavigation && (maxDate.year() <= year);
+  const disablePrevious = restrictNavigation && minDate && (minDate.year() >= year);
+  const disableNext = restrictNavigation && maxDate && (maxDate.year() <= year);
 
   const accessibilityProps = { accessibilityRole: 'header' };
   if (Platform.OS === 'web') {
