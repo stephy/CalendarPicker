@@ -20,6 +20,7 @@ export default function Day(props) {
     allowRangeSelection,
     allowBackwardRangeSelect,
     selectedDayStyle,
+    selectedDisabledDatesTextStyle,
     selectedRangeStartStyle,
     selectedRangeStyle,
     selectedRangeEndStyle,
@@ -102,9 +103,13 @@ export default function Day(props) {
 
   let isThisDaySameAsSelectedStart = thisDay.isSame(selectedStartDate, 'day');
   let isThisDaySameAsSelectedEnd = thisDay.isSame(selectedEndDate, 'day');
+  let isThisDateInSelectedRange =
+    selectedStartDate
+    && selectedEndDate
+    && thisDay.isBetween(selectedStartDate, selectedEndDate,'day',"[]");
 
   // If date is in range let's apply styles
-  if (!dateOutOfRange || isThisDaySameAsSelectedStart || isThisDaySameAsSelectedEnd) {
+  if (!dateOutOfRange || isThisDaySameAsSelectedStart || isThisDaySameAsSelectedEnd || isThisDateInSelectedRange) {
     // set today's style
     let isToday = thisDay.isSame(today, 'day');
     if (isToday) {
@@ -184,7 +189,10 @@ export default function Day(props) {
       return (
         <View style={[styles.dayWrapper, customContainerStyle]}>
           <View style={[customDateStyle, daySelectedStyle, propSelectedDayStyle ]}>
-            <Text style={[styles.dayLabel, textStyle, customTextStyle, selectedDayColorStyle]}>
+            <Text style={[styles.dayLabel, textStyle,
+              styles.disabledText, disabledDatesTextStyle,
+              styles.selectedDisabledText, selectedDisabledDatesTextStyle,
+            ]}>
               { day }
             </Text>
           </View>
