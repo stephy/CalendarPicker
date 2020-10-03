@@ -20,6 +20,7 @@ export default function Day(props) {
     allowRangeSelection,
     allowBackwardRangeSelect,
     selectedDayStyle,
+    selectedDisabledDatesTextStyle,
     selectedRangeStartStyle,
     selectedRangeStyle,
     selectedRangeEndStyle,
@@ -85,10 +86,10 @@ export default function Day(props) {
     if (minRangeDuration) {
       if (Array.isArray(minRangeDuration)) {
         let minRangeEntry = minRangeDuration.find(mrd => selectedStartDate.isSame(mrd.date, 'day') );
-        if (minRangeEntry && daysDiff < minRangeEntry.minDuration && daysDiff !== 0) {
+        if (minRangeEntry && daysDiff < minRangeEntry.minDuration) {
           dateRangeLessThanMin = true;
         }
-      } else if(daysDiff < minRangeDuration && daysDiff !== 0) {
+      } else if(daysDiff < minRangeDuration) {
         dateRangeLessThanMin = true;
       }
     }
@@ -100,8 +101,15 @@ export default function Day(props) {
 
   dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled || dateRangeLessThanMin || dateRangeGreaterThanMax;
 
+  let isThisDaySameAsSelectedStart = thisDay.isSame(selectedStartDate, 'day');
+  let isThisDaySameAsSelectedEnd = thisDay.isSame(selectedEndDate, 'day');
+  let isThisDateInSelectedRange =
+    selectedStartDate
+    && selectedEndDate
+    && thisDay.isBetween(selectedStartDate, selectedEndDate,'day',"[]");
+
   // If date is in range let's apply styles
-  if (!dateOutOfRange) {
+  if (!dateOutOfRange || isThisDaySameAsSelectedStart || isThisDaySameAsSelectedEnd || isThisDateInSelectedRange) {
     // set today's style
     let isToday = thisDay.isSame(today, 'day');
     if (isToday) {
@@ -131,9 +139,6 @@ export default function Day(props) {
       // by date selection styling.
       daySelectedStyle = [daySelectedStyle, customDateStyle];
     }
-
-    let isThisDaySameAsSelectedStart = thisDay.isSame(selectedStartDate, 'day');
-    let isThisDaySameAsSelectedEnd = thisDay.isSame(selectedEndDate, 'day');
 
     // set selected day style
     if (!allowRangeSelection &&
@@ -180,20 +185,35 @@ export default function Day(props) {
       }
     }
 
-    return (
-      <View style={[styles.dayWrapper, customContainerStyle]}>
-        <TouchableOpacity
-          disabled={!enableDateChange}
-          style={[customDateStyle, daySelectedStyle, propSelectedDayStyle ]}
-          onPress={() => onPressDay({year, month, day}) }>
-          <Text style={[styles.dayLabel, textStyle, customTextStyle, selectedDayColorStyle]}>
-            { day }
-          </Text>
-        </TouchableOpacity>
-      </View>
-    );
+    if (dateOutOfRange) { // selected start or end date, but not selectable now
+      return (
+        <View style={[styles.dayWrapper, customContainerStyle]}>
+          <View style={[customDateStyle, daySelectedStyle, propSelectedDayStyle ]}>
+            <Text style={[styles.dayLabel, textStyle,
+              styles.disabledText, disabledDatesTextStyle,
+              styles.selectedDisabledText, selectedDisabledDatesTextStyle,
+            ]}>
+              { day }
+            </Text>
+          </View>
+        </View>
+      );
+    } else {
+      return (
+        <View style={[styles.dayWrapper, customContainerStyle]}>
+          <TouchableOpacity
+            disabled={!enableDateChange}
+            style={[customDateStyle, daySelectedStyle, propSelectedDayStyle ]}
+            onPress={() => onPressDay({year, month, day}) }>
+            <Text style={[styles.dayLabel, textStyle, customTextStyle, selectedDayColorStyle]}>
+              { day }
+            </Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
   }
-  else {  // dateOutOfRange = true
+  else {  // dateOutOfRange = true but not selected start or end date
     return (
       <View style={styles.dayWrapper}>
         <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle]}>
