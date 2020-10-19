@@ -106,7 +106,7 @@ export default function Day(props) {
   let isThisDateInSelectedRange =
     selectedStartDate
     && selectedEndDate
-    && thisDay.isBetween(selectedStartDate, selectedEndDate,'day',"[]");
+    && thisDay.isBetween(selectedStartDate, selectedEndDate,'day','[]');
 
   // If date is in range let's apply styles
   if (!dateOutOfRange || isThisDaySameAsSelectedStart || isThisDaySameAsSelectedEnd || isThisDateInSelectedRange) {
