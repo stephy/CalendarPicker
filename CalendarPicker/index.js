@@ -374,6 +374,7 @@ export default class CalendarPicker extends Component {
       disabledDatesTextStyle: this.props.disabledDatesTextStyle,
       textStyle: this.props.textStyle,
       todayTextStyle: this.props.todayTextStyle,
+      selectedDayTextStyle: this.props.selectedDayTextStyle,
       selectedDayStyle: this.props.selectedDayStyle,
       selectedDisabledDatesTextStyle: this.props.selectedDisabledDatesTextStyle,
       selectedRangeStartStyle: this.props.selectedRangeStartStyle,
