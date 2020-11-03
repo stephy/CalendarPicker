@@ -35,7 +35,7 @@ export default function Month(props) {
     monthIsBeforeMin = month < minDate.month();
   }
 
-  // ToDo: disabledMonths props to disable months separate from disabledDates
+  // ToDo: disabledMonths props to disable months separate from enabledDates
 
   monthOutOfRange = monthIsAfterMax || monthIsBeforeMin || monthIsDisabled;
 
@@ -47,7 +47,7 @@ export default function Month(props) {
     if (maxDate && (year > maxDate.year())) {
       _year = maxDate.year();
     }
-    onSelectMonth({month, year: _year});
+    onSelectMonth({ month, year: _year });
   };
 
   return (
@@ -56,12 +56,12 @@ export default function Month(props) {
         <TouchableOpacity
           onPress={onSelect}>
           <Text style={[styles.monthText, textStyle]}>
-            { monthName }
+            {monthName}
           </Text>
         </TouchableOpacity>
         :
         <Text style={[textStyle, styles.disabledText]}>
-          { monthName }
+          {monthName}
         </Text>
       }
     </View>
