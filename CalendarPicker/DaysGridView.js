@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
+  ViewPropTypes
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Day from './Day';
 import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
 import moment from 'moment';
-
-const ViewPropTypes = PropTypes.shape({
-  style: PropTypes.any,
-});
 
 export default class DaysGridView extends Component {
   constructor(props) {
@@ -249,10 +246,10 @@ DaysGridView.propTypes = {
   year: PropTypes.number.isRequired,
   onPressDay: PropTypes.func,
   startFromMonday: PropTypes.bool,
-  //selectedDayStyle: ViewPropTypes.style,
-  //selectedRangeStartStyle: ViewPropTypes.style,
-  //selectedRangeStyle: ViewPropTypes.style,
-  //selectedRangeEndStyle: ViewPropTypes.style,
+  selectedDayStyle: ViewPropTypes.style,
+  selectedRangeStartStyle: ViewPropTypes.style,
+  selectedRangeStyle: ViewPropTypes.style,
+  selectedRangeEndStyle: ViewPropTypes.style,
   todayTextStyle: Text.propTypes.style,
   customDatesStyles: PropTypes.oneOfType([
     PropTypes.func,
