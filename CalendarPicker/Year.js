@@ -32,21 +32,21 @@ export default function Year(props) {
     yearIsBeforeMin = year < minDate.year();
   }
 
-  // ToDo: disabledYears props to disable years separate from disabledDates
+  // ToDo: disabledYears props to disable years separate from enabledDates
 
   yearOutOfRange = yearIsAfterMax || yearIsBeforeMin || yearIsDisabled;
 
   const onSelect = () => {
     // Guard against navigating to months beyond min/max dates.
     let month = currentMonth;
-    let currentMonthYear = moment({year: currentYear, month});
+    let currentMonthYear = moment({ year: currentYear, month });
     if (maxDate && currentMonthYear.isAfter(maxDate, 'month')) {
       month = maxDate.month();
     }
     if (minDate && currentMonthYear.isBefore(minDate, 'month')) {
       month = minDate.month();
     }
-    onSelectYear({month, year});
+    onSelectYear({ month, year });
   };
 
   return (
@@ -55,12 +55,12 @@ export default function Year(props) {
         <TouchableOpacity
           onPress={onSelect}>
           <Text style={[styles.yearText, textStyle]}>
-            { year }
+            {year}
           </Text>
         </TouchableOpacity>
         :
         <Text style={[textStyle, styles.disabledText]}>
-          { year }
+          {year}
         </Text>
       }
     </View>

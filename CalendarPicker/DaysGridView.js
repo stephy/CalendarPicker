@@ -2,16 +2,13 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
+  ViewPropTypes
 } from 'react-native';
 import PropTypes from 'prop-types';
 import Day from './Day';
 import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
 import moment from 'moment';
-
-const ViewPropTypes = PropTypes.shape({
-  style: PropTypes.any,
-});
 
 export default class DaysGridView extends Component {
   constructor(props) {
@@ -93,10 +90,9 @@ export default class DaysGridView extends Component {
       // Check that selected date(s) match this month.
       if (isSelectedDiff && (
         Utils.compareDates(selectedStartDate, firstDayOfMonth, 'month') ||
-          Utils.compareDates(selectedEndDate, firstDayOfMonth, 'month') ||
-          Utils.compareDates(prevSelStart, firstDayOfMonth, 'month') ||
-          Utils.compareDates(prevSelEnd, firstDayOfMonth, 'month') ))
-      {
+        Utils.compareDates(selectedEndDate, firstDayOfMonth, 'month') ||
+        Utils.compareDates(prevSelStart, firstDayOfMonth, 'month') ||
+        Utils.compareDates(prevSelEnd, firstDayOfMonth, 'month'))) {
         // Range selection potentially affects all dates in the month. Recreate.
         if (this.props.allowRangeSelection) {
           this.setState({
@@ -107,8 +103,8 @@ export default class DaysGridView extends Component {
           // Search for affected dates and modify those only
           const daysGrid = [...this.state.daysGrid];
           const { year } = this.props;
-          for (let i = 0; i <daysGrid.length; i++) {
-            for (let j = 0; j <daysGrid[i].length; j++) {
+          for (let i = 0; i < daysGrid.length; i++) {
+            for (let j = 0; j < daysGrid[i].length; j++) {
               const { month, day } = daysGrid[i][j];
               // Empty days and stragglers can't be selected.
               if (month === undefined) { continue; }
@@ -116,8 +112,7 @@ export default class DaysGridView extends Component {
               const thisDay = { year, month, day };
               const isSelected = Utils.compareDates(selectedStartDate, thisDay, 'day');
               const isPrevSelected = Utils.compareDates(prevSelStart, thisDay, 'day');
-              if (isSelected || isPrevSelected)
-              {
+              if (isSelected || isPrevSelected) {
                 daysGrid[i][j] = this.renderDayInCurrentMonth(day);
               }
             }
@@ -153,7 +148,7 @@ export default class DaysGridView extends Component {
     });
   }
 
-  renderDayStraggler({key, day}) {
+  renderDayStraggler({ key, day }) {
     return ({
       day,
       // month doesn't matter for stragglers as long as isn't set to current month
@@ -162,8 +157,8 @@ export default class DaysGridView extends Component {
           key={key}
           day={day}
           styles={this.props.styles}
-          disabledDates={() => true}
-          disabledDatesTextStyle={this.props.disabledDatesTextStyle}
+          enabledDates={() => true}
+          enabledDatesTextStyle={this.props.enabledDatesTextStyle}
           textStyle={this.props.textStyle}
         />
       )
@@ -233,13 +228,13 @@ export default class DaysGridView extends Component {
     const { daysGrid } = this.state;
     const renderedDaysGrid = daysGrid.map((weekRow, i) => (
       <View key={i} style={styles.weekRow}>
-        { weekRow.map(day => day.component ) }
+        { weekRow.map(day => day.component)}
       </View>
     ));
 
     return (
       <View style={styles.daysWrapper}>
-        { renderedDaysGrid }
+        { renderedDaysGrid}
       </View>
     );
   }
@@ -251,12 +246,11 @@ DaysGridView.propTypes = {
   year: PropTypes.number.isRequired,
   onPressDay: PropTypes.func,
   startFromMonday: PropTypes.bool,
-  selectedDayStyle: PropTypes.oneOfType([PropTypes.undefined, ViewPropTypes.style]),
-  selectedRangeStartStyle: PropTypes.oneOfType([PropTypes.undefined, ViewPropTypes.style]),
-  selectedRangeStyle: PropTypes.oneOfType([PropTypes.undefined, ViewPropTypes.style]),
-  selectedRangeEndStyle: PropTypes.oneOfType([PropTypes.undefined, ViewPropTypes.style]),
+  selectedDayStyle: PropTypes.oneOfType([PropTypes.any, ViewPropTypes.style]),
+  selectedRangeStartStyle: PropTypes.oneOfType([PropTypes.any, ViewPropTypes.style]),
+  selectedRangeStyle: PropTypes.oneOfType([PropTypes.any, ViewPropTypes.style]),
+  selectedRangeEndStyle: PropTypes.oneOfType([PropTypes.any, ViewPropTypes.style]),
   todayTextStyle: Text.propTypes.style,
-  selectedDayTextStyle: Text.propTypes.style,
   customDatesStyles: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.arrayOf(PropTypes.shape({
@@ -265,13 +259,13 @@ DaysGridView.propTypes = {
         PropTypes.instanceOf(Date),
         PropTypes.instanceOf(moment)
       ]),
-      containerStyle: ViewPropTypes,
-      style: ViewPropTypes,
+      containerStyle: ViewPropTypes.style,
+      style: ViewPropTypes.style,
       textStyle: Text.propTypes.style,
     })),
   ]),
-  disabledDates: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
-  disabledDatesTextStyle: Text.propTypes.style,
+  enabledDates: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
+  enabledDatesTextStyle: Text.propTypes.style,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
 };
