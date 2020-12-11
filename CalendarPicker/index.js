@@ -48,6 +48,10 @@ export default class CalendarPicker extends Component {
     selectMonthTitle: 'Select Month in ',
     selectYearTitle: 'Select Year',
     horizontal: true,
+    selectedDayStyle : null,
+    selectedRangeStartStyle: null,
+    selectedRangeEndStyle: null,
+    selectedRangeStyle: null,
   };
 
   componentDidUpdate(prevProps) {
