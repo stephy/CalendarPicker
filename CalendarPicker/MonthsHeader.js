@@ -5,6 +5,7 @@ import {
   Platform,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { stylePropType } from './localPropTypes';
 
 export default function MonthsHeader(props) {
   const {
@@ -29,7 +30,7 @@ export default function MonthsHeader(props) {
 }
 
 MonthsHeader.propTypes = {
-  styles: PropTypes.shape(),
-  textStyle: Text.propTypes.style,
+  styles: stylePropType,
+  textStyle: stylePropType,
   title: PropTypes.string
 };

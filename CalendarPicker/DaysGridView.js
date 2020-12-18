@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
-import {
-  View,
-  Text,
-} from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
+import { stylePropType } from './localPropTypes';
 import Day from './Day';
 import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
 import moment from 'moment';
-
-const ViewPropTypes = PropTypes.shape({
-  style: PropTypes.any,
-});
 
 export default class DaysGridView extends Component {
   constructor(props) {
@@ -246,17 +240,17 @@ export default class DaysGridView extends Component {
 }
 
 DaysGridView.propTypes = {
-  styles: PropTypes.shape(),
+  styles: stylePropType,
   month: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
   onPressDay: PropTypes.func,
   startFromMonday: PropTypes.bool,
-  selectedDayStyle: ViewPropTypes,
-  selectedRangeStartStyle: ViewPropTypes,
-  selectedRangeStyle: ViewPropTypes,
-  selectedRangeEndStyle: ViewPropTypes,
-  todayTextStyle: Text.propTypes.style,
-  selectedDayTextStyle: Text.propTypes.style,
+  selectedDayStyle: stylePropType,
+  selectedRangeStartStyle: stylePropType,
+  selectedRangeStyle: stylePropType,
+  selectedRangeEndStyle: stylePropType,
+  todayTextStyle: stylePropType,
+  selectedDayTextStyle: stylePropType,
   customDatesStyles: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.arrayOf(PropTypes.shape({
@@ -265,13 +259,13 @@ DaysGridView.propTypes = {
         PropTypes.instanceOf(Date),
         PropTypes.instanceOf(moment)
       ]),
-      containerStyle: ViewPropTypes,
-      style: ViewPropTypes,
-      textStyle: Text.propTypes.style,
+      containerStyle: stylePropType,
+      style: stylePropType,
+      textStyle: stylePropType,
     })),
   ]),
   disabledDates: PropTypes.oneOfType([PropTypes.array, PropTypes.func]),
-  disabledDatesTextStyle: Text.propTypes.style,
+  disabledDatesTextStyle: stylePropType,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
 };
