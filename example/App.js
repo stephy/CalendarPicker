@@ -136,6 +136,7 @@ export default class App extends Component {
           allowBackwardRangeSelect={enableRangeSelect}
           minRangeDuration={minRangeDuration && parseInt(minRangeDuration)}
           maxRangeDuration={maxRangeDuration && parseInt(maxRangeDuration)}
+          headerWrapperStyle={styles.headerWrapperStyle}
         />
 
         <View style={styles.topSpacing}>
@@ -202,5 +203,12 @@ const styles = StyleSheet.create({
     fontSize: 24,
     borderColor: 'gray',
     borderWidth: 1,
+  },
+  headerWrapperStyle: {
+    backgroundColor: '#ffbdab',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    paddingTop: 20,
+    paddingBottom: 20,
   }
 });

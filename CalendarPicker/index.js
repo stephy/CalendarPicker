@@ -469,6 +469,7 @@ export default class CalendarPicker extends Component {
       selectMonthTitle,
       selectYearTitle,
       monthYearHeaderWrapperStyle,
+      headerWrapperStyle,
       onMonthChange,
       scrollable,
       horizontal,
@@ -539,6 +540,7 @@ export default class CalendarPicker extends Component {
             maxDate={maxDate}
             headingLevel={headingLevel}
             monthYearHeaderWrapperStyle={monthYearHeaderWrapperStyle}
+            headerWrapperStyle={headerWrapperStyle}
           />
           <Weekdays
             styles={styles}

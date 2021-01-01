@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
 | **`dayOfWeekStyles`**           | `Deprecated` | Use `customDatesStyles` & `customDayHeaderStyles` callbacks to style individual dates, days of week, and/or header. |
 | **`customDatesStylesPriority`** | `Deprecated` | Use `customDatesStyles` & `customDayHeaderStyles` callbacks to style individual dates, days of week, and/or header. |
 | **`monthYearHeaderWrapperStyle`** | `ViewStyle` | Optional. Style for header MonthYear title wrapper. E.g If you want to change the order of year and month.|
+| **`headerWrapperStyle`** | `ViewStyle` | Optional. Style for entire header controls wrapper. This contains the previous / next controls plus month & year.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
