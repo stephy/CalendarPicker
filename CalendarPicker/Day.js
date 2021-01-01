@@ -116,7 +116,7 @@ export default function Day(props) {
     if (isToday) {
       daySelectedStyle = styles.selectedToday;
       // todayTextStyle prop overrides selectedDayTextColor (created via makeStyles)
-      selectedDayTextStyle = [propSelectedDayTextStyle, todayTextStyle || styles.selectedDayLabel];
+      selectedDayTextStyle = [todayTextStyle || styles.selectedDayLabel, propSelectedDayTextStyle];
     }
 
     if (Array.isArray(customDatesStyles)) {
@@ -146,7 +146,7 @@ export default function Day(props) {
         selectedStartDate &&
         isThisDaySameAsSelectedStart) {
       daySelectedStyle = styles.selectedDay;
-      selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel, isToday && todayTextStyle];
+      selectedDayTextStyle = [styles.selectedDayLabel, isToday && todayTextStyle, propSelectedDayTextStyle];
       // selectedDayStyle prop overrides selectedDayColor (created via makeStyles)
       propSelectedDayStyle = selectedDayStyle || styles.selectedDayBackground;
     }
@@ -157,24 +157,24 @@ export default function Day(props) {
         // Apply style for start date
         if (isThisDaySameAsSelectedStart) {
           daySelectedStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
-          selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
+          selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle];
         }
         // Apply style for end date
         if (isThisDaySameAsSelectedEnd) {
           daySelectedStyle = [styles.endDayWrapper, selectedRangeStyle, selectedRangeEndStyle];
-          selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
+          selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle];
         }
         // Apply style if start date is the same as end date
         if (isThisDaySameAsSelectedEnd &&
             isThisDaySameAsSelectedStart &&
             selectedEndDate.isSame(selectedStartDate, 'day')) {
           daySelectedStyle = [styles.selectedDay, styles.selectedDayBackground, selectedRangeStyle];
-          selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
+          selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle];
         }
         // Apply style if this day is in range
         if (thisDay.isBetween(selectedStartDate, selectedEndDate, 'day')) {
           daySelectedStyle = [styles.inRangeDay, selectedRangeStyle];
-          selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
+          selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle];
         }
       }
       // Apply style if start date has been selected but end date has not
@@ -182,7 +182,7 @@ export default function Day(props) {
           !selectedEndDate &&
           isThisDaySameAsSelectedStart) {
         daySelectedStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
-        selectedDayTextStyle = [propSelectedDayTextStyle, styles.selectedDayLabel];
+        selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle];
       }
     }
 
