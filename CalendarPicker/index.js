@@ -460,6 +460,7 @@ export default class CalendarPicker extends Component {
       restrictMonthNavigation,
       headingLevel,
       dayLabelsWrapper,
+      customHitSlop,
       customDayHeaderStyles,
       selectMonthTitle,
       selectYearTitle,
@@ -516,6 +517,7 @@ export default class CalendarPicker extends Component {
               styles={styles}
               currentMonth={currentMonth}
               currentYear={currentYear}
+              customHitSlop={customHitSlop}
               initialDate={moment(initialDate)}
               onPressPrevious={this.handleOnPressPrevious}
               onPressNext={this.handleOnPressNext}
