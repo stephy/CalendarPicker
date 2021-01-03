@@ -22,6 +22,7 @@ export default function HeaderControls(props) {
     previousComponent,
     nextComponent,
     previousTitle,
+    customHitSlop,
     nextTitle,
     previousTitleStyle,
     nextTitleStyle,
@@ -54,21 +55,22 @@ export default function HeaderControls(props) {
         styles={styles.previousContainer}
         textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
       />
-      <View style={[styles.monthYearHeaderWrapper,monthYearHeaderWrapperStyle]}>
+      <View style={[styles.monthYearHeaderWrapper, monthYearHeaderWrapperStyle]}>
         <TouchableOpacity onPress={onPressMonth}>
           <Text style={[styles.monthHeaderMainText, textStyle]} {...accessibilityProps}>
-            { monthName }
+            {monthName}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={onPressYear}>
           <Text style={[styles.yearHeaderMainText, textStyle]}>
-            { year }
+            {year}
           </Text>
         </TouchableOpacity>
       </View>
       <Controls
         disabled={disableNextMonth}
         label={nextTitle}
+        customHitSlop={customHitSlop}
         component={nextComponent}
         onPressControl={onPressNext}
         styles={styles.nextContainer}
