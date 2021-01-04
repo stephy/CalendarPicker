@@ -91,10 +91,13 @@ const styles = StyleSheet.create({
 | **`selectedDayColor`** | `String` | Optional. Color for selected day |
 | **`selectedDayStyle`** | `ViewStyle` | Optional. Style for selected day. May override selectedDayColor.|
 | **`selectedDayTextColor`** | `String` | Optional. Text color for selected day |
-| **`selectedDayTextStyle`** | `Object` | Optional. Text style for selected day |
-| **`selectedRangeStartStyle`** | `ViewStyle` | Optional. Style for range selected start day. |
-| **`selectedRangeEndStyle`** | `ViewStyle` | Optional. Style for range selected end day. |
-| **`selectedRangeStyle`** | `ViewStyle` | Optional. Style for all days in range selection. |
+| **`selectedDayTextStyle`** | `Object` | Optional. Text style for selected day (including all days in range) |
+| **`selectedRangeStartTextStyle`** | `Object` | Optional. Text style for start day of range |
+| **`selectedRangeEndTextStyle`** | `Object` | Optional. Text style for end day of range |
+| **`selectedRangeStartStyle`** | `ViewStyle` | Optional. Container style for start day of range. |
+| **`selectedRangeEndStyle`** | `ViewStyle` | Optional. Container style for end day of range. |
+| **`selectedRangeStyle`** | `ViewStyle` | Optional. Container style for all days in range selection. |
+| **`selectedDisabledDatesTextStyle`** | `Object` | Optional. Text style for ineligible dates during range selection. |
 | **`disabledDates`** | `Array` or `Function` | Optional. Specifies dates that cannot be selected. Array of Dates, or a function that returns true for a given Moment date (apologies for the inverted logic). |
 | **`disabledDatesTextStyle`** | `TextStyle` | Optional. Text styling for disabled dates. |
 | **`selectedStartDate`** | `Date` | Optional. Specifies a selected Start Date. |
