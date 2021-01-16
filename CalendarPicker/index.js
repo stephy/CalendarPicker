@@ -107,6 +107,11 @@ export default class CalendarPicker extends Component {
       minMaxDates.maxDate = this.props.maxDate && moment(this.props.maxDate);
     }
 
+    if (prevProps.customDatesStyles !== this.props.customDatesStyles) {
+      // Update renderMonthParams on customDatesStyles change
+      doStateUpdate = true;
+    }
+
     if (doStateUpdate) {
       const newState = {
         ...newStyles,
