@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
 | **`todayBackgroundColor`** | `String` | Optional. Background color for today. Default is `#cccccc` |
 | **`todayTextStyle`** | `TextStyle` | Optional. Text styling for today. |
 | **`textStyle`** | `TextStyle` | Optional. Style overall text. Change fontFamily, color, etc. |
-| **`customDatesStyles`** | `Array` or `Func` | Optional. Style individual date(s). Supports an array of objects `{date: Moment-parseable date, containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}`, or a callback which receives a date param and returns `{containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle}` for that date. |
+| **`customDatesStyles`** | `Array` or `Func` | Optional. Style individual date(s). Supports an array of objects `{date: Moment-parseable date, containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle, allowDisabled: Boolean}`, or a callback which receives a date param and returns `{containerStyle: ViewStyle, style: ViewStyle, textStyle: TextStyle, allowDisabled: Boolean}` for that date. |
 | **`customDayHeaderStyles`** | `Func` | Optional. Style day of week header (Monday - Sunday). Callback that receives ISO `{dayOfWeek, month, year}` and should return `{style: ViewStyle, textStyle: TextStyle}` |
 | **`scaleFactor`** | `Number` | Optional. Default (375) scales to window width |
 | **`minDate`** | `Date` | Optional. Specifies minimum date to be selected |
@@ -319,6 +319,7 @@ while(day.add(1, 'day').isSame(today, 'month')) {
     style: {backgroundColor: '#'+('#00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6)},
     textStyle: {color: 'black'}, // sets the font color
     containerStyle: [], // extra styling for day container
+    allowDisabled: true, // allow custom style to apply to disabled dates
   });
 }
 
