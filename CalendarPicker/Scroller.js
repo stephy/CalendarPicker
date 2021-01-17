@@ -6,7 +6,7 @@
 // an infinite scroller.
 
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { RecyclerListView, DataProvider, LayoutProvider } from 'recyclerlistview';
 import moment from 'moment';
@@ -91,8 +91,31 @@ export default class CalendarScroller extends Component {
       newState = {...newState, ...this.updateMonthsData(this.props.data)};
     }
 
+    if (Platform.OS === 'android' &&
+        this.props.renderMonthParams.selectedStartDate !== prevProps.renderMonthParams.selectedStartDate)
+    {
+      // Android unexpectedly jumps to previous month on first selected date.
+      // Scroll RLV to selected date's month.
+      this.goToDate(this.props.renderMonthParams.selectedStartDate, 100);
+    }
+
     if (updateState) {
       this.setState(newState);
+    }
+  }
+
+  goToDate = (date, delay) => {
+    const data = this.state.data;
+    for (let i = 0; i < data.length; i++) {
+      if (data[i].isSame(date, 'month')) {
+        if (delay) {
+          setTimeout(() =>  this.rlv && this.rlv.scrollToIndex(i, false), delay);
+        }
+        else {
+          this.rlv && this.rlv.scrollToIndex(i, false);
+        }
+        break;
+      }
     }
   }
 
@@ -121,21 +144,6 @@ export default class CalendarScroller extends Component {
   // Shift dates when beginning of list is reached.
   shiftMonthsBackward = currentMonth => {
     this.shiftMonths(currentMonth, this.state.numMonths * 2/3);
-  }
-
-  // Go to specified month & year.
-  goToMonthYear = ({month, year}) => {
-    // Go to existing month if possible
-    const { data, numMonths } = this.state;
-    const monthYear = moment({month, year, hour: 12});
-    for (let i = 0; i < numMonths; i++) {
-      if (data[i].isSame(monthYear, 'month')) {
-        this.rlv && this.rlv.scrollToIndex(i, false);
-        return;
-      }
-    }
-    // Create new months
-    this.shiftMonths(monthYear, numMonths / 2);
   }
 
   shiftMonths = (currentMonth, offset) => {
