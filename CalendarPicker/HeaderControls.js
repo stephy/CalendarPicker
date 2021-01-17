@@ -25,6 +25,8 @@ export default function HeaderControls(props) {
     nextTitle,
     previousTitleStyle,
     nextTitleStyle,
+    monthTitleStyle,
+    yearTitleStyle,
     textStyle,
     restrictMonthNavigation,
     maxDate,
@@ -57,12 +59,12 @@ export default function HeaderControls(props) {
       />
       <View style={[styles.monthYearHeaderWrapper,monthYearHeaderWrapperStyle]}>
         <TouchableOpacity onPress={onPressMonth}>
-          <Text style={[styles.monthHeaderMainText, textStyle]} {...accessibilityProps}>
+          <Text style={[styles.monthHeaderMainText, textStyle, monthTitleStyle]} {...accessibilityProps}>
             { monthName }
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={onPressYear}>
-          <Text style={[styles.yearHeaderMainText, textStyle]}>
+          <Text style={[styles.yearHeaderMainText, textStyle, yearTitleStyle]}>
             { year }
           </Text>
         </TouchableOpacity>
