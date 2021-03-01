@@ -9,7 +9,7 @@ import { Utils } from './Utils';
 export default function Weekdays(props) {
   const {
     styles,
-    startFromMonday,
+    firstDay,
     currentMonth: month,
     currentYear: year,
     weekdays,
@@ -19,10 +19,10 @@ export default function Weekdays(props) {
   } = props;
 
   // dayOfWeekNums: ISO week day numbers
-  const dayOfWeekNums = startFromMonday ? [1, 2, 3, 4, 5, 6, 7] : [7, 1, 2, 3, 4, 5, 6];
+  const dayOfWeekNums = Utils.getWeekdaysOrder(firstDay);
   let wd = weekdays;
   if (!wd) {
-    wd = startFromMonday? Utils.WEEKDAYS_MON : Utils.WEEKDAYS; // English Week days Array
+    wd = firstDay ? Utils.getWeekdays(firstDay) : Utils.WEEKDAYS; // English Week days Array
   }
 
   return (
@@ -49,7 +49,7 @@ export default function Weekdays(props) {
 }
 
 Weekdays.propTypes = {
-  startFromMonday: PropTypes.bool,
+  firstDay: PropTypes.number,
   weekdays: PropTypes.array,
   customDayHeaderStyles: PropTypes.func,
 };
