@@ -58,12 +58,12 @@ export const Utils = {
     }
     return weekdays;
   },
-  getWeekdaysOrder: function(firstDay = 0) {
-    let from = firstDay;
+  getISOWeekdaysOrder: function(firstDay = 0) {
+    let from = firstDay === 0 ? 7 : firstDay;
     const order = [];
     for (let i = 0; i < Utils.WEEKDAYS.length; i++) {
       order.push(from);
-      from = from >= Utils.WEEKDAYS.length - 1 ? 0 : from + 1;
+      from = from >= Utils.WEEKDAYS.length ? 1 : from + 1;
     }
     return order;
   },
