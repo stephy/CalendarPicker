@@ -376,7 +376,7 @@ export default class CalendarPicker extends Component {
       selectedStartDate: state.selectedStartDate,
       selectedEndDate: state.selectedEndDate,
       enableDateChange: this.props.enableDateChange,
-      firstDay: this.props.firstDay,
+      firstDay: this.props.startFromMonday ? 1 : this.props.firstDay,
       allowRangeSelection: this.props.allowRangeSelection,
       allowBackwardRangeSelect: this.props.allowBackwardRangeSelect,
       showDayStragglers: this.props.showDayStragglers,
@@ -458,6 +458,7 @@ export default class CalendarPicker extends Component {
     } = this.state;
 
     const {
+      startFromMonday,
       firstDay,
       initialDate,
       weekdays,
@@ -555,7 +556,7 @@ export default class CalendarPicker extends Component {
           />
           <Weekdays
             styles={styles}
-            firstDay={firstDay}
+            firstDay={startFromMonday ? 1 : firstDay}
             currentMonth={currentMonth}
             currentYear={currentYear}
             weekdays={weekdays}
