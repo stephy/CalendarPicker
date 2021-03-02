@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
 :------------ |:---------------| :-----|
 | **`weekdays`** | `Array` | Optional. List of week days. Eg. `['Mon', 'Tue', ...]` Must be 7 days |
 | **`months`** | `Array` | Optional. List of months names. Eg. `['Jan', 'Feb', ...]` Must be 12 months |
-| **`startFromMonday`** | `Boolean` | Optional. Default first day of week will be Sunday. You can set start of week from Monday by setting this to true. Default is `false` |
+| **`firstDay`** | `Number` | Optional. Default first day of week will be Sunday. You can set start of week with number from `0` to `6`. Default is `0` or Sunday |
 | **`showDayStragglers`** | `Boolean` | Optional. Populate previous & next month days in empty slots. Default is `false` |
 | **`allowRangeSelection`** | `Boolean` | Optional. Allow to select date ranges. Default is `false` |
 | **`allowBackwardRangeSelect`** | `Boolean` | Optional. Allow selecting range in reverse. Default is `false` |
