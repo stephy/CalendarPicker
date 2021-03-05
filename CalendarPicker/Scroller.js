@@ -80,25 +80,20 @@ export default class CalendarScroller extends Component {
   componentDidUpdate(prevProps) {
     let newState = {};
     let updateState = false;
-
     if (this.props.renderMonthParams.styles !== prevProps.renderMonthParams.styles) {
       updateState = true;
       newState = this.updateLayout(this.props.renderMonthParams);
     }
-
     if (this.props.data !== prevProps.data) {
       updateState = true;
       newState = {...newState, ...this.updateMonthsData(this.props.data)};
     }
-
-    if (Platform.OS === 'android' &&
-        this.props.renderMonthParams.selectedStartDate !== prevProps.renderMonthParams.selectedStartDate)
+    if (this.props.renderMonthParams.selectedStartDate !== prevProps.renderMonthParams.selectedStartDate)
     {
       // Android unexpectedly jumps to previous month on first selected date.
       // Scroll RLV to selected date's month.
       this.goToDate(this.props.renderMonthParams.selectedStartDate, 100);
     }
-
     if (updateState) {
       this.setState(newState);
     }
@@ -106,17 +101,17 @@ export default class CalendarScroller extends Component {
 
   goToDate = (date, delay) => {
     const data = this.state.data;
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].isSame(date, 'month')) {
-        if (delay) {
-          setTimeout(() =>  this.rlv && this.rlv.scrollToIndex(i, false), delay);
-        }
-        else {
-          this.rlv && this.rlv.scrollToIndex(i, false);
-        }
-        break;
-      }
-    }
+		for (let i = 0; i < data.length; i++) {
+		  if (data[i].isSame(date, 'month')) {
+			if (delay) {
+			  setTimeout(() =>  this.rlv && this.rlv.scrollToIndex(i, false), delay);
+			}
+			else {
+			  this.rlv && this.rlv.scrollToIndex(i, false);
+			}
+			break;
+		  }
+		}
   }
 
   // Scroll left, guarding against start index.

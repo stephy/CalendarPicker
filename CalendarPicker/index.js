@@ -478,6 +478,8 @@ export default class CalendarPicker extends Component {
       selectMonthTitle,
       selectYearTitle,
       monthYearHeaderWrapperStyle,
+      customYearTitleTextFunc,
+      customMonthTitleTextFunc,
       headerWrapperStyle,
       onMonthChange,
       scrollable,
@@ -549,6 +551,8 @@ export default class CalendarPicker extends Component {
             restrictMonthNavigation={restrictMonthNavigation}
             minDate={minDate}
             maxDate={maxDate}
+            customYearTitleTextFunc={customYearTitleTextFunc}
+            customMonthTitleTextFunc={customMonthTitleTextFunc}
             headingLevel={headingLevel}
             monthYearHeaderWrapperStyle={monthYearHeaderWrapperStyle}
             headerWrapperStyle={headerWrapperStyle}
