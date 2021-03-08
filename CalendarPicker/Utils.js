@@ -9,13 +9,13 @@ export const Utils = {
   START_DATE: 'START_DATE',
   END_DATE: 'END_DATE',
   WEEKDAYS: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  WEEKDAYS_MON: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
   MONTHS: [
     'January', 'February', 'March', 'April', 'May', 'June', 'July',
     'August', 'September', 'October', 'November', 'December'
   ],
   MAX_ROWS: 7,
   MAX_COLUMNS: 7,
+  FIRST_DAY_OFFSETS: [0, -1, 5, 4, 3, 2, 1],
   getDaysInMonth: function(month, year) {
     const lastDayOfMonth = new Date(year, month + 1, 0);
     return lastDayOfMonth.getDate();
@@ -48,5 +48,23 @@ export const Utils = {
       return true;
     }
     return !!a && !!b && a.isSame(b, granularity);
-  }
+  },
+  getWeekdays: function(firstDay = 0) {
+    let from = firstDay;
+    const weekdays = [];
+    for (let i = 0; i < Utils.WEEKDAYS.length; i++) {
+      weekdays.push(Utils.WEEKDAYS[from]);
+      from = from >= Utils.WEEKDAYS.length - 1 ? 0 : from + 1;
+    }
+    return weekdays;
+  },
+  getISOWeekdaysOrder: function(firstDay = 0) {
+    let from = firstDay === 0 ? 7 : firstDay;
+    const order = [];
+    for (let i = 0; i < Utils.WEEKDAYS.length; i++) {
+      order.push(from);
+      from = from >= Utils.WEEKDAYS.length ? 1 : from + 1;
+    }
+    return order;
+  },
 };

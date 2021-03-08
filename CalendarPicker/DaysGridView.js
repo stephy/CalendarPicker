@@ -16,7 +16,7 @@ export default class DaysGridView extends Component {
         month,
         year,
         showDayStragglers,
-        startFromMonday,
+        firstDay = 0,
       } = props;
 
       // Retrieve total days in this month & year, accounting for leap years.
@@ -43,8 +43,8 @@ export default class DaysGridView extends Component {
       // isoWeekday() gets the ISO day of the week with 1=Monday and 7=Sunday.
       const firstWeekDay = firstDayOfMonth.isoWeekday();
 
-      // Determine starting index based on first day of week as Monday or Sunday.
-      const startIndex = (startFromMonday ? firstWeekDay - 1 : firstWeekDay) % 7;
+      // Determine starting index based on first day of week prop.
+      const startIndex = (firstDay > 0) ? (firstWeekDay + Utils.FIRST_DAY_OFFSETS[firstDay]) % 7 : firstWeekDay;
 
       return {
         maxWeekRows: 6,
@@ -244,7 +244,7 @@ DaysGridView.propTypes = {
   month: PropTypes.number.isRequired,
   year: PropTypes.number.isRequired,
   onPressDay: PropTypes.func,
-  startFromMonday: PropTypes.bool,
+  firstDay: PropTypes.number,
   selectedDayStyle: stylePropType,
   selectedRangeStartStyle: stylePropType,
   selectedRangeStyle: stylePropType,
