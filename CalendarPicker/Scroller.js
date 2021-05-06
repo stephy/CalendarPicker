@@ -83,7 +83,7 @@ export default class CalendarScroller extends Component {
 
     if (this.props.renderMonthParams.styles !== prevProps.renderMonthParams.styles) {
       updateState = true;
-      newState = this.updateLayout(this.props.renderMonthParams);
+      newState = this.updateLayout(this.props.renderMonthParams.styles);
     }
 
     if (this.props.data !== prevProps.data) {
