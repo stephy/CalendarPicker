@@ -54,15 +54,15 @@ export default function App() {
           <View style={styles.row}>
             <Button
               onPress={() => incrementTimeBy(1)}
-              text={"1 dia"}
+              text={"Add one"}
             />
             <Button
               onPress={() => incrementTimeBy(3)}
-              text={"3 dia"}
+              text={"Add three"}
             />
             <Button
               onPress={() => incrementTimeBy(7)}
-              text={"7 dia"}
+              text={"Add seven"}
             />
           </View>
         </View>
@@ -70,11 +70,11 @@ export default function App() {
         <View style={styles.textShow}>
           <View>
             <Text style={styles.text}>
-              Data inicio: {selectedStartDate?.toDateString()}
+              Start date: {selectedStartDate?.toDateString()}
             </Text>
 
             <Text style={styles.text}>
-              Data fim: {selectedEndDate?.toDateString()}
+              End date: {selectedEndDate?.toDateString()}
             </Text>
           </View>
 
