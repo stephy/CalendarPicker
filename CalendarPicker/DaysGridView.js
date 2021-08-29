@@ -223,7 +223,7 @@ export default class DaysGridView extends Component {
   }
 
   render() {
-    const { styles } = this.props;
+    const { styles, daysWrapperStyles } = this.props;
     const { daysGrid } = this.state;
     const renderedDaysGrid = daysGrid.map((weekRow, i) => (
       <View key={i} style={styles.weekRow}>
@@ -232,7 +232,7 @@ export default class DaysGridView extends Component {
     ));
 
     return (
-      <View style={styles.daysWrapper}>
+      <View style={[styles.daysWrapper, daysWrapperStyles]}>
         { renderedDaysGrid }
       </View>
     );
