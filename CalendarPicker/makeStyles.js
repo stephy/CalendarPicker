@@ -26,7 +26,7 @@ export function makeStyles(params) {
     todayBackgroundColor,
     dayShape
   } = params;
-  const scaler = Math.min(containerWidth, containerHeight) / scaleFactor;
+  const scaler = Math.floor(Math.min(containerWidth, containerHeight) / scaleFactor);
   const SELECTED_BG_COLOR = selectedDayColor ? selectedDayColor : DEFAULT_SELECTED_BACKGROUND_COLOR;
   const SELECTED_TEXT_COLOR = selectedDayTextColor ? selectedDayTextColor : DEFAULT_SELECTED_TEXT_COLOR;
   const TODAY_BG_COLOR = todayBackgroundColor ? todayBackgroundColor : DEFAULT_TODAY_BACKGROUND_COLOR;
