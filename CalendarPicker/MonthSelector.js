@@ -1,9 +1,9 @@
 // Parent view for Month selector
 
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import MonthsGridView from './MonthsGridView';
-import MonthsHeader from './MonthsHeader';
+import React, { Component } from "react";
+import { View } from "react-native";
+import MonthsGridView from "./MonthsGridView";
+import MonthsHeader from "./MonthsHeader";
 
 export default class MonthSelector extends Component {
   constructor(props) {
@@ -24,6 +24,7 @@ export default class MonthSelector extends Component {
       minDate,
       maxDate,
       onSelectMonth,
+      headerWrapperStyle,
     } = this.props;
 
     return (
@@ -33,6 +34,7 @@ export default class MonthSelector extends Component {
           textStyle={textStyle}
           title={title + currentYear}
           headingLevel={headingLevel}
+          headerWrapperStyle={headerWrapperStyle}
         />
         <MonthsGridView
           styles={styles}

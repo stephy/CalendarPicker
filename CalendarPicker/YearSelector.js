@@ -1,9 +1,9 @@
 // Parent view for Year selector
 
-import React, { Component } from 'react';
-import { View } from 'react-native';
-import YearsGridView from './YearsGridView';
-import YearsHeader from './YearsHeader';
+import React, { Component } from "react";
+import { View } from "react-native";
+import YearsGridView from "./YearsGridView";
+import YearsHeader from "./YearsHeader";
 
 export default class YearSelector extends Component {
   constructor(props) {
@@ -15,15 +15,15 @@ export default class YearSelector extends Component {
 
   handleOnYearViewPrevious = () => {
     this.setState({
-      initialYear: parseInt(Math.max(this.state.initialYear - 25, 0))
+      initialYear: parseInt(Math.max(this.state.initialYear - 25, 0)),
     });
-  }
+  };
 
   handleOnYearViewNext = () => {
     this.setState({
-      initialYear: parseInt(this.state.initialYear + 25)
+      initialYear: parseInt(this.state.initialYear + 25),
     });
-  }
+  };
 
   render() {
     const {
@@ -44,6 +44,7 @@ export default class YearSelector extends Component {
       nextTitleStyle,
       headingLevel,
       onSelectYear,
+      headerWrapperStyle,
     } = this.props;
 
     return (
@@ -66,6 +67,7 @@ export default class YearSelector extends Component {
           nextTitleStyle={nextTitleStyle}
           onYearViewPrevious={this.handleOnYearViewPrevious}
           onYearViewNext={this.handleOnYearViewNext}
+          headerWrapperStyle={headerWrapperStyle}
         />
         <YearsGridView
           intialYear={this.state.initialYear}
