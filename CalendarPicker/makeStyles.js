@@ -67,7 +67,7 @@ export function makeStyles(params) {
       alignSelf: 'center',
       justifyContent: 'center',
       backgroundColor: 'rgba(0,0,0,0.0)',
-      borderColor: 'rgba(0,0,0,0.2)'
+      borderColor: 'rgba(0,0,0,0.2)',
     },
 
     daysWrapper: {
@@ -146,9 +146,10 @@ export function makeStyles(params) {
       justifyContent: 'space-between',
       width: containerWidth,
       padding: 5*scaler,
+      paddingLeft: 0,
       paddingBottom: 3*scaler,
       marginBottom: 10*scaler,
-      backgroundColor: 'rgba(0,0,0,0.0)'
+      backgroundColor: 'rgba(0,0,0,0.0)',
     },
 
     monthYearHeaderWrapper: {
@@ -156,6 +157,7 @@ export function makeStyles(params) {
       justifyContent: 'center',
       alignItems: 'center',
       paddingHorizontal: 3*scaler,
+      paddingLeft: containerWidth / 14 - scaler
     },
 
     previousContainer: {
