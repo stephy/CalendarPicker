@@ -157,6 +157,7 @@ export function makeStyles(params) {
       marginBottom: 10 * scaler,
       backgroundColor: "transparent",
       height: 30,
+      marginTop: 20,
     },
 
     monthYearHeaderWrapper: {

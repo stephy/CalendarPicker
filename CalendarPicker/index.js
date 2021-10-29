@@ -11,6 +11,12 @@ import moment from "moment";
 import Picker from "@gregfrench/react-native-wheel-picker";
 const PickerItem = Picker.Item;
 
+const lineStyles = {
+  lineColor: "#000000",
+  lineGradientColorFrom: "#008000",
+  lineGradientColorTo: "#FF5733",
+};
+
 export default class CalendarPicker extends Component {
   constructor(props) {
     super(props);
@@ -384,9 +390,7 @@ export default class CalendarPicker extends Component {
     const currentYear = year;
     const currentMonth = month;
     const scrollableState = this.props.scrollable
-      ? {
-          ...this.createMonths(this.props, { currentYear, currentMonth }),
-        }
+      ? { ...this.createMonths(this.props, { currentYear, currentMonth }) }
       : {};
 
     const extraState = {
@@ -503,6 +507,7 @@ export default class CalendarPicker extends Component {
       monthsList,
       renderMonthParams,
       initialScrollerIndex,
+      years,
     } = this.state;
 
     const {
@@ -535,13 +540,6 @@ export default class CalendarPicker extends Component {
     let content;
     switch (currentView) {
       case "monthYear":
-        const itemList = moment.months();
-        const lineStyles = {
-          lineColor: "#000000",
-          lineGradientColorFrom: "#008000",
-          lineGradientColorTo: "#FF5733",
-        };
-        const { years } = this.state;
         content = (
           <View
             style={{
@@ -559,7 +557,7 @@ export default class CalendarPicker extends Component {
                 this.setState({ month: index, currentMonth: index });
               }}
             >
-              {itemList.map((value, i) => (
+              {moment.months().map((value, i) => (
                 <PickerItem label={value} value={i} key={i} />
               ))}
             </Picker>
