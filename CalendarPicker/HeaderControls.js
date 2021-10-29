@@ -53,13 +53,13 @@ export default function HeaderControls(props) {
   return (
     <View style={[styles.headerWrapper]}>
       <View style={[styles.monthYearHeaderWrapper, monthYearHeaderWrapperStyle]}>
-        <TouchableOpacity onPress={onPressMonthYear}>
+        <TouchableOpacity style={{display: 'flex', alignItems: 'center' ,flexDirection: 'row', justifyContent: 'center' }} onPress={onPressMonthYear}>
           <Text style={[styles.monthHeaderMainText, textStyle, monthTitleStyle]} {...accessibilityProps}>
             { monthName }
             {'  '}
             { year }
           </Text>
-          <Animated.View style={[{position: 'absolute', right: -14, top: 2}, {transform: [{ rotate: currentView === 'monthYear'? '90deg': '0deg'}, {scale: 0.8}]}]}>
+          <Animated.View style={[{transform: [{ rotate: currentView === 'monthYear'? '90deg': '0deg'}, {scale: 0.8}]}]}>
            {nextComponent}
           </Animated.View>
         </TouchableOpacity>

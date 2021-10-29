@@ -291,12 +291,12 @@ export function makeStyles(params) {
 
     monthPicker: {
       width: (containerWidth / 14) * 6,
-      height: 180,
+      height: 260,
     },
 
     yearPicker: {
       width: (containerWidth / 14) * 6,
-      height: 180,
+      height: 260,
     },
   };
 }

@@ -13,8 +13,8 @@ const PickerItem = Picker.Item;
 
 const lineStyles = {
   lineColor: "#000000",
-  lineGradientColorFrom: "#008000",
-  lineGradientColorTo: "#FF5733",
+  // lineGradientColorFrom: "#FF5733",
+  // lineGradientColorTo: "#FF5733",
 };
 
 export default class CalendarPicker extends Component {
@@ -23,7 +23,7 @@ export default class CalendarPicker extends Component {
     this.numMonthsScroll = 60; // 5 years
     const years = [];
     const currentYear = moment().year();
-    for (let i = currentYear - 13; i < currentYear + 13; i++) {
+    for (let i = currentYear - 12; i <= currentYear + 12; i++) {
       years.push(i);
     }
     this.state = {
@@ -545,14 +545,15 @@ export default class CalendarPicker extends Component {
             style={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "center",
+              justifyContent: "space-around",
             }}
           >
             <Picker
               style={styles.monthPicker}
               {...lineStyles}
               selectedValue={this.state.month || this.state.currentMonth}
-              itemStyle={[textStyle, { fontSize: 24 }]}
+              itemStyle={{...textStyle, fontSize: 22, lineHeight: 30 }}
+              itemSpace={30}
               onValueChange={(index) => {
                 this.setState({ month: index, currentMonth: index });
               }}
@@ -567,7 +568,8 @@ export default class CalendarPicker extends Component {
               selectedValue={years.indexOf(
                 this.state.year || this.state.currentYear
               )}
-              itemStyle={[textStyle, { fontSize: 24 }]}
+              itemStyle={{...textStyle, fontSize: 22, lineHeight: 30 }}
+              itemSpace={30}
               onValueChange={(index) => {
                 this.setState({
                   year: years[index],
