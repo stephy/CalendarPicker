@@ -5,15 +5,21 @@ import { Utils } from "./Utils";
 import HeaderControls from "./HeaderControls";
 import Weekdays from "./Weekdays";
 import DaysGridView from "./DaysGridView";
-import MonthSelector from "./MonthSelector";
 import YearSelector from "./YearSelector";
 import Scroller from "./Scroller";
 import moment from "moment";
+import Picker from "@gregfrench/react-native-wheel-picker";
+const PickerItem = Picker.Item;
 
 export default class CalendarPicker extends Component {
   constructor(props) {
     super(props);
     this.numMonthsScroll = 60; // 5 years
+    const years = [];
+    const currentYear = moment().year();
+    for (let i = currentYear - 13; i < currentYear + 13; i++) {
+      years.push(i);
+    }
     this.state = {
       currentMonth: null,
       currentYear: null,
@@ -32,6 +38,7 @@ export default class CalendarPicker extends Component {
         props.maxRangeDuration
       ),
       ...this.createMonths(props, {}),
+      years,
     };
     this.state.renderMonthParams = this.createMonthProps(this.state);
   }
@@ -366,6 +373,13 @@ export default class CalendarPicker extends Component {
     });
   };
 
+  handleOnPressMonthYear = () => {
+    this.setState({
+      currentView:
+        this.state.currentView === "monthYear" ? "days" : "monthYear",
+    });
+  };
+
   handleOnSelectMonthYear = ({ month, year }) => {
     const currentYear = year;
     const currentMonth = month;
@@ -510,7 +524,6 @@ export default class CalendarPicker extends Component {
       headingLevel,
       dayLabelsWrapper,
       customDayHeaderStyles,
-      selectMonthTitle,
       selectYearTitle,
       monthYearHeaderWrapperStyle,
       headerWrapperStyle,
@@ -521,20 +534,54 @@ export default class CalendarPicker extends Component {
 
     let content;
     switch (currentView) {
-      case "months":
+      case "monthYear":
+        const itemList = moment.months();
+        const lineStyles = {
+          lineColor: "#000000",
+          lineGradientColorFrom: "#008000",
+          lineGradientColorTo: "#FF5733",
+        };
+        const { years } = this.state;
         content = (
-          <MonthSelector
-            styles={styles}
-            textStyle={textStyle}
-            title={selectMonthTitle}
-            currentYear={currentYear}
-            months={months}
-            minDate={minDate}
-            maxDate={maxDate}
-            onSelectMonth={this.handleOnSelectMonthYear}
-            headingLevel={headingLevel}
-            headerWrapperStyle={headerWrapperStyle}
-          />
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "center",
+            }}
+          >
+            <Picker
+              style={styles.monthPicker}
+              {...lineStyles}
+              selectedValue={this.state.month || this.state.currentMonth}
+              itemStyle={[textStyle, { fontSize: 24 }]}
+              onValueChange={(index) => {
+                this.setState({ month: index, currentMonth: index });
+              }}
+            >
+              {itemList.map((value, i) => (
+                <PickerItem label={value} value={i} key={i} />
+              ))}
+            </Picker>
+            <Picker
+              style={styles.yearPicker}
+              {...lineStyles}
+              selectedValue={years.indexOf(
+                this.state.year || this.state.currentYear
+              )}
+              itemStyle={[textStyle, { fontSize: 24 }]}
+              onValueChange={(index) => {
+                this.setState({
+                  year: years[index],
+                  currentYear: years[index],
+                });
+              }}
+            >
+              {years.map((value, i) => (
+                <PickerItem label={value + ""} value={i} key={i} />
+              ))}
+            </Picker>
+          </View>
         );
         break;
       case "years":
@@ -563,33 +610,7 @@ export default class CalendarPicker extends Component {
         break;
       default:
         content = (
-          <View styles={styles.calendar}>
-            <HeaderControls
-              styles={styles}
-              currentMonth={currentMonth}
-              currentYear={currentYear}
-              initialDate={moment(initialDate)}
-              onPressPrevious={this.handleOnPressPrevious}
-              onPressNext={this.handleOnPressNext}
-              onPressMonth={this.handleOnPressMonth}
-              onPressYear={this.handleOnPressYear}
-              months={months}
-              previousComponent={previousComponent}
-              nextComponent={nextComponent}
-              previousTitle={previousTitle}
-              nextTitle={nextTitle}
-              previousTitleStyle={previousTitleStyle}
-              nextTitleStyle={nextTitleStyle}
-              monthTitleStyle={monthTitleStyle}
-              yearTitleStyle={yearTitleStyle}
-              textStyle={textStyle}
-              restrictMonthNavigation={restrictMonthNavigation}
-              minDate={minDate}
-              maxDate={maxDate}
-              headingLevel={headingLevel}
-              monthYearHeaderWrapperStyle={monthYearHeaderWrapperStyle}
-              headerWrapperStyle={headerWrapperStyle}
-            />
+          <>
             <Weekdays
               styles={styles}
               firstDay={startFromMonday ? 1 : firstDay}
@@ -618,10 +639,42 @@ export default class CalendarPicker extends Component {
             ) : (
               this.renderMonth(renderMonthParams)
             )}
-          </View>
+          </>
         );
     }
 
-    return content;
+    return (
+      <View styles={styles.calendar}>
+        <HeaderControls
+          styles={styles}
+          currentView={currentView}
+          currentMonth={currentMonth}
+          currentYear={currentYear}
+          initialDate={moment(initialDate)}
+          onPressPrevious={this.handleOnPressPrevious}
+          onPressNext={this.handleOnPressNext}
+          onPressMonth={this.handleOnPressMonth}
+          onPressYear={this.handleOnPressYear}
+          onPressMonthYear={this.handleOnPressMonthYear}
+          months={months}
+          previousComponent={previousComponent}
+          nextComponent={nextComponent}
+          previousTitle={previousTitle}
+          nextTitle={nextTitle}
+          previousTitleStyle={previousTitleStyle}
+          nextTitleStyle={nextTitleStyle}
+          monthTitleStyle={monthTitleStyle}
+          yearTitleStyle={yearTitleStyle}
+          textStyle={textStyle}
+          restrictMonthNavigation={restrictMonthNavigation}
+          minDate={minDate}
+          maxDate={maxDate}
+          headingLevel={headingLevel}
+          monthYearHeaderWrapperStyle={monthYearHeaderWrapperStyle}
+          headerWrapperStyle={headerWrapperStyle}
+        />
+        {content}
+      </View>
+    );
   }
 }

@@ -21,7 +21,7 @@ export default function Controls(props) {
       onPress={() => onPressControl()}
       style={styles}
       disabled={disabled}
-      hitSlop={{ top: 20, bottom: 20, left: 40, right: 40 }}
+      hitSlop={{ top: 20, bottom: 20, }}
     >
       <View style={{opacity: disabled ? 0 : 1}}>
         { component ||

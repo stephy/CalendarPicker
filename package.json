@@ -48,6 +48,7 @@
   ],
   "directories": {},
   "dependencies": {
+    "@gregfrench/react-native-wheel-picker": "^1.2.16",
     "node-git-hooks": "^1.0.1",
     "prop-types": "^15.6.0",
     "recyclerlistview": "^3.0.0"

@@ -3,7 +3,8 @@ import {
   View,
   Text,
   Platform,
-  TouchableOpacity
+  TouchableOpacity,
+  Animated
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
@@ -14,10 +15,12 @@ export default function HeaderControls(props) {
     styles,
     currentMonth,
     currentYear,
+    currentView,
     onPressNext,
     onPressPrevious,
     onPressMonth,
     onPressYear,
+    onPressMonthYear,
     months,
     previousComponent,
     nextComponent,
@@ -48,35 +51,37 @@ export default function HeaderControls(props) {
   }
 
   return (
-    <View style={[styles.headerWrapper, headerWrapperStyle]}>
-      <View style={[styles.monthYearHeaderWrapper,monthYearHeaderWrapperStyle]}>
-        <TouchableOpacity onPress={onPressMonth}>
+    <View style={[styles.headerWrapper]}>
+      <View style={[styles.monthYearHeaderWrapper, monthYearHeaderWrapperStyle]}>
+        <TouchableOpacity onPress={onPressMonthYear}>
           <Text style={[styles.monthHeaderMainText, textStyle, monthTitleStyle]} {...accessibilityProps}>
             { monthName }
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={onPressYear}>
-          <Text style={[styles.yearHeaderMainText, textStyle, yearTitleStyle]}>
+            {'  '}
             { year }
           </Text>
+          <Animated.View style={[{position: 'absolute', right: -14, top: 2}, {transform: [{ rotate: currentView === 'monthYear'? '90deg': '0deg'}, {scale: 0.8}]}]}>
+           {nextComponent}
+          </Animated.View>
         </TouchableOpacity>
       </View>
-      <Controls
-        disabled={disablePreviousMonth}
-        label={previousTitle}
-        component={previousComponent}
-        onPressControl={onPressPrevious}
-        styles={styles.previousContainer}
-        textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
-      />
-      <Controls
-        disabled={disableNextMonth}
-        label={nextTitle}
-        component={nextComponent}
-        onPressControl={onPressNext}
-        styles={styles.nextContainer}
-        textStyles={[styles.navButtonText, textStyle, nextTitleStyle]}
-      />
+      {currentView !== 'monthYear' ? <View style={{display:'flex', flexDirection: 'row', flex: 1, justifyContent:'flex-end'}}>
+        <Controls
+          disabled={disablePreviousMonth}
+          label={previousTitle}
+          component={previousComponent}
+          onPressControl={onPressPrevious}
+          styles={styles.previousContainer}
+          textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
+        />
+        <Controls
+          disabled={disableNextMonth}
+          label={nextTitle}
+          component={nextComponent}
+          onPressControl={onPressNext}
+          styles={styles.nextContainer}
+          textStyles={[styles.navButtonText, textStyle, nextTitleStyle]}
+        />
+      </View> : null}
     </View>
   );
 }
