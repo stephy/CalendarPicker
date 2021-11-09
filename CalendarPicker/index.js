@@ -386,7 +386,7 @@ export default class CalendarPicker extends Component {
     });
   };
 
-  handleOnSelectMonthYear = ({ month, year }) => {
+  handleOnSelectMonthYear = ({ month, year, viewMode }) => {
     const currentYear = year;
     const currentMonth = month;
     const scrollableState = this.props.scrollable
@@ -395,7 +395,7 @@ export default class CalendarPicker extends Component {
 
     const extraState = {
       renderMonthParams: { ...this.state.renderMonthParams, month, year },
-      currentView: "days",
+      currentView: viewMode || "days",
       ...scrollableState,
     };
 
@@ -552,10 +552,16 @@ export default class CalendarPicker extends Component {
               style={styles.monthPicker}
               {...lineStyles}
               selectedValue={this.state.month || this.state.currentMonth}
-              itemStyle={{...textStyle, fontSize: 22, lineHeight: 30 }}
+              itemStyle={{ ...textStyle, fontSize: 22, lineHeight: 30 }}
               itemSpace={30}
               onValueChange={(index) => {
-                this.setState({ month: index, currentMonth: index });
+                this.setState({ month: index, currentMonth: index }, () => {
+                  this.handleOnSelectMonthYear({
+                    month: index,
+                    year: this.state.year || this.state.currentYear,
+                    viewMode: "monthYear",
+                  });
+                });
               }}
             >
               {moment.months().map((value, i) => (
@@ -568,13 +574,22 @@ export default class CalendarPicker extends Component {
               selectedValue={years.indexOf(
                 this.state.year || this.state.currentYear
               )}
-              itemStyle={{...textStyle, fontSize: 22, lineHeight: 30 }}
+              itemStyle={{ ...textStyle, fontSize: 22, lineHeight: 30 }}
               itemSpace={30}
               onValueChange={(index) => {
-                this.setState({
-                  year: years[index],
-                  currentYear: years[index],
-                });
+                this.setState(
+                  {
+                    year: years[index],
+                    currentYear: years[index],
+                  },
+                  () => {
+                    this.handleOnSelectMonthYear({
+                      month: this.state.month || this.state.currentMonth,
+                      year: years[index],
+                      viewMode: "monthYear",
+                    });
+                  }
+                );
               }}
             >
               {years.map((value, i) => (
