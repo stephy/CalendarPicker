@@ -23,7 +23,7 @@ export default class CalendarPicker extends Component {
     this.numMonthsScroll = 60; // 5 years
     const years = [];
     const currentYear = moment().year();
-    for (let i = currentYear - 12; i <= currentYear + 12; i++) {
+    for (let i = currentYear - 30; i <= currentYear + 30; i++) {
       years.push(i);
     }
     this.state = {
