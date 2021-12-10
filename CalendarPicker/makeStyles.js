@@ -150,7 +150,6 @@ export function makeStyles(params) {
       alignItems: "center",
       alignSelf: "center",
       // justifyContent: 'space-between',
-      width: containerWidth,
       paddingLeft: 0,
       paddingRight: 0,
       paddingBottom: 3 * scaler,
@@ -158,21 +157,23 @@ export function makeStyles(params) {
       backgroundColor: "transparent",
       height: 30,
       marginTop: 20,
+      width: 350 * scaler,
     },
 
     monthYearHeaderWrapper: {
       flexDirection: "row",
       justifyContent: "flex-start",
-      alignItems: "center",
+      alignItems: "flex-start",
+      textAlign: "left",
       paddingHorizontal: 3 * scaler,
-      paddingLeft: containerWidth / 14,
+      paddingLeft: 16 * scaler,
     },
 
     previousContainer: {
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
-      width: containerWidth / 7,
+      width: 50 * scaler,
       height: 30,
     },
 
@@ -180,8 +181,8 @@ export function makeStyles(params) {
       display: "flex",
       alignItems: "flex-end",
       justifyContent: "center",
-      width: containerWidth / 7,
-      paddingRight: containerWidth / 14,
+      width: 50 * scaler,
+      paddingRight: 18 * scaler,
     },
 
     navButtonText: {
