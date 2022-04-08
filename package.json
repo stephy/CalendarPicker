@@ -1,5 +1,5 @@
 {
-  "name": "react-native-calendar-picker",
+  "name": "react-native-calendar-picker-v1",
   "version": "7.1.3",
   "description": "Calendar Picker Component for React Native",
   "engines": {
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stephy/CalendarPicker"
+    "url": "https://github.com/paulpop21/CalendarPicker"
   },
   "keywords": [
     "calendar",

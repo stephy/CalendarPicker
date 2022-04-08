@@ -8,7 +8,7 @@
 import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
 import PropTypes from 'prop-types';
-import { RecyclerListView, DataProvider, LayoutProvider } from 'recyclerlistview';
+import { RecyclerListView, DataProvider, LayoutProvider } from '@paulpop21/recyclerlistview';
 import moment from 'moment';
 
 export default class CalendarScroller extends Component {
