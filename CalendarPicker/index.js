@@ -357,10 +357,15 @@ export default class CalendarPicker extends Component {
   }
 
   resetSelections = () => {
-    this.setState({
+    this.setState((state) => ({
       selectedStartDate: null,
-      selectedEndDate: null
-    });
+      selectedEndDate: null,
+      renderMonthParams: { 
+        ...state.renderMonthParams,
+        selectedStartDate: null,
+        selectedEndDate: null,
+      }
+    }));
   }
 
   createMonthProps = state => {
