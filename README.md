@@ -136,6 +136,7 @@ const styles = StyleSheet.create({
 | **`headerWrapperStyle`** | `ViewStyle` | Optional. Style for entire header controls wrapper. This contains the previous / next controls plus month & year.|
 | **`monthTitleStyle`** | `TextStyle` | Optional. Text styling for header's month text.|
 | **`yearTitleStyle`** | `TextStyle` | Optional. Text styling for header's year text.|
+| **`initialView`** | `String` | Optional. The view that the calendar opens to. Default is `days`. Available options are `years`, `months`, and `days`.|
 
 # Styles
 Some styles will overwrite some won't. For instance:
