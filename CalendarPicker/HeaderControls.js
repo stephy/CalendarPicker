@@ -33,7 +33,9 @@ export default function HeaderControls(props) {
     minDate,
     headingLevel,
     monthYearHeaderWrapperStyle,
-    headerWrapperStyle
+    headerWrapperStyle,
+    previousContainerStyle,
+    nextContainerStyle,
   } = props;
   const MONTHS = months || Utils.MONTHS; // English Month Array
   const monthName = MONTHS[currentMonth];
@@ -54,7 +56,7 @@ export default function HeaderControls(props) {
         label={previousTitle}
         component={previousComponent}
         onPressControl={onPressPrevious}
-        styles={styles.previousContainer}
+        styles={[styles.previousContainer,previousContainerStyle]}
         textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
       />
       <View style={[styles.monthYearHeaderWrapper,monthYearHeaderWrapperStyle]}>
@@ -74,7 +76,7 @@ export default function HeaderControls(props) {
         label={nextTitle}
         component={nextComponent}
         onPressControl={onPressNext}
-        styles={styles.nextContainer}
+        styles={[styles.nextContainer,nextContainerStyle]}
         textStyles={[styles.navButtonText, textStyle, nextTitleStyle]}
       />
     </View>
