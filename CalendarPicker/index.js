@@ -398,6 +398,7 @@ export default class CalendarPicker extends Component {
       selectedRangeStyle: this.props.selectedRangeStyle,
       selectedRangeEndStyle: this.props.selectedRangeEndStyle,
       customDatesStyles: this.props.customDatesStyles,
+      daysWrapperStyles: this.props.daysWrapperStyles,
     };
   }
 
@@ -489,6 +490,7 @@ export default class CalendarPicker extends Component {
       onMonthChange,
       scrollable,
       horizontal,
+      calendarContainerStyles,
     } = this.props;
 
     let content;
@@ -533,7 +535,7 @@ export default class CalendarPicker extends Component {
       break;
     default:
       content = (
-        <View styles={styles.calendar}>
+        <View style={[styles.calendar, calendarContainerStyles]}>
           <HeaderControls
             styles={styles}
             currentMonth={currentMonth}
