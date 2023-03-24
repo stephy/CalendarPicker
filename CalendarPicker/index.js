@@ -17,7 +17,7 @@ export default class CalendarPicker extends Component {
     this.state = {
       currentMonth: null,
       currentYear: null,
-      currentView: props.initialView || 'days',
+      currentView: 'days',
       selectedStartDate: props.selectedStartDate && moment(props.selectedStartDate),
       selectedEndDate: props.selectedEndDate && moment(props.selectedEndDate),
       minDate: props.minDate && moment(props.minDate),
@@ -52,6 +52,7 @@ export default class CalendarPicker extends Component {
     selectedRangeStartStyle: null,
     selectedRangeEndStyle: null,
     selectedRangeStyle: null,
+    renderExtraDayComponent: null
   };
 
   componentDidUpdate(prevProps) {
@@ -360,7 +361,7 @@ export default class CalendarPicker extends Component {
     this.setState((state) => ({
       selectedStartDate: null,
       selectedEndDate: null,
-      renderMonthParams: { 
+      renderMonthParams: {
         ...state.renderMonthParams,
         selectedStartDate: null,
         selectedEndDate: null,
@@ -398,6 +399,7 @@ export default class CalendarPicker extends Component {
       selectedRangeStyle: this.props.selectedRangeStyle,
       selectedRangeEndStyle: this.props.selectedRangeEndStyle,
       customDatesStyles: this.props.customDatesStyles,
+      renderExtraDayComponent: this.props.renderExtraDayComponent
     };
   }
 
