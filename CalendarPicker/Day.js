@@ -35,7 +35,8 @@ export default function Day(props) {
     disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
-    enableDateChange
+    enableDateChange,
+    renderExtraDayComponent
   } = props;
 
   const thisDay = moment({year, month, day, hour: 12 });
@@ -192,6 +193,9 @@ export default function Day(props) {
             ]}>
               { day }
             </Text>
+            {
+              renderExtraDayComponent && renderExtraDayComponent(thisDay)
+            }
           </View>
         </View>
       );
@@ -205,6 +209,9 @@ export default function Day(props) {
             <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
               { day }
             </Text>
+            {
+              renderExtraDayComponent && renderExtraDayComponent(thisDay)
+            }
           </TouchableOpacity>
         </View>
       );
@@ -224,6 +231,9 @@ export default function Day(props) {
           <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}>
             { day }
           </Text>
+          {
+            renderExtraDayComponent && renderExtraDayComponent(thisDay)
+          }
         </View>
       </View>
     );
