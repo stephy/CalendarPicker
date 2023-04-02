@@ -268,4 +268,5 @@ DaysGridView.propTypes = {
   disabledDatesTextStyle: stylePropType,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
+  renderExtraDayComponent: PropTypes.func
 };
