@@ -15,6 +15,7 @@ export default class MonthSelector extends Component {
 
   render() {
     const {
+      lang,
       styles,
       textStyle,
       title,
@@ -27,14 +28,15 @@ export default class MonthSelector extends Component {
     } = this.props;
 
     return (
-      <View styles={styles.calendar}>
+      <View>
         <MonthsHeader
           styles={styles}
           textStyle={textStyle}
-          title={title + currentYear}
+          title={title}
           headingLevel={headingLevel}
         />
         <MonthsGridView
+          lang={lang}
           styles={styles}
           textStyle={textStyle}
           currentYear={currentYear}

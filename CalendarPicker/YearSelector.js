@@ -47,7 +47,7 @@ export default class YearSelector extends Component {
     } = this.props;
 
     return (
-      <View styles={styles.calendar}>
+      <View>
         <YearsHeader
           styles={styles}
           textStyle={textStyle}
