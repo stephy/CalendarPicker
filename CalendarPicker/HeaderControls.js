@@ -11,6 +11,7 @@ import Controls from './Controls';
 
 export default function HeaderControls(props) {
   const {
+    lang,
     styles,
     currentMonth,
     currentYear,
@@ -25,17 +26,14 @@ export default function HeaderControls(props) {
     nextTitle,
     previousTitleStyle,
     nextTitleStyle,
-    monthTitleStyle,
-    yearTitleStyle,
     textStyle,
     restrictMonthNavigation,
     maxDate,
     minDate,
     headingLevel,
     monthYearHeaderWrapperStyle,
-    headerWrapperStyle
   } = props;
-  const MONTHS = months || Utils.MONTHS; // English Month Array
+  const MONTHS = months || lang == 'ar' ? Utils.ARABIC_MONTHS : Utils.MONTHS; // English Month Array
   const monthName = MONTHS[currentMonth];
   const year = currentYear;
 
@@ -48,7 +46,7 @@ export default function HeaderControls(props) {
   }
 
   return (
-    <View style={[styles.headerWrapper, headerWrapperStyle]}>
+    <View style={styles.headerWrapper}>
       <Controls
         disabled={disablePreviousMonth}
         label={previousTitle}
@@ -57,15 +55,15 @@ export default function HeaderControls(props) {
         styles={styles.previousContainer}
         textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
       />
-      <View style={[styles.monthYearHeaderWrapper,monthYearHeaderWrapperStyle]}>
+      <View style={[styles.monthYearHeaderWrapper, monthYearHeaderWrapperStyle]}>
         <TouchableOpacity onPress={onPressMonth}>
-          <Text style={[styles.monthHeaderMainText, textStyle, monthTitleStyle]} {...accessibilityProps}>
-            { monthName }
+          <Text style={[styles.monthHeaderMainText, textStyle]} {...accessibilityProps}>
+            {monthName}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={onPressYear}>
-          <Text style={[styles.yearHeaderMainText, textStyle, yearTitleStyle]}>
-            { year }
+          <Text style={[styles.yearHeaderMainText, textStyle]}>
+            {year}
           </Text>
         </TouchableOpacity>
       </View>

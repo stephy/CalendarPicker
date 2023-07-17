@@ -32,9 +32,6 @@ export function makeStyles(params) {
   const TODAY_BG_COLOR = todayBackgroundColor ? todayBackgroundColor : DEFAULT_TODAY_BACKGROUND_COLOR;
 
   return {
-    containerWidth,
-    containerHeight,
-
     calendar: {
       height: 320*scaler,
       marginTop: 10*scaler
@@ -182,13 +179,6 @@ export function makeStyles(params) {
     disabledText: {
       fontSize: 14*scaler,
       color: '#BBBBBB',
-      alignSelf: 'center',
-      justifyContent: 'center'
-    },
-
-    selectedDisabledText: {
-      fontSize: 14*scaler,
-      color: '#DDDDDD',
       alignSelf: 'center',
       justifyContent: 'center'
     },

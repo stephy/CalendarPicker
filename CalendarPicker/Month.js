@@ -9,6 +9,7 @@ import { Utils } from './Utils';
 
 export default function Month(props) {
   const {
+    lang,
     months,
     currentMonth: month,
     currentYear: year,
@@ -18,8 +19,8 @@ export default function Month(props) {
     minDate,
     maxDate,
   } = props;
-
-  const MONTHS = months || Utils.MONTHS; // English Month Array
+  console.log(lang)
+  const MONTHS = months || lang == 'ar' ? Utils.ARABIC_MONTHS : Utils.MONTHS; // English Month Array
   const monthName = MONTHS[month];
 
   let monthOutOfRange;
@@ -28,10 +29,10 @@ export default function Month(props) {
   let monthIsDisabled = false;
 
   // Check whether month is outside of min/max range.
-  if (maxDate && (maxDate.year() === year)) {
+  if (maxDate) {
     monthIsAfterMax = month > maxDate.month();
   }
-  if (minDate && (minDate.year() === year)) {
+  if (minDate) {
     monthIsBeforeMin = month < minDate.month();
   }
 
@@ -47,21 +48,21 @@ export default function Month(props) {
     if (maxDate && (year > maxDate.year())) {
       _year = maxDate.year();
     }
-    onSelectMonth({month, year: _year});
+    onSelectMonth({ month, year: _year });
   };
 
   return (
     <View style={[styles.monthContainer]}>
-      { !monthOutOfRange ?
+      {!monthOutOfRange ?
         <TouchableOpacity
           onPress={onSelect}>
           <Text style={[styles.monthText, textStyle]}>
-            { monthName }
+            {monthName}
           </Text>
         </TouchableOpacity>
         :
         <Text style={[textStyle, styles.disabledText]}>
-          { monthName }
+          {monthName}
         </Text>
       }
     </View>
