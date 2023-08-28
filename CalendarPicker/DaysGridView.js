@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { stylePropType } from './localPropTypes';
 import Day from './Day';
@@ -86,7 +86,7 @@ export default class DaysGridView extends Component {
         !Utils.compareDates(selectedEndDate, prevSelEnd, 'day');
       // Check that selected date(s) match this month.
       if (isSelectedDiff && (
-        Utils.compareDates(selectedStartDate, firstDayOfMonth, 'month') ||
+          Utils.compareDates(selectedStartDate, firstDayOfMonth, 'month') ||
           Utils.compareDates(selectedEndDate, firstDayOfMonth, 'month') ||
           Utils.compareDates(prevSelStart, firstDayOfMonth, 'month') ||
           Utils.compareDates(prevSelEnd, firstDayOfMonth, 'month') ))
@@ -121,21 +121,26 @@ export default class DaysGridView extends Component {
       }
     }
   }
-
-  renderDayInCurrentMonth(day) {
-    return ({
+  
+  renderDayInCurrentMonth(day) {  
+    return {
       day,
       month: this.props.month,
       component: (
-        <Day
-          key={day}
-          day={day}
-          {...this.props}
-        />
+        <View >
+          <Day
+            key={day}
+            day={day}
+            {...this.props}
+          />
+          
+        </View>
       ),
-    });
+    };
+  
+    
   }
-
+  
   renderEmptyDay(key) {
     return ({
       component: (
@@ -227,16 +232,15 @@ export default class DaysGridView extends Component {
     const { daysGrid } = this.state;
     const renderedDaysGrid = daysGrid.map((weekRow, i) => (
       <View key={i} style={styles.weekRow}>
-        { weekRow.map(day => day.component ) }
+        {weekRow.map(day => day.component)}
       </View>
     ));
-
+  
     return (
       <View style={styles.daysWrapper}>
-        { renderedDaysGrid }
+        {renderedDaysGrid}
       </View>
-    );
-  }
+    );}
 }
 
 DaysGridView.propTypes = {
@@ -268,4 +272,5 @@ DaysGridView.propTypes = {
   disabledDatesTextStyle: stylePropType,
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
+
 };

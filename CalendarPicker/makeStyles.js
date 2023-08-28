@@ -1,11 +1,13 @@
+import { color } from "react-native-reanimated";
+
 /**
  * Calendar Picker Component
  *
  * Copyright 2016 Yahoo Inc.
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
-const DEFAULT_SELECTED_BACKGROUND_COLOR = '#5ce600';
-const DEFAULT_SELECTED_TEXT_COLOR = '#000000';
+const DEFAULT_SELECTED_BACKGROUND_COLOR = '#000666';
+const DEFAULT_SELECTED_TEXT_COLOR = 'pink';
 const DEFAULT_TODAY_BACKGROUND_COLOR = '#CCCCCC';
 
 function getBorderRadiusByShape(scaler, dayShape) {
@@ -43,7 +45,7 @@ export function makeStyles(params) {
     dayButton: {
       width: 30*scaler,
       height: 30*scaler,
-      borderRadius: getBorderRadiusByShape(scaler, dayShape),
+      // borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
       justifyContent: 'center'
     },
@@ -60,8 +62,8 @@ export function makeStyles(params) {
 
     dayLabelsWrapper: {
       flexDirection: 'row',
-      borderBottomWidth: 1,
-      borderTopWidth: 1,
+      // borderBottomWidth: 1,
+      // borderTopWidth: 1,
       paddingTop: 10*scaler,
       paddingBottom: 10*scaler,
       alignSelf: 'center',
@@ -69,23 +71,23 @@ export function makeStyles(params) {
       backgroundColor: 'rgba(0,0,0,0.0)',
       borderColor: 'rgba(0,0,0,0.2)'
     },
-
     daysWrapper: {
       alignSelf: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      color:"#000666"
     },
 
     dayLabels: {
       width: 50*scaler,
       fontSize: 12*scaler,
-      color: '#000',
+      color: '#000066',
       textAlign: 'center'
     },
 
     selectedDay: {
       width: 30*scaler,
       height:30*scaler,
-      borderRadius: getBorderRadiusByShape(scaler, dayShape),
+      // borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
       justifyContent: 'center'
     },
@@ -95,12 +97,13 @@ export function makeStyles(params) {
     },
 
     selectedToday: {
-      width: 30*scaler,
-      height:30*scaler,
+      width: 35*scaler,
+      height:35*scaler,
       backgroundColor: TODAY_BG_COLOR,
-      borderRadius: getBorderRadiusByShape(scaler, dayShape),
+      borderRadius:5,
+      // borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
 
     dayWrapper: {
@@ -108,15 +111,17 @@ export function makeStyles(params) {
       justifyContent: 'center',
       width: 50*scaler,
       height: 40*scaler,
-      backgroundColor: 'rgba(0,0,0,0.0)'
+      backgroundColor: 'rgba(0,0,0,0.0)',
+      color:"#000666"
     },
 
     startDayWrapper: {
       width: 50*scaler,
       height: 30*scaler,
-      borderTopLeftRadius: 20*scaler,
-      borderBottomLeftRadius: 20*scaler,
+      borderTopLeftRadius: 5,
+      borderBottomLeftRadius: 5,
       backgroundColor: SELECTED_BG_COLOR,
+      color:"white",
       alignSelf: 'center',
       justifyContent: 'center'
     },
@@ -124,9 +129,11 @@ export function makeStyles(params) {
     endDayWrapper: {
       width: 50*scaler,
       height: 30*scaler,
-      borderTopRightRadius: 20*scaler,
-      borderBottomRightRadius: 20*scaler,
+      borderTopRightRadius: 5,
+      borderBottomRightRadius:5,
       backgroundColor: SELECTED_BG_COLOR,
+      color:"white",
+
       alignSelf: 'center',
       justifyContent: 'center'
     },
@@ -134,7 +141,7 @@ export function makeStyles(params) {
     inRangeDay: {
       width: 50*scaler,
       height: 30*scaler,
-      backgroundColor: SELECTED_BG_COLOR,
+      backgroundColor: '#D4D4FF',
       alignSelf: 'center',
       justifyContent: 'center'
     },
@@ -203,7 +210,7 @@ export function makeStyles(params) {
     monthButton: {
       width: 30*scaler,
       height: 30*scaler,
-      borderRadius: 30*scaler,
+      // borderRadius: 30*scaler,
       alignSelf: 'center',
       justifyContent: 'center'
     },

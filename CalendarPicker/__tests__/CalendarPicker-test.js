@@ -28,6 +28,7 @@ describe('CalendarPicker', function() {
         selectedDayColor="#7300e6"
         selectedDayTextColor="#FFFFFF"
         onDateChange={() => {}}
+        
       />
     ).toJSON();
     expect(CalendarPicker).toBeTruthy();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,8 @@ import {
 import PropTypes from 'prop-types';
 import moment from 'moment';
 
-export default function Day(props) {
+ function Day(props) {
+  const [CurrentMonthDays, setCurrentMonthDays] = useState([])
   const {
     day,
     month,
@@ -35,12 +36,29 @@ export default function Day(props) {
     disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
-    enableDateChange
+    enableDateChange,
+    dotsData,
+    monthDays,
+    monthDates
   } = props;
+    const thisDay = moment({year, month, day, hour: 12 });
+useEffect(() => {
+  function getDatesArrayForCurrentMonth() {
+    const daysInMonth = moment({ year: year, month: month }).daysInMonth();
+    const datesArray = [];
+  
+    for (let day = 1; day <= daysInMonth; day++) {
+      datesArray.push(moment({ year: year, month: month, day }));
+    }
+    monthDates && monthDates(datesArray)
+    return datesArray;
+  }
 
-  const thisDay = moment({year, month, day, hour: 12 });
-  const today = moment();
+  getDatesArrayForCurrentMonth()
+}, [])
 
+// monthDays(CurrentMonthDays)
+    const today = moment();
   let dateOutOfRange;
   let computedSelectedDayStyle = styles.dayButton; // may be overridden depending on state
   let selectedDayTextStyle = {};
@@ -101,8 +119,9 @@ export default function Day(props) {
       dateRangeLessThanMin = true;
     }
   }
+const matchingDots = dotsData?.filter(dot => dot.day === day && dot.month === month && dot.year === year);
 
-  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled || dateRangeLessThanMin || dateRangeGreaterThanMax;
+dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled || dateRangeLessThanMin || dateRangeGreaterThanMax;
 
   let isThisDaySameAsSelectedStart = thisDay.isSame(selectedStartDate, 'day');
   let isThisDaySameAsSelectedEnd = thisDay.isSame(selectedEndDate, 'day');
@@ -180,7 +199,6 @@ export default function Day(props) {
         overrideOutOfRangeTextStyle = selectedRangeStartTextStyle;
       }
     }
-
     if (dateOutOfRange) { // start or end date selected, and this date outside of range.
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
@@ -192,7 +210,15 @@ export default function Day(props) {
             ]}>
               { day }
             </Text>
-          </View>
+          
+        </View>
+          {matchingDots?.length > 0 && (
+            <View style={{ flexDirection: 'row', justifyContent: 'center'}}>
+              {matchingDots[0].colors.slice(0, matchingDots[0].value).map((color, index) => (
+                <View key={index} style={{ width: 5, height: 5,borderRadius:20, backgroundColor: color, margin: 1 }} />
+              ))}
+            </View>
+          )}
         </View>
       );
     } else {
@@ -205,11 +231,23 @@ export default function Day(props) {
             <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
               { day }
             </Text>
+
+            {matchingDots?.length > 0 && (
+            <View style={{ flexDirection: 'row', justifyContent: 'center',paddingBottom:10 }}>
+              {matchingDots[0].colors.slice(0, matchingDots[0].value).map((color, index) => (
+                <View key={index} style={{ width: 5, height: 5,borderRadius:20, backgroundColor: color, margin: 1 }} />
+              ))}
+            </View>
+          )}
           </TouchableOpacity>
+         
+          {/* {saad} */}
+
         </View>
       );
     }
   }
+ 
   else {  // dateOutOfRange = true, and no selected start or end date.
     const custom = getCustomDateStyle({customDatesStyles, date: thisDay});
     // Allow customDatesStyles to override disabled dates if allowDisabled set
@@ -225,6 +263,17 @@ export default function Day(props) {
             { day }
           </Text>
         </View>
+          {matchingDots?.length > 0 && (
+            <View style={{ flexDirection: 'row', justifyContent: 'center' }}>
+              {matchingDots[0].colors.slice(0, matchingDots[0].value).map((color, index) => (
+                <View key={index} style={{ width: 5, height: 5,borderRadius:20, backgroundColor: color, margin: 1 }} />
+              ))}
+            </View>
+          )}
+        
+
+        
+        {/* { saad} */}
       </View>
     );
   }
@@ -245,8 +294,12 @@ function getCustomDateStyle({customDatesStyles, date}) {
   return {};
 }
 
+
 Day.defaultProps = {
   customDatesStyles: [],
+  dotsData : [],
+  monthDates:(item)=>{console.log("item===")}
+
 };
 
 Day.propTypes = {
@@ -257,3 +310,4 @@ Day.propTypes = {
   minRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
   maxRangeDuration: PropTypes.oneOfType([PropTypes.array, PropTypes.number]),
 };
+export default (Day) 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, Text } from 'react-native';
 import { makeStyles } from './makeStyles';
 import { Utils } from './Utils';
 import HeaderControls from './HeaderControls';
@@ -220,7 +220,6 @@ export default class CalendarPicker extends Component {
     }
     return {minRangeDuration, maxRangeDuration};
   }
-
   handleOnPressDay = ({year, month, day}) => {
     const {
       selectedStartDate: prevSelectedStartDate,
@@ -437,20 +436,28 @@ export default class CalendarPicker extends Component {
       }
       monthsList.push(month);
     }
-
     return {
+
       monthsList,
       initialScrollerIndex,
     };
   }
-
+ 
+  
   renderMonth(props) {
     return (
-      <DaysGridView {...props} />
+      <DaysGridView         
+      {...props} 
+      dotsData={this.props.dotsData}
+      monthDates={this.props.monthDates}
+
+      />
+    
     );
   }
 
   render() {
+
     const {
       currentView,
       currentMonth,
@@ -489,10 +496,12 @@ export default class CalendarPicker extends Component {
       onMonthChange,
       scrollable,
       horizontal,
+      
     } = this.props;
-
     let content;
-    switch (currentView) {
+    switch (currentView) 
+
+    {
     case 'months':
       content = (
         <MonthSelector
@@ -570,6 +579,8 @@ export default class CalendarPicker extends Component {
             dayLabelsWrapper={dayLabelsWrapper}
             customDayHeaderStyles={customDayHeaderStyles}
           />
+
+          
           { scrollable ?
             <Scroller
               ref={scroller => this.scroller = scroller}
@@ -584,7 +595,10 @@ export default class CalendarPicker extends Component {
               updateMonthYear={this.updateMonthYear}
               onMonthChange={onMonthChange}
               horizontal={horizontal}
+              
+              
             />
+                              
             :
             this.renderMonth(renderMonthParams)
           }
