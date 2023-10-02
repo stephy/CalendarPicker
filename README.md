@@ -2,18 +2,33 @@
 
 [![npm version](https://badge.fury.io/js/react-native-calendar-picker.svg)](https://badge.fury.io/js/react-native-calendar-picker) [![npm](https://img.shields.io/npm/dm/localeval.svg)](https://www.npmjs.com/package/react-native-calendar-picker) [![Build Status](https://travis-ci.org/stephy/CalendarPicker.svg?branch=master)](https://travis-ci.org/stephy/CalendarPicker)
 
-This is a Calendar Picker Component for React Native
+Welcome to React Native Calendar Picker! This component allows you to seamlessly integrate a dynamic calendar into your React Native app for date selection and navigation.
 
 ### Scrollable CalendarPicker — New in 7.x
 
-The `scrollable` prop was introduced in 7.0.0 and features a bi-directional infinite scroller. It recycles months using RecyclerListView, shifting them as the ends are reached. If the Chrome debugger is used during development, month shifting may be erratic due to a [RN setTimeout bug](https://github.com/facebook/react-native/issues/4470). To prevent month shifts at the ends of the scroller, set `restrictMonthNavigation`, `minDate`, and `maxDate` range to 5 years or less.
+Version 7.0.0 introduced the scrollable prop, featuring a bi-directional infinite scroller. It recycles months using RecyclerListView and shifts them as the ends are reached. Note that if the Chrome debugger is used during development, month shifting may be erratic due to a React Native setTimeout bug. To prevent month shifts at the ends of the scroller, set the restrictMonthNavigation, minDate, and maxDate range to 5 years or less.
 
 ![alt tag](https://user-images.githubusercontent.com/6295083/82028634-87a2b880-965b-11ea-90ce-1bde67f31157.gif)
 
-To use the calendar you just need to:
-```sh
-npm install --save react-native-calendar-picker
-```
+# Table of Contents
+- [Introduction](#introduction)
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+  - [Adding to TypeScript Project](#adding-to-typescript-project)
+- [Example](#example)
+- [Sample Application](#sample-application)
+- [CalendarPicker Props](#calendarpicker-props)
+- [Styles](#styles)
+- [More Examples](#more-examples)
+  - [Start from Monday, allowRangeSelection, Min and Max Dates and Styles Changes Example](#start-from-monday-allowrangeselection-min-and-max-dates-and-styles-changes-example)
+  - [Complex Example, Changing Fonts and Colors, Language and etc...](#complex-example-changing-fonts-and-colors-language-and-etc)
+  - [Custom styling individual dates](#custom-styling-individual-dates)
+  - [Styling each day of the week and the day name header.](#styling-each-day-of-the-week-and-the-day-name-header)
+- [Methods](#methods)
+- [Suggestions?](#suggestions)
+- [Special Thanks](#special-thanks)
+- [Development](#development)
+
 
 # Prerequisites
 
@@ -22,6 +37,18 @@ CalendarPicker requires Moment JS >=2.0.  Date props may be anything parseable b
 ```
 npm install --save moment
 ```
+# Installation
+To use the calendar you just need to:
+```sh
+npm install --save react-native-calendar-picker
+```
+## Adding to TypeScript Project
+
+Definitions are available at https://www.npmjs.com/package/@types/react-native-calendar-picker courtesy of [automatensalat](https://github.com/automatensalat).
+```
+npm install --save @types/react-native-calendar-picker
+```
+
 
 # Example
 
@@ -73,6 +100,16 @@ const styles = StyleSheet.create({
   },
 });
 ```
+# Sample Application
+
+Create a sample app with `create-react-native-app`.
+```sh
+cd example
+npm run cp
+npm install
+npm start
+```
+
 ## CalendarPicker Props
 | Prop | Type | Description |
 :------------ |:---------------| :-----|
@@ -398,13 +435,6 @@ These internal methods may be accessed through a ref to the CalendarPicker.
 | **`handleOnPressPrevious`** |  | Programmatically advance to previous month. |
 | **`resetSelections`** |  | Clear date selections. Useful for resetting date range selection when user has picked a start date but not an end date. |
 
-## TypeScript
-
-Definitions are available at https://www.npmjs.com/package/@types/react-native-calendar-picker courtesy of [automatensalat](https://github.com/automatensalat).
-```
-npm install --save @types/react-native-calendar-picker
-```
-
 
 # Suggestions?
 
@@ -422,17 +452,6 @@ I would like to call out some contributors who have been helping with this proje
 - [jthestupidkid](https://github.com/jthestupidkid)
 - [adamkrell](https://github.com/adamkrell)
 - [joshuapinter](https://github.com/joshuapinter)
-
-
-# Sample Application
-
-The sample app is an Expo project created with `create-react-native-app`.
-```sh
-cd example
-npm run cp
-npm install
-npm start
-```
 
 ## Development
 
