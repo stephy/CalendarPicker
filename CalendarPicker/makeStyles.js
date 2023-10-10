@@ -53,7 +53,7 @@ export function makeStyles(params) {
     dayLabel: {
       fontSize: 14*scaler,
       color: '#000',
-      alignSelf: 'center'
+      alignSelf: 'center',
     },
 
     selectedDayLabel: {
@@ -122,6 +122,7 @@ export function makeStyles(params) {
       borderBottomLeftRadius: 5,
       backgroundColor: SELECTED_BG_COLOR,
       color:"white",
+      
       alignSelf: 'center',
       justifyContent: 'center'
     },
