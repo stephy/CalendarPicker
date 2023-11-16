@@ -9,7 +9,8 @@ node_modules/**/*
 example/node_modules/
 example/CalendarPicker/
 example/package-lock.json
-
+*.apk
+*.aab
 # Xcode
 build/
 *.pbxuser
