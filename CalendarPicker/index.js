@@ -242,7 +242,7 @@ export default class CalendarPicker extends Component {
     const date = new Date(year, month, day, 12);
 
     if (allowRangeSelection && prevSelectedStartDate && !prevSelectedEndDate) {
-      if (!isBefore(prevSelectedStartDate, date)) {
+      if (!isAfter(date, prevSelectedEndDate)) {
         const selectedStartDate = prevSelectedStartDate;
         const selectedEndDate = date;
         this.setState({

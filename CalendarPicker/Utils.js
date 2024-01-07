@@ -49,10 +49,10 @@ export const Utils = {
     if (!a && !b) {
       return true;
     }
-    if (granularity === 'days') {
+    if (granularity === 'day') {
       return !!a && !!b && isSameDay(a, b);
     }
-    if (granularity === 'months') {
+    if (granularity === 'month') {
       return !!a && !!b && isSameMonth(a, b);
     }
     return true;
