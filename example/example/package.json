@@ -14,6 +14,7 @@
     "preset": "react-native"
   },
   "dependencies": {
+    "date-fns": "^3.1.0",
     "expo": "~36.0.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
@@ -25,7 +26,6 @@
   "devDependencies": {
     "@deboxsoft/cpx": "^1.5.0",
     "jest": "^25.1.0",
-    "moment": "*",
     "react-test-renderer": "~16.12.0"
   },
   "private": true

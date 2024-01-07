@@ -1,6 +1,6 @@
 {
   "name": "react-native-calendar-picker",
-  "version": "7.1.4",
+  "version": "7.1.5",
   "description": "Calendar Picker Component for React Native",
   "engines": {
     "node": ">=4.0.0"
@@ -48,6 +48,7 @@
   ],
   "directories": {},
   "dependencies": {
+    "date-fns": "^3.1.0",
     "node-git-hooks": "^1.0.1",
     "prop-types": "^15.6.0",
     "recyclerlistview": "^3.0.0"

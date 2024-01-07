@@ -7,6 +7,7 @@ import {
 import PropTypes from 'prop-types';
 import { stylePropType } from './localPropTypes';
 import Controls from './Controls';
+import { getYear } from 'date-fns';
 
 export default function YearsHeader(props) {
   const {
@@ -28,8 +29,8 @@ export default function YearsHeader(props) {
     headingLevel,
   } = props;
 
-  const disablePrevious = restrictNavigation && minDate && (minDate.year() >= year);
-  const disableNext = restrictNavigation && maxDate && (maxDate.year() <= year);
+  const disablePrevious = restrictNavigation && minDate && (getYear(minDate) >= year);
+  const disableNext = restrictNavigation && maxDate && (getYear(maxDate) <= year);
 
   const accessibilityProps = { accessibilityRole: 'header' };
   if (Platform.OS === 'web') {
@@ -47,7 +48,7 @@ export default function YearsHeader(props) {
         textStyles={[styles.navButtonText, textStyle, previousTitleStyle]}
       />
       <Text style={[styles.yearsHeaderText, textStyle]} {...accessibilityProps}>
-        { title }
+        {title}
       </Text>
       <Controls
         disabled={disableNext}

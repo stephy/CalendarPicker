@@ -5,6 +5,8 @@
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
 
+import { getMonth, getYear, isSameDay, isSameMonth } from "date-fns";
+
 export const Utils = {
   START_DATE: 'START_DATE',
   END_DATE: 'END_DATE',
@@ -16,20 +18,20 @@ export const Utils = {
   MAX_ROWS: 7,
   MAX_COLUMNS: 7,
   FIRST_DAY_OFFSETS: [0, -1, 5, 4, 3, 2, 1],
-  getDaysInMonth: function(month, year) {
+  getDaysInMonth: function (month, year) {
     const lastDayOfMonth = new Date(year, month + 1, 0);
     return lastDayOfMonth.getDate();
   },
-  isSameMonthAndYear: function(date, month, year) {
+  isSameMonthAndYear: function (date, month, year) {
     if (date) {
-      return date.month() === month && date.year() === year;
+      return getMonth(date) === month && getYear(date) === year;
     }
     return false;
   },
   // Test whether objects' values are different.
   // `exclusions` param ignores provided keys.
   // Returns array of keys that are different (empty array means identical).
-  shallowDiff: function(a, b, exclusions = []) {
+  shallowDiff: function (a, b, exclusions = []) {
     const diffs = [];
     for (let key of Object.keys(a)) {
       if (exclusions.includes(key)) {
@@ -42,14 +44,20 @@ export const Utils = {
     return diffs;
   },
   // Robust compare Moment dates.
-  compareDates: function(a, b, granularity) {
+  compareDates: function (a, b, granularity) {
     // Allow for falsy (null & undefined) equality.
     if (!a && !b) {
       return true;
     }
-    return !!a && !!b && a.isSame(b, granularity);
+    if (granularity === 'days') {
+      return !!a && !!b && isSameDay(a, b);
+    }
+    if (granularity === 'months') {
+      return !!a && !!b && isSameMonth(a, b);
+    }
+    return true;
   },
-  getWeekdays: function(firstDay = 0) {
+  getWeekdays: function (firstDay = 0) {
     let from = firstDay;
     const weekdays = [];
     for (let i = 0; i < Utils.WEEKDAYS.length; i++) {
@@ -58,7 +66,7 @@ export const Utils = {
     }
     return weekdays;
   },
-  getISOWeekdaysOrder: function(firstDay = 0) {
+  getISOWeekdaysOrder: function (firstDay = 0) {
     let from = firstDay === 0 ? 7 : firstDay;
     const order = [];
     for (let i = 0; i < Utils.WEEKDAYS.length; i++) {

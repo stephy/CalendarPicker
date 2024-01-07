@@ -24,9 +24,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "date-fns": "^3.1.0",
     "expo": "~42.0.0",
     "expo-status-bar": "~1.0.4",
-    "moment": "^2.29.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",

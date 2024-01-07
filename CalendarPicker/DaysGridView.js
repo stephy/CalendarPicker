@@ -5,7 +5,7 @@ import { stylePropType } from './localPropTypes';
 import Day from './Day';
 import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
-import moment from 'moment';
+import { getISODay } from 'date-fns';
 
 export default class DaysGridView extends Component {
   constructor(props) {
@@ -36,12 +36,12 @@ export default class DaysGridView extends Component {
       }
 
       // Create a date for day one of the current given month and year
-      const firstDayOfMonth = moment({ year, month, day: 1 });
+      const firstDayOfMonth = new Date(year, month, 1);
 
       // Determine which day of the week day 1 falls on.
       // See https://github.com/stephy/CalendarPicker/issues/49
       // isoWeekday() gets the ISO day of the week with 1=Monday and 7=Sunday.
-      const firstWeekDay = firstDayOfMonth.isoWeekday();
+      const firstWeekDay = getISODay(firstDayOfMonth);
 
       // Determine starting index based on first day of week prop.
       const startIndex = (firstDay > 0) ? (firstWeekDay + Utils.FIRST_DAY_OFFSETS[firstDay]) % 7 : firstWeekDay;
@@ -87,10 +87,9 @@ export default class DaysGridView extends Component {
       // Check that selected date(s) match this month.
       if (isSelectedDiff && (
         Utils.compareDates(selectedStartDate, firstDayOfMonth, 'month') ||
-          Utils.compareDates(selectedEndDate, firstDayOfMonth, 'month') ||
-          Utils.compareDates(prevSelStart, firstDayOfMonth, 'month') ||
-          Utils.compareDates(prevSelEnd, firstDayOfMonth, 'month') ))
-      {
+        Utils.compareDates(selectedEndDate, firstDayOfMonth, 'month') ||
+        Utils.compareDates(prevSelStart, firstDayOfMonth, 'month') ||
+        Utils.compareDates(prevSelEnd, firstDayOfMonth, 'month'))) {
         // Range selection potentially affects all dates in the month. Recreate.
         if (this.props.allowRangeSelection) {
           this.setState({
@@ -101,8 +100,8 @@ export default class DaysGridView extends Component {
           // Search for affected dates and modify those only
           const daysGrid = [...this.state.daysGrid];
           const { year } = this.props;
-          for (let i = 0; i <daysGrid.length; i++) {
-            for (let j = 0; j <daysGrid[i].length; j++) {
+          for (let i = 0; i < daysGrid.length; i++) {
+            for (let j = 0; j < daysGrid[i].length; j++) {
               const { month, day } = daysGrid[i][j];
               // Empty days and stragglers can't be selected.
               if (month === undefined) { continue; }
@@ -110,8 +109,7 @@ export default class DaysGridView extends Component {
               const thisDay = { year, month, day };
               const isSelected = Utils.compareDates(selectedStartDate, thisDay, 'day');
               const isPrevSelected = Utils.compareDates(prevSelStart, thisDay, 'day');
-              if (isSelected || isPrevSelected)
-              {
+              if (isSelected || isPrevSelected) {
                 daysGrid[i][j] = this.renderDayInCurrentMonth(day);
               }
             }
@@ -147,7 +145,7 @@ export default class DaysGridView extends Component {
     });
   }
 
-  renderDayStraggler({key, day}) {
+  renderDayStraggler({ key, day }) {
     return ({
       day,
       // month doesn't matter for stragglers as long as isn't set to current month
@@ -227,13 +225,13 @@ export default class DaysGridView extends Component {
     const { daysGrid } = this.state;
     const renderedDaysGrid = daysGrid.map((weekRow, i) => (
       <View key={i} style={styles.weekRow}>
-        { weekRow.map(day => day.component ) }
+        {weekRow.map(day => day.component)}
       </View>
     ));
 
     return (
       <View style={styles.daysWrapper}>
-        { renderedDaysGrid }
+        {renderedDaysGrid}
       </View>
     );
   }
@@ -257,7 +255,6 @@ DaysGridView.propTypes = {
       date: PropTypes.oneOfType([
         PropTypes.string,
         PropTypes.instanceOf(Date),
-        PropTypes.instanceOf(moment)
       ]),
       containerStyle: stylePropType,
       style: stylePropType,
