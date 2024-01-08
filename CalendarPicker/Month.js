@@ -33,7 +33,7 @@ export default function Month(props) {
     monthIsAfterMax = month > getMonth(maxDate);
   }
   if (minDate && (getYear(minDate) === year)) {
-    monthIsBeforeMin = month < getMonth(month);
+    monthIsBeforeMin = month < getMonth(minDate);
   }
 
   // ToDo: disabledMonths props to disable months separate from disabledDates

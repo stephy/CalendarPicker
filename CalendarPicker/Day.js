@@ -163,7 +163,9 @@ export default function Day(props) {
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle, selectedRangeStartTextStyle];
         }
         // Apply style for days inside of range, excluding start & end dates.
-        if (isWithinInterval(thisDay, { start: selectedStartDate, end: selectedEndDate })) {
+        if (!isThisDaySameAsSelectedEnd &&
+          !isThisDaySameAsSelectedStart &&
+          isWithinInterval(thisDay, { start: selectedStartDate, end: selectedEndDate })) {
           computedSelectedDayStyle = [styles.inRangeDay, selectedRangeStyle];
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle];
         }
