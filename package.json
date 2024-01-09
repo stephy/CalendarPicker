@@ -1,12 +1,11 @@
 {
   "name": "react-native-calendar-picker",
-  "version": "7.1.5",
+  "version": "8.0.0",
   "description": "Calendar Picker Component for React Native",
   "engines": {
     "node": ">=4.0.0"
   },
   "peerDependencies": {
-    "moment": ">=2.0.0",
     "react": "*",
     "react-native": "*"
   },
