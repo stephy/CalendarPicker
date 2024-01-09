@@ -4,9 +4,17 @@
 
 This is a Calendar Picker Component for React Native
 
-### Migrated from moment to date-fns - New in 8.x
+### Breaking changes in 8.x - replaced moment with date-fns
 
-We've migrated away from [moment.js](https://github.com/moment/moment), in favor of [date-fns](https://date-fns.org/), a modular and lightweight alternative. These changes should be backwards compatible, with no migration steps required in order to upgrade from earlier versions of `react-native-calendar-picker`.
+We've migrated away from [moment.js](https://github.com/moment/moment), in favor of [date-fns](https://date-fns.org/), a modular and lightweight alternative. Users wanting to continue to use Moment should stick with 7.x
+
+# Prerequisites
+
+CalendarPicker requires date-fns >=3.0. Date props may be anything parseable by the [Javascript Date object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date), such as a Javascript Date, or ISO8601 datetime string.
+
+```
+npm install --save date-fns
+```
 
 ### Scrollable CalendarPicker — New in 7.x
 
