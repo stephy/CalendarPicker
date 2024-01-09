@@ -9,7 +9,7 @@ import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { RecyclerListView, DataProvider, LayoutProvider } from 'recyclerlistview';
-import moment from 'moment';
+import { addMonths, endOfMonth, isAfter, isBefore, isSameMonth, startOfMonth } from 'date-fns';
 
 export default class CalendarScroller extends Component {
   static propTypes = {
@@ -88,12 +88,11 @@ export default class CalendarScroller extends Component {
 
     if (this.props.data !== prevProps.data) {
       updateState = true;
-      newState = {...newState, ...this.updateMonthsData(this.props.data)};
+      newState = { ...newState, ...this.updateMonthsData(this.props.data) };
     }
 
     if (Platform.OS === 'android' &&
-        this.props.renderMonthParams.selectedStartDate !== prevProps.renderMonthParams.selectedStartDate)
-    {
+      this.props.renderMonthParams.selectedStartDate !== prevProps.renderMonthParams.selectedStartDate) {
       // Android unexpectedly jumps to previous month on first selected date.
       // Scroll RLV to selected date's month.
       this.goToDate(this.props.renderMonthParams.selectedStartDate, 100);
@@ -107,9 +106,9 @@ export default class CalendarScroller extends Component {
   goToDate = (date, delay) => {
     const data = this.state.data;
     for (let i = 0; i < data.length; i++) {
-      if (data[i].isSame(date, 'month')) {
+      if (isSameMonth(data[i], date)) {
         if (delay) {
-          setTimeout(() =>  this.rlv && this.rlv.scrollToIndex(i, false), delay);
+          setTimeout(() => this.rlv && this.rlv.scrollToIndex(i, false), delay);
         }
         else {
           this.rlv && this.rlv.scrollToIndex(i, false);
@@ -143,7 +142,7 @@ export default class CalendarScroller extends Component {
 
   // Shift dates when beginning of list is reached.
   shiftMonthsBackward = currentMonth => {
-    this.shiftMonths(currentMonth, this.state.numMonths * 2/3);
+    this.shiftMonths(currentMonth, this.state.numMonths * 2 / 3);
   }
 
   shiftMonths = (currentMonth, offset) => {
@@ -163,12 +162,12 @@ export default class CalendarScroller extends Component {
     } = this.props;
     const data = [];
     let _newStartMonth = newStartMonth;
-    if (minDate && restrictMonthNavigation && newStartMonth.isBefore(minDate, 'month')) {
-      _newStartMonth = moment(minDate);
+    if (minDate && restrictMonthNavigation && isBefore(newStartMonth, startOfMonth(minDate))) {
+      _newStartMonth = new Date(minDate);
     }
     for (let i = 0; i < this.state.numMonths; i++) {
-      let date = _newStartMonth.clone().add(i, 'months');
-      if (maxDate && restrictMonthNavigation && date.isAfter(maxDate, 'month')) {
+      let date = addMonths(_newStartMonth, i);
+      if (maxDate && restrictMonthNavigation && isAfter(endOfMonth(date), maxDate)) {
         break;
       }
       data.push(date);
@@ -180,7 +179,7 @@ export default class CalendarScroller extends Component {
 
     // Scroll to previous date
     for (let i = 0; i < data.length; i++) {
-      if (data[i].isSame(prevVisMonth, 'month')) {
+      if (isSameMonth(data[i], prevVisMonth)) {
         this.shifting = true;
         this.rlv && this.rlv.scrollToIndex(i, false);
         // RecyclerListView sometimes returns position to old index after
@@ -214,12 +213,12 @@ export default class CalendarScroller extends Component {
     // "now" contains the inflight indices, whereas "all" reflects indices
     // after scrolling has settled. Prioritize "now" for faster header updates.
     const currentIndex = now[0] || all[0];
-    const currentMonth = data[currentIndex]; // a Moment date
+    const currentMonth = data[currentIndex]; // a date
 
     // Fire month/year update on month changes.  This is
     // necessary for the header and onMonthChange updates.
-    if (!_currentMonth || !_currentMonth.isSame(currentMonth, 'month')) {
-      const currMonth = currentMonth && currentMonth.clone();
+    if (!_currentMonth || !isSameMonth(_currentMonth, currentMonth)) {
+      const currMonth = new Date(currentMonth);
       onMonthChange && onMonthChange(currMonth);
     }
 
@@ -247,7 +246,7 @@ export default class CalendarScroller extends Component {
   rowRenderer = (type, rowMonth, i, extState) => {
     const { updateMonthYear, renderMonth } = this.props;
     const { currentMonth: month, currentYear: year } = updateMonthYear(rowMonth);
-    return renderMonth && renderMonth({...extState, month, year});
+    return renderMonth && renderMonth({ ...extState, month, year });
   }
 
   render() {

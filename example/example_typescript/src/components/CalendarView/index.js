@@ -22,14 +22,14 @@ export function CalendarView(props) {
     function onDateChange(date, type) {
         if (type === 'END_DATE') {
             if (date) {
-                setEndDate(date.toDate())
+                setEndDate(date)
                 return
             }
             setEndDate(null)
         }
         else {
-            setEndDate(date.toDate())
-            setStartDate(date.toDate())
+            setEndDate(date)
+            setStartDate(date)
         }
     }
 

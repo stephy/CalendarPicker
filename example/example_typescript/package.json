@@ -24,9 +24,9 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "date-fns": "^3.1.0",
     "expo": "~42.0.0",
     "expo-status-bar": "~1.0.4",
-    "moment": "^2.29.1",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
@@ -38,7 +38,7 @@
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
     "typescript": "~4.0.0",
-    "@types/react-native-calendar-picker": "^7.0.1",
+    "@types/react-native-calendar-picker": "^7.0.1"
   },
   "private": false
 }

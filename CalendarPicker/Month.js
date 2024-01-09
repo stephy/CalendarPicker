@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
+import { getMonth, getYear } from 'date-fns';
 
 export default function Month(props) {
   const {
@@ -28,11 +29,11 @@ export default function Month(props) {
   let monthIsDisabled = false;
 
   // Check whether month is outside of min/max range.
-  if (maxDate && (maxDate.year() === year)) {
-    monthIsAfterMax = month > maxDate.month();
+  if (maxDate && (getYear(maxDate) === year)) {
+    monthIsAfterMax = month > getMonth(maxDate);
   }
-  if (minDate && (minDate.year() === year)) {
-    monthIsBeforeMin = month < minDate.month();
+  if (minDate && (getYear(minDate) === year)) {
+    monthIsBeforeMin = month < getMonth(minDate);
   }
 
   // ToDo: disabledMonths props to disable months separate from disabledDates
@@ -41,27 +42,27 @@ export default function Month(props) {
 
   const onSelect = () => {
     let _year = year;
-    if (minDate && (year < minDate.year())) {
-      _year = minDate.year();
+    if (minDate && (year < getYear(minDate))) {
+      _year = getYear(minDate);
     }
-    if (maxDate && (year > maxDate.year())) {
-      _year = maxDate.year();
+    if (maxDate && (year > getYear(maxDate))) {
+      _year = getYear(maxDate);
     }
-    onSelectMonth({month, year: _year});
+    onSelectMonth({ month, year: _year });
   };
 
   return (
     <View style={[styles.monthContainer]}>
-      { !monthOutOfRange ?
+      {!monthOutOfRange ?
         <TouchableOpacity
           onPress={onSelect}>
           <Text style={[styles.monthText, textStyle]}>
-            { monthName }
+            {monthName}
           </Text>
         </TouchableOpacity>
         :
         <Text style={[textStyle, styles.disabledText]}>
-          { monthName }
+          {monthName}
         </Text>
       }
     </View>

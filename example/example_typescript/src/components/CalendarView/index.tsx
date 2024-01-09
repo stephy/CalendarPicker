@@ -6,7 +6,6 @@ import {
     Text
 } from 'react-native';
 import CalendarPicker from 'react-native-calendar-picker';
-import { Moment } from "moment";
 
 import { week, monthFull } from "./config"
 import { colors } from "../../global/colors";
@@ -30,17 +29,17 @@ export function CalendarView(props: CalendarViewProps) {
         scroll = false
     } = props
 
-    function onDateChange(date: Moment, type: 'START_DATE' | 'END_DATE') {
+    function onDateChange(date: Date, type: 'START_DATE' | 'END_DATE') {
         if (type === 'END_DATE') {
             if (date) {
-                setEndDate(date.toDate())
+                setEndDate(date)
                 return
             }
             setEndDate(null)
         }
         else {
-            setEndDate(date.toDate())
-            setStartDate(date.toDate())
+            setEndDate(date)
+            setStartDate(date)
         }
     }
 

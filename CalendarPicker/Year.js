@@ -5,7 +5,7 @@ import {
   TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
-import moment from 'moment';
+import { getMonth, getYear, isAfter, isBefore, startOfMonth } from 'date-fns';
 
 export default function Year(props) {
   const {
@@ -26,10 +26,10 @@ export default function Year(props) {
 
   // Check whether year is outside of min/max range.
   if (maxDate) {
-    yearIsAfterMax = year > maxDate.year();
+    yearIsAfterMax = year > getYear(maxDate);
   }
   if (minDate) {
-    yearIsBeforeMin = year < minDate.year();
+    yearIsBeforeMin = year < getYear(minDate);
   }
 
   // ToDo: disabledYears props to disable years separate from disabledDates
@@ -39,28 +39,28 @@ export default function Year(props) {
   const onSelect = () => {
     // Guard against navigating to months beyond min/max dates.
     let month = currentMonth;
-    let currentMonthYear = moment({year: currentYear, month});
-    if (maxDate && currentMonthYear.isAfter(maxDate, 'month')) {
-      month = maxDate.month();
+    let currentMonthYear = new Date(currentYear, month);
+    if (maxDate && isAfter(currentMonthYear, startOfMonth(maxDate))) {
+      month = getMonth(maxDate);
     }
-    if (minDate && currentMonthYear.isBefore(minDate, 'month')) {
-      month = minDate.month();
+    if (minDate && isBefore(currentMonthYear, startOfMonth(minDate))) {
+      month = getMonth(minDate);
     }
-    onSelectYear({month, year});
+    onSelectYear({ month, year });
   };
 
   return (
     <View style={[styles.yearContainer]}>
-      { !yearOutOfRange ?
+      {!yearOutOfRange ?
         <TouchableOpacity
           onPress={onSelect}>
           <Text style={[styles.yearText, textStyle]}>
-            { year }
+            {year}
           </Text>
         </TouchableOpacity>
         :
         <Text style={[textStyle, styles.disabledText]}>
-          { year }
+          {year}
         </Text>
       }
     </View>
