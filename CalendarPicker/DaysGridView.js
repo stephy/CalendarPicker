@@ -5,7 +5,8 @@ import { stylePropType } from './localPropTypes';
 import Day from './Day';
 import EmptyDay from './EmptyDay';
 import { Utils } from './Utils';
-import { getISODay } from 'date-fns';
+
+import { getISODay } from 'date-fns/getISODay';
 
 export default class DaysGridView extends Component {
   constructor(props) {

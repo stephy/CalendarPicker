@@ -7,7 +7,11 @@ import {
   TextInput,
   Switch,
 } from 'react-native';
-import { addDays, format, subDays } from 'date-fns';
+
+import { addDays } from 'date-fns/addDays';
+import { format } from 'date-fns/format';
+import { subDays } from 'date-fns/subDays';
+
 import CalendarPicker from './CalendarPicker';
 
 export default class App extends Component {

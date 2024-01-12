@@ -5,7 +5,10 @@
  * Licensed under the terms of the MIT license. See LICENSE file in the project root for terms.
  */
 
-import { getMonth, getYear, isSameDay, isSameMonth } from "date-fns";
+import { getMonth } from 'date-fns/getMonth';
+import { getYear } from 'date-fns/getYear';
+import { isSameDay } from 'date-fns/isSameDay';
+import { isSameMonth } from 'date-fns/isSameMonth';
 
 export const Utils = {
   START_DATE: 'START_DATE',

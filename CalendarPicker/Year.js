@@ -5,7 +5,12 @@ import {
   TouchableOpacity
 } from 'react-native';
 import PropTypes from 'prop-types';
-import { getMonth, getYear, isAfter, isBefore, startOfMonth } from 'date-fns';
+
+import { getMonth } from 'date-fns/getMonth';
+import { getYear } from 'date-fns/getYear';
+import { isAfter } from 'date-fns/isAfter';
+import { isBefore } from 'date-fns/isBefore';
+import { startOfMonth } from 'date-fns/startOfMonth';
 
 export default function Year(props) {
   const {
