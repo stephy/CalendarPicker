@@ -9,7 +9,13 @@ import React, { Component } from 'react';
 import { View, Platform } from 'react-native';
 import PropTypes from 'prop-types';
 import { RecyclerListView, DataProvider, LayoutProvider } from 'recyclerlistview';
-import { addMonths, endOfMonth, isAfter, isBefore, isSameMonth, startOfMonth } from 'date-fns';
+
+import { addMonths } from 'date-fns/addMonths';
+import { endOfMonth } from 'date-fns/endOfMonth';
+import { isAfter } from 'date-fns/isAfter';
+import { isBefore } from 'date-fns/isBefore';
+import { isSameMonth } from 'date-fns/isSameMonth';
+import { startOfMonth } from 'date-fns/startOfMonth';
 
 export default class CalendarScroller extends Component {
   static propTypes = {

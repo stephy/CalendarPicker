@@ -6,7 +6,9 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 import { Utils } from './Utils';
-import { getMonth, getYear } from 'date-fns';
+
+import { getMonth } from 'date-fns/getMonth';
+import { getYear } from 'date-fns/getYear';
 
 export default function Month(props) {
   const {

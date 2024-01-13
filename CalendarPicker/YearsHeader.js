@@ -7,7 +7,8 @@ import {
 import PropTypes from 'prop-types';
 import { stylePropType } from './localPropTypes';
 import Controls from './Controls';
-import { getYear } from 'date-fns';
+
+import { getYear } from 'date-fns/getYear';
 
 export default function YearsHeader(props) {
   const {
