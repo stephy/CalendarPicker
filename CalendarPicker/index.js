@@ -39,10 +39,8 @@ export default class CalendarPicker extends Component {
       ...this.createMonths(props, {}),
     };
     this.state.renderMonthParams = this.createMonthProps(this.state);
-    Text.defaultProps = {
-      ...(Text.defaultProps || {}),
-      allowFontScaling: props.fontScaling,
-    };
+    if(Text.defaultProps == null) Text.defaultProps = {};
+    Text.defaultProps.allowFontScaling = props.fontScaling;
   }
 
   static defaultProps = {
