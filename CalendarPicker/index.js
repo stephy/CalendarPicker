@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, Text } from 'react-native';
 import { makeStyles } from './makeStyles';
 import { Utils } from './Utils';
 import HeaderControls from './HeaderControls';
@@ -39,6 +39,10 @@ export default class CalendarPicker extends Component {
       ...this.createMonths(props, {}),
     };
     this.state.renderMonthParams = this.createMonthProps(this.state);
+    Text.defaultProps = {
+      ...Text.defaultProps,
+      allowFontScaling: props.fontScaling,
+    }
   }
 
   static defaultProps = {
@@ -61,6 +65,7 @@ export default class CalendarPicker extends Component {
     selectedRangeStartStyle: null,
     selectedRangeEndStyle: null,
     selectedRangeStyle: null,
+    fontScaling: true,
   };
 
   componentDidUpdate(prevProps) {
@@ -408,6 +413,7 @@ export default class CalendarPicker extends Component {
       selectedRangeStyle: this.props.selectedRangeStyle,
       selectedRangeEndStyle: this.props.selectedRangeEndStyle,
       customDatesStyles: this.props.customDatesStyles,
+      fontScaling: this.props.fontScaling,
     };
   }
 
