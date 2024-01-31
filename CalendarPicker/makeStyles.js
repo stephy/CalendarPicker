@@ -41,17 +41,19 @@ export function makeStyles(params) {
     },
 
     dayButton: {
-      width: 30*scaler,
-      height: 30*scaler,
+      width: 50*scaler,
+      height: 50*scaler,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
+      alignItems: "center",
     },
 
     dayLabel: {
-      fontSize: 14*scaler,
+      fontSize: 16*scaler,
       color: '#000',
-      alignSelf: 'center'
+      alignSelf: 'center',
+      textAlign: "center"
     },
 
     selectedDayLabel: {
@@ -77,14 +79,14 @@ export function makeStyles(params) {
 
     dayLabels: {
       width: 50*scaler,
-      fontSize: 12*scaler,
+      fontSize: 16*scaler,
       color: '#000',
       textAlign: 'center'
     },
 
     selectedDay: {
-      width: 30*scaler,
-      height:30*scaler,
+      width: 50*scaler,
+      height:50*scaler,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
       justifyContent: 'center'
@@ -95,11 +97,11 @@ export function makeStyles(params) {
     },
 
     selectedToday: {
-      width: 30*scaler,
-      height:30*scaler,
+      width: 50*scaler,
+      height:50*scaler,
       backgroundColor: TODAY_BG_COLOR,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
-      alignSelf: 'center',
+      // alignSelf: 'center',
       justifyContent: 'center'
     },
 
@@ -107,13 +109,13 @@ export function makeStyles(params) {
       alignItems: 'center',
       justifyContent: 'center',
       width: 50*scaler,
-      height: 40*scaler,
+      height: 50*scaler,
       backgroundColor: 'rgba(0,0,0,0.0)'
     },
 
     startDayWrapper: {
       width: 50*scaler,
-      height: 30*scaler,
+      height: 40*scaler,
       borderTopLeftRadius: 20*scaler,
       borderBottomLeftRadius: 20*scaler,
       backgroundColor: SELECTED_BG_COLOR,
@@ -123,7 +125,7 @@ export function makeStyles(params) {
 
     endDayWrapper: {
       width: 50*scaler,
-      height: 30*scaler,
+      height: 40*scaler,
       borderTopRightRadius: 20*scaler,
       borderBottomRightRadius: 20*scaler,
       backgroundColor: SELECTED_BG_COLOR,
@@ -133,7 +135,7 @@ export function makeStyles(params) {
 
     inRangeDay: {
       width: 50*scaler,
-      height: 30*scaler,
+      height: 40*scaler,
       backgroundColor: SELECTED_BG_COLOR,
       alignSelf: 'center',
       justifyContent: 'center'
@@ -168,7 +170,7 @@ export function makeStyles(params) {
     },
 
     navButtonText: {
-      fontSize: 14*scaler,
+      fontSize: 16*scaler,
     },
 
     weeks: {
@@ -180,21 +182,21 @@ export function makeStyles(params) {
     },
 
     disabledText: {
-      fontSize: 14*scaler,
+      fontSize: 16*scaler,
       color: '#BBBBBB',
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     selectedDisabledText: {
-      fontSize: 14*scaler,
+      fontSize: 16*scaler,
       color: '#DDDDDD',
       alignSelf: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
 
     monthHeaderMainText: {
-      fontSize: 16*scaler,
+      fontSize: 20*scaler,
       color: '#000',
       textAlign: 'right',
       marginHorizontal: 3*scaler,
@@ -210,7 +212,7 @@ export function makeStyles(params) {
 
     monthsHeaderText: {
       flex: 1,
-      fontSize: 16*scaler,
+      fontSize: 20*scaler,
       color: '#000',
       textAlign: 'center'
     },
@@ -221,7 +223,7 @@ export function makeStyles(params) {
     },
 
     monthText: {
-      fontSize: 14*scaler,
+      fontSize: 20*scaler,
       color: '#000',
       alignSelf: 'center'
     },
@@ -238,7 +240,7 @@ export function makeStyles(params) {
     },
 
     yearHeaderMainText: {
-      fontSize: 16*scaler,
+      fontSize: 20*scaler,
       color: '#000',
       marginHorizontal: 3*scaler,
     },
@@ -249,13 +251,13 @@ export function makeStyles(params) {
     },
 
     yearText: {
-      fontSize: 14*scaler,
+      fontSize: 20*scaler,
       color: '#000',
       alignSelf: 'center'
     },
 
     yearsHeaderText: {
-      fontSize: 16*scaler,
+      fontSize: 20*scaler,
       color: '#000',
       width: 180*scaler,
       textAlign: 'center'
@@ -272,5 +274,8 @@ export function makeStyles(params) {
       padding: 20*scaler,
     },
 
+    txtLunar: {
+      textAlign: "center", color: "red", fontSize: 10*scaler
+    },
   };
 }

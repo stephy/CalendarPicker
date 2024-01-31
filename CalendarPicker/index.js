@@ -66,6 +66,7 @@ export default class CalendarPicker extends Component {
     selectedRangeEndStyle: null,
     selectedRangeStyle: null,
     fontScaling: true,
+    isShowLunarCalendar: true,
   };
 
   componentDidUpdate(prevProps) {
@@ -414,6 +415,7 @@ export default class CalendarPicker extends Component {
       selectedRangeEndStyle: this.props.selectedRangeEndStyle,
       customDatesStyles: this.props.customDatesStyles,
       fontScaling: this.props.fontScaling,
+      isShowLunarCalendar: this.props.isShowLunarCalendar,
     };
   }
 

@@ -9,6 +9,118 @@ import { getMonth } from 'date-fns/getMonth';
 import { getYear } from 'date-fns/getYear';
 import { isSameDay } from 'date-fns/isSameDay';
 import { isSameMonth } from 'date-fns/isSameMonth';
+import { LunarDate } from "vietnamese-lunar-calendar";
+import moment from 'moment';
+
+const NATIONAL_HOLIDAYS = [
+  {
+    day: 20,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 21,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 22,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 23,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 24,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 25,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 26,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 27,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 28,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 29,
+    month: 12,
+    info: "",
+  },
+  {
+    day: 30,
+    month: 12,
+    info: "",
+  },
+
+  {
+    day: 1,
+    month: 1,
+    info: "Mùng 1",
+  },
+  {
+    day: 2,
+    month: 1,
+    info: "Mùng 2",
+  },
+  {
+    day: 3,
+    month: 1,
+    info: "Mùng 3",
+  },
+  {
+    day: 4,
+    month: 1,
+    info: "Mùng 4",
+  },
+
+  {
+    day: 5,
+    month: 1,
+    info: "Mùng 5",
+  },
+  {
+    day: 6,
+    month: 1,
+    info: "Mùng 6",
+  },
+  {
+    day: 7,
+    month: 1,
+    info: "Mùng 7",
+  },
+  {
+    day: 8,
+    month: 1,
+    info: "Mùng 8",
+  },
+  {
+    day: 9,
+    month: 1,
+    info: "Mùng 9",
+  },
+  {
+    day: 10,
+    month: 1,
+    info: "Mùng 10",
+  },
+];
 
 export const Utils = {
   START_DATE: 'START_DATE',
@@ -78,4 +190,16 @@ export const Utils = {
     }
     return order;
   },
+  getLunarDay: function ({ year, month, day }, isShowLunarCalendar = false) {
+    // Thuộc tính không hiện lịch âm
+    if (!isShowLunarCalendar) {
+      return null;
+    }
+    const lunar = new LunarDate(moment({year :year, month : month, day :day}).toDate());
+    const lunarSelected = NATIONAL_HOLIDAYS.find((d) => d.day === lunar.date && d.month === lunar.month);
+    if (lunarSelected) {
+      return lunarSelected.info ? lunarSelected.info : `${String(lunar.date).padStart(2, "0")}/${String(lunar.month).padStart(2, "0")}`;
+    }
+    return null
+  }
 };

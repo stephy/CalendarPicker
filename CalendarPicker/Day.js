@@ -12,6 +12,7 @@ import { isBefore } from 'date-fns/isBefore';
 import { isSameDay } from 'date-fns/isSameDay';
 import { isWithinInterval } from 'date-fns/isWithinInterval';
 import { startOfDay } from 'date-fns/startOfDay';
+import {Utils} from './Utils'
 
 export default function Day(props) {
   const {
@@ -41,11 +42,13 @@ export default function Day(props) {
     disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
-    enableDateChange
+    enableDateChange,
+    isShowLunarCalendar
   } = props;
 
   const thisDay = new Date(year, month, day, 12);
   const today = new Date();
+  const lunar = Utils.getLunarDay({ year, month, day }, isShowLunarCalendar);
 
   let dateOutOfRange;
   let computedSelectedDayStyle = styles.dayButton; // may be overridden depending on state
@@ -57,6 +60,7 @@ export default function Day(props) {
   let dateIsDisabled = false;
   let dateRangeLessThanMin = false;
   let dateRangeGreaterThanMax = false;
+  let selectedLunarDayTextStyle = {}; // style ngày lễ tết
 
   // First let's check if date is out of range
   // Check whether props maxDate / minDate are defined. If not supplied,
@@ -128,6 +132,8 @@ export default function Day(props) {
       computedSelectedDayStyle = styles.selectedToday;
       // todayTextStyle prop overrides selectedDayTextColor (created via makeStyles)
       selectedDayTextStyle = [todayTextStyle || styles.selectedDayLabel, propSelectedDayTextStyle];
+      // lịch âm
+      selectedLunarDayTextStyle = styles.selectedDayLabel;
     }
 
     const custom = getCustomDateStyle({ customDatesStyles, date: thisDay });
@@ -146,6 +152,9 @@ export default function Day(props) {
       selectedDayTextStyle = [styles.selectedDayLabel, isToday && todayTextStyle, propSelectedDayTextStyle];
       // selectedDayStyle prop overrides selectedDayColor (created via makeStyles)
       selectedDayStyle = propSelectedDayStyle || styles.selectedDayBackground;
+
+      // lịch âm
+      selectedLunarDayTextStyle = styles.selectedDayLabel;
     }
 
     // Set selected ranges styles
@@ -155,11 +164,17 @@ export default function Day(props) {
         if (isThisDaySameAsSelectedStart) {
           computedSelectedDayStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle, selectedRangeStartTextStyle];
+
+          // lịch âm
+          selectedLunarDayTextStyle = styles.selectedDayLabel;
         }
         // Apply style for end date
         if (isThisDaySameAsSelectedEnd) {
           computedSelectedDayStyle = [styles.endDayWrapper, selectedRangeStyle, selectedRangeEndStyle];
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle, selectedRangeEndTextStyle];
+
+          // lịch âm
+          selectedLunarDayTextStyle = styles.selectedDayLabel;
         }
         // Apply style if start date is the same as end date
         if (isThisDaySameAsSelectedEnd &&
@@ -167,6 +182,9 @@ export default function Day(props) {
           isSameDay(selectedEndDate, selectedStartDate)) {
           computedSelectedDayStyle = [styles.selectedDay, styles.selectedDayBackground, selectedRangeStyle];
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle, selectedRangeStartTextStyle];
+
+          // lịch âm
+          selectedLunarDayTextStyle = styles.selectedDayLabel;
         }
         // Apply style for days inside of range, excluding start & end dates.
         if (!isThisDaySameAsSelectedEnd &&
@@ -174,6 +192,9 @@ export default function Day(props) {
           isWithinInterval(thisDay, { start: selectedStartDate, end: selectedEndDate })) {
           computedSelectedDayStyle = [styles.inRangeDay, selectedRangeStyle];
           selectedDayTextStyle = [styles.selectedDayLabel, propSelectedDayTextStyle];
+
+          // lịch âm
+          selectedLunarDayTextStyle = styles.selectedDayLabel;
         }
       }
       // Apply style if start date has been selected but end date has not
@@ -186,6 +207,9 @@ export default function Day(props) {
         // This allows selected start date's text to be styled by selectedRangeStartTextStyle
         // even when it's below minRangeDuration.
         overrideOutOfRangeTextStyle = selectedRangeStartTextStyle;
+
+        // lịch âm
+        selectedLunarDayTextStyle = styles.selectedDayLabel;
       }
     }
 
@@ -200,6 +224,9 @@ export default function Day(props) {
             ]}>
               {day}
             </Text>
+            {
+              lunar ? <Text style={[styles.txtLunar, selectedLunarDayTextStyle]}>{lunar}</Text>: null
+            }
           </View>
         </View>
       );
@@ -211,8 +238,11 @@ export default function Day(props) {
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}
             onPress={() => onPressDay({ year, month, day })}>
             <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
-              {day}
+            {day}
             </Text>
+            {
+              lunar ? <Text style={[styles.txtLunar, selectedLunarDayTextStyle]}>{lunar}</Text>: null
+            }
           </TouchableOpacity>
         </View>
       );
@@ -229,9 +259,12 @@ export default function Day(props) {
     return (
       <View style={[styles.dayWrapper, custom.containerStyle]}>
         <View style={[styles.dayButton, custom.style]}>
-          <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}>
-            {day}
+          <Text style={[{ textAlign: "center" },textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}>
+          {day}
           </Text>
+          {
+            lunar ? <Text style={[styles.txtLunar, selectedLunarDayTextStyle]}>{lunar}</Text>: null
+          }
         </View>
       </View>
     );
