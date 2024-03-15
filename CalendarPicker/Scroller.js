@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import { RecyclerListView, DataProvider, LayoutProvider } from 'recyclerlistview';
 
 import { addMonths } from 'date-fns/addMonths';
+import { subMonths } from 'date-fns/subMonths';
 import { endOfMonth } from 'date-fns/endOfMonth';
 import { isAfter } from 'date-fns/isAfter';
 import { isBefore } from 'date-fns/isBefore';
@@ -152,8 +153,8 @@ export default class CalendarScroller extends Component {
   }
 
   shiftMonths = (currentMonth, offset) => {
-    const prevVisMonth = currentMonth.clone();
-    const newStartMonth = prevVisMonth.clone().subtract(Math.floor(offset), 'months');
+    const prevVisMonth = new Date(currentMonth);
+    const newStartMonth = subMonths(new Date(prevVisMonth), Math.floor(offset));
     this.updateMonths(prevVisMonth, newStartMonth);
   }
 
