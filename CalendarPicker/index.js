@@ -49,6 +49,7 @@ export default class CalendarPicker extends Component {
     initialDate: new Date(),
     scaleFactor: 375,
     scrollable: false,
+    scrollDecelerationRate: 'normal',
     onDateChange: () => {
       console.log('onDateChange() not provided');
     },
@@ -505,6 +506,7 @@ export default class CalendarPicker extends Component {
       onMonthChange,
       scrollable,
       horizontal,
+      scrollDecelarationRate,
     } = this.props;
 
     let content;
@@ -600,6 +602,7 @@ export default class CalendarPicker extends Component {
                 updateMonthYear={this.updateMonthYear}
                 onMonthChange={onMonthChange}
                 horizontal={horizontal}
+                scrollDecelarationRate={scrollDecelarationRate}
               />
               :
               this.renderMonth(renderMonthParams)

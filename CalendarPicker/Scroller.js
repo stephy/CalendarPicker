@@ -283,6 +283,7 @@ export default class CalendarScroller extends Component {
             showsHorizontalScrollIndicator: false,
             snapToInterval: this.props.horizontal ? width : height,
           }}
+          decelerationRate={this.props.scrollDecelarationRate}
         />
       </View>
     );
