@@ -41,11 +41,20 @@ export default function Day(props) {
     disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
-    enableDateChange
+    enableDateChange,
+    renderDay
   } = props;
 
   const thisDay = new Date(year, month, day, 12);
   const today = new Date();
+
+  const DayComponent = ({ style }) => {
+    if (renderDay) {
+      return renderDay({ year, month, day, date: thisDay.format('YYYY-MM-DD'), style });
+    }
+
+    return <Text style={style}>{day}</Text>;
+  };
 
   let dateOutOfRange;
   let computedSelectedDayStyle = styles.dayButton; // may be overridden depending on state
@@ -193,13 +202,11 @@ export default function Day(props) {
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
           <View style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}>
-            <Text style={[styles.dayLabel, textStyle,
-            styles.disabledText, disabledDatesTextStyle,
-            styles.selectedDisabledText, selectedDisabledDatesTextStyle,
+            <DayComponent style={[styles.dayLabel, textStyle,
+              styles.disabledText, disabledDatesTextStyle,
+              styles.selectedDisabledText, selectedDisabledDatesTextStyle,
               overrideOutOfRangeTextStyle
-            ]}>
-              {day}
-            </Text>
+            ]} />
           </View>
         </View>
       );
@@ -210,9 +217,7 @@ export default function Day(props) {
             disabled={!enableDateChange}
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}
             onPress={() => onPressDay({ year, month, day })}>
-            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
-              {day}
-            </Text>
+            <DayComponent style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]} />
           </TouchableOpacity>
         </View>
       );
@@ -229,9 +234,7 @@ export default function Day(props) {
     return (
       <View style={[styles.dayWrapper, custom.containerStyle]}>
         <View style={[styles.dayButton, custom.style]}>
-          <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}>
-            {day}
-          </Text>
+          <DayComponent style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]} />
         </View>
       </View>
     );
