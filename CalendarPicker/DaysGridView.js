@@ -45,7 +45,7 @@ export default class DaysGridView extends Component {
       const firstWeekDay = getISODay(firstDayOfMonth);
 
       // Determine starting index based on first day of week prop.
-      const startIndex = (firstDay > 0) ? (firstWeekDay + Utils.FIRST_DAY_OFFSETS[firstDay]) % 7 : firstWeekDay;
+      const startIndex = ((firstDay > 0) ? (firstWeekDay + Utils.FIRST_DAY_OFFSETS[firstDay]) : firstWeekDay) % 7;
 
       return {
         maxWeekRows: 6,
