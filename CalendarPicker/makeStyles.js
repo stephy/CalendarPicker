@@ -24,7 +24,8 @@ export function makeStyles(params) {
     selectedDayColor,
     selectedDayTextColor,
     todayBackgroundColor,
-    dayShape
+    dayShape,
+    nextPrevComponentContainer
   } = params;
   const scaler = Math.min(containerWidth, containerHeight) / scaleFactor;
   const SELECTED_BG_COLOR = selectedDayColor ? selectedDayColor : DEFAULT_SELECTED_BACKGROUND_COLOR;
@@ -160,11 +161,13 @@ export function makeStyles(params) {
 
     previousContainer: {
       marginLeft: 10*scaler,
+      ...nextPrevComponentContainer
     },
 
     nextContainer: {
       marginRight: 10*scaler,
       alignItems: 'flex-end',
+      ...nextPrevComponentContainer
     },
 
     navButtonText: {
