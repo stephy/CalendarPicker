@@ -288,6 +288,8 @@ export default class CalendarPicker extends Component {
       this.setState({
         selectedStartDate,
         selectedEndDate,
+        currentMonth: month,
+        currentYear: year,
         renderMonthParams: this.createMonthProps({ ...this.state, selectedStartDate, selectedEndDate }),
       }, () => {
         // Sync start date with parent *after* state update.
