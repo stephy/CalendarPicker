@@ -290,7 +290,13 @@ export default class CalendarPicker extends Component {
         selectedEndDate,
         currentMonth: month,
         currentYear: year,
-        renderMonthParams: this.createMonthProps({ ...this.state, selectedStartDate, selectedEndDate }),
+        renderMonthParams: this.createMonthProps({ 
+          ...this.state, 
+          currentMonth: month,
+          currentYear: year,
+          selectedStartDate, 
+          selectedEndDate 
+        }),
       }, () => {
         // Sync start date with parent *after* state update.
         onDateChange(this.state.selectedStartDate, Utils.START_DATE);
