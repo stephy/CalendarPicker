@@ -42,19 +42,19 @@ export default function Day(props) {
     minRangeDuration,
     maxRangeDuration,
     enableDateChange,
-    renderDay
+    renderDay,
   } = props;
 
   const thisDay = new Date(year, month, day, 12);
   const today = new Date();
 
-  const DayComponent = ({ style }) => {
+  const DayComponent = React.memo(({ style }) => {
     if (renderDay) {
-      return renderDay({ year, month, day, date: thisDay.format('YYYY-MM-DD'), style });
+      return renderDay({ year, month, day, date: thisDay, style });
     }
 
     return <Text style={style}>{day}</Text>;
-  };
+  });
 
   let dateOutOfRange;
   let computedSelectedDayStyle = styles.dayButton; // may be overridden depending on state
