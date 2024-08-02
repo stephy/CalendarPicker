@@ -19,7 +19,7 @@ export default function Day(props) {
     month,
     year,
     styles,
-    customDatesStyles,
+    customDatesStyles = [],
     onPressDay,
     selectedStartDate,
     selectedEndDate,
@@ -255,10 +255,6 @@ function getCustomDateStyle({ customDatesStyles, date }) {
   }
   return {};
 }
-
-Day.defaultProps = {
-  customDatesStyles: [],
-};
 
 Day.propTypes = {
   styles: PropTypes.shape({}),

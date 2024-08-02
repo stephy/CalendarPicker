@@ -45,7 +45,7 @@ export default class DaysGridView extends Component {
       const firstWeekDay = getISODay(firstDayOfMonth);
 
       // Determine starting index based on first day of week prop.
-      const startIndex = (firstDay > 0) ? (firstWeekDay + Utils.FIRST_DAY_OFFSETS[firstDay]) % 7 : firstWeekDay;
+      const startIndex = ((firstDay > 0) ? (firstWeekDay + Utils.FIRST_DAY_OFFSETS[firstDay]) : firstWeekDay) % 7;
 
       return {
         maxWeekRows: 6,
@@ -68,7 +68,15 @@ export default class DaysGridView extends Component {
   componentDidUpdate(prevProps) {
     // Optimize re-renders by checking props, with special handling for selected dates.
     // Shallow compare prop changes, excluding selected dates.
-    const propDiffs = Utils.shallowDiff(this.props, prevProps, ['selectedStartDate', 'selectedEndDate']);
+    let excludedProps = []
+
+    // Avoid unecessary re-render when selecting date range
+    if (this.props.selectedEndDate) {
+      excludedProps = ['selectedStartDate', 'selectedEndDate']
+    }
+
+    const propDiffs = Utils.shallowDiff(this.props, prevProps, excludedProps);
+
     if (propDiffs.length) {
       // Recreate days
       const monthSettings = this.initMonthSettings(this.props);
