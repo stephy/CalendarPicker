@@ -415,7 +415,7 @@ export default class CalendarPicker extends Component {
       selectedRangeEndStyle: this.props.selectedRangeEndStyle,
       customDatesStyles: this.props.customDatesStyles,
       fontScaling: this.props.fontScaling,
-      renderDay: this.props.renderDay
+      renderDay: this.props.renderDay,
     };
   }
 
