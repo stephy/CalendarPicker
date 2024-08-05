@@ -6,7 +6,7 @@
     "node": ">=4.0.0"
   },
   "peerDependencies": {
-    "date-fns": "^3.0.0",
+    "date-fns": ">=3.0.0",
     "react": "*",
     "react-native": "*"
   },
