@@ -19,7 +19,7 @@ export default function Day(props) {
     month,
     year,
     styles,
-    customDatesStyles,
+    customDatesStyles = [],
     onPressDay,
     selectedStartDate,
     selectedEndDate,
@@ -41,7 +41,7 @@ export default function Day(props) {
     disabledDatesTextStyle,
     minRangeDuration,
     maxRangeDuration,
-    enableDateChange
+    enableDateChange,
   } = props;
 
   const thisDay = new Date(year, month, day, 12);
@@ -252,10 +252,6 @@ function getCustomDateStyle({ customDatesStyles, date }) {
   }
   return {};
 }
-
-Day.defaultProps = {
-  customDatesStyles: [],
-};
 
 Day.propTypes = {
   styles: PropTypes.shape({}),

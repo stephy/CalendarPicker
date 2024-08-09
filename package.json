@@ -1,12 +1,12 @@
 {
   "name": "react-native-calendar-picker",
-  "version": "8.0.4",
+  "version": "8.0.5",
   "description": "Calendar Picker Component for React Native",
   "engines": {
     "node": ">=4.0.0"
   },
   "peerDependencies": {
-    "date-fns": "*",
+    "date-fns": ">=3.0.0",
     "react": "*",
     "react-native": "*"
   },
@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "date-fns": "^3.1.0",
+    "date-fns": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.19.0"
   }
