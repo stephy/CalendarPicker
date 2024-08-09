@@ -21,7 +21,7 @@
     "react-native": "0.72.5",
     "react-native-calendar-picker": "file:../",
     "react-native-web": "~0.19.6",
-    "recyclerlistview": "~3.0.0"
+    "recyclerlistview": "^4.2.0"
   },
   "devDependencies": {
     "@deboxsoft/cpx": "^1.5.0",
