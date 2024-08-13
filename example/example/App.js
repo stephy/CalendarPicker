@@ -46,6 +46,9 @@ export default class App extends Component {
     this.toggleEnableRange = this.toggleEnableRange.bind(this);
     this.onMinRangeDuration = this.onMinRangeDuration.bind(this);
     this.onMaxRangeDuration = this.onMaxRangeDuration.bind(this);
+    this.onSelectToday = this.onSelectToday.bind(this);
+    
+    this.calendarRef = React.createRef(null);
   }
 
   onDateChange(date, type) {
@@ -94,6 +97,11 @@ export default class App extends Component {
     });
   }
 
+  onSelectToday() {
+    const today = new Date()
+    this.calendarRef.current.handleOnPressDay({ day: today.getDate(), month: today.getMonth(), year: today.getFullYear() })
+  }
+
   customDayHeaderStylesCallback({ dayOfWeek, month, year }) {
     switch (dayOfWeek) {
       case 4: // Thursday
@@ -127,6 +135,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <CalendarPicker
+          ref={this.calendarRef}
           scrollable
           selectedStartDate={selectedStartDate}
           selectedEndDate={selectedEndDate}
@@ -152,6 +161,10 @@ export default class App extends Component {
 
         <View style={styles.topSpacing}>
           <Button onPress={this.clear} title="Clear Selection" />
+        </View>
+
+        <View style={styles.topSpacing}>
+          <Button onPress={this.onSelectToday} title="Select today" />
         </View>
 
         <View style={styles.topSpacing}>
