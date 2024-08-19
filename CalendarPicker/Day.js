@@ -13,7 +13,7 @@ import { isSameDay } from 'date-fns/isSameDay';
 import { isWithinInterval } from 'date-fns/isWithinInterval';
 import { startOfDay } from 'date-fns/startOfDay';
 
-const DayComponent = memo(({ style, year, month, date, renderDay }) => {
+const DayComponent = memo(({ style, year, month, date, day, renderDay }) => {
   if (renderDay) {
     return renderDay({ year, month, day, date, style });
   }
@@ -207,6 +207,7 @@ export default function Day(props) {
               styles.selectedDisabledText, selectedDisabledDatesTextStyle,
               overrideOutOfRangeTextStyle,
             ]} 
+            day={day}
             year={year}
             month={month}
             date={thisDay}
@@ -224,6 +225,7 @@ export default function Day(props) {
             onPress={() => onPressDay({ year, month, day })}>
             <DayComponent 
               style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
+              day={day}
               year={year}
               month={month}
               date={thisDay}
@@ -247,6 +249,7 @@ export default function Day(props) {
         <View style={[styles.dayButton, custom.style]}>
           <DayComponent 
             style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}
+            day={day}
             year={year}
             month={month}
             date={thisDay}
