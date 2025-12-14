@@ -405,9 +405,10 @@ These internal methods may be accessed through a ref to the CalendarPicker.
 | Name                        | Params                          | Description                                                                                                                                                                  |
 | :-------------------------- | :------------------------------ | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **`handleOnPressDay`**      | `{year, month, day} (Integers)` | Programmatically select date. `year`, `month` and `day` are numbers. `day` is the day of the current month. date-fns example for today's day of month: `getDate(new Date())` |
-| **`handleOnPressNext`**     |                                 | Programmatically advance to next month.                                                                                                                                      |
-| **`handleOnPressPrevious`** |                                 | Programmatically advance to previous month.                                                                                                                                  |
-| **`resetSelections`**       |                                 | Clear date selections. Useful for resetting date range selection when user has picked a start date but not an end date.                                                      |
+| **`handleOnPressNext`**     |                                 | Programmatically advance to next month. |
+| **`handleOnPressPrevious`** |                                 | Programmatically advance to previous month. |
+| **`resetSelections`**       |                                 | Clear date selections. Useful for resetting date range selection when user has picked a start date but not an end date. |
+| **`goToDate`**              | `date, {isSelected}`            | Goes to the passed `date` and is type of Date. `isSelected` is optional boolean and marks the passed date as selected. Default values are like `goToDate(new Date(), {isSelected: true})` |
 
 ## TypeScript
 
