@@ -237,6 +237,46 @@ export default class CalendarPicker extends Component {
     return { minRangeDuration, maxRangeDuration };
   }
 
+  goToDate = (date = new Date(), options = {}) => {
+
+    if (this.props.scrollable) {
+      console.error('goToDate() is not supported when scrollable is true');
+      return;
+    }
+
+    const defaultOptions = {
+      /*
+       * isSelected - if true, the date will be shown as selected.
+       * useful when you have different style for today and selected date.
+      */
+      isSelected: true,
+      ...options,
+    }
+
+    const cloneDate = new Date(date);
+    const fullYear = cloneDate.getFullYear();
+    const fullMonth = cloneDate.getMonth();
+    const fullDay = cloneDate.getDate();
+
+    if (!Utils.isSameMonthAndYear(cloneDate, this.state.selectedStartDate)) {
+
+      if (defaultOptions.isSelected) {
+        this.handleOnPressDay({ year: fullYear, month: fullMonth, day: fullDay, setAsCurrentDate: true });
+        const currentMonthYear = new Date(fullYear, fullMonth, 1, 12);
+        this.props.onMonthChange && this.props.onMonthChange(currentMonthYear);
+      } else {
+        this.handleOnPressFinisher({ year: fullYear, month: fullMonth, scrollFinisher: null, extraState: null });
+      }
+    } else {
+      // the date is in the same month and year as the selected date
+      
+      if (defaultOptions.isSelected) {
+        this.handleOnPressDay({ year: fullYear, month: fullMonth, day: fullDay });
+        
+      }
+    }
+  }
+
   handleOnPressDay = ({ year, month, day }) => {
     const {
       selectedStartDate: prevSelectedStartDate,

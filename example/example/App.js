@@ -46,6 +46,9 @@ export default class App extends Component {
     this.toggleEnableRange = this.toggleEnableRange.bind(this);
     this.onMinRangeDuration = this.onMinRangeDuration.bind(this);
     this.onMaxRangeDuration = this.onMaxRangeDuration.bind(this);
+    this.goToToday = this.goToToday.bind(this);
+
+    this.calendarPickerRef = React.createRef();
   }
 
   onDateChange(date, type) {
@@ -110,6 +113,12 @@ export default class App extends Component {
     }
   }
 
+  goToToday() {
+    this.calendarPickerRef.current.goToDate(new Date(), {
+      isSelected: false,
+    });
+  }
+
   render() {
     const {
       customDatesStyles,
@@ -127,6 +136,7 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
         <CalendarPicker
+          ref={this.calendarPickerRef}
           scrollable
           selectedStartDate={selectedStartDate}
           selectedEndDate={selectedEndDate}
@@ -142,6 +152,10 @@ export default class App extends Component {
           maxRangeDuration={maxRangeDuration && parseInt(maxRangeDuration)}
           headerWrapperStyle={styles.headerWrapperStyle}
         />
+
+        <View style={styles.topSpacing}>
+          <Button onPress={this.goToToday} title="Go to Today" />
+        </View>
 
         <View style={styles.topSpacing}>
           <Text style={styles.text}>Selected (Start) date:  {formattedStartDate}</Text>
