@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import {
   View,
   Text,
@@ -12,6 +12,14 @@ import { isBefore } from 'date-fns/isBefore';
 import { isSameDay } from 'date-fns/isSameDay';
 import { isWithinInterval } from 'date-fns/isWithinInterval';
 import { startOfDay } from 'date-fns/startOfDay';
+
+const DayComponent = memo(({ style, year, month, date, day, renderDay }) => {
+  if (renderDay) {
+    return renderDay({ year, month, day, date, style });
+  }
+
+  return <Text style={style}>{day}</Text>;
+});
 
 export default function Day(props) {
   const {
@@ -42,6 +50,7 @@ export default function Day(props) {
     minRangeDuration,
     maxRangeDuration,
     enableDateChange,
+    renderDay,
   } = props;
 
   const thisDay = new Date(year, month, day, 12);
@@ -193,13 +202,17 @@ export default function Day(props) {
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
           <View style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}>
-            <Text style={[styles.dayLabel, textStyle,
-            styles.disabledText, disabledDatesTextStyle,
-            styles.selectedDisabledText, selectedDisabledDatesTextStyle,
-              overrideOutOfRangeTextStyle
-            ]}>
-              {day}
-            </Text>
+            <DayComponent style={[styles.dayLabel, textStyle,
+              styles.disabledText, disabledDatesTextStyle,
+              styles.selectedDisabledText, selectedDisabledDatesTextStyle,
+              overrideOutOfRangeTextStyle,
+            ]} 
+            day={day}
+            year={year}
+            month={month}
+            date={thisDay}
+            renderDay={renderDay}
+          />
           </View>
         </View>
       );
@@ -210,9 +223,14 @@ export default function Day(props) {
             disabled={!enableDateChange}
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}
             onPress={() => onPressDay({ year, month, day })}>
-            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
-              {day}
-            </Text>
+            <DayComponent 
+              style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}
+              day={day}
+              year={year}
+              month={month}
+              date={thisDay}
+              renderDay={renderDay}
+            />
           </TouchableOpacity>
         </View>
       );
@@ -229,9 +247,14 @@ export default function Day(props) {
     return (
       <View style={[styles.dayWrapper, custom.containerStyle]}>
         <View style={[styles.dayButton, custom.style]}>
-          <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}>
-            {day}
-          </Text>
+          <DayComponent 
+            style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}
+            day={day}
+            year={year}
+            month={month}
+            date={thisDay}
+            renderDay={renderDay}
+          />
         </View>
       </View>
     );
