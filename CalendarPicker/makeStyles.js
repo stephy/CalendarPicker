@@ -36,20 +36,20 @@ export function makeStyles(params) {
     containerHeight,
 
     calendar: {
-      height: 320*scaler,
-      marginTop: 10*scaler
+      height: Math.floor(320*scaler),
+      marginTop: Math.floor(10*scaler)
     },
 
     dayButton: {
-      width: 30*scaler,
-      height: 30*scaler,
+      width: Math.floor(30*scaler),
+      height: Math.floor(30*scaler),
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     dayLabel: {
-      fontSize: 14*scaler,
+      fontSize: Math.floor(14*scaler),
       color: '#000',
       alignSelf: 'center'
     },
@@ -62,8 +62,8 @@ export function makeStyles(params) {
       flexDirection: 'row',
       borderBottomWidth: 1,
       borderTopWidth: 1,
-      paddingTop: 10*scaler,
-      paddingBottom: 10*scaler,
+      paddingTop: Math.floor(10*scaler),
+      paddingBottom: Math.floor(10*scaler),
       alignSelf: 'center',
       justifyContent: 'center',
       backgroundColor: 'rgba(0,0,0,0.0)',
@@ -76,15 +76,15 @@ export function makeStyles(params) {
     },
 
     dayLabels: {
-      width: 50*scaler,
-      fontSize: 12*scaler,
+      width: Math.floor(50*scaler),
+      fontSize: Math.floor(12*scaler),
       color: '#000',
       textAlign: 'center'
     },
 
     selectedDay: {
-      width: 30*scaler,
-      height:30*scaler,
+      width: Math.floor(30*scaler),
+      height:Math.floor(30*scaler),
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
       justifyContent: 'center'
@@ -95,8 +95,8 @@ export function makeStyles(params) {
     },
 
     selectedToday: {
-      width: 30*scaler,
-      height:30*scaler,
+      width: Math.floor(30*scaler),
+      height:Math.floor(30*scaler),
       backgroundColor: TODAY_BG_COLOR,
       borderRadius: getBorderRadiusByShape(scaler, dayShape),
       alignSelf: 'center',
@@ -106,34 +106,34 @@ export function makeStyles(params) {
     dayWrapper: {
       alignItems: 'center',
       justifyContent: 'center',
-      width: 50*scaler,
-      height: 40*scaler,
+      width: Math.floor(50*scaler),
+      height: Math.floor(40*scaler),
       backgroundColor: 'rgba(0,0,0,0.0)'
     },
 
     startDayWrapper: {
-      width: 50*scaler,
-      height: 30*scaler,
-      borderTopLeftRadius: 20*scaler,
-      borderBottomLeftRadius: 20*scaler,
+      width: Math.floor(50*scaler),
+      height: Math.floor(30*scaler),
+      borderTopLeftRadius: Math.floor(20*scaler),
+      borderBottomLeftRadius: Math.floor(20*scaler),
       backgroundColor: SELECTED_BG_COLOR,
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     endDayWrapper: {
-      width: 50*scaler,
-      height: 30*scaler,
-      borderTopRightRadius: 20*scaler,
-      borderBottomRightRadius: 20*scaler,
+      width: Math.floor(50*scaler),
+      height: Math.floor(30*scaler),
+      borderTopRightRadius: Math.floor(20*scaler),
+      borderBottomRightRadius: Math.floor(20*scaler),
       backgroundColor: SELECTED_BG_COLOR,
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     inRangeDay: {
-      width: 50*scaler,
-      height: 30*scaler,
+      width: Math.floor(50*scaler),
+      height: Math.floor(30*scaler),
       backgroundColor: SELECTED_BG_COLOR,
       alignSelf: 'center',
       justifyContent: 'center'
@@ -145,9 +145,9 @@ export function makeStyles(params) {
       alignSelf: 'center',
       justifyContent: 'space-between',
       width: containerWidth,
-      padding: 5*scaler,
-      paddingBottom: 3*scaler,
-      marginBottom: 10*scaler,
+      padding: Math.floor(5*scaler),
+      paddingBottom: Math.floor(3*scaler),
+      marginBottom: Math.floor(10*scaler),
       backgroundColor: 'rgba(0,0,0,0.0)'
     },
 
@@ -155,20 +155,20 @@ export function makeStyles(params) {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
-      paddingHorizontal: 3*scaler,
+      paddingHorizontal: Math.floor(3*scaler),
     },
 
     previousContainer: {
-      marginLeft: 10*scaler,
+      marginLeft: Math.floor(10*scaler),
     },
 
     nextContainer: {
-      marginRight: 10*scaler,
+      marginRight: Math.floor(10*scaler),
       alignItems: 'flex-end',
     },
 
     navButtonText: {
-      fontSize: 14*scaler,
+      fontSize: Math.floor(14*scaler),
     },
 
     weeks: {
@@ -180,37 +180,37 @@ export function makeStyles(params) {
     },
 
     disabledText: {
-      fontSize: 14*scaler,
+      fontSize: Math.floor(14*scaler),
       color: '#BBBBBB',
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     selectedDisabledText: {
-      fontSize: 14*scaler,
+      fontSize: Math.floor(14*scaler),
       color: '#DDDDDD',
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     monthHeaderMainText: {
-      fontSize: 16*scaler,
+      fontSize: Math.floor(16*scaler),
       color: '#000',
       textAlign: 'right',
-      marginHorizontal: 3*scaler,
+      marginHorizontal: Math.floor(3*scaler),
     },
 
     monthButton: {
-      width: 30*scaler,
-      height: 30*scaler,
-      borderRadius: 30*scaler,
+      width: Math.floor(30*scaler),
+      height: Math.floor(30*scaler),
+      borderRadius: Math.floor(30*scaler),
       alignSelf: 'center',
       justifyContent: 'center'
     },
 
     monthsHeaderText: {
       flex: 1,
-      fontSize: 16*scaler,
+      fontSize: Math.floor(16*scaler),
       color: '#000',
       textAlign: 'center'
     },
@@ -221,7 +221,7 @@ export function makeStyles(params) {
     },
 
     monthText: {
-      fontSize: 14*scaler,
+      fontSize: Math.floor(14*scaler),
       color: '#000',
       alignSelf: 'center'
     },
@@ -234,13 +234,13 @@ export function makeStyles(params) {
 
     monthsRow: {
       flexDirection: 'row',
-      padding: 20*scaler,
+      padding: Math.floor(20*scaler),
     },
 
     yearHeaderMainText: {
-      fontSize: 16*scaler,
+      fontSize: Math.floor(16*scaler),
       color: '#000',
-      marginHorizontal: 3*scaler,
+      marginHorizontal: Math.floor(3*scaler),
     },
 
     yearContainer: {
@@ -249,15 +249,15 @@ export function makeStyles(params) {
     },
 
     yearText: {
-      fontSize: 14*scaler,
+      fontSize: Math.floor(14*scaler),
       color: '#000',
       alignSelf: 'center'
     },
 
     yearsHeaderText: {
-      fontSize: 16*scaler,
+      fontSize: Math.floor(16*scaler),
       color: '#000',
-      width: 180*scaler,
+      width: Math.floor(180*scaler),
       textAlign: 'center'
     },
 
@@ -269,7 +269,7 @@ export function makeStyles(params) {
 
     yearsRow: {
       flexDirection: 'row',
-      padding: 20*scaler,
+      padding: Math.floor(20*scaler),
     },
 
   };
