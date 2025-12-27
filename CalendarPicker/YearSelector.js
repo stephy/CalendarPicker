@@ -44,6 +44,7 @@ export default class YearSelector extends Component {
       nextTitleStyle,
       headingLevel,
       onSelectYear,
+      headerWrapperStyle
     } = this.props;
 
     return (
@@ -52,6 +53,7 @@ export default class YearSelector extends Component {
           styles={styles}
           textStyle={textStyle}
           title={title}
+          headerWrapperStyle={headerWrapperStyle}
           headingLevel={headingLevel}
           initialDate={initialDate}
           minDate={minDate}
