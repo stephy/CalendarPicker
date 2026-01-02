@@ -1,13 +1,13 @@
-import React from "react";
-import { View, Text, TouchableOpacity } from "react-native";
-import PropTypes from "prop-types";
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import PropTypes from 'prop-types';
 
-import { differenceInDays } from "date-fns/differenceInDays";
-import { isAfter } from "date-fns/isAfter";
-import { isBefore } from "date-fns/isBefore";
-import { isSameDay } from "date-fns/isSameDay";
-import { isWithinInterval } from "date-fns/isWithinInterval";
-import { startOfDay } from "date-fns/startOfDay";
+import { differenceInDays } from 'date-fns/differenceInDays';
+import { isAfter } from 'date-fns/isAfter';
+import { isBefore } from 'date-fns/isBefore';
+import { isSameDay } from 'date-fns/isSameDay';
+import { isWithinInterval } from 'date-fns/isWithinInterval';
+import { startOfDay } from 'date-fns/startOfDay';
 
 export default function Day(props) {
   const {
@@ -44,7 +44,7 @@ export default function Day(props) {
   const today = new Date();
 
   let dateOutOfRange;
-  let computedSelectedDayStyle = styles.dayButton; // may be overridden depending on state
+  let computedSelectedDayStyle = styles.dayButton;
   let selectedDayTextStyle = {};
   let selectedDayStyle;
   let overrideOutOfRangeTextStyle;
@@ -54,9 +54,6 @@ export default function Day(props) {
   let dateRangeLessThanMin = false;
   let dateRangeGreaterThanMax = false;
 
-  // First let's check if date is out of range
-  // Check whether props maxDate / minDate are defined. If not supplied,
-  // don't restrict dates.
   if (maxDate) {
     dateIsAfterMax = isAfter(startOfDay(thisDay), startOfDay(maxDate));
   }
@@ -76,7 +73,7 @@ export default function Day(props) {
   }
 
   if (allowRangeSelection && selectedStartDate && !selectedEndDate) {
-    let daysDiff = differenceInDays(thisDay, selectedStartDate); // may be + or -
+    let daysDiff = differenceInDays(thisDay, selectedStartDate);
     daysDiff = allowBackwardRangeSelect ? Math.abs(daysDiff) : daysDiff;
 
     if (maxRangeDuration) {
@@ -119,12 +116,27 @@ export default function Day(props) {
 
   let isThisDaySameAsSelectedStart = isSameDay(thisDay, selectedStartDate);
   let isThisDaySameAsSelectedEnd = isSameDay(thisDay, selectedEndDate);
-  let isThisDateInSelectedRange =
+
+  // Đảm bảo thứ tự đúng
+  let sortedStartDate = selectedStartDate;
+  let sortedEndDate = selectedEndDate;
+  if (
     selectedStartDate &&
     selectedEndDate &&
+    selectedStartDate > selectedEndDate
+  ) {
+    sortedStartDate = selectedEndDate;
+    sortedEndDate = selectedStartDate;
+    isThisDaySameAsSelectedStart = isSameDay(thisDay, sortedStartDate);
+    isThisDaySameAsSelectedEnd = isSameDay(thisDay, sortedEndDate);
+  }
+
+  let isThisDateInSelectedRange =
+    sortedStartDate &&
+    sortedEndDate &&
     isWithinInterval(thisDay, {
-      start: selectedStartDate,
-      end: selectedEndDate,
+      start: sortedStartDate,
+      end: sortedEndDate,
     });
 
   // Xác định vị trí ngày trong range
@@ -133,8 +145,8 @@ export default function Day(props) {
   let isMiddleDayOfRange = false;
   let isSingleDayRange = false;
 
-  if (allowRangeSelection && selectedStartDate && selectedEndDate) {
-    if (isSameDay(selectedStartDate, selectedEndDate)) {
+  if (allowRangeSelection && sortedStartDate && sortedEndDate) {
+    if (isSameDay(sortedStartDate, sortedEndDate)) {
       isSingleDayRange = true;
     } else if (isThisDaySameAsSelectedStart) {
       isFirstDayOfRange = true;
@@ -152,19 +164,15 @@ export default function Day(props) {
     isThisDaySameAsSelectedEnd ||
     isThisDateInSelectedRange
   ) {
-    // set today's style
     let isToday = isSameDay(thisDay, today);
     if (isToday) {
       computedSelectedDayStyle = styles.selectedToday;
-      // todayTextStyle prop overrides selectedDayTextColor (created via makeStyles)
       selectedDayTextStyle = [todayTextStyle];
     }
 
     const custom = getCustomDateStyle({ customDatesStyles, date: thisDay });
 
     if (isToday && custom.style) {
-      // Custom date style overrides 'today' style. It may be reset below
-      // by date selection styling.
       computedSelectedDayStyle = [styles.selectedToday, custom.style];
     }
 
@@ -180,94 +188,143 @@ export default function Day(props) {
         isToday && todayTextStyle,
         propSelectedDayTextStyle,
       ];
-      // selectedDayStyle prop overrides selectedDayColor (created via makeStyles)
       selectedDayStyle = propSelectedDayStyle || styles.selectedDayBackground;
     }
 
-    // Set selected ranges styles
+    // ========== HARD CODE STYLE CHO RANGE SELECTION ==========
     if (allowRangeSelection) {
       if (selectedStartDate && selectedEndDate) {
-        // Apply style for start date
-        if (isThisDaySameAsSelectedStart) {
+        // NGÀY ĐẦU (2) - BO TRÒN HOÀN TOÀN BÊN TRÁI
+        if (isFirstDayOfRange) {
           computedSelectedDayStyle = [
             styles.startDayWrapper,
             selectedRangeStyle,
             selectedRangeStartStyle,
           ];
-          // Áp dụng style hình tròn cho ngày đầu
-          if (styles.circularDay) {
-            computedSelectedDayStyle = [
-              ...computedSelectedDayStyle,
-              styles.circularDay,
-            ];
-          }
+
+          // HARD CODE STYLE: Bo tròn hoàn toàn bên trái
+          computedSelectedDayStyle = [
+            ...computedSelectedDayStyle,
+            {
+              backgroundColor: '#0A2B40', // MÀU XANH - THAY ĐỔI THEO THIẾT KẾ
+              borderTopLeftRadius: 20,
+              borderBottomLeftRadius: 20,
+              borderTopRightRadius: 4,
+              borderBottomRightRadius: 4,
+              width: 40,
+              height: 40,
+              marginLeft: 0,
+              marginRight: -5,
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10,
+            },
+          ];
+
           selectedDayTextStyle = [
             styles.selectedDayLabel,
             propSelectedDayTextStyle,
             selectedRangeStartTextStyle,
+            { color: '#FFFFFF', fontWeight: 'bold' },
           ];
         }
-        // Apply style for end date
-        if (isThisDaySameAsSelectedEnd) {
+
+        // NGÀY CUỐI (9) - BO TRÒN HOÀN TOÀN BÊN PHẢI
+        if (isLastDayOfRange) {
           computedSelectedDayStyle = [
             styles.endDayWrapper,
             selectedRangeStyle,
             selectedRangeEndStyle,
           ];
-          // Áp dụng style hình tròn cho ngày cuối
-          if (styles.circularDay) {
-            computedSelectedDayStyle = [
-              ...computedSelectedDayStyle,
-              styles.circularDay,
-            ];
-          }
+
+          // HARD CODE STYLE: Bo tròn hoàn toàn bên phải
+          computedSelectedDayStyle = [
+            ...computedSelectedDayStyle,
+            {
+              backgroundColor: '#0A2B40', // MÀU XANH - THAY ĐỔI THEO THIẾT KẾ
+              borderTopLeftRadius: 4,
+              borderBottomLeftRadius: 4,
+              borderTopRightRadius: 20,
+              borderBottomRightRadius: 20,
+              width: 40,
+              height: 40,
+              marginLeft: -5, // Âm để dính vào ngày trước
+              marginRight: 0,
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 10,
+            },
+          ];
+
           selectedDayTextStyle = [
             styles.selectedDayLabel,
             propSelectedDayTextStyle,
             selectedRangeEndTextStyle,
+            { color: '#FFFFFF', fontWeight: 'bold' },
           ];
         }
-        // Apply style if start date is the same as end date
-        if (
-          isThisDaySameAsSelectedEnd &&
-          isThisDaySameAsSelectedStart &&
-          isSameDay(selectedEndDate, selectedStartDate)
-        ) {
+
+        // CÁC NGÀY Ở GIỮA (3-8) - BO NHẸ, DÍNH SÁT
+        if (isMiddleDayOfRange) {
+          computedSelectedDayStyle = [styles.inRangeDay, selectedRangeStyle];
+
+          // HARD CODE STYLE: Bo nhẹ, margin âm để dính sát
+          computedSelectedDayStyle = [
+            ...computedSelectedDayStyle,
+            {
+              backgroundColor: '#BFD7E8', // MÀU NỀN NHẠT - THAY ĐỔI THEO THIẾT KẾ
+              borderTopLeftRadius: 4,
+              borderBottomLeftRadius: 4,
+              borderTopRightRadius: 4,
+              borderBottomRightRadius: 4,
+              height: 40,
+              marginLeft: -5,
+              marginRight: -5,
+              flex: 1,
+              alignItems: 'center',
+              justifyContent: 'center',
+              zIndex: 5,
+            },
+          ];
+
+          selectedDayTextStyle = [
+            styles.selectedDayLabel,
+            propSelectedDayTextStyle,
+            { color: '#000000', fontWeight: 'normal' },
+          ];
+        }
+
+        // NGÀY DUY NHẤT ĐƯỢC CHỌN (start = end)
+        if (isSingleDayRange) {
           computedSelectedDayStyle = [
             styles.selectedDay,
             styles.selectedDayBackground,
             selectedRangeStyle,
           ];
-          // Áp dụng style hình tròn cho ngày duy nhất
-          if (styles.circularDay) {
-            computedSelectedDayStyle = [
-              ...computedSelectedDayStyle,
-              styles.circularDay,
-            ];
-          }
+
+          // HARD CODE STYLE: Bo tròn hoàn toàn
+          computedSelectedDayStyle = [
+            ...computedSelectedDayStyle,
+            {
+              backgroundColor: '#007AFF',
+              borderRadius: 20,
+              width: 40,
+              height: 40,
+              alignItems: 'center',
+              justifyContent: 'center',
+            },
+          ];
+
           selectedDayTextStyle = [
             styles.selectedDayLabel,
             propSelectedDayTextStyle,
             selectedRangeStartTextStyle,
-          ];
-        }
-        // Apply style for days inside of range, excluding start & end dates.
-        if (isMiddleDayOfRange) {
-          computedSelectedDayStyle = [styles.inRangeDay, selectedRangeStyle];
-          // Áp dụng margin âm cho ngày giữa
-          if (styles.middleDayWithNegativeMargin) {
-            computedSelectedDayStyle = [
-              ...computedSelectedDayStyle,
-              styles.middleDayWithNegativeMargin,
-            ];
-          }
-          selectedDayTextStyle = [
-            styles.selectedDayLabel,
-            propSelectedDayTextStyle,
+            { color: '#FFFFFF', fontWeight: 'bold' },
           ];
         }
       }
-      // Apply style if start date has been selected but end date has not
+
+      // KHI CHỈ MỚI CHỌN START DATE
       if (
         selectedStartDate &&
         !selectedEndDate &&
@@ -278,27 +335,31 @@ export default function Day(props) {
           selectedRangeStyle,
           selectedRangeStartStyle,
         ];
-        // Áp dụng style hình tròn
-        if (styles.circularDay) {
-          computedSelectedDayStyle = [
-            ...computedSelectedDayStyle,
-            styles.circularDay,
-          ];
-        }
+
+        // HARD CODE STYLE: Bo tròn hoàn toàn
+        computedSelectedDayStyle = [
+          ...computedSelectedDayStyle,
+          {
+            backgroundColor: '#007AFF',
+            borderRadius: 20,
+            width: 40,
+            height: 40,
+            alignItems: 'center',
+            justifyContent: 'center',
+          },
+        ];
+
         selectedDayTextStyle = [
           styles.selectedDayLabel,
           propSelectedDayTextStyle,
           selectedRangeStartTextStyle,
+          { color: '#FFFFFF', fontWeight: 'bold' },
         ];
-        // Override out of range start day text style when minRangeDuration = 1.
-        // This allows selected start date's text to be styled by selectedRangeStartTextStyle
-        // even when it's below minRangeDuration.
         overrideOutOfRangeTextStyle = selectedRangeStartTextStyle;
       }
     }
 
     if (dateOutOfRange) {
-      // start or end date selected, and this date outside of range.
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
           <View
@@ -343,9 +404,7 @@ export default function Day(props) {
       );
     }
   } else {
-    // dateOutOfRange = true, and no selected start or end date.
     const custom = getCustomDateStyle({ customDatesStyles, date: thisDay });
-    // Allow customDatesStyles to override disabled dates if allowDisabled set
     if (!custom.allowDisabled) {
       custom.containerStyle = null;
       custom.style = null;
