@@ -1,5 +1,9 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity
+} from 'react-native';
 import PropTypes from 'prop-types';
 
 import { differenceInDays } from 'date-fns/differenceInDays';
@@ -62,12 +66,10 @@ export default function Day(props) {
   }
 
   if (disabledDates) {
-    if (
-      Array.isArray(disabledDates) &&
-      disabledDates.indexOf(thisDay.valueOf()) >= 0
-    ) {
+    if (Array.isArray(disabledDates) && disabledDates.indexOf(thisDay.valueOf()) >= 0) {
       dateIsDisabled = true;
-    } else if (disabledDates instanceof Function) {
+    }
+    else if (disabledDates instanceof Function) {
       dateIsDisabled = disabledDates(thisDay);
     }
   }
@@ -78,9 +80,7 @@ export default function Day(props) {
 
     if (maxRangeDuration) {
       if (Array.isArray(maxRangeDuration)) {
-        let maxRangeEntry = maxRangeDuration.find((mrd) =>
-          isSameDay(selectedStartDate, mrd.date)
-        );
+        let maxRangeEntry = maxRangeDuration.find(mrd => isSameDay(selectedStartDate, mrd.date));
         if (maxRangeEntry && daysDiff > maxRangeEntry.maxDuration) {
           dateRangeGreaterThanMax = true;
         }
@@ -91,9 +91,7 @@ export default function Day(props) {
 
     if (minRangeDuration) {
       if (Array.isArray(minRangeDuration)) {
-        let minRangeEntry = minRangeDuration.find((mrd) =>
-          isSameDay(selectedStartDate, mrd.date)
-        );
+        let minRangeEntry = minRangeDuration.find(mrd => isSameDay(selectedStartDate, mrd.date));
         if (minRangeEntry && daysDiff < minRangeEntry.minDuration) {
           dateRangeLessThanMin = true;
         }
@@ -107,44 +105,35 @@ export default function Day(props) {
     }
   }
 
-  dateOutOfRange =
-    dateIsAfterMax ||
-    dateIsBeforeMin ||
-    dateIsDisabled ||
-    dateRangeLessThanMin ||
-    dateRangeGreaterThanMax;
+  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled || dateRangeLessThanMin || dateRangeGreaterThanMax;
 
   let isThisDaySameAsSelectedStart = isSameDay(thisDay, selectedStartDate);
   let isThisDaySameAsSelectedEnd = isSameDay(thisDay, selectedEndDate);
-
+  
   // Đảm bảo thứ tự đúng
   let sortedStartDate = selectedStartDate;
   let sortedEndDate = selectedEndDate;
-  if (
-    selectedStartDate &&
-    selectedEndDate &&
-    selectedStartDate > selectedEndDate
-  ) {
+  if (selectedStartDate && selectedEndDate && selectedStartDate > selectedEndDate) {
     sortedStartDate = selectedEndDate;
     sortedEndDate = selectedStartDate;
     isThisDaySameAsSelectedStart = isSameDay(thisDay, sortedStartDate);
     isThisDaySameAsSelectedEnd = isSameDay(thisDay, sortedEndDate);
   }
-
+  
   let isThisDateInSelectedRange =
-    sortedStartDate &&
-    sortedEndDate &&
-    isWithinInterval(thisDay, {
+    sortedStartDate
+    && sortedEndDate
+    && isWithinInterval(thisDay, {
       start: sortedStartDate,
-      end: sortedEndDate,
-    });
+      end: sortedEndDate
+    })
 
   // Xác định vị trí ngày trong range
   let isFirstDayOfRange = false;
   let isLastDayOfRange = false;
   let isMiddleDayOfRange = false;
   let isSingleDayRange = false;
-
+  
   if (allowRangeSelection && sortedStartDate && sortedEndDate) {
     if (isSameDay(sortedStartDate, sortedEndDate)) {
       isSingleDayRange = true;
@@ -158,12 +147,7 @@ export default function Day(props) {
   }
 
   // If date is in range let's apply styles
-  if (
-    !dateOutOfRange ||
-    isThisDaySameAsSelectedStart ||
-    isThisDaySameAsSelectedEnd ||
-    isThisDateInSelectedRange
-  ) {
+  if (!dateOutOfRange || isThisDaySameAsSelectedStart || isThisDaySameAsSelectedEnd || isThisDateInSelectedRange) {
     let isToday = isSameDay(thisDay, today);
     if (isToday) {
       computedSelectedDayStyle = styles.selectedToday;
@@ -177,183 +161,148 @@ export default function Day(props) {
     }
 
     // set selected day style
-    if (
-      !allowRangeSelection &&
+    if (!allowRangeSelection &&
       selectedStartDate &&
-      isThisDaySameAsSelectedStart
-    ) {
+      isThisDaySameAsSelectedStart) {
       computedSelectedDayStyle = styles.selectedDay;
-      selectedDayTextStyle = [
-        styles.selectedDayLabel,
-        isToday && todayTextStyle,
-        propSelectedDayTextStyle,
-      ];
+      selectedDayTextStyle = [styles.selectedDayLabel, isToday && todayTextStyle, propSelectedDayTextStyle];
       selectedDayStyle = propSelectedDayStyle || styles.selectedDayBackground;
     }
 
-    // ========== HARD CODE STYLE CHO RANGE SELECTION ==========
+    // ========== HARD CODE THEO DESIGN (CÓ BO NHẸ Ở GIỮA) ==========
     if (allowRangeSelection) {
       if (selectedStartDate && selectedEndDate) {
-        // NGÀY ĐẦU (2) - BO TRÒN HOÀN TOÀN BÊN TRÁI
+        // 1. NGÀY ĐẦU (6) - BO TRÒN HOÀN TOÀN BÊN TRÁI, BO NHẸ BÊN PHẢI
         if (isFirstDayOfRange) {
-          computedSelectedDayStyle = [
-            styles.startDayWrapper,
-            selectedRangeStyle,
-            selectedRangeStartStyle,
-          ];
-
-          // HARD CODE STYLE: Bo tròn hoàn toàn bên trái
-          computedSelectedDayStyle = [
-            ...computedSelectedDayStyle,
-            {
-              backgroundColor: '#0A2B40', // MÀU XANH - THAY ĐỔI THEO THIẾT KẾ
-              borderTopLeftRadius: 20,
-              borderBottomLeftRadius: 20,
-              borderTopRightRadius: 4,
-              borderBottomRightRadius: 4,
-              width: 40,
-              height: 40,
-              marginLeft: 0,
-              marginRight: -5,
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 10,
-            },
-          ];
-
+          computedSelectedDayStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
+          
+          // THEO DESIGN: Bo tròn bên trái, bo nhẹ bên phải
+          computedSelectedDayStyle = [...computedSelectedDayStyle, {
+            backgroundColor: '#007AFF', // MÀU ĐẬM
+            borderTopLeftRadius: 20,    // Bo tròn bên trái
+            borderBottomLeftRadius: 20, // Bo tròn bên trái
+            borderTopRightRadius: 4,    // Bo nhẹ bên phải
+            borderBottomRightRadius: 4, // Bo nhẹ bên phải
+            width: 40,
+            height: 40,
+            marginLeft: 0,
+            marginRight: -6, // MARGIN ÂM NHẸ
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 10,
+          }];
+          
           selectedDayTextStyle = [
-            styles.selectedDayLabel,
-            propSelectedDayTextStyle,
+            styles.selectedDayLabel, 
+            propSelectedDayTextStyle, 
             selectedRangeStartTextStyle,
-            { color: '#FFFFFF', fontWeight: 'bold' },
+            { color: '#FFFFFF', fontWeight: 'bold', fontSize: 14 }
           ];
         }
-
-        // NGÀY CUỐI (9) - BO TRÒN HOÀN TOÀN BÊN PHẢI
+        
+        // 2. NGÀY CUỐI (13) - BO TRÒN HOÀN TOÀN BÊN PHẢI, BO NHẸ BÊN TRÁI
         if (isLastDayOfRange) {
-          computedSelectedDayStyle = [
-            styles.endDayWrapper,
-            selectedRangeStyle,
-            selectedRangeEndStyle,
-          ];
-
-          // HARD CODE STYLE: Bo tròn hoàn toàn bên phải
-          computedSelectedDayStyle = [
-            ...computedSelectedDayStyle,
-            {
-              backgroundColor: '#0A2B40', // MÀU XANH - THAY ĐỔI THEO THIẾT KẾ
-              borderTopLeftRadius: 4,
-              borderBottomLeftRadius: 4,
-              borderTopRightRadius: 20,
-              borderBottomRightRadius: 20,
-              width: 40,
-              height: 40,
-              marginLeft: -5, // Âm để dính vào ngày trước
-              marginRight: 0,
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 10,
-            },
-          ];
-
+          computedSelectedDayStyle = [styles.endDayWrapper, selectedRangeStyle, selectedRangeEndStyle];
+          
+          // THEO DESIGN: Bo tròn bên phải, bo nhẹ bên trái
+          computedSelectedDayStyle = [...computedSelectedDayStyle, {
+            backgroundColor: '#007AFF', // MÀU ĐẬM
+            borderTopLeftRadius: 4,     // Bo nhẹ bên trái
+            borderBottomLeftRadius: 4,  // Bo nhẹ bên trái
+            borderTopRightRadius: 20,   // Bo tròn bên phải
+            borderBottomRightRadius: 20,// Bo tròn bên phải
+            width: 40,
+            height: 40,
+            marginLeft: -6, // MARGIN ÂM NHẸ
+            marginRight: 0,
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 10,
+          }];
+          
           selectedDayTextStyle = [
-            styles.selectedDayLabel,
-            propSelectedDayTextStyle,
+            styles.selectedDayLabel, 
+            propSelectedDayTextStyle, 
             selectedRangeEndTextStyle,
-            { color: '#FFFFFF', fontWeight: 'bold' },
+            { color: '#FFFFFF', fontWeight: 'bold', fontSize: 14 }
           ];
         }
-
-        // CÁC NGÀY Ở GIỮA (3-8) - BO NHẸ, DÍNH SÁT
+        
+        // 3. CÁC NGÀY Ở GIỮA (7-12) - BO NHẸ 4 GÓC, MÀU NHẠT HƠN
         if (isMiddleDayOfRange) {
           computedSelectedDayStyle = [styles.inRangeDay, selectedRangeStyle];
-
-          // HARD CODE STYLE: Bo nhẹ, margin âm để dính sát
-          computedSelectedDayStyle = [
-            ...computedSelectedDayStyle,
-            {
-              backgroundColor: '#BFD7E8', // MÀU NỀN NHẠT - THAY ĐỔI THEO THIẾT KẾ
-              borderTopLeftRadius: 4,
-              borderBottomLeftRadius: 4,
-              borderTopRightRadius: 4,
-              borderBottomRightRadius: 4,
-              height: 40,
-              marginLeft: -5,
-              marginRight: -5,
-              flex: 1,
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 5,
-            },
-          ];
-
+          
+          // THEO DESIGN: Bo nhẹ 4 góc, màu nhạt
+          computedSelectedDayStyle = [...computedSelectedDayStyle, {
+            backgroundColor: '#E3F2FD', // MÀU NHẠT
+            borderTopLeftRadius: 4,     // Bo nhẹ
+            borderBottomLeftRadius: 4,  // Bo nhẹ
+            borderTopRightRadius: 4,    // Bo nhẹ
+            borderBottomRightRadius: 4, // Bo nhẹ
+            height: 40,
+            marginLeft: -6, // MARGIN ÂM
+            marginRight: -6, // MARGIN ÂM
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 5,
+          }];
+          
           selectedDayTextStyle = [
-            styles.selectedDayLabel,
+            styles.selectedDayLabel, 
             propSelectedDayTextStyle,
-            { color: '#000000', fontWeight: 'normal' },
+            { color: '#000000', fontWeight: 'normal', fontSize: 14 }
           ];
         }
-
-        // NGÀY DUY NHẤT ĐƯỢC CHỌN (start = end)
+        
+        // 4. NGÀY DUY NHẤT ĐƯỢC CHỌN (start = end) - BO TRÒN HOÀN TOÀN
         if (isSingleDayRange) {
-          computedSelectedDayStyle = [
-            styles.selectedDay,
-            styles.selectedDayBackground,
-            selectedRangeStyle,
-          ];
-
-          // HARD CODE STYLE: Bo tròn hoàn toàn
-          computedSelectedDayStyle = [
-            ...computedSelectedDayStyle,
-            {
-              backgroundColor: '#007AFF',
-              borderRadius: 20,
-              width: 40,
-              height: 40,
-              alignItems: 'center',
-              justifyContent: 'center',
-            },
-          ];
-
-          selectedDayTextStyle = [
-            styles.selectedDayLabel,
-            propSelectedDayTextStyle,
-            selectedRangeStartTextStyle,
-            { color: '#FFFFFF', fontWeight: 'bold' },
-          ];
-        }
-      }
-
-      // KHI CHỈ MỚI CHỌN START DATE
-      if (
-        selectedStartDate &&
-        !selectedEndDate &&
-        isThisDaySameAsSelectedStart
-      ) {
-        computedSelectedDayStyle = [
-          styles.startDayWrapper,
-          selectedRangeStyle,
-          selectedRangeStartStyle,
-        ];
-
-        // HARD CODE STYLE: Bo tròn hoàn toàn
-        computedSelectedDayStyle = [
-          ...computedSelectedDayStyle,
-          {
+          computedSelectedDayStyle = [styles.selectedDay, styles.selectedDayBackground, selectedRangeStyle];
+          
+          computedSelectedDayStyle = [...computedSelectedDayStyle, {
             backgroundColor: '#007AFF',
             borderRadius: 20,
             width: 40,
             height: 40,
             alignItems: 'center',
             justifyContent: 'center',
-          },
-        ];
-
+          }];
+          
+          selectedDayTextStyle = [
+            styles.selectedDayLabel, 
+            propSelectedDayTextStyle, 
+            selectedRangeStartTextStyle,
+            { color: '#FFFFFF', fontWeight: 'bold', fontSize: 14 }
+          ];
+        }
+        
+        // DEBUG: Log để kiểm tra
+        console.log('Day:', day, {
+          isFirst: isFirstDayOfRange,
+          isLast: isLastDayOfRange,
+          isMiddle: isMiddleDayOfRange,
+          margin: isMiddleDayOfRange ? '-6' : (isFirstDayOfRange ? '0/-6' : '-6/0')
+        });
+      }
+      
+      // 5. KHI CHỈ MỚI CHỌN START DATE
+      if (selectedStartDate && !selectedEndDate && isThisDaySameAsSelectedStart) {
+        computedSelectedDayStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
+        
+        computedSelectedDayStyle = [...computedSelectedDayStyle, {
+          backgroundColor: '#007AFF',
+          borderRadius: 20,
+          width: 40,
+          height: 40,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }];
+        
         selectedDayTextStyle = [
-          styles.selectedDayLabel,
-          propSelectedDayTextStyle,
+          styles.selectedDayLabel, 
+          propSelectedDayTextStyle, 
           selectedRangeStartTextStyle,
-          { color: '#FFFFFF', fontWeight: 'bold' },
+          { color: '#FFFFFF', fontWeight: 'bold', fontSize: 14 }
         ];
         overrideOutOfRangeTextStyle = selectedRangeStartTextStyle;
       }
@@ -362,20 +311,12 @@ export default function Day(props) {
     if (dateOutOfRange) {
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
-          <View
-            style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}
-          >
-            <Text
-              style={[
-                styles.dayLabel,
-                textStyle,
-                styles.disabledText,
-                disabledDatesTextStyle,
-                styles.selectedDisabledText,
-                selectedDisabledDatesTextStyle,
-                overrideOutOfRangeTextStyle,
-              ]}
-            >
+          <View style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}>
+            <Text style={[styles.dayLabel, textStyle,
+            styles.disabledText, disabledDatesTextStyle,
+            styles.selectedDisabledText, selectedDisabledDatesTextStyle,
+              overrideOutOfRangeTextStyle
+            ]}>
               {day}
             </Text>
           </View>
@@ -387,23 +328,16 @@ export default function Day(props) {
           <TouchableOpacity
             disabled={!enableDateChange}
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}
-            onPress={() => onPressDay({ year, month, day })}
-          >
-            <Text
-              style={[
-                styles.dayLabel,
-                textStyle,
-                custom.textStyle,
-                selectedDayTextStyle,
-              ]}
-            >
+            onPress={() => onPressDay({ year, month, day })}>
+            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
               {day}
             </Text>
           </TouchableOpacity>
         </View>
       );
     }
-  } else {
+  }
+  else {
     const custom = getCustomDateStyle({ customDatesStyles, date: thisDay });
     if (!custom.allowDisabled) {
       custom.containerStyle = null;
@@ -413,14 +347,7 @@ export default function Day(props) {
     return (
       <View style={[styles.dayWrapper, custom.containerStyle]}>
         <View style={[styles.dayButton, custom.style]}>
-          <Text
-            style={[
-              textStyle,
-              styles.disabledText,
-              disabledDatesTextStyle,
-              custom.textStyle,
-            ]}
-          >
+          <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}>
             {day}
           </Text>
         </View>
@@ -436,7 +363,8 @@ function getCustomDateStyle({ customDatesStyles, date }) {
         return { ...cds };
       }
     }
-  } else if (customDatesStyles instanceof Function) {
+  }
+  else if (customDatesStyles instanceof Function) {
     let cds = customDatesStyles(date) || {};
     return { ...cds };
   }
