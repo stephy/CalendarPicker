@@ -1,6 +1,6 @@
-import React from "react";
-import { View, TouchableOpacity, Text } from "react-native";
-import PropTypes from "prop-types";
+import React from 'react';
+import { View, TouchableOpacity, Text } from 'react-native';
+import PropTypes from 'prop-types';
 
 export default function Controls(props) {
   const {

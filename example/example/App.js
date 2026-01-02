@@ -37,8 +37,8 @@ export default class App extends Component {
       enableRangeSelect: false,
       minDate,
       maxDate: addDays(new Date(), 90),
-      minRangeDuration: "1",
-      maxRangeDuration: "5",
+      minRangeDuration: '1',
+      maxRangeDuration: '5',
       selectedStartDate: null,
     };
     this.onDateChange = this.onDateChange.bind(this);
@@ -52,7 +52,7 @@ export default class App extends Component {
   }
 
   onDateChange(date, type) {
-    if (type === "START_DATE") {
+    if (type === 'START_DATE') {
       this.setState({
         selectedStartDate: date,
       });
@@ -82,7 +82,7 @@ export default class App extends Component {
   onMinRangeDuration(val) {
     let parsedVal = parseInt(val);
     this.setState({
-      minRangeDuration: val && !isNaN(parsedVal) ? parsedVal + "" : undefined,
+      minRangeDuration: val && !isNaN(parsedVal) ? parsedVal + '' : undefined,
       selectedStartDate: null,
       selectedEndDate: null,
     });
@@ -91,7 +91,7 @@ export default class App extends Component {
   onMaxRangeDuration(val) {
     let parsedVal = parseInt(val);
     this.setState({
-      maxRangeDuration: val && !isNaN(parsedVal) ? parsedVal + "" : undefined,
+      maxRangeDuration: val && !isNaN(parsedVal) ? parsedVal + '' : undefined,
       selectedStartDate: null,
       selectedEndDate: null,
     });
@@ -99,17 +99,17 @@ export default class App extends Component {
 
   customDayHeaderStylesCallback({ dayOfWeek, month, year }) {
     switch (dayOfWeek) {
-      case 4: // Thursday
-        return {
-          style: {
-            borderRadius: 12,
-            backgroundColor: 'cyan',
-          },
-          textStyle: {
-            color: 'blue',
-            fontWeight: 'bold',
-          }
-        };
+    case 4: // Thursday
+      return {
+        style: {
+          borderRadius: 12,
+          backgroundColor: 'cyan',
+        },
+        textStyle: {
+          color: 'blue',
+          fontWeight: 'bold',
+        }
+      };
     }
   }
 
@@ -172,8 +172,8 @@ export default class App extends Component {
           <Text style={styles.text}>Range select:</Text>
         </View>
         <Switch
-          trackColor={{ false: "#767577", true: "#81b0ff" }}
-          thumbColor={enableRangeSelect ? "#f5dd4b" : "#f4f3f4"}
+          trackColor={{ false: '#767577', true: '#81b0ff' }}
+          thumbColor={enableRangeSelect ? '#f5dd4b' : '#f4f3f4'}
           ios_backgroundColor="#3e3e3e"
           onValueChange={this.toggleEnableRange}
           value={enableRangeSelect}
@@ -185,16 +185,16 @@ export default class App extends Component {
             <TextInput
               style={styles.textInput}
               onChangeText={this.onMinRangeDuration}
-              value={minRangeDuration || ""}
-              keyboardType={"number-pad"}
+              value={minRangeDuration || ''}
+              keyboardType={'number-pad'}
             />
 
             <Text style={styles.text}>maxRangeDuration:</Text>
             <TextInput
               style={styles.textInput}
               onChangeText={this.onMaxRangeDuration}
-              value={maxRangeDuration || ""}
-              keyboardType={"number-pad"}
+              value={maxRangeDuration || ''}
+              keyboardType={'number-pad'}
             />
           </View>
         }

@@ -9,33 +9,33 @@ import { colors } from './src/global/colors';
 // Types erros will be fix when "react-native-calendar-picker" accepts PR
 
 export default function App() {
-  const [selectedStartDate, setSelectedStartDate] = useState(new Date())
-  const [selectedEndDate, setSelectedEndDate] = useState()
+  const [selectedStartDate, setSelectedStartDate] = useState(new Date());
+  const [selectedEndDate, setSelectedEndDate] = useState();
 
   const incrementTimeBy = useCallback(
     (time) => {
       try {
-        if (!!selectedEndDate) {
-          const actualEndDate = new Date(selectedEndDate)
-          actualEndDate.setDate(actualEndDate.getDate() + time)
-          setSelectedEndDate(actualEndDate)
+        if (selectedEndDate) {
+          const actualEndDate = new Date(selectedEndDate);
+          actualEndDate.setDate(actualEndDate.getDate() + time);
+          setSelectedEndDate(actualEndDate);
         }
       }
       catch (e) {
-        if (__DEV__) console.log("Error incrementTimeBy:", e)
+        if (__DEV__) console.log('Error incrementTimeBy:', e);
       }
     },
     [selectedEndDate, selectedStartDate],
-  )
+  );
 
 
   const clearAll = useCallback(
     () => {
-      setSelectedEndDate(null)
-      setSelectedStartDate(new Date())
+      setSelectedEndDate(null);
+      setSelectedStartDate(new Date());
     },
     [],
-  )
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -50,19 +50,19 @@ export default function App() {
       <View style={styles.main}>
         <View style={styles.divider} />
 
-        <View style={[styles.selectOptions, { opacity: !!selectedEndDate ? 1 : 0.8 }]}>
+        <View style={[styles.selectOptions, { opacity: selectedEndDate ? 1 : 0.8 }]}>
           <View style={styles.row}>
             <Button
               onPress={() => incrementTimeBy(1)}
-              text={"Add one"}
+              text={'Add one'}
             />
             <Button
               onPress={() => incrementTimeBy(3)}
-              text={"Add three"}
+              text={'Add three'}
             />
             <Button
               onPress={() => incrementTimeBy(7)}
-              text={"Add seven"}
+              text={'Add seven'}
             />
           </View>
         </View>
@@ -82,7 +82,7 @@ export default function App() {
             line
             style={styles.customButton}
             showIcon={false}
-            text={"LIMPAR"}
+            text={'LIMPAR'}
             onPress={() => clearAll()}
           />
 
@@ -107,27 +107,27 @@ const styles = StyleSheet.create({
     paddingVertical: 15
   },
   divider: {
-    width: "100%",
+    width: '100%',
     backgroundColor: colors.background,
     height: 1,
     marginVertical: 10,
   },
   row: {
-    flexDirection: "row",
+    flexDirection: 'row',
     justifyContent: 'space-around'
   },
   textShow: {
     marginVertical: 30,
     marginHorizontal: 10,
-    flexDirection: "row",
-    justifyContent: "space-around"
+    flexDirection: 'row',
+    justifyContent: 'space-around'
   },
   text: {
     fontSize: 14,
-    fontWeight: "700"
+    fontWeight: '700'
   },
   customButton: {
-    backgroundColor: "transparent",
+    backgroundColor: 'transparent',
     borderColor: colors.background,
     borderWidth: 1,
     borderRadius: 5

@@ -1,23 +1,23 @@
-import React, { Component } from "react";
-import { View, Dimensions, Text } from "react-native";
-import { makeStyles } from "./makeStyles";
-import { Utils } from "./Utils";
-import HeaderControls from "./HeaderControls";
-import Weekdays from "./Weekdays";
-import DaysGridView from "./DaysGridView";
-import MonthSelector from "./MonthSelector";
-import YearSelector from "./YearSelector";
-import Scroller from "./Scroller";
+import React, { Component } from 'react';
+import { View, Dimensions, Text } from 'react-native';
+import { makeStyles } from './makeStyles';
+import { Utils } from './Utils';
+import HeaderControls from './HeaderControls';
+import Weekdays from './Weekdays';
+import DaysGridView from './DaysGridView';
+import MonthSelector from './MonthSelector';
+import YearSelector from './YearSelector';
+import Scroller from './Scroller';
 
-import { addMonths } from "date-fns/addMonths";
-import { getMonth } from "date-fns/getMonth";
-import { getYear } from "date-fns/getYear";
-import { isAfter } from "date-fns/isAfter";
-import { isBefore } from "date-fns/isBefore";
-import { isSameDay } from "date-fns/isSameDay";
-import { isSameMonth } from "date-fns/isSameMonth";
-import { startOfMonth } from "date-fns/startOfMonth";
-import { subMonths } from "date-fns/subMonths";
+import { addMonths } from 'date-fns/addMonths';
+import { getMonth } from 'date-fns/getMonth';
+import { getYear } from 'date-fns/getYear';
+import { isAfter } from 'date-fns/isAfter';
+import { isBefore } from 'date-fns/isBefore';
+import { isSameDay } from 'date-fns/isSameDay';
+import { isSameMonth } from 'date-fns/isSameMonth';
+import { startOfMonth } from 'date-fns/startOfMonth';
+import { subMonths } from 'date-fns/subMonths';
 
 export default class CalendarPicker extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ export default class CalendarPicker extends Component {
     this.state = {
       currentMonth: null,
       currentYear: null,
-      currentView: props.initialView || "days",
+      currentView: props.initialView || 'days',
       selectedStartDate:
         props.selectedStartDate && new Date(props.selectedStartDate),
       selectedEndDate: props.selectedEndDate && new Date(props.selectedEndDate),
@@ -53,18 +53,18 @@ export default class CalendarPicker extends Component {
     initialDate: new Date(),
     scaleFactor: 375,
     scrollable: false,
-    scrollDecelerationRate: "normal",
+    scrollDecelerationRate: 'normal',
     onDateChange: () => {
-      console.log("onDateChange() not provided");
+      console.log('onDateChange() not provided');
     },
     enableDateChange: true,
     headingLevel: 1,
-    sundayColor: "#FFFFFF",
+    sundayColor: '#FFFFFF',
     customDatesStyles: [],
-    previousTitle: "Previous",
-    nextTitle: "Next",
-    selectMonthTitle: "Select Month in ",
-    selectYearTitle: "Select Year",
+    previousTitle: 'Previous',
+    nextTitle: 'Next',
+    selectMonthTitle: 'Select Month in ',
+    selectYearTitle: 'Select Year',
     horizontal: true,
     selectedDayStyle: null,
     selectedRangeStartStyle: null,
@@ -167,8 +167,8 @@ export default class CalendarPicker extends Component {
     } = props;
 
     // The styles in makeStyles are intially scaled to this width
-    const containerWidth = width ? width : Dimensions.get("window").width;
-    const containerHeight = height ? height : Dimensions.get("window").height;
+    const containerWidth = width ? width : Dimensions.get('window').width;
+    const containerHeight = height ? height : Dimensions.get('window').height;
     return {
       styles: makeStyles({
         containerWidth,
@@ -248,7 +248,7 @@ export default class CalendarPicker extends Component {
 
   goToDate = (date = new Date(), options = {}) => {
     if (this.props.scrollable) {
-      console.error("goToDate() is not supported when scrollable is true");
+      console.error('goToDate() is not supported when scrollable is true');
       return;
     }
 
@@ -423,13 +423,13 @@ export default class CalendarPicker extends Component {
 
   handleOnPressYear = () => {
     this.setState({
-      currentView: "years",
+      currentView: 'years',
     });
   };
 
   handleOnPressMonth = () => {
     this.setState({
-      currentView: "months",
+      currentView: 'months',
     });
   };
 
@@ -438,13 +438,13 @@ export default class CalendarPicker extends Component {
     const currentMonth = month;
     const scrollableState = this.props.scrollable
       ? {
-          ...this.createMonths(this.props, { currentYear, currentMonth }),
-        }
+        ...this.createMonths(this.props, { currentYear, currentMonth }),
+      }
       : {};
 
     const extraState = {
       renderMonthParams: { ...this.state.renderMonthParams, month, year },
-      currentView: "days",
+      currentView: 'days',
       ...scrollableState,
     };
 
@@ -595,106 +595,106 @@ export default class CalendarPicker extends Component {
 
     let content;
     switch (currentView) {
-      case "months":
-        content = (
-          <MonthSelector
+    case 'months':
+      content = (
+        <MonthSelector
+          styles={styles}
+          textStyle={textStyle}
+          headerWrapperStyle={monthHeaderWrapperStyle}
+          title={selectMonthTitle}
+          currentYear={currentYear}
+          months={months}
+          minDate={minDate}
+          maxDate={maxDate}
+          onSelectMonth={this.handleOnSelectMonthYear}
+          headingLevel={headingLevel}
+        />
+      );
+      break;
+    case 'years':
+      content = (
+        <YearSelector
+          styles={styles}
+          textStyle={textStyle}
+          title={selectYearTitle}
+          headerWrapperStyle={yearHeaderWrapperStyle}
+          initialDate={new Date(initialDate)}
+          currentMonth={currentMonth}
+          currentYear={currentYear}
+          minDate={minDate}
+          maxDate={maxDate}
+          restrictNavigation={restrictMonthNavigation}
+          previousComponent={previousComponent}
+          nextComponent={nextComponent}
+          previousTitle={previousTitle}
+          nextTitle={nextTitle}
+          previousTitleStyle={previousTitleStyle}
+          nextTitleStyle={nextTitleStyle}
+          onSelectYear={this.handleOnSelectMonthYear}
+          headingLevel={headingLevel}
+        />
+      );
+      break;
+    default:
+      content = (
+        <View styles={styles.calendar}>
+          <HeaderControls
             styles={styles}
-            textStyle={textStyle}
-            headerWrapperStyle={monthHeaderWrapperStyle}
-            title={selectMonthTitle}
-            currentYear={currentYear}
-            months={months}
-            minDate={minDate}
-            maxDate={maxDate}
-            onSelectMonth={this.handleOnSelectMonthYear}
-            headingLevel={headingLevel}
-          />
-        );
-        break;
-      case "years":
-        content = (
-          <YearSelector
-            styles={styles}
-            textStyle={textStyle}
-            title={selectYearTitle}
-            headerWrapperStyle={yearHeaderWrapperStyle}
-            initialDate={new Date(initialDate)}
             currentMonth={currentMonth}
             currentYear={currentYear}
-            minDate={minDate}
-            maxDate={maxDate}
-            restrictNavigation={restrictMonthNavigation}
+            initialDate={new Date(initialDate)}
+            onPressPrevious={this.handleOnPressPrevious}
+            onPressNext={this.handleOnPressNext}
+            onPressMonth={this.handleOnPressMonth}
+            onPressYear={this.handleOnPressYear}
+            months={months}
             previousComponent={previousComponent}
             nextComponent={nextComponent}
             previousTitle={previousTitle}
             nextTitle={nextTitle}
             previousTitleStyle={previousTitleStyle}
             nextTitleStyle={nextTitleStyle}
-            onSelectYear={this.handleOnSelectMonthYear}
+            monthTitleStyle={monthTitleStyle}
+            yearTitleStyle={yearTitleStyle}
+            textStyle={textStyle}
+            restrictMonthNavigation={restrictMonthNavigation}
+            minDate={minDate}
+            maxDate={maxDate}
             headingLevel={headingLevel}
+            monthYearHeaderWrapperStyle={monthYearHeaderWrapperStyle}
+            headerWrapperStyle={headerWrapperStyle}
           />
-        );
-        break;
-      default:
-        content = (
-          <View styles={styles.calendar}>
-            <HeaderControls
-              styles={styles}
-              currentMonth={currentMonth}
-              currentYear={currentYear}
-              initialDate={new Date(initialDate)}
-              onPressPrevious={this.handleOnPressPrevious}
-              onPressNext={this.handleOnPressNext}
-              onPressMonth={this.handleOnPressMonth}
-              onPressYear={this.handleOnPressYear}
-              months={months}
-              previousComponent={previousComponent}
-              nextComponent={nextComponent}
-              previousTitle={previousTitle}
-              nextTitle={nextTitle}
-              previousTitleStyle={previousTitleStyle}
-              nextTitleStyle={nextTitleStyle}
-              monthTitleStyle={monthTitleStyle}
-              yearTitleStyle={yearTitleStyle}
-              textStyle={textStyle}
-              restrictMonthNavigation={restrictMonthNavigation}
+          <Weekdays
+            styles={styles}
+            firstDay={startFromMonday ? 1 : firstDay}
+            currentMonth={currentMonth}
+            currentYear={currentYear}
+            weekdays={weekdays}
+            textStyle={textStyle}
+            dayLabelsWrapper={dayLabelsWrapper}
+            customDayHeaderStyles={customDayHeaderStyles}
+          />
+          {scrollable ? (
+            <Scroller
+              ref={(scroller) => (this.scroller = scroller)}
+              data={monthsList}
+              renderMonth={this.renderMonth}
+              renderMonthParams={renderMonthParams}
+              maxSimultaneousMonths={this.numMonthsScroll}
+              initialRenderIndex={initialScrollerIndex}
               minDate={minDate}
               maxDate={maxDate}
-              headingLevel={headingLevel}
-              monthYearHeaderWrapperStyle={monthYearHeaderWrapperStyle}
-              headerWrapperStyle={headerWrapperStyle}
+              restrictMonthNavigation={restrictMonthNavigation}
+              updateMonthYear={this.updateMonthYear}
+              onMonthChange={onMonthChange}
+              horizontal={horizontal}
+              scrollDecelarationRate={scrollDecelarationRate}
             />
-            <Weekdays
-              styles={styles}
-              firstDay={startFromMonday ? 1 : firstDay}
-              currentMonth={currentMonth}
-              currentYear={currentYear}
-              weekdays={weekdays}
-              textStyle={textStyle}
-              dayLabelsWrapper={dayLabelsWrapper}
-              customDayHeaderStyles={customDayHeaderStyles}
-            />
-            {scrollable ? (
-              <Scroller
-                ref={(scroller) => (this.scroller = scroller)}
-                data={monthsList}
-                renderMonth={this.renderMonth}
-                renderMonthParams={renderMonthParams}
-                maxSimultaneousMonths={this.numMonthsScroll}
-                initialRenderIndex={initialScrollerIndex}
-                minDate={minDate}
-                maxDate={maxDate}
-                restrictMonthNavigation={restrictMonthNavigation}
-                updateMonthYear={this.updateMonthYear}
-                onMonthChange={onMonthChange}
-                horizontal={horizontal}
-                scrollDecelarationRate={scrollDecelarationRate}
-              />
-            ) : (
-              this.renderMonth(renderMonthParams)
-            )}
-          </View>
-        );
+          ) : (
+            this.renderMonth(renderMonthParams)
+          )}
+        </View>
+      );
     }
 
     return content;

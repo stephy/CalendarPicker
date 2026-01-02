@@ -68,11 +68,11 @@ export default class DaysGridView extends Component {
   componentDidUpdate(prevProps) {
     // Optimize re-renders by checking props, with special handling for selected dates.
     // Shallow compare prop changes, excluding selected dates.
-    let excludedProps = []
+    let excludedProps = [];
 
     // Avoid unecessary re-render when selecting date range
     if (this.props.selectedEndDate) {
-      excludedProps = ['selectedStartDate', 'selectedEndDate']
+      excludedProps = ['selectedStartDate', 'selectedEndDate'];
     }
 
     const propDiffs = Utils.shallowDiff(this.props, prevProps, excludedProps);
