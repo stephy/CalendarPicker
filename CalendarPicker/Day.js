@@ -265,10 +265,11 @@ export default function Day(props) {
             backgroundColor: '#BFD7E8', 
             borderRadius: 20,
             height: 40,
-            flex: 1,
+            with: 90,
             marginLeft: -20,
             marginRight: -20,
             zIndex: 1,
+            marginHorizontal: -3,
           }];
           selectedDayTextStyle = [
             styles.selectedDayLabel,
