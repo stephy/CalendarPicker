@@ -265,7 +265,9 @@ export default function Day(props) {
             backgroundColor: '#BFD7E8', 
             borderRadius: 20,
             height: 40,
-            width: 90,
+            flex: 1,
+            marginLeft: -20,
+            marginRight: -20,
             zIndex: 1,
           }];
           selectedDayTextStyle = [
