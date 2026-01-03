@@ -184,12 +184,14 @@ export default function Day(props) {
               alignItems: 'center',
               justifyContent: 'center',
               marginHorizontal: 0,
+              backgroundColor: '#0A2B40',
             },
           ];
           selectedDayTextStyle = [
             styles.selectedDayLabel,
             propSelectedDayTextStyle,
             selectedRangeStartTextStyle,
+            { color: '#FFFFFF' },
           ];
         }
 
@@ -208,12 +210,14 @@ export default function Day(props) {
               alignItems: 'center',
               justifyContent: 'center',
               marginHorizontal: 0,
+              backgroundColor: '#0A2B40',
             },
           ];
           selectedDayTextStyle = [
             styles.selectedDayLabel,
             propSelectedDayTextStyle,
             selectedRangeEndTextStyle,
+            { color: '#FFFFFF' },
           ];
         }
 
@@ -254,9 +258,15 @@ export default function Day(props) {
           })
         ) {
           computedSelectedDayStyle = [styles.inRangeDay, selectedRangeStyle];
+          computedSelectedDayStyle = [...computedSelectedDayStyle, {
+            backgroundColor: '#BFD7E8', 
+            borderRadius: 20,
+            height: 40,
+          }];
           selectedDayTextStyle = [
             styles.selectedDayLabel,
             propSelectedDayTextStyle,
+            { color: '#023A5C' },
           ];
         }
       }
