@@ -185,6 +185,7 @@ export default function Day(props) {
               justifyContent: 'center',
               marginHorizontal: 0,
               backgroundColor: '#0A2B40',
+              zIndex: 2,
             },
           ];
           selectedDayTextStyle = [
@@ -211,6 +212,7 @@ export default function Day(props) {
               justifyContent: 'center',
               marginHorizontal: 0,
               backgroundColor: '#0A2B40',
+              zIndex: 2,
             },
           ];
           selectedDayTextStyle = [
@@ -240,6 +242,7 @@ export default function Day(props) {
               alignItems: 'center',
               justifyContent: 'center',
               marginHorizontal: 0,
+              zIndex: 2,
             },
           ];
           selectedDayTextStyle = [
@@ -264,6 +267,7 @@ export default function Day(props) {
             height: 40,
             width: 80,
             zIndex: 1,
+            marginHorizontal: 15,
           }];
           selectedDayTextStyle = [
             styles.selectedDayLabel,
