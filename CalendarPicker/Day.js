@@ -1,17 +1,13 @@
-import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity
-} from 'react-native';
-import PropTypes from 'prop-types';
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import PropTypes from "prop-types";
 
-import { differenceInDays } from 'date-fns/differenceInDays';
-import { isAfter } from 'date-fns/isAfter';
-import { isBefore } from 'date-fns/isBefore';
-import { isSameDay } from 'date-fns/isSameDay';
-import { isWithinInterval } from 'date-fns/isWithinInterval';
-import { startOfDay } from 'date-fns/startOfDay';
+import { differenceInDays } from "date-fns/differenceInDays";
+import { isAfter } from "date-fns/isAfter";
+import { isBefore } from "date-fns/isBefore";
+import { isSameDay } from "date-fns/isSameDay";
+import { isWithinInterval } from "date-fns/isWithinInterval";
+import { startOfDay } from "date-fns/startOfDay";
 
 export default function Day(props) {
   const {
@@ -66,10 +62,12 @@ export default function Day(props) {
   }
 
   if (disabledDates) {
-    if (Array.isArray(disabledDates) && disabledDates.indexOf(thisDay.valueOf()) >= 0) {
+    if (
+      Array.isArray(disabledDates) &&
+      disabledDates.indexOf(thisDay.valueOf()) >= 0
+    ) {
       dateIsDisabled = true;
-    }
-    else if (disabledDates instanceof Function) {
+    } else if (disabledDates instanceof Function) {
       dateIsDisabled = disabledDates(thisDay);
     }
   }
@@ -80,7 +78,9 @@ export default function Day(props) {
 
     if (maxRangeDuration) {
       if (Array.isArray(maxRangeDuration)) {
-        let maxRangeEntry = maxRangeDuration.find(mrd => isSameDay(selectedStartDate, mrd.date));
+        let maxRangeEntry = maxRangeDuration.find((mrd) =>
+          isSameDay(selectedStartDate, mrd.date)
+        );
         if (maxRangeEntry && daysDiff > maxRangeEntry.maxDuration) {
           dateRangeGreaterThanMax = true;
         }
@@ -91,7 +91,9 @@ export default function Day(props) {
 
     if (minRangeDuration) {
       if (Array.isArray(minRangeDuration)) {
-        let minRangeEntry = minRangeDuration.find(mrd => isSameDay(selectedStartDate, mrd.date));
+        let minRangeEntry = minRangeDuration.find((mrd) =>
+          isSameDay(selectedStartDate, mrd.date)
+        );
         if (minRangeEntry && daysDiff < minRangeEntry.minDuration) {
           dateRangeLessThanMin = true;
         }
@@ -105,35 +107,45 @@ export default function Day(props) {
     }
   }
 
-  dateOutOfRange = dateIsAfterMax || dateIsBeforeMin || dateIsDisabled || dateRangeLessThanMin || dateRangeGreaterThanMax;
+  dateOutOfRange =
+    dateIsAfterMax ||
+    dateIsBeforeMin ||
+    dateIsDisabled ||
+    dateRangeLessThanMin ||
+    dateRangeGreaterThanMax;
 
   let isThisDaySameAsSelectedStart = isSameDay(thisDay, selectedStartDate);
   let isThisDaySameAsSelectedEnd = isSameDay(thisDay, selectedEndDate);
-  
+
   // Đảm bảo thứ tự đúng
   let sortedStartDate = selectedStartDate;
   let sortedEndDate = selectedEndDate;
-  if (selectedStartDate && selectedEndDate && selectedStartDate > selectedEndDate) {
+  if (
+    selectedStartDate &&
+    selectedEndDate &&
+    selectedStartDate > selectedEndDate
+  ) {
     sortedStartDate = selectedEndDate;
     sortedEndDate = selectedStartDate;
     isThisDaySameAsSelectedStart = isSameDay(thisDay, sortedStartDate);
     isThisDaySameAsSelectedEnd = isSameDay(thisDay, sortedEndDate);
   }
-  
+
   let isThisDateInSelectedRange =
-    sortedStartDate
-    && sortedEndDate
-    && isWithinInterval(thisDay, {
+    sortedStartDate &&
+    sortedEndDate &&
+    isWithinInterval(thisDay, {
       start: sortedStartDate,
-      end: sortedEndDate
-    })
+      end: sortedEndDate,
+    });
 
   // Xác định vị trí ngày trong range
   let isFirstDayOfRange = false;
   let isLastDayOfRange = false;
   let isMiddleDayOfRange = false;
   let isSingleDayRange = false;
-  
+  let isOnlyMiddleDay = false; // Chỉ có 1 ngày ở giữa
+
   if (allowRangeSelection && sortedStartDate && sortedEndDate) {
     if (isSameDay(sortedStartDate, sortedEndDate)) {
       isSingleDayRange = true;
@@ -143,11 +155,24 @@ export default function Day(props) {
       isLastDayOfRange = true;
     } else if (isThisDateInSelectedRange) {
       isMiddleDayOfRange = true;
+
+      // Kiểm tra nếu đây là ngày duy nhất ở giữa
+      const daysBetween = Math.abs(
+        differenceInDays(sortedStartDate, sortedEndDate)
+      );
+      if (daysBetween === 2) {
+        isOnlyMiddleDay = true;
+      }
     }
   }
 
   // If date is in range let's apply styles
-  if (!dateOutOfRange || isThisDaySameAsSelectedStart || isThisDaySameAsSelectedEnd || isThisDateInSelectedRange) {
+  if (
+    !dateOutOfRange ||
+    isThisDaySameAsSelectedStart ||
+    isThisDaySameAsSelectedEnd ||
+    isThisDateInSelectedRange
+  ) {
     let isToday = isSameDay(thisDay, today);
     if (isToday) {
       computedSelectedDayStyle = styles.selectedToday;
@@ -161,148 +186,342 @@ export default function Day(props) {
     }
 
     // set selected day style
-    if (!allowRangeSelection &&
+    if (
+      !allowRangeSelection &&
       selectedStartDate &&
-      isThisDaySameAsSelectedStart) {
+      isThisDaySameAsSelectedStart
+    ) {
       computedSelectedDayStyle = styles.selectedDay;
-      selectedDayTextStyle = [styles.selectedDayLabel, isToday && todayTextStyle, propSelectedDayTextStyle];
+      selectedDayTextStyle = [
+        styles.selectedDayLabel,
+        isToday && todayTextStyle,
+        propSelectedDayTextStyle,
+      ];
       selectedDayStyle = propSelectedDayStyle || styles.selectedDayBackground;
     }
 
-    // ========== HARD CODE THEO DESIGN (CÓ BO NHẸ Ở GIỮA) ==========
+    // ========== STYLE VIÊN THUỐC DÀI ==========
     if (allowRangeSelection) {
       if (selectedStartDate && selectedEndDate) {
-        // 1. NGÀY ĐẦU (6) - BO TRÒN HOÀN TOÀN BÊN TRÁI, BO NHẸ BÊN PHẢI
+        // 1. NGÀY ĐẦU - HÌNH TRÒN, DÍNH VỚI VIÊN THUỐC
         if (isFirstDayOfRange) {
-          computedSelectedDayStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
-          
-          // THEO DESIGN: Bo tròn bên trái, bo nhẹ bên phải
-          computedSelectedDayStyle = [...computedSelectedDayStyle, {
-            backgroundColor: '#007AFF', // MÀU ĐẬM
-            borderTopLeftRadius: 20,    // Bo tròn bên trái
-            borderBottomLeftRadius: 20, // Bo tròn bên trái
-            borderTopRightRadius: 4,    // Bo nhẹ bên phải
-            borderBottomRightRadius: 4, // Bo nhẹ bên phải
-            width: 40,
-            height: 40,
-            marginLeft: 0,
-            marginRight: -6, // MARGIN ÂM NHẸ
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 10,
-          }];
-          
+          computedSelectedDayStyle = [
+            styles.startDayWrapper,
+            selectedRangeStyle,
+            selectedRangeStartStyle,
+          ];
+
+          computedSelectedDayStyle = [
+            ...computedSelectedDayStyle,
+            {
+              backgroundColor: "#007AFF", // MÀU ĐẬM
+              borderRadius: 20, // Hình tròn
+              width: 40,
+              height: 40,
+              marginLeft: 0,
+              marginRight: 0, // KHÔNG margin âm
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 20,
+              position: "relative",
+              // Tạo hiệu ứng dính bằng pseudo element
+            },
+          ];
+
+          // Thêm phần mở rộng để dính với viên thuốc
+          const dayWrapperStyle = {
+            position: "relative",
+            overflow: "visible",
+          };
+
           selectedDayTextStyle = [
-            styles.selectedDayLabel, 
-            propSelectedDayTextStyle, 
+            styles.selectedDayLabel,
+            propSelectedDayTextStyle,
             selectedRangeStartTextStyle,
-            { color: '#FFFFFF', fontWeight: 'bold', fontSize: 14 }
+            { color: "#FFFFFF", fontWeight: "bold", fontSize: 14 },
           ];
+
+          // Render với phần mở rộng
+          if (!dateOutOfRange) {
+            return (
+              <View
+                style={[
+                  styles.dayWrapper,
+                  custom.containerStyle,
+                  dayWrapperStyle,
+                ]}
+              >
+                {/* Phần mở rộng bên phải để dính với viên thuốc */}
+                <View
+                  style={{
+                    position: "absolute",
+                    left: 35, // Bắt đầu từ cạnh phải của hình tròn
+                    top: 0,
+                    width: 20, // Độ rộng phần dính
+                    height: 40,
+                    backgroundColor: "#E3F2FD", // Màu viên thuốc
+                    borderTopRightRadius: 10,
+                    borderBottomRightRadius: 10,
+                    zIndex: 10,
+                  }}
+                />
+
+                <TouchableOpacity
+                  disabled={!enableDateChange}
+                  style={[
+                    custom.style,
+                    computedSelectedDayStyle,
+                    selectedDayStyle,
+                  ]}
+                  onPress={() => onPressDay({ year, month, day })}
+                >
+                  <Text
+                    style={[
+                      styles.dayLabel,
+                      textStyle,
+                      custom.textStyle,
+                      selectedDayTextStyle,
+                    ]}
+                  >
+                    {day}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            );
+          }
         }
-        
-        // 2. NGÀY CUỐI (13) - BO TRÒN HOÀN TOÀN BÊN PHẢI, BO NHẸ BÊN TRÁI
+
+        // 2. NGÀY CUỐI - HÌNH TRÒN, DÍNH VỚI VIÊN THUỐC
         if (isLastDayOfRange) {
-          computedSelectedDayStyle = [styles.endDayWrapper, selectedRangeStyle, selectedRangeEndStyle];
-          
-          // THEO DESIGN: Bo tròn bên phải, bo nhẹ bên trái
-          computedSelectedDayStyle = [...computedSelectedDayStyle, {
-            backgroundColor: '#007AFF', // MÀU ĐẬM
-            borderTopLeftRadius: 4,     // Bo nhẹ bên trái
-            borderBottomLeftRadius: 4,  // Bo nhẹ bên trái
-            borderTopRightRadius: 20,   // Bo tròn bên phải
-            borderBottomRightRadius: 20,// Bo tròn bên phải
-            width: 40,
-            height: 40,
-            marginLeft: -6, // MARGIN ÂM NHẸ
-            marginRight: 0,
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 10,
-          }];
-          
-          selectedDayTextStyle = [
-            styles.selectedDayLabel, 
-            propSelectedDayTextStyle, 
-            selectedRangeEndTextStyle,
-            { color: '#FFFFFF', fontWeight: 'bold', fontSize: 14 }
+          computedSelectedDayStyle = [
+            styles.endDayWrapper,
+            selectedRangeStyle,
+            selectedRangeEndStyle,
           ];
+
+          computedSelectedDayStyle = [
+            ...computedSelectedDayStyle,
+            {
+              backgroundColor: "#007AFF", // MÀU ĐẬM
+              borderRadius: 20, // Hình tròn
+              width: 40,
+              height: 40,
+              marginLeft: 0,
+              marginRight: 0, // KHÔNG margin âm
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 20,
+              position: "relative",
+            },
+          ];
+
+          const dayWrapperStyle = {
+            position: "relative",
+            overflow: "visible",
+          };
+
+          selectedDayTextStyle = [
+            styles.selectedDayLabel,
+            propSelectedDayTextStyle,
+            selectedRangeEndTextStyle,
+            { color: "#FFFFFF", fontWeight: "bold", fontSize: 14 },
+          ];
+
+          // Render với phần mở rộng
+          if (!dateOutOfRange) {
+            return (
+              <View
+                style={[
+                  styles.dayWrapper,
+                  custom.containerStyle,
+                  dayWrapperStyle,
+                ]}
+              >
+                {/* Phần mở rộng bên trái để dính với viên thuốc */}
+                <View
+                  style={{
+                    position: "absolute",
+                    right: 35, // Bắt đầu từ cạnh trái của hình tròn
+                    top: 0,
+                    width: 20, // Độ rộng phần dính
+                    height: 40,
+                    backgroundColor: "#E3F2FD", // Màu viên thuốc
+                    borderTopLeftRadius: 10,
+                    borderBottomLeftRadius: 10,
+                    zIndex: 10,
+                  }}
+                />
+
+                <TouchableOpacity
+                  disabled={!enableDateChange}
+                  style={[
+                    custom.style,
+                    computedSelectedDayStyle,
+                    selectedDayStyle,
+                  ]}
+                  onPress={() => onPressDay({ year, month, day })}
+                >
+                  <Text
+                    style={[
+                      styles.dayLabel,
+                      textStyle,
+                      custom.textStyle,
+                      selectedDayTextStyle,
+                    ]}
+                  >
+                    {day}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            );
+          }
         }
-        
-        // 3. CÁC NGÀY Ở GIỮA (7-12) - BO NHẸ 4 GÓC, MÀU NHẠT HƠN
+
+        // 3. CÁC NGÀY Ở GIỮA - TẠO THÀNH VIÊN THUỐC DÀI
         if (isMiddleDayOfRange) {
           computedSelectedDayStyle = [styles.inRangeDay, selectedRangeStyle];
-          
-          // THEO DESIGN: Bo nhẹ 4 góc, màu nhạt
-          computedSelectedDayStyle = [...computedSelectedDayStyle, {
-            backgroundColor: '#E3F2FD', // MÀU NHẠT
-            borderTopLeftRadius: 4,     // Bo nhẹ
-            borderBottomLeftRadius: 4,  // Bo nhẹ
-            borderTopRightRadius: 4,    // Bo nhẹ
-            borderBottomRightRadius: 4, // Bo nhẹ
-            height: 40,
-            marginLeft: -6, // MARGIN ÂM
-            marginRight: -6, // MARGIN ÂM
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 5,
-          }];
-          
+
+          // Tính toán width dựa trên số ngày
+          let middleDayWidth = "auto";
+          let middleDayFlex = 1;
+
+          // Nếu chỉ có 1 ngày ở giữa, tạo hình viên thuốc nhỏ
+          if (isOnlyMiddleDay) {
+            middleDayWidth = 60; // Width cố định cho viên thuốc nhỏ
+            middleDayFlex = 0;
+          }
+
+          computedSelectedDayStyle = [
+            ...computedSelectedDayStyle,
+            {
+              backgroundColor: "#E3F2FD", // MÀU VIÊN THUỐC
+              borderRadius: 20, // Bo tròn đều - hình viên thuốc
+              height: 40,
+              marginLeft: 0, // KHÔNG margin âm
+              marginRight: 0, // KHÔNG margin âm
+              flex: middleDayFlex,
+              width: middleDayWidth,
+              alignItems: "center",
+              justifyContent: "center",
+              zIndex: 15,
+              // Kéo dài để che khoảng trống
+              transform: [{ scaleX: 1.1 }], // Kéo rộng ra 10%
+            },
+          ];
+
           selectedDayTextStyle = [
-            styles.selectedDayLabel, 
+            styles.selectedDayLabel,
             propSelectedDayTextStyle,
-            { color: '#000000', fontWeight: 'normal', fontSize: 14 }
+            { color: "#000000", fontWeight: "normal", fontSize: 14 },
           ];
+
+          // Override dayWrapper để các viên thuốc dính nhau
+          const dayWrapperStyle = {
+            flex: 1,
+            marginHorizontal: -2, // Âm nhẹ để dính
+            zIndex: 15,
+          };
+
+          if (!dateOutOfRange) {
+            return (
+              <View
+                style={[
+                  styles.dayWrapper,
+                  custom.containerStyle,
+                  dayWrapperStyle,
+                ]}
+              >
+                <TouchableOpacity
+                  disabled={!enableDateChange}
+                  style={[
+                    custom.style,
+                    computedSelectedDayStyle,
+                    selectedDayStyle,
+                  ]}
+                  onPress={() => onPressDay({ year, month, day })}
+                >
+                  <Text
+                    style={[
+                      styles.dayLabel,
+                      textStyle,
+                      custom.textStyle,
+                      selectedDayTextStyle,
+                    ]}
+                  >
+                    {day}
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            );
+          }
         }
-        
-        // 4. NGÀY DUY NHẤT ĐƯỢC CHỌN (start = end) - BO TRÒN HOÀN TOÀN
+
+        // 4. NGÀY DUY NHẤT ĐƯỢC CHỌN (start = end) - HÌNH TRÒN
         if (isSingleDayRange) {
-          computedSelectedDayStyle = [styles.selectedDay, styles.selectedDayBackground, selectedRangeStyle];
-          
-          computedSelectedDayStyle = [...computedSelectedDayStyle, {
-            backgroundColor: '#007AFF',
-            borderRadius: 20,
-            width: 40,
-            height: 40,
-            alignItems: 'center',
-            justifyContent: 'center',
-          }];
-          
+          computedSelectedDayStyle = [
+            styles.selectedDay,
+            styles.selectedDayBackground,
+            selectedRangeStyle,
+          ];
+
+          computedSelectedDayStyle = [
+            ...computedSelectedDayStyle,
+            {
+              backgroundColor: "#007AFF",
+              borderRadius: 20,
+              width: 40,
+              height: 40,
+              alignItems: "center",
+              justifyContent: "center",
+            },
+          ];
+
           selectedDayTextStyle = [
-            styles.selectedDayLabel, 
-            propSelectedDayTextStyle, 
+            styles.selectedDayLabel,
+            propSelectedDayTextStyle,
             selectedRangeStartTextStyle,
-            { color: '#FFFFFF', fontWeight: 'bold', fontSize: 14 }
+            { color: "#FFFFFF", fontWeight: "bold", fontSize: 14 },
           ];
         }
-        
-        // DEBUG: Log để kiểm tra
-        console.log('Day:', day, {
+
+        // DEBUG
+        console.log("Day:", day, {
           isFirst: isFirstDayOfRange,
           isLast: isLastDayOfRange,
           isMiddle: isMiddleDayOfRange,
-          margin: isMiddleDayOfRange ? '-6' : (isFirstDayOfRange ? '0/-6' : '-6/0')
+          isOnlyMiddle: isOnlyMiddleDay,
         });
       }
-      
+
       // 5. KHI CHỈ MỚI CHỌN START DATE
-      if (selectedStartDate && !selectedEndDate && isThisDaySameAsSelectedStart) {
-        computedSelectedDayStyle = [styles.startDayWrapper, selectedRangeStyle, selectedRangeStartStyle];
-        
-        computedSelectedDayStyle = [...computedSelectedDayStyle, {
-          backgroundColor: '#007AFF',
-          borderRadius: 20,
-          width: 40,
-          height: 40,
-          alignItems: 'center',
-          justifyContent: 'center',
-        }];
-        
+      if (
+        selectedStartDate &&
+        !selectedEndDate &&
+        isThisDaySameAsSelectedStart
+      ) {
+        computedSelectedDayStyle = [
+          styles.startDayWrapper,
+          selectedRangeStyle,
+          selectedRangeStartStyle,
+        ];
+
+        computedSelectedDayStyle = [
+          ...computedSelectedDayStyle,
+          {
+            backgroundColor: "#007AFF",
+            borderRadius: 20,
+            width: 40,
+            height: 40,
+            alignItems: "center",
+            justifyContent: "center",
+          },
+        ];
+
         selectedDayTextStyle = [
-          styles.selectedDayLabel, 
-          propSelectedDayTextStyle, 
+          styles.selectedDayLabel,
+          propSelectedDayTextStyle,
           selectedRangeStartTextStyle,
-          { color: '#FFFFFF', fontWeight: 'bold', fontSize: 14 }
+          { color: "#FFFFFF", fontWeight: "bold", fontSize: 14 },
         ];
         overrideOutOfRangeTextStyle = selectedRangeStartTextStyle;
       }
@@ -311,12 +530,20 @@ export default function Day(props) {
     if (dateOutOfRange) {
       return (
         <View style={[styles.dayWrapper, custom.containerStyle]}>
-          <View style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}>
-            <Text style={[styles.dayLabel, textStyle,
-            styles.disabledText, disabledDatesTextStyle,
-            styles.selectedDisabledText, selectedDisabledDatesTextStyle,
-              overrideOutOfRangeTextStyle
-            ]}>
+          <View
+            style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}
+          >
+            <Text
+              style={[
+                styles.dayLabel,
+                textStyle,
+                styles.disabledText,
+                disabledDatesTextStyle,
+                styles.selectedDisabledText,
+                selectedDisabledDatesTextStyle,
+                overrideOutOfRangeTextStyle,
+              ]}
+            >
               {day}
             </Text>
           </View>
@@ -328,16 +555,23 @@ export default function Day(props) {
           <TouchableOpacity
             disabled={!enableDateChange}
             style={[custom.style, computedSelectedDayStyle, selectedDayStyle]}
-            onPress={() => onPressDay({ year, month, day })}>
-            <Text style={[styles.dayLabel, textStyle, custom.textStyle, selectedDayTextStyle]}>
+            onPress={() => onPressDay({ year, month, day })}
+          >
+            <Text
+              style={[
+                styles.dayLabel,
+                textStyle,
+                custom.textStyle,
+                selectedDayTextStyle,
+              ]}
+            >
               {day}
             </Text>
           </TouchableOpacity>
         </View>
       );
     }
-  }
-  else {
+  } else {
     const custom = getCustomDateStyle({ customDatesStyles, date: thisDay });
     if (!custom.allowDisabled) {
       custom.containerStyle = null;
@@ -347,7 +581,14 @@ export default function Day(props) {
     return (
       <View style={[styles.dayWrapper, custom.containerStyle]}>
         <View style={[styles.dayButton, custom.style]}>
-          <Text style={[textStyle, styles.disabledText, disabledDatesTextStyle, custom.textStyle]}>
+          <Text
+            style={[
+              textStyle,
+              styles.disabledText,
+              disabledDatesTextStyle,
+              custom.textStyle,
+            ]}
+          >
             {day}
           </Text>
         </View>
@@ -363,8 +604,7 @@ function getCustomDateStyle({ customDatesStyles, date }) {
         return { ...cds };
       }
     }
-  }
-  else if (customDatesStyles instanceof Function) {
+  } else if (customDatesStyles instanceof Function) {
     let cds = customDatesStyles(date) || {};
     return { ...cds };
   }
