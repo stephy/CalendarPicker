@@ -147,17 +147,6 @@ export default function Day(props) {
       isThisDaySameAsSelectedStart
     ) {
       computedSelectedDayStyle = styles.selectedDay;
-      computedSelectedDayStyle = [
-        ...computedSelectedDayStyle,
-        {
-          borderRadius: 20,
-          width: 40,
-          height: 40,
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginHorizontal: 0,
-        },
-      ];
 
       selectedDayTextStyle = [
         styles.selectedDayLabel,
@@ -178,14 +167,7 @@ export default function Day(props) {
           computedSelectedDayStyle = [
             ...computedSelectedDayStyle,
             {
-              borderRadius: 20,
-              width: 40,
-              height: 40,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginHorizontal: 0,
-              backgroundColor: '#0A2B40',
-              zIndex: 2,
+              backgroundColor: '#0A2B40',             
             },
           ];
           selectedDayTextStyle = [
@@ -205,14 +187,7 @@ export default function Day(props) {
           computedSelectedDayStyle = [
             ...computedSelectedDayStyle,
             {
-              borderRadius: 20,
-              width: 40,
-              height: 40,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginHorizontal: 0,
               backgroundColor: '#0A2B40',
-              zIndex: 2,
             },
           ];
           selectedDayTextStyle = [
@@ -232,18 +207,6 @@ export default function Day(props) {
             styles.selectedDay,
             styles.selectedDayBackground,
             selectedRangeStyle,
-          ];
-          computedSelectedDayStyle = [
-            ...computedSelectedDayStyle,
-            {
-              borderRadius: 20,
-              width: 40,
-              height: 40,
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginHorizontal: 0,
-              zIndex: 2,
-            },
           ];
           selectedDayTextStyle = [
             styles.selectedDayLabel,
@@ -281,17 +244,6 @@ export default function Day(props) {
           styles.startDayWrapper,
           selectedRangeStyle,
           selectedRangeStartStyle,
-        ];
-        computedSelectedDayStyle = [
-          ...computedSelectedDayStyle,
-          {
-            borderRadius: 20,
-            width: 40,
-            height: 40,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginHorizontal: 0,
-          },
         ];
         selectedDayTextStyle = [
           styles.selectedDayLabel,
