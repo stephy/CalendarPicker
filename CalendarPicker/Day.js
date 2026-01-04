@@ -263,13 +263,6 @@ export default function Day(props) {
           computedSelectedDayStyle = [styles.inRangeDay, selectedRangeStyle];
           computedSelectedDayStyle = [...computedSelectedDayStyle, {
             backgroundColor: '#BFD7E8', 
-            borderRadius: 20,
-            height: 40,
-            with: 90,
-            marginLeft: -20,
-            marginRight: -20,
-            zIndex: 1,
-            marginHorizontal: -3,
           }];
           selectedDayTextStyle = [
             styles.selectedDayLabel,
