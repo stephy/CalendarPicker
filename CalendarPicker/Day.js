@@ -244,6 +244,7 @@ export default function Day(props) {
           styles.startDayWrapper,
           selectedRangeStyle,
           selectedRangeStartStyle,
+          { backgroundColor: '#0A2B40' },
         ];
         selectedDayTextStyle = [
           styles.selectedDayLabel,
